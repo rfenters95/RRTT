@@ -10,7 +10,7 @@
          <children>
             <HBox spacing="15.0">
                <children>
-                  <JFXComboBox fx:id="driveModeComboBox" focusColor="#4eb769" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Drive Mode" />
+                  <JFXComboBox fx:id="driveModeComboBox" unFocusColor="#fffd8c" focusColor="#4eb769" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Drive Mode" />
                   <JFXTextField fx:id="input1TextField" focusColor="#4eb769" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 1">
                      <HBox.margin>
                         <Insets top="2.0" />

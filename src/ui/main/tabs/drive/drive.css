@@ -6,35 +6,35 @@
 /* Edit prompt text color for combo box  */
 .combo-box .list-cell {
     /* -fx-background-color: red; */
-    -fx-text-fill: #fffd8c;
+    -fx-text-fill: #fffd8c; /*Yellow*/
 }
 
 .combo-box .arrow {
-     -fx-background-color: #4eb769;
+     -fx-background-color: #4eb769; /*Green*/
 }
 
 .combo-box .input-line {
-    -fx-background-color: #fffd8c;
+    -fx-background-color: #fffd8c; /*Yellow*/
 }
 
 .text-field {
-    -fx-prompt-text-fill: #fffd8c;
+    -fx-prompt-text-fill: #fffd8c; /*Yellow*/
     -jfx-focus-color: #4eb769;
-    -jfx-unfocus-color: #fffd8c;
+    -jfx-unfocus-color: #fffd8c; /*Yellow*/
     -fx-text-fill: white;
-    -fx-highlight-fill: #4eb769;
+    -fx-highlight-fill: #4eb769; /*Green*/
 }
 
 .text-field .input-line {
-    -fx-background-color: #fffd8c;
+    -fx-background-color: #fffd8c; /*Yellow*/
 }
 
 .button {
-    -fx-background-color: #4eb769;
+    -fx-background-color: #4eb769; /*Green*/
     -fx-text-fill: white;
 }
 
 .jfx-check-box {
-    -jfx-unchecked-color: #fffd8c;
-    -fx-text-fill: #fffd8c;
+    -jfx-unchecked-color: #fffd8c; /*Yellow*/
+    -fx-text-fill: #fffd8c; /*Yellow*/
 }
