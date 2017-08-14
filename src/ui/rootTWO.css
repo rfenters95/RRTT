@@ -1,0 +1,107 @@
+.tool-bar {
+    -fx-background-color: slategrey;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+}
+
+/* Removes white space around panes  */
+.split-pane {
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+}
+
+/* Hide SplitPane divider bar  */
+.split-pane:vertical .split-pane-divider {
+   -fx-background-color: black;
+   -fx-padding: 0;
+   -fx-border-width: 0;
+   -fx-border-insets: 0;
+}
+
+/* Set TextArea color  */
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: black; /* scroll-bar border color */
+    -fx-text-fill: white;
+    -fx-highlight-fill: #4eb769;
+    -fx-highlight-text-fill: white;
+    -fx-background-radius: 0;
+}
+
+/* Set TextArea bg color  */
+.text-area .content {
+    -fx-background-color: black;
+    -fx-background-radius: 0;
+}
+
+.text-area .scroll-bar {
+    -fx-background-color: black;
+}
+
+.text-area .thumb {
+    -fx-background-color: #4eb769;
+}
+
+.text-area .track, .text-area .track-background {
+    -fx-background-color: yellow; /* Should not see this! */
+    -fx-opacity: 0;
+}
+
+.text-area .scroll-bar .increment-button, .text-area .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.text-area .scroll-bar .increment-arrow, .text-area .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+    -fx-background-color: black;
+}
+/* Edits tab text colors */
+.tab .tab-label {
+    -fx-text-fill: white;
+}
+
+/* Edits selected tab text color
+Note:
+1. Must be below .tab .tab-label
+2. All tabs are considered selected until
+they are considered visited!
+ */
+.tab:selected .tab-label {
+    -fx-text-fill: #4eb769 ;
+} 
+
+.jfx-tab-pane {
+    -fx-background-color: slategrey;
+}
+
+/* Colors bg of JFXTabPane header  */
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: black;
+}
+
+/* Remove yellow line from selected tab */
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: transparent;
+}
+
+/* Changes ripple effect color */
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: #4eb769;
+}

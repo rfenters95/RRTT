@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" stylesheets="@led.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" spacing="25.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <VBox spacing="10.0">
+               <children>
+                  <JFXCheckBox checkedColor="#4eb769" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Debris" />
+                  <JFXCheckBox checkedColor="#4eb769" text="Dock" />
+                  <JFXCheckBox checkedColor="#4eb769" text="Spot" />
+                  <JFXCheckBox checkedColor="#4eb769" text="Check Robot" />
+               </children>
+            </VBox>
+            <HBox spacing="15.0">
+               <children>
+                  <JFXTextField focusColor="#4eb769" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="125.0" promptText="Power Color" />
+                  <JFXTextField focusColor="#4eb769" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="125.0" promptText="Power Intensity" />
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </HBox>
+            <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #4eb769;" text="Toggle" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

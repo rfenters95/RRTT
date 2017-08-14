@@ -1,0 +1,14 @@
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: black;
+}
+
+/* Remove yellow line from selected tab */
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: transparent;
+}
+
+.jfx-tab-pane .tab-header-area .jfx-rippler{
+    -jfx-rippler-fill: #4eb769;
+}
+
+

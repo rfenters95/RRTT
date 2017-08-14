@@ -1,0 +1,28 @@
+.jfx-combo-box {
+    /* -jfx-focus-color: maroon;  Floating prompt color  */
+    /* -jfx-unfocus-color: white; */
+}
+
+/* Edit prompt text color for combo box  */
+.combo-box .list-cell {
+    /* -fx-background-color: red; */
+    -fx-text-fill: #fffd8c;
+}
+
+.combo-box .arrow {
+     -fx-background-color: #4eb769;
+}
+
+.combo-box .input-line {
+    -fx-background-color: #fffd8c;
+}
+
+.button {
+    -fx-background-color: #4eb769;
+    -fx-text-fill: white;
+}
+
+.jfx-check-box {
+    -jfx-unchecked-color: #fffd8c;
+    -fx-text-fill: #fffd8c;
+}

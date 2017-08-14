@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXComboBox fx:id="driveModeComboBox" focusColor="#4eb769" labelFloat="true" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Drive Mode" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0" />
+      <JFXTextField fx:id="input1TextField" focusColor="#4eb769" labelFloat="true" layoutX="175.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 1" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="21.0" />
+      <JFXTextField fx:id="input2TextField" focusColor="#4eb769" labelFloat="true" layoutX="335.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 2" AnchorPane.leftAnchor="335.0" AnchorPane.topAnchor="21.0" />
+      <VBox layoutX="14.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="65.0" />
+      <AnchorPane layoutX="534.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <JFXButton fx:id="forwardButton" layoutX="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #4eb769;" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0" />
+            <JFXButton layoutX="140.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #4eb769;" AnchorPane.topAnchor="70.0" />
+            <JFXButton layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #4eb769;" AnchorPane.topAnchor="70.0" />
+            <JFXButton fx:id="reverseButton" layoutX="70.0" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #4eb769;" AnchorPane.topAnchor="140.0" />
+            <JFXButton fx:id="stopButton" layoutX="70.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #4eb769;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
