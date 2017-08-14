@@ -4,6 +4,6 @@ package core;
 * RoombaStartMode
 *
 * */
-public enum RoombaMode {
+public enum RoombaStartMode {
     SAFE, FULL;
 }

@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import core.Injectable;
-import core.RoombaMode;
+import core.RoombaDriveMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +22,7 @@ public class DriveTabController implements Initializable, Injectable {
     private AnchorPane driveTab;
 
     @FXML
-    private JFXComboBox<RoombaMode> driveModeComboBox;
+    private JFXComboBox<RoombaDriveMode> driveModeComboBox;
 
     @FXML
     private JFXTextField input1TextField;
@@ -56,7 +56,17 @@ public class DriveTabController implements Initializable, Injectable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        driveModeComboBox.getItems().setAll(RoombaMode.values());
+        driveModeComboBox.getItems().setAll(RoombaDriveMode.values());
+        driveModeComboBox.setOnAction(e -> {
+            RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
+            if (driveMode == RoombaDriveMode.DRIVE) {
+                rootController.console.appendText("Starting drive...\n");
+                //TODO change TextField text
+            } else if (driveMode == RoombaDriveMode.DRIVE_DIRECT) {
+                rootController.console.appendText("Starting drive direct...\n");
+                //TODO change TextField text
+            }
+        });
 
         stopButton.setOnAction(e -> {
             rootController.console.appendText("Test!\n");
