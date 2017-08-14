@@ -39,7 +39,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <fx:include source="main/tabs/led/LightTab.fxml" />
+                                    <fx:include fx:id="lightTab" source="main/tabs/led/LightTab.fxml" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -48,7 +48,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <fx:include source="main/tabs/sensor/SensorTab.fxml" />
+                                    <fx:include fx:id="sensorTab" source="main/tabs/sensor/SensorTab.fxml" />
                                  </children></AnchorPane>
                           </content>
                         </Tab>

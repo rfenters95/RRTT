@@ -13,7 +13,7 @@ import ui.RootController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DriveTabController implements Initializable, Injectable{
+public class DriveTabController implements Initializable, Injectable {
 
     private RootController rootController;
 
@@ -54,8 +54,9 @@ public class DriveTabController implements Initializable, Injectable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        stopButton.setOnAction(e->{
+        stopButton.setOnAction(e -> {
             rootController.console.appendText("Test!\n");
+            // RoombaJSSCSingleton.getRoombaJSSC().stop();
         });
     }
 

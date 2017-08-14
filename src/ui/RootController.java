@@ -8,6 +8,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
 import ui.main.tabs.drive.DriveTabController;
+import ui.main.tabs.led.LightTabController;
+import ui.main.tabs.sensor.SensorTabController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +33,12 @@ public class RootController implements Initializable {
 
     @FXML
     private DriveTabController driveTabController;
+
+    @FXML
+    private LightTabController lightTabController;
+
+    @FXML
+    private SensorTabController sensorTabController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
