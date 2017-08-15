@@ -51,7 +51,7 @@ TextField CSS below
     -fx-prompt-text-fill: #fffd8c; /*Yellow*/
     -jfx-focus-color: #4eb769;
     -jfx-unfocus-color: #fffd8c; /*Yellow*/
-    -fx-text-fill: white;
+    -fx-text-fill: #fffd8c; /*Yellow - input color*/
     -fx-highlight-fill: #4eb769; /*Green*/
 }
 

@@ -56,22 +56,77 @@ public class DriveTabController implements Initializable, Injectable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        /*
+        *
+        * ComboBox logic
+        *
+        * */
+
         driveModeComboBox.getItems().setAll(RoombaDriveMode.values());
         driveModeComboBox.setOnAction(e -> {
             RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
             if (driveMode == RoombaDriveMode.DRIVE) {
                 rootController.console.appendText("Starting drive...\n");
-                //TODO change TextField text
+                input1TextField.setPromptText("Velocity (mm/s)");
+                input2TextField.setPromptText("Radius (mm)");
             } else if (driveMode == RoombaDriveMode.DRIVE_DIRECT) {
                 rootController.console.appendText("Starting drive direct...\n");
-                //TODO change TextField text
+                input1TextField.setPromptText("Velocity (mm/s) - Left");
+                input2TextField.setPromptText("Velocity (mm/s) - Right");
             }
+        });
+
+        /*
+        *
+        * TextField logic
+        *
+        * */
+
+        input1TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,4}?")) {
+                input1TextField.setText(oldValue);
+            }
+        });
+
+        input2TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,4}?")) {
+                input2TextField.setText(oldValue);
+            }
+        });
+
+        /*
+        *
+        * Button logic
+        *
+        * */
+
+        //TODO perform a input value check; 0 - 500 (mm/s); 0 - 2000 (mm);
+
+        forwardButton.setOnAction(e -> {
+            rootController.console.appendText("Test!\n");
+            // RoombaJSSCSingleton.getRoombaJSSC().stop();
+        });
+
+        reverseButton.setOnAction(e -> {
+            rootController.console.appendText("Test!\n");
+            // RoombaJSSCSingleton.getRoombaJSSC().stop();
         });
 
         stopButton.setOnAction(e -> {
             rootController.console.appendText("Test!\n");
             // RoombaJSSCSingleton.getRoombaJSSC().stop();
         });
+
+        rotateLeftButton.setOnAction(e -> {
+            rootController.console.appendText("Test!\n");
+            // RoombaJSSCSingleton.getRoombaJSSC().stop();
+        });
+
+        rotateRightButton.setOnAction(e -> {
+            rootController.console.appendText("Test!\n");
+            // RoombaJSSCSingleton.getRoombaJSSC().stop();
+        });
+
     }
 
 }
