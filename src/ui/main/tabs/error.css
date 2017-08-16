@@ -18,6 +18,4 @@ TextField CSS below
 .text-field .input-line
 {
     -fx-background-color: red;
-    -fx-prompt-text-fill: red;
-    -fx-text-fill: red;
 }
