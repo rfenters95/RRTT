@@ -3,8 +3,10 @@ package ui.main.tabs.drive;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.maschel.roomba.RoombaJSSC;
 import core.Injectable;
 import core.RoombaDriveMode;
+import core.RoombaJSSCSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -76,34 +78,54 @@ public class DriveTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
-        //TODO simplify and clean up;
-
         textField1.textProperty().addListener((observable, oldValue, newValue) -> {
+
             if (!newValue.matches("\\d{0,5}?")) {
+
                 textField1.setText(oldValue); // triggers another check
+
             } else {
+
                 RoombaDriveMode roombaDriveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
+
                 if (roombaDriveMode.isInput1Valid(textField1)) {
+
                     roombaDriveMode.resetStyle(RoombaDriveMode.TextFieldPosition.ONE, textField1);
                     rootController.console.appendText("Valid\n");
+
                 } else {
+
                     roombaDriveMode.setErrorStyle(RoombaDriveMode.TextFieldPosition.ONE, textField1);
+
                 }
+
             }
+
         });
 
         textField2.textProperty().addListener((observable, oldValue, newValue) -> {
+
             if (!newValue.matches("\\d{0,5}?")) {
+
                 textField2.setText(oldValue);
+
             } else {
+
                 RoombaDriveMode roombaDriveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
+
                 if (roombaDriveMode.isInput2Valid(textField2)) {
+
                     roombaDriveMode.resetStyle(RoombaDriveMode.TextFieldPosition.TWO, textField2);
                     rootController.console.appendText("Valid\n");
+
                 } else {
+
                     roombaDriveMode.setErrorStyle(RoombaDriveMode.TextFieldPosition.TWO, textField2);
+
                 }
+
             }
+
         });
 
         /* *********************************************
@@ -115,11 +137,15 @@ public class DriveTabController implements Initializable, Injectable {
         forwardButton.setOnAction(e -> {
             RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
             if (driveMode.isInputsValid(textField1, textField2)) {
-                rootController.console.appendText("valid Test!\n");
                 //Get roombaJSSC
+                RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
                 //Convert input to int
+                int input1 = Integer.parseInt(textField1.getText());
+                int input2 = Integer.parseInt(textField2.getText());
                 //Switch
+                //roombaJSSC.drive(input1, input2);
                 //Send drive instructions
+                rootController.console.appendText(RoombaJSSCSingleton.logDate() + "\n");
             } else {
                 rootController.console.appendText("Invalid input!\n");
             }
