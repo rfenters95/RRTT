@@ -5,24 +5,68 @@ import com.jfoenix.controls.JFXTextField;
 public enum RoombaDriveMode {
     DRIVE, DRIVE_DIRECT;
 
-    public static void resetStyle(JFXTextField textField) {
+    public static final String VELOCITY_PROMPT1 = "Velocity (mm/s)";
+    public static final String VELOCITY_PROMPT2 = "Velocity (mm/s) - Left";
+    public static final String VELOCITY_PROMPT3 = "Velocity (mm/s) - Right";
+    public static final String VELOCITY_ERROR = "Invalid Input! Range [0, 500]";
+    public static final String RADIUS_PROMPT = "Radius (mm)";
+    public static final String RADIUS_ERROR = "Invalid Input! Range [0, 2000]";
+
+    public void resetStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
         textField.getStylesheets().add("ui/main/tabs/main.css");
+        switch (this) {
+            case DRIVE:
+                switch (position) {
+                    case ONE:
+                        textField.setPromptText(VELOCITY_PROMPT1);
+                        break;
+                    case TWO:
+                        textField.setPromptText(RADIUS_PROMPT);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case DRIVE_DIRECT:
+                switch (position) {
+                    case ONE:
+                        textField.setPromptText(VELOCITY_PROMPT2);
+                        break;
+                    case TWO:
+                        textField.setPromptText(VELOCITY_PROMPT3);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
-    public static void resetStyle(JFXTextField textField1, JFXTextField textField2) {
-        resetStyle(textField1);
-        resetStyle(textField2);
-    }
-
-    public static void setErrorStyle(JFXTextField textField) {
+    public void setErrorStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
         textField.getStylesheets().add("ui/main/tabs/error.css");
-    }
-
-    public static void setErrorStyle(JFXTextField textField1, JFXTextField textField2) {
-        resetStyle(textField1);
-        resetStyle(textField2);
+        switch (this) {
+            case DRIVE:
+                switch (position) {
+                    case ONE:
+                        textField.setPromptText(VELOCITY_ERROR);
+                        break;
+                    case TWO:
+                        textField.setPromptText(RADIUS_ERROR);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case DRIVE_DIRECT:
+                textField.setPromptText(VELOCITY_ERROR);
+                break;
+            default:
+                break;
+        }
     }
 
     public void configTextFields(JFXTextField textField1, JFXTextField textField2) {
@@ -32,6 +76,12 @@ public enum RoombaDriveMode {
 
     public boolean isInput1Valid(JFXTextField textField) {
         return isVelocityValid(textField);
+    }
+
+    private boolean isVelocityValid(JFXTextField textField) {
+        format(textField);
+        int velocity = Integer.parseInt(textField.getText());
+        return (velocity >= 0 && velocity <= 500);
     }
 
     public boolean isInput2Valid(JFXTextField textField) {
@@ -45,19 +95,13 @@ public enum RoombaDriveMode {
         }
     }
 
-    private boolean isVelocityValid(JFXTextField textField) {
-        format(textField);
-        int velocity = Integer.parseInt(textField.getText());
-        return (velocity >= 0 && velocity <= 500);
-    }
-
     private boolean isRadiusValid(JFXTextField textField) {
         format(textField);
         int radius = Integer.parseInt(textField.getText());
         return ((radius >= 0 && radius <= 2000) || (radius == 32767 || radius == 32768));
     }
 
-    public boolean isValidInputs(JFXTextField textField1, JFXTextField textField2) {
+    public boolean isInputsValid(JFXTextField textField1, JFXTextField textField2) {
         boolean b1, b2;
         switch (this) {
             case DRIVE:
@@ -86,12 +130,12 @@ public enum RoombaDriveMode {
     private void initFieldsPromptText(JFXTextField textField1, JFXTextField textField2) {
         switch (this) {
             case DRIVE:
-                textField1.setPromptText("Velocity (mm/s)");
-                textField2.setPromptText("Radius (mm)");
+                textField1.setPromptText(VELOCITY_PROMPT1);
+                textField2.setPromptText(RADIUS_PROMPT);
                 break;
             case DRIVE_DIRECT:
-                textField1.setPromptText("Velocity (mm/s) - Left");
-                textField2.setPromptText("Velocity (mm/s) - Right");
+                textField1.setPromptText(VELOCITY_PROMPT2);
+                textField2.setPromptText(VELOCITY_PROMPT3);
                 break;
             default:
                 break;
@@ -101,6 +145,10 @@ public enum RoombaDriveMode {
     private void initFieldsText(JFXTextField textField1, JFXTextField textField2) {
         textField1.setText("0");
         textField2.setText("0");
+    }
+
+    public enum TextFieldPosition {
+        ONE, TWO;
     }
 
 }

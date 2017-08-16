@@ -83,15 +83,11 @@ public class DriveTabController implements Initializable, Injectable {
                 textField1.setText(oldValue); // triggers another check
             } else {
                 RoombaDriveMode roombaDriveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-                if (!roombaDriveMode.isValidInputs(textField1, textField2)) {
-                    if (roombaDriveMode.isInput1Valid(textField1)) {
-                        RoombaDriveMode.resetStyle(textField1);
-                        rootController.console.appendText("Valid\n");
-                    } else {
-                        RoombaDriveMode.setErrorStyle(textField1);
-                    }
+                if (roombaDriveMode.isInput1Valid(textField1)) {
+                    roombaDriveMode.resetStyle(RoombaDriveMode.TextFieldPosition.ONE, textField1);
+                    rootController.console.appendText("Valid\n");
                 } else {
-                    RoombaDriveMode.resetStyle(textField1, textField2);
+                    roombaDriveMode.setErrorStyle(RoombaDriveMode.TextFieldPosition.ONE, textField1);
                 }
             }
         });
@@ -101,15 +97,11 @@ public class DriveTabController implements Initializable, Injectable {
                 textField2.setText(oldValue);
             } else {
                 RoombaDriveMode roombaDriveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-                if (!roombaDriveMode.isValidInputs(textField1, textField2)) {
-                    if (roombaDriveMode.isInput2Valid(textField2)) {
-                        RoombaDriveMode.resetStyle(textField2);
-                        rootController.console.appendText("Valid\n");
-                    } else {
-                        RoombaDriveMode.setErrorStyle(textField2);
-                    }
+                if (roombaDriveMode.isInput2Valid(textField2)) {
+                    roombaDriveMode.resetStyle(RoombaDriveMode.TextFieldPosition.TWO, textField2);
+                    rootController.console.appendText("Valid\n");
                 } else {
-                    RoombaDriveMode.resetStyle(textField1, textField2);
+                    roombaDriveMode.setErrorStyle(RoombaDriveMode.TextFieldPosition.TWO, textField2);
                 }
             }
         });
@@ -122,7 +114,7 @@ public class DriveTabController implements Initializable, Injectable {
 
         forwardButton.setOnAction(e -> {
             RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-            if (driveMode.isValidInputs(textField1, textField2)) {
+            if (driveMode.isInputsValid(textField1, textField2)) {
                 rootController.console.appendText("valid Test!\n");
                 //Get roombaJSSC
                 //Convert input to int
