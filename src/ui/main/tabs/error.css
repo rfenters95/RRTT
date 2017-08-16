@@ -1,0 +1,23 @@
+/***************************************************
+
+TextField CSS below
+
+****************************************************/
+
+.jfx-text-field
+{
+    -jfx-focus-color: red;
+}
+
+.text-field
+{
+    -fx-prompt-text-fill: red;
+    -fx-text-fill: red;
+}
+
+.text-field .input-line
+{
+    -fx-background-color: red;
+    -fx-prompt-text-fill: red;
+    -fx-text-fill: red;
+}

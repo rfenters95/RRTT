@@ -46,18 +46,21 @@ TextField CSS below
 
 ****************************************************/
 
+.jfx-text-field
+{
+    -jfx-focus-color: #4eb769;
+}
+
 .text-field
 {
-    -fx-prompt-text-fill: #fffd8c; /*Yellow*/
-    -jfx-focus-color: #4eb769;
-    -jfx-unfocus-color: #fffd8c; /*Yellow*/
+    -fx-prompt-text-fill: #fffd8c; /*Yellow - floating label*/
     -fx-text-fill: #fffd8c; /*Yellow - input color*/
     -fx-highlight-fill: #4eb769; /*Green*/
 }
 
 .text-field .input-line
 {
-    -fx-background-color: #fffd8c; /*Yellow*/
+    -fx-background-color: #fffd8c; /*Yellow - bottom bar*/
 }
 
 /***************************************************

@@ -11,12 +11,12 @@
             <HBox spacing="15.0">
                <children>
                   <JFXComboBox fx:id="driveModeComboBox" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Drive Mode" />
-                  <JFXTextField fx:id="input1TextField" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 1">
+                  <JFXTextField fx:id="textField1" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 1">
                      <HBox.margin>
                         <Insets top="2.0" />
                      </HBox.margin>
                   </JFXTextField>
-                  <JFXTextField fx:id="input2TextField" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 2">
+                  <JFXTextField fx:id="textField2" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="150.0" promptText="Input 2">
                      <HBox.margin>
                         <Insets top="2.0" />
                      </HBox.margin>

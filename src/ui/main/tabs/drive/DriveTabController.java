@@ -25,13 +25,13 @@ public class DriveTabController implements Initializable, Injectable {
     private JFXComboBox<RoombaDriveMode> driveModeComboBox;
 
     @FXML
-    private JFXTextField input1TextField;
+    private JFXTextField textField1;
 
     @FXML
-    private JFXTextField input2TextField;
+    private JFXTextField textField2;
 
     @FXML
-    private VBox checkBoxVBox;
+    private VBox checkBoxVBox; //TODO add preset tests
 
     @FXML
     private JFXButton forwardButton;
@@ -47,73 +47,6 @@ public class DriveTabController implements Initializable, Injectable {
 
     @FXML
     private JFXButton reverseButton;
-
-    private boolean isValid() {
-
-        RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-        boolean hasEmptyFields = input1TextField.getText().isEmpty() || input2TextField.getText().isEmpty();
-        if (hasEmptyFields) {
-            return false;
-        }
-
-        input1TextField.setText(input1TextField.getText().replaceFirst("^0+(?!$)", ""));
-        input2TextField.setText(input2TextField.getText().replaceFirst("^0+(?!$)", ""));
-
-        switch (driveMode) {
-
-            case DRIVE:
-
-                int velocity = Integer.parseInt(input1TextField.getText());
-                int radius = Integer.parseInt(input2TextField.getText());
-                boolean isValid;
-                isValid = velocity >= 0 && velocity <= 500;
-                isValid = isValid && radius >= 0 && radius <= 2000;
-                return isValid;
-
-            case DRIVE_DIRECT:
-
-                int velocityLeft = Integer.parseInt(input1TextField.getText());
-                int velocityRight = Integer.parseInt(input2TextField.getText());
-                isValid = velocityLeft >= 0 && velocityLeft <= 500;
-                isValid = isValid && velocityRight >= 0 && velocityRight <= 500;
-                return isValid;
-
-            default:
-
-                break;
-
-        }
-
-        return false;
-
-    }
-
-    private void resetText(RoombaDriveMode driveMode) {
-
-        switch (driveMode) {
-
-            case DRIVE:
-
-                input1TextField.setPromptText("Velocity (mm/s)");
-                input2TextField.setPromptText("Radius (mm)");
-                break;
-
-            case DRIVE_DIRECT:
-
-                input1TextField.setPromptText("Velocity (mm/s) - Left");
-                input2TextField.setPromptText("Velocity (mm/s) - Right");
-                break;
-
-            default:
-
-                break;
-
-        }
-
-        input1TextField.setText("");
-        input2TextField.setText("");
-
-    }
 
     @Override
     public void inject(RootController rootController) {
@@ -132,13 +65,7 @@ public class DriveTabController implements Initializable, Injectable {
         driveModeComboBox.getItems().setAll(RoombaDriveMode.values());
         driveModeComboBox.setOnAction(e -> {
             RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-            if (driveMode == RoombaDriveMode.DRIVE) {
-                rootController.console.appendText("Starting drive...\n");
-                resetText(driveMode);
-            } else if (driveMode == RoombaDriveMode.DRIVE_DIRECT) {
-                rootController.console.appendText("Starting drive direct...\n");
-                resetText(driveMode);
-            }
+            driveMode.configTextFields(textField1, textField2);
         });
 
         /* *********************************************
@@ -147,67 +74,43 @@ public class DriveTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
-        //TODO simplify and clean up
+        //TODO simplify and clean up; Consider custom components;
 
-        input1TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+        textField1.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,4}?")) {
-                input1TextField.setText(oldValue);
+                textField1.setText(oldValue);
             } else {
-                try {
-                    if (!newValue.isEmpty()) {
-                        int n = Integer.parseInt(newValue);
-                        if (n < 0 || n > 500) {
-                            input1TextField.setText(oldValue);
-                        }
+                if (!textField1.getText().isEmpty()) {
+                    int velocity = Integer.parseInt(textField1.getText());
+                    if (velocity < 0 || velocity > 500) {
+                        textField1.setText(oldValue);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         });
 
-        input2TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+        textField2.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,4}?")) {
-                input2TextField.setText(oldValue);
+                textField2.setText(oldValue);
             } else {
-
-                try {
-
-                    if (!newValue.isEmpty()) {
-
-                        int n = Integer.parseInt(newValue);
-                        boolean b = n < 0;
-                        RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
-
-                        switch (driveMode) {
-
-                            case DRIVE:
-                                b = b || n > 2000;
-                                break;
-
-                            case DRIVE_DIRECT:
-                                b = b || n > 500;
-                                break;
-
-                            default:
-                                break;
-
+                RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
+                switch (driveMode) {
+                    case DRIVE:
+                        int radius = Integer.parseInt(textField2.getText());
+                        if (radius < 0 || (radius > 2000 && radius != 32768 && radius != 32767)) {
+                            textField2.setText(oldValue);
                         }
-
-                        if (b) {
-                            input2TextField.setText(oldValue);
+                        break;
+                    case DRIVE_DIRECT:
+                        int velocity = Integer.parseInt(textField2.getText());
+                        if (velocity < 0 || velocity > 500) {
+                            textField2.setText(oldValue);
                         }
-
-                    }
-
-                } catch (Exception e) {
-
-                    e.printStackTrace();
-
+                        break;
+                    default:
+                        break;
                 }
-
             }
-
         });
 
         /* *********************************************
@@ -217,8 +120,9 @@ public class DriveTabController implements Initializable, Injectable {
         ********************************************** */
 
         forwardButton.setOnAction(e -> {
-            if (isValid()) {
-                rootController.console.appendText("Test!\n");
+            RoombaDriveMode driveMode = driveModeComboBox.getSelectionModel().getSelectedItem();
+            if (driveMode.hasValidParameters(textField1, textField2)) {
+                rootController.console.appendText("valid Test!\n");
                 //Get roombaJSSC
                 //Convert input to int
                 //Switch
