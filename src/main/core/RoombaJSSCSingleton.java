@@ -1,4 +1,4 @@
-package core;
+package main.core;
 
 import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.RoombaJSSCSerial;

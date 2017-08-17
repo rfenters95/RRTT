@@ -1,17 +1,17 @@
-package ui.main.tabs.drive;
+package main.ui.main.tabs.drive;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.maschel.roomba.RoombaJSSC;
-import core.Injectable;
-import core.RoombaDriveMode;
-import core.RoombaJSSCSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import ui.RootController;
+import main.core.Injectable;
+import main.core.RoombaDriveMode;
+import main.core.RoombaJSSCSingleton;
+import main.ui.RootController;
 
 import java.net.URL;
 import java.util.ResourceBundle;

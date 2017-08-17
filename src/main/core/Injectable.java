@@ -1,6 +1,6 @@
-package core;
+package main.core;
 
-import ui.RootController;
+import main.ui.RootController;
 
 public interface Injectable {
     void inject(RootController rootController);

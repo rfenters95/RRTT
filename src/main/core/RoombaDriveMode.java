@@ -1,4 +1,4 @@
-package core;
+package main.core;
 
 import com.jfoenix.controls.JFXTextField;
 
@@ -14,7 +14,7 @@ public enum RoombaDriveMode {
 
     public void resetStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
-        textField.getStylesheets().add("ui/main/tabs/main.css");
+        textField.getStylesheets().add("main/ui/main/tabs/main.css");
         switch (this) {
             case DRIVE:
                 switch (position) {
@@ -47,7 +47,7 @@ public enum RoombaDriveMode {
 
     public void setErrorStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
-        textField.getStylesheets().add("ui/main/tabs/error.css");
+        textField.getStylesheets().add("main/ui/main/tabs/error.css");
         switch (this) {
             case DRIVE:
                 switch (position) {
