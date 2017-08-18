@@ -108,6 +108,8 @@ public class DriveTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
+        //TODO consider removes below lines
+
         forwardButton.setOnAction(e -> {
             rootController.console.appendText("Test!\n");
         });

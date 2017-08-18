@@ -7,7 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
 import main.core.sensor.bool.AbstractBooleanSensor;
+import main.core.sensor.bool.BumpCenter;
+import main.core.sensor.bool.BumpLeft;
+import main.core.sensor.bool.BumpRight;
 import main.core.sensor.signal.AbstractSignalSensor;
+import main.core.sensor.signal.Wall;
 import main.ui.root.RootController;
 
 import java.net.URL;
@@ -45,6 +49,24 @@ public class SensorTabController implements Initializable, Injectable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        /* *********************************************
+        *
+        * Add boolean sensors
+        *
+        ********************************************** */
+
+        booleanSensorComboBox.getItems().add(new BumpCenter());
+        booleanSensorComboBox.getItems().add(new BumpLeft());
+        booleanSensorComboBox.getItems().add(new BumpRight());
+
+        /* *********************************************
+        *
+        * Add signal sensors
+        *
+        ********************************************** */
+
+        signalSensorComboBox.getItems().add(new Wall());
 
     }
 
