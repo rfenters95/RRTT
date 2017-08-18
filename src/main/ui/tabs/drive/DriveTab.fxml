@@ -30,7 +30,7 @@
          <children>
             <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXButton fx:id="forwardButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="forwardButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#forward" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,8 +42,8 @@
             </HBox>
             <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXButton fx:id="rotateLeftButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS" />
-                  <JFXButton fx:id="stopButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="rotateLeftButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#rotateLeft" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="stopButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#stop" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -51,12 +51,12 @@
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
-                  <JFXButton fx:id="rotateRightButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="rotateRightButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#rotateRight" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXButton fx:id="reverseButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="reverseButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#reverse" prefHeight="60.0" prefWidth="60.0" text="   " HBox.hgrow="ALWAYS">
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
