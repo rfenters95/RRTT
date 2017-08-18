@@ -3,7 +3,7 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.RootController">
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.root.RootController">
    <children>
       <ToolBar fx:id="toolBar" prefHeight="50.0">
         <items>
@@ -30,7 +30,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                     <fx:include fx:id="driveTab" source="main/tabs/drive/DriveTab.fxml" />
+                                     <fx:include fx:id="driveTab" source="../tabs/drive/DriveTab.fxml" />
                                  </children>
                             </AnchorPane>
                           </content>
@@ -39,7 +39,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <fx:include fx:id="lightTab" source="main/tabs/led/LightTab.fxml" />
+                                    <fx:include fx:id="lightTab" source="../tabs/led/LightTab.fxml" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -48,7 +48,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <fx:include fx:id="sensorTab" source="main/tabs/sensor/SensorTab.fxml" />
+                                    <fx:include fx:id="sensorTab" source="../tabs/sensor/SensorTab.fxml" />
                                  </children></AnchorPane>
                           </content>
                         </Tab>

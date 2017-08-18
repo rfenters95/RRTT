@@ -1,13 +1,13 @@
-package main.ui.main.tabs.sensor;
+package main.ui.tabs.led;
 
 import javafx.fxml.Initializable;
 import main.core.Injectable;
-import main.ui.RootController;
+import main.ui.root.RootController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SensorTabController implements Initializable, Injectable {
+public class LightTabController implements Initializable, Injectable {
 
     private RootController rootController;
 

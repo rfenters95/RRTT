@@ -1,4 +1,4 @@
-package main.ui;
+package main.ui.root;
 
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
@@ -7,9 +7,9 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
-import main.ui.main.tabs.drive.DriveTabController;
-import main.ui.main.tabs.led.LightTabController;
-import main.ui.main.tabs.sensor.SensorTabController;
+import main.ui.tabs.drive.DriveTabController;
+import main.ui.tabs.led.LightTabController;
+import main.ui.tabs.sensor.SensorTabController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
