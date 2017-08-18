@@ -44,6 +44,7 @@ public class RootController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         driveTabController.inject(this);
         lightTabController.inject(this);
+        sensorTabController.inject(this);
     }
 
 }
