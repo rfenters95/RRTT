@@ -32,12 +32,12 @@ public class VelocityListener extends AbstractDriveListener {
                     }
 
                     textField.getStylesheets().clear();
-                    textField.getStylesheets().add("main/ui/main/tabs/main.css");
+                    textField.getStylesheets().add("main/ui/tabs/main.css");
 
                 } else {
                     textField.setPromptText(AbstractDriveMode.getVelocityErrorPrompt());
                     textField.getStylesheets().clear();
-                    textField.getStylesheets().add("main/ui/main/tabs/error.css");
+                    textField.getStylesheets().add("main/ui/tabs/error.css");
                 }
 
             }

@@ -1,8 +1,21 @@
+
+/***************************************************
+
+ToolBar CSS below
+
+****************************************************/
+
 .tool-bar {
     -fx-background-color: slategrey;
     -fx-border-width: 0;
     -fx-border-insets: 0;
 }
+
+/***************************************************
+
+SplitPane CSS below
+
+****************************************************/
 
 /* Removes white space around panes  */
 .split-pane {
@@ -18,6 +31,12 @@
    -fx-border-width: 0;
    -fx-border-insets: 0;
 }
+
+/***************************************************
+
+TextArea CSS below
+
+****************************************************/
 
 /* Set TextArea color  */
 .text-area {
@@ -72,6 +91,13 @@
     -fx-background-insets: 0;
     -fx-background-color: black;
 }
+
+/***************************************************
+
+TabPane CSS below
+
+****************************************************/
+
 /* Edits tab text colors */
 .tab .tab-label {
     -fx-text-fill: white;

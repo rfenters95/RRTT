@@ -14,7 +14,7 @@ public enum RoombaDriveMode {
 
     public void resetStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
-        textField.getStylesheets().add("main/ui/main/tabs/main.css");
+        textField.getStylesheets().add("main/ui/tabs/main.css");
         switch (this) {
             case DRIVE:
                 switch (position) {
@@ -47,7 +47,7 @@ public enum RoombaDriveMode {
 
     public void setErrorStyle(TextFieldPosition position, JFXTextField textField) {
         textField.getStylesheets().clear();
-        textField.getStylesheets().add("main/ui/main/tabs/error.css");
+        textField.getStylesheets().add("main/ui/tabs/error.css");
         switch (this) {
             case DRIVE:
                 switch (position) {

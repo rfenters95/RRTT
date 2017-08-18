@@ -17,10 +17,8 @@ public class DirectDriveMode extends AbstractDriveMode {
         AbstractDriveMode.textField2listener = new VelocityListener(this, Position.RIGHT, textField2);
         AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
 
-        textField1.setPromptText(getTextField1Prompt());
-        textField1.setText("0");
-        textField2.setPromptText(getTextField2Prompt());
-        textField2.setText("0");
+        setDefaultText();
+        setDefaultPromptText();
 
     }
 
@@ -35,10 +33,8 @@ public class DirectDriveMode extends AbstractDriveMode {
         AbstractDriveMode.textField2listener = new VelocityListener(this, Position.RIGHT, AbstractDriveMode.textField2);
         AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
 
-        textField1.setPromptText(getTextField1Prompt());
-        textField1.setText("0");
-        textField2.setPromptText(getTextField2Prompt());
-        textField2.setText("0");
+        setDefaultText();
+        setDefaultPromptText();
 
     }
 

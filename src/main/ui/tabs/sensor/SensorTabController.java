@@ -1,8 +1,8 @@
-package main.ui.main.tabs.sensor;
+package main.ui.tabs.sensor;
 
 import javafx.fxml.Initializable;
 import main.core.Injectable;
-import main.ui.RootController;
+import main.ui.root.RootController;
 
 import java.net.URL;
 import java.util.ResourceBundle;

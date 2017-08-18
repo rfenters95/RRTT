@@ -1,8 +1,9 @@
-package main.ui.main.tabs.drive;
+package main.ui.tabs.drive;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +12,7 @@ import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.DirectDriveMode;
 import main.core.drive.modes.DriveMode;
-import main.ui.RootController;
+import main.ui.root.RootController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,6 +50,31 @@ public class DriveTabController implements Initializable, Injectable {
 
     @FXML
     private JFXButton reverseButton;
+
+    @FXML
+    void forward(ActionEvent event) {
+
+    }
+
+    @FXML
+    void reverse(ActionEvent event) {
+
+    }
+
+    @FXML
+    void rotateLeft(ActionEvent event) {
+
+    }
+
+    @FXML
+    void rotateRight(ActionEvent event) {
+
+    }
+
+    @FXML
+    void stop(ActionEvent event) {
+
+    }
 
     @Override
     public void inject(RootController rootController) {
