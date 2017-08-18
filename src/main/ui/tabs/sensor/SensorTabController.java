@@ -56,8 +56,12 @@ public class SensorTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
+        booleanSensorComboBox.setVisibleRowCount(3);
         booleanSensorComboBox.getItems().add(new BumpCenter());
         booleanSensorComboBox.getItems().add(new BumpLeft());
+        booleanSensorComboBox.getItems().add(new BumpRight());
+        booleanSensorComboBox.getItems().add(new BumpRight());
+        booleanSensorComboBox.getItems().add(new BumpRight());
         booleanSensorComboBox.getItems().add(new BumpRight());
 
         /* *********************************************
@@ -66,6 +70,7 @@ public class SensorTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
+        signalSensorComboBox.setVisibleRowCount(3);
         signalSensorComboBox.getItems().add(new Wall());
 
     }
