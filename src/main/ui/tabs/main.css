@@ -23,7 +23,7 @@ ComboBox CSS below
 
 .combo-box-popup .list-view
 {
-    -fx-background-color: slateblue; /* was transparent */
+    -fx-background-color: black; /* was transparent */
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
@@ -53,7 +53,7 @@ ComboBox CSS below
 .combo-box-popup .list-view .scroll-bar .thumb
 {
     -fx-color: #4eb769;
-    -fx-background-radius: 100;
+    -fx-background-radius: 10;
 }
 
 .combo-box-popup .list-view .scroll-bar .increment-button, .combo-box-popup .list-view .scroll-bar .decrement-button

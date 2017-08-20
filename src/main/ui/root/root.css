@@ -111,7 +111,7 @@ they are considered visited!
  */
 .tab:selected .tab-label {
     -fx-text-fill: #4eb769 ;
-} 
+}
 
 .jfx-tab-pane {
     -fx-background-color: slategrey;
@@ -130,4 +130,14 @@ they are considered visited!
 /* Changes ripple effect color */
 .jfx-tab-pane .tab-header-area .jfx-rippler {
     -jfx-rippler-fill: #4eb769;
+}
+
+.border-pane
+{
+    -fx-background-color: #4eb769;
+}
+
+.jfx-hamburger StackPane
+{
+    -fx-background-color: white;
 }
