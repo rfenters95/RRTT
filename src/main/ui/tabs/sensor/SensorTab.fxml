@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane fx:id="sensorTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" stylesheets="@../main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.tabs.sensor.SensorTabController">
    <children>
-      <VBox layoutX="159.0" layoutY="14.0" spacing="35.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="25.0">
+      <VBox layoutX="159.0" layoutY="14.0" spacing="35.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0">
          <children>
             <HBox spacing="15.0">
                <children>

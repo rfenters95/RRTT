@@ -1,6 +1,5 @@
 package main.ui.tabs.drive;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -37,43 +36,28 @@ public class DriveTabController implements Initializable, Injectable {
     private VBox checkBoxVBox; //TODO add preset tests
 
     @FXML
-    private JFXButton forwardButton;
-
-    @FXML
-    private JFXButton rotateLeftButton;
-
-    @FXML
-    private JFXButton stopButton;
-
-    @FXML
-    private JFXButton rotateRightButton;
-
-    @FXML
-    private JFXButton reverseButton;
-
-    @FXML
     void forward(ActionEvent event) {
-
+        rootController.console.appendText("Test!\n");
     }
 
     @FXML
     void reverse(ActionEvent event) {
-
+        rootController.console.appendText("Test!\n");
     }
 
     @FXML
     void rotateLeft(ActionEvent event) {
-
+        rootController.console.appendText("Test!\n");
     }
 
     @FXML
     void rotateRight(ActionEvent event) {
-
+        rootController.console.appendText("Test!\n");
     }
 
     @FXML
     void stop(ActionEvent event) {
-
+        rootController.console.appendText("Test!\n");
     }
 
     @Override
@@ -101,34 +85,6 @@ public class DriveTabController implements Initializable, Injectable {
         });
         driveModeComboBox.getSelectionModel().selectFirst();
         driveModeComboBox.getSelectionModel().getSelectedItem().initialize();
-
-        /* *********************************************
-        *
-        * Button logic
-        *
-        ********************************************** */
-
-        //TODO consider removes below lines
-
-        forwardButton.setOnAction(e -> {
-            rootController.console.appendText("Test!\n");
-        });
-
-        reverseButton.setOnAction(e -> {
-            rootController.console.appendText("Test!\n");
-        });
-
-        stopButton.setOnAction(e -> {
-            rootController.console.appendText("Test!\n");
-        });
-
-        rotateLeftButton.setOnAction(e -> {
-            rootController.console.appendText("Test!\n");
-        });
-
-        rotateRightButton.setOnAction(e -> {
-            rootController.console.appendText("Test!\n");
-        });
 
     }
 
