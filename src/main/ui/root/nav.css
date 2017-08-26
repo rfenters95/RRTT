@@ -3,6 +3,9 @@
 }
 
 .label {
-    -fx-text-fill: #4eb769;
+    -fx-text-fill: white;
 }
 
+.label: hover {
+    -fx-text-fill: #4eb769;
+}
