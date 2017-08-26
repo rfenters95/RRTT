@@ -1,16 +1,21 @@
 package main.ui.root;
 
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToolBar;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.ui.tabs.drive.DriveTabController;
 import main.ui.tabs.led.LightTabController;
 import main.ui.tabs.sensor.SensorTabController;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,10 +25,13 @@ public class RootController implements Initializable {
     public VBox root;
 
     @FXML
-    public ToolBar toolBar;
+    public SplitPane splitPane;
 
     @FXML
-    public SplitPane splitPane;
+    public JFXHamburger hamburger;
+
+    @FXML
+    public JFXDrawer drawer;
 
     @FXML
     public JFXTabPane tabPane;
@@ -42,9 +50,31 @@ public class RootController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         driveTabController.inject(this);
         lightTabController.inject(this);
         sensorTabController.inject(this);
+
+        try {
+            HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));
+            drawer.setSidePane(nav);
+        } catch (IOException e) {
+            System.out.println("Nav failed to load");
+        }
+
+        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+        transition.setRate(-1);
+        hamburger.setOnMouseClicked(e -> {
+            transition.setRate(transition.getRate() * -1);
+            transition.play();
+
+            if (drawer.isShown()) {
+                drawer.close();
+            } else {
+                drawer.open();
+            }
+        });
+
     }
 
 }

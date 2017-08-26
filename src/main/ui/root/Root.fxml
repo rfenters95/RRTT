@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.root.RootController">
    <children>
-      <ToolBar fx:id="toolBar" prefHeight="50.0">
-        <items>
-            <HBox spacing="10.0">
+      <BorderPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: black;">
+         <left>
+            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
                <children>
-                  <HBox>
-                     <children>
-                      <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="B" />
-                     </children>
-                  </HBox>
-                  <Separator orientation="VERTICAL" />
-                  <HBox />
+                  <JFXDrawer fx:id="drawer" defaultDrawerSize="300.0" />
+                  <JFXHamburger fx:id="hamburger" />
+                  <Label style="-fx-text-fill: white;" text="Controllers" />
                </children>
             </HBox>
-        </items>
-      </ToolBar>
+         </left>
+          <right>
+            <Label style="-fx-text-fill: white;" text="Power" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin></Label>
+          </right>
+      </BorderPane>
       <SplitPane fx:id="splitPane" dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -30,7 +38,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                     <fx:include fx:id="driveTab" source="../tabs/drive/DriveTab.fxml" />
+                                     <fx:include fx:id="driveTab" source="../tabs/drive/DriveTab.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" />
                                  </children>
                             </AnchorPane>
                           </content>

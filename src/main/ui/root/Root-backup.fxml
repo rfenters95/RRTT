@@ -14,7 +14,7 @@
                   <Insets left="10.0" />
                </BorderPane.margin>
                <children>
-                  <JFXHamburger />
+                  <JFXHamburger fx:id="hamburger"/>
                   <Label style="-fx-text-fill: white;" text="Controls" />
                </children>
             </HBox>

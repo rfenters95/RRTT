@@ -1,14 +1,12 @@
 
 /***************************************************
 
-ToolBar CSS below
+JFXDrawer CSS below
 
 ****************************************************/
 
-.tool-bar {
-    -fx-background-color: slategrey;
-    -fx-border-width: 0;
-    -fx-border-insets: 0;
+.jfx-drawer, .jfx-drawer StackPane {
+    -fx-background-color: black;
 }
 
 /***************************************************
