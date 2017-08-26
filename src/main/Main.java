@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/Root.fxml"));
-        primaryStage.setTitle("RRTT - Alpha");
+        primaryStage.setTitle("RRTT - EARLY BUILD");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
