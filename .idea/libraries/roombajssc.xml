@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="roombajssc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../RoombaJSSC/out/artifacts/roombajssc_jar/roombajssc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

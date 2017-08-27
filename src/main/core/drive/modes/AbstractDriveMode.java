@@ -7,6 +7,7 @@ public abstract class AbstractDriveMode {
 
     private String textField1Prompt;
     private String textField2Prompt;
+    private boolean isEnabled;
 
     static JFXTextField textField1;
     static JFXTextField textField2;
@@ -31,6 +32,20 @@ public abstract class AbstractDriveMode {
         textField1.setPromptText(getTextField1Prompt());
         textField2.setPromptText(getTextField2Prompt());
     }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public abstract void forward(int input1, int input2);
+    public abstract void reverse(int input1, int input2);
+    public abstract void rotateLeft(int input1, int input2);
+    public abstract void rotateRight(int input1, int input2);
+    public abstract void stop();
 
     /* *********************************************
     *

@@ -27,10 +27,12 @@ public class RadiusListener extends AbstractDriveListener {
                     textField.setPromptText(driveMode.getTextField2Prompt());
                     textField.getStylesheets().clear();
                     textField.getStylesheets().add("main/ui/tabs/main.css");
+                    driveMode.setEnabled(true);
                 } else {
                     textField.setPromptText(AbstractDriveMode.getRadiusErrorPrompt());
                     textField.getStylesheets().clear();
                     textField.getStylesheets().add("main/ui/tabs/error.css");
+                    driveMode.setEnabled(false);
                 }
 
             }

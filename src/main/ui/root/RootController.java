@@ -11,6 +11,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import main.core.TextAreaAppender;
 import main.ui.tabs.drive.DriveTabController;
 import main.ui.tabs.led.LightTabController;
 import main.ui.tabs.sensor.SensorTabController;
@@ -54,6 +55,8 @@ public class RootController implements Initializable {
         driveTabController.inject(this);
         lightTabController.inject(this);
         sensorTabController.inject(this);
+
+        TextAreaAppender.textArea = console;
 
         try {
             HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));

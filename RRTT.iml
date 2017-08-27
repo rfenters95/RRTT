@@ -8,7 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.maschel:roombajssc:1.0.1" level="project" />
     <orderEntry type="library" name="com.jfoenix:jfoenix:1.6.0" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit5">
@@ -20,5 +19,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="roombajssc" level="project" />
   </component>
 </module>

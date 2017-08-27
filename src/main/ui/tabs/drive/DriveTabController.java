@@ -6,10 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
-import main.core.drive.modes.DirectDriveMode;
+import main.core.drive.modes.DriveDirectMode;
 import main.core.drive.modes.DriveMode;
 import main.ui.root.RootController;
 
@@ -18,7 +17,11 @@ import java.util.ResourceBundle;
 
 public class DriveTabController implements Initializable, Injectable {
 
-    private RootController rootController;
+    /* *********************************************
+    *
+    * FXML fields
+    *
+    ********************************************** */
 
     @FXML
     private AnchorPane driveTab;
@@ -32,33 +35,63 @@ public class DriveTabController implements Initializable, Injectable {
     @FXML
     private JFXTextField textField2;
 
-    @FXML
-    private VBox checkBoxVBox; //TODO add preset tests
+    /* *********************************************
+    *
+    * Instance fields
+    *
+    ********************************************** */
+
+    private AbstractDriveMode mode;
+    private RootController rootController;
+
+    /* *********************************************
+    *
+    * Instance methods
+    *
+    ********************************************** */
+
+    private int getParsedInteger(JFXTextField textField) {
+        return Integer.parseInt(textField.getText());
+    }
+
+    /* *********************************************
+    *
+    * FXML methods
+    *
+    ********************************************** */
+
+    //TODO implement custom abstract drive methods in AbstractDriveMode
 
     @FXML
     void forward(ActionEvent event) {
-        rootController.console.appendText("Test!\n");
+        mode.forward(getParsedInteger(textField1), getParsedInteger(textField2));
     }
 
     @FXML
     void reverse(ActionEvent event) {
-        rootController.console.appendText("Test!\n");
+        mode.reverse(getParsedInteger(textField1), getParsedInteger(textField2));
     }
 
     @FXML
     void rotateLeft(ActionEvent event) {
-        rootController.console.appendText("Test!\n");
+        mode.rotateLeft(getParsedInteger(textField1), getParsedInteger(textField2));
     }
 
     @FXML
     void rotateRight(ActionEvent event) {
-        rootController.console.appendText("Test!\n");
+        mode.rotateRight(getParsedInteger(textField1), getParsedInteger(textField2));
     }
 
     @FXML
     void stop(ActionEvent event) {
-        rootController.console.appendText("Test!\n");
+        mode.stop();
     }
+
+    /* *********************************************
+    *
+    * Initialization methods
+    *
+    ********************************************** */
 
     @Override
     public void inject(RootController rootController) {
@@ -76,15 +109,16 @@ public class DriveTabController implements Initializable, Injectable {
 
         AbstractDriveMode.setTextFields(textField1, textField2);
         AbstractDriveMode driveMode = new DriveMode();
-        AbstractDriveMode directDriveMode = new DirectDriveMode();
+        AbstractDriveMode driveDirectMode = new DriveDirectMode();
 
-        driveModeComboBox.getItems().setAll(driveMode, directDriveMode);
+        driveModeComboBox.getItems().setAll(driveMode, driveDirectMode);
         driveModeComboBox.setOnAction(e -> {
-            AbstractDriveMode mode = driveModeComboBox.getSelectionModel().getSelectedItem();
+            mode = driveModeComboBox.getSelectionModel().getSelectedItem();
             mode.swapListener();
         });
         driveModeComboBox.getSelectionModel().selectFirst();
         driveModeComboBox.getSelectionModel().getSelectedItem().initialize();
+        mode = driveModeComboBox.getSelectionModel().getSelectedItem();
 
     }
 
