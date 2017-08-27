@@ -60,9 +60,6 @@ public class SensorTabController implements Initializable, Injectable {
         booleanSensorComboBox.getItems().add(new BumpCenter());
         booleanSensorComboBox.getItems().add(new BumpLeft());
         booleanSensorComboBox.getItems().add(new BumpRight());
-        booleanSensorComboBox.getItems().add(new BumpRight());
-        booleanSensorComboBox.getItems().add(new BumpRight());
-        booleanSensorComboBox.getItems().add(new BumpRight());
 
         /* *********************************************
         *

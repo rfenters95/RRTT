@@ -1,10 +1,13 @@
 package main.core.sensor.bool;
 
+import main.core.RoombaJSSCSingleton;
+
 public class BumpCenter extends AbstractBooleanSensor {
 
     @Override
     public boolean read() {
-        return false;
+        RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
+        return RoombaJSSCSingleton.getRoombaJSSC().bumpBoth();
     }
 
     @Override
