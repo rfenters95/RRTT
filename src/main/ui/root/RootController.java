@@ -57,6 +57,8 @@ public class RootController implements Initializable {
         sensorTabController.inject(this);
 
         TextAreaAppender.textArea = console;
+        console.setWrapText(false);
+        console.setEditable(false);
 
         try {
             HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));

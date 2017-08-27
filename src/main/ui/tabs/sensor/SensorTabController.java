@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
+import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
 import main.core.sensor.bool.BumpCenter;
 import main.core.sensor.bool.BumpLeft;
@@ -33,13 +34,29 @@ public class SensorTabController implements Initializable, Injectable {
     @FXML
     void readBooleanSensor(ActionEvent event) {
         AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel().getSelectedItem();
-        boolean value = sensor.read();
+        for (int i = 0; i < 50; i++) {
+            boolean value = sensor.read();
+            rootController.console.appendText(RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n");
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     void readSignalSensor(ActionEvent event) {
         AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
-        int value = sensor.read();
+        for (int i = 0; i < 10; i++) {
+            int value = sensor.read();
+            rootController.console.appendText(RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n");
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
