@@ -4,15 +4,15 @@ import main.core.RoombaJSSCSingleton;
 
 public class BumpRight extends AbstractBooleanSensor {
 
-    @Override
-    public boolean read() {
-        RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-        return RoombaJSSCSingleton.getRoombaJSSC().bumpRight();
-    }
+  @Override
+  public boolean read() {
+    RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
+    return RoombaJSSCSingleton.getRoombaJSSC().bumpRight();
+  }
 
-    @Override
-    public String toString() {
-        return "Bump Right";
-    }
+  @Override
+  public String toString() {
+    return "Bump Right";
+  }
 
 }

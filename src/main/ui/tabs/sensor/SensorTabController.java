@@ -2,6 +2,8 @@ package main.ui.tabs.sensor;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -19,24 +21,21 @@ import main.core.sensor.signal.AbstractSignalSensor;
 import main.core.sensor.signal.Wall;
 import main.ui.root.RootController;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class SensorTabController implements Initializable, Injectable {
 
-    private RootController rootController;
+  private RootController rootController;
 
-    @FXML
-    private AnchorPane sensorTab;
+  @FXML
+  private AnchorPane sensorTab;
 
-    @FXML
-    private JFXComboBox<AbstractBooleanSensor> booleanSensorComboBox;
+  @FXML
+  private JFXComboBox<AbstractBooleanSensor> booleanSensorComboBox;
 
-    @FXML
-    private JFXComboBox<AbstractSignalSensor> signalSensorComboBox;
+  @FXML
+  private JFXComboBox<AbstractSignalSensor> signalSensorComboBox;
 
-    private boolean booleanToggleEnabled;
-    private boolean signalToggleEnabled;
+  private boolean booleanToggleEnabled;
+  private boolean signalToggleEnabled;
 
     /*
     * TODO Fix application thread flooding problem
@@ -57,117 +56,122 @@ public class SensorTabController implements Initializable, Injectable {
     * for more info.
     * */
 
-    private Service<Void> booleanToggleService = new Service<Void>() {
-
-        @Override
-        protected Task<Void> createTask() {
-
-            return new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-
-                    AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel().getSelectedItem();
-                    while (!isCancelled()) {
-                        boolean value = sensor.read();
-                        String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
-                        Platform.runLater(() -> {
-                            rootController.console.appendText(message);
-                        });
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            if (isCancelled()) break;
-                        }
-                    }
-
-                    return null;
-
-                }
-
-            };
-
-        }
-
-    };
-
-    private Service<Void> signalToggleService = new Service<Void>() {
-
-        @Override
-        protected Task<Void> createTask() {
-
-            return new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-
-                    AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
-                    while (!isCancelled()) {
-                        int value = sensor.read();
-                        String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
-                        Platform.runLater(() -> {
-                            rootController.console.appendText(message);
-                        });
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            if (isCancelled()) break;
-                        }
-                    }
-
-                    return null;
-
-                }
-
-            };
-
-        }
-
-    };
-
-    @FXML
-    void readBooleanSensor(ActionEvent event) {
-        // Don't run if other thread is running
-        if (!signalToggleEnabled) {
-            if (booleanToggleEnabled) {
-                JFXButton button = (JFXButton) event.getSource();
-                button.setText("Read");
-                booleanToggleService.cancel();
-            } else {
-                JFXButton button = (JFXButton) event.getSource();
-                button.setText("Stop");
-                booleanToggleService.reset();
-                booleanToggleService.start();
-            }
-            booleanToggleEnabled = !booleanToggleEnabled;
-        }
-    }
-
-    @FXML
-    void readSignalSensor(ActionEvent event) {
-        // Don't run if other thread is running
-        if (!booleanToggleEnabled) {
-            if (signalToggleEnabled) {
-                JFXButton button = (JFXButton) event.getSource();
-                button.setText("Read");
-                signalToggleService.cancel();
-            } else {
-                JFXButton button = (JFXButton) event.getSource();
-                button.setText("Stop");
-                signalToggleService.reset();
-                signalToggleService.start();
-            }
-            signalToggleEnabled = !signalToggleEnabled;
-        }
-    }
+  private Service<Void> booleanToggleService = new Service<Void>() {
 
     @Override
-    public void inject(RootController rootController) {
-        this.rootController = rootController;
+    protected Task<Void> createTask() {
+
+      return new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+
+          AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel()
+              .getSelectedItem();
+          while (!isCancelled()) {
+            boolean value = sensor.read();
+            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            Platform.runLater(() -> {
+              rootController.console.appendText(message);
+            });
+            try {
+              Thread.sleep(100);
+            } catch (InterruptedException e) {
+              if (isCancelled()) {
+                break;
+              }
+            }
+          }
+
+          return null;
+
+        }
+
+      };
+
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+  };
 
-        // Task messages may need later
+  private Service<Void> signalToggleService = new Service<Void>() {
+
+    @Override
+    protected Task<Void> createTask() {
+
+      return new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+
+          AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
+          while (!isCancelled()) {
+            int value = sensor.read();
+            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            Platform.runLater(() -> {
+              rootController.console.appendText(message);
+            });
+            try {
+              Thread.sleep(100);
+            } catch (InterruptedException e) {
+              if (isCancelled()) {
+                break;
+              }
+            }
+          }
+
+          return null;
+
+        }
+
+      };
+
+    }
+
+  };
+
+  @FXML
+  void readBooleanSensor(ActionEvent event) {
+    // Don't run if other thread is running
+    if (!signalToggleEnabled) {
+      if (booleanToggleEnabled) {
+        JFXButton button = (JFXButton) event.getSource();
+        button.setText("Read");
+        booleanToggleService.cancel();
+      } else {
+        JFXButton button = (JFXButton) event.getSource();
+        button.setText("Stop");
+        booleanToggleService.reset();
+        booleanToggleService.start();
+      }
+      booleanToggleEnabled = !booleanToggleEnabled;
+    }
+  }
+
+  @FXML
+  void readSignalSensor(ActionEvent event) {
+    // Don't run if other thread is running
+    if (!booleanToggleEnabled) {
+      if (signalToggleEnabled) {
+        JFXButton button = (JFXButton) event.getSource();
+        button.setText("Read");
+        signalToggleService.cancel();
+      } else {
+        JFXButton button = (JFXButton) event.getSource();
+        button.setText("Stop");
+        signalToggleService.reset();
+        signalToggleService.start();
+      }
+      signalToggleEnabled = !signalToggleEnabled;
+    }
+  }
+
+  @Override
+  public void inject(RootController rootController) {
+    this.rootController = rootController;
+  }
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+
+    // Task messages may need later
         /*booleanToggleService.messageProperty().addListener((observable, oldValue, newValue) -> {
             rootController.console.appendText(newValue);
         });
@@ -182,10 +186,10 @@ public class SensorTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
-        booleanSensorComboBox.setVisibleRowCount(3);
-        booleanSensorComboBox.getItems().add(new BumpCenter());
-        booleanSensorComboBox.getItems().add(new BumpLeft());
-        booleanSensorComboBox.getItems().add(new BumpRight());
+    booleanSensorComboBox.setVisibleRowCount(3);
+    booleanSensorComboBox.getItems().add(new BumpCenter());
+    booleanSensorComboBox.getItems().add(new BumpLeft());
+    booleanSensorComboBox.getItems().add(new BumpRight());
 
         /* *********************************************
         *
@@ -193,9 +197,9 @@ public class SensorTabController implements Initializable, Injectable {
         *
         ********************************************** */
 
-        signalSensorComboBox.setVisibleRowCount(3);
-        signalSensorComboBox.getItems().add(new Wall());
+    signalSensorComboBox.setVisibleRowCount(3);
+    signalSensorComboBox.getItems().add(new Wall());
 
-    }
+  }
 
 }

@@ -4,6 +4,9 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,10 +18,6 @@ import main.core.TextAreaAppender;
 import main.ui.tabs.drive.DriveTabController;
 import main.ui.tabs.led.LightTabController;
 import main.ui.tabs.sensor.SensorTabController;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class RootController implements Initializable {
 
@@ -67,7 +66,8 @@ public class RootController implements Initializable {
             System.out.println("Nav failed to load");
         }
 
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(
+                hamburger);
         transition.setRate(-1);
         hamburger.setOnMouseClicked(e -> {
             transition.setRate(transition.getRate() * -1);

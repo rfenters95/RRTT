@@ -2,24 +2,49 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.layout.*?>
-<AnchorPane fx:id="sensorTab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="800.0" stylesheets="@../main.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ui.tabs.sensor.SensorTabController">
-   <children>
-      <VBox layoutX="159.0" layoutY="14.0" spacing="35.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0">
-         <children>
-            <HBox spacing="15.0">
-               <children>
-                  <JFXComboBox fx:id="booleanSensorComboBox" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Boolean Sensors" />
-                  <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#readBooleanSensor" prefHeight="30.0" prefWidth="100.0" text="Read" />
-               </children>
-            </HBox>
-            <HBox spacing="15.0">
-               <children>
-                  <JFXComboBox fx:id="signalSensorComboBox" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Signal Sensors" />
-                  <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#readSignalSensor" prefHeight="30.0" prefWidth="100.0" text="Read" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="300.0" prefWidth="800.0" stylesheets="@../main.css"
+        xmlns="http://javafx.com/javafx/8.0.111"
+        fx:controller="main.ui.tabs.sensor.SensorTabController" fx:id="sensorTab">
+    <children>
+        <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0"
+                AnchorPane.topAnchor="25.0"
+                layoutX="159.0"
+                layoutY="14.0"
+                spacing="35.0">
+            <children>
+                <HBox spacing="15.0">
+                    <children>
+                        <JFXComboBox labelFloat="true" maxHeight="-Infinity"
+                                maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0"
+                                prefWidth="200.0"
+                                promptText="Boolean Sensors" fx:id="booleanSensorComboBox"/>
+                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity"
+                                onAction="#readBooleanSensor" prefHeight="30.0" prefWidth="100.0"
+                                text="Read"/>
+                    </children>
+                </HBox>
+                <HBox spacing="15.0">
+                    <children>
+                        <JFXComboBox labelFloat="true" maxHeight="-Infinity"
+                                maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0"
+                                prefWidth="200.0"
+                                promptText="Signal Sensors" fx:id="signalSensorComboBox"/>
+                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity"
+                                onAction="#readSignalSensor" prefHeight="30.0" prefWidth="100.0"
+                                text="Read"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

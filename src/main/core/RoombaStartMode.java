@@ -5,5 +5,5 @@ package main.core;
 *
 * */
 public enum RoombaStartMode {
-    SAFE, FULL;
+  SAFE, FULL
 }

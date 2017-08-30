@@ -7,40 +7,42 @@ import main.core.drive.modes.AbstractDriveMode;
 public class RadiusListener extends AbstractDriveListener {
 
 
-    public RadiusListener(AbstractDriveMode driveMode, AbstractDriveMode.Position position, JFXTextField textField) {
-        super(driveMode, position, textField);
-    }
+  public RadiusListener(AbstractDriveMode driveMode, AbstractDriveMode.Position position,
+      JFXTextField textField) {
+    super(driveMode, position, textField);
+  }
 
-    private boolean hasValidRadius(String value) {
-        int radius = Integer.parseInt(value);
-        return ((radius >= 0 && radius <= 2000) || (radius == 32767 || radius == 32768));
-    }
+  private boolean hasValidRadius(String value) {
+    int radius = Integer.parseInt(value);
+    return ((radius >= 0 && radius <= 2000) || (radius == 32767 || radius == 32768));
+  }
 
-    @Override
-    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+  @Override
+  public void changed(ObservableValue<? extends String> observable, String oldValue,
+      String newValue) {
 
-        if (!hasInValidLength(newValue)) {
+    if (!hasInValidLength(newValue)) {
 
-            if (format(newValue)) {
+      if (format(newValue)) {
 
-                if (hasValidRadius(newValue)) {
-                    textField.setPromptText(driveMode.getTextField2Prompt());
-                    textField.getStylesheets().clear();
-                    textField.getStylesheets().add("main/ui/tabs/main.css");
-                    driveMode.setEnabled(true);
-                } else {
-                    textField.setPromptText(AbstractDriveMode.getRadiusErrorPrompt());
-                    textField.getStylesheets().clear();
-                    textField.getStylesheets().add("main/ui/tabs/error.css");
-                    driveMode.setEnabled(false);
-                }
-
-            }
-
+        if (hasValidRadius(newValue)) {
+          textField.setPromptText(driveMode.getTextField2Prompt());
+          textField.getStylesheets().clear();
+          textField.getStylesheets().add("main/ui/tabs/main.css");
+          driveMode.setEnabled(true);
         } else {
-            textField.setText(oldValue);
+          textField.setPromptText(AbstractDriveMode.getRadiusErrorPrompt());
+          textField.getStylesheets().clear();
+          textField.getStylesheets().add("main/ui/tabs/error.css");
+          driveMode.setEnabled(false);
         }
 
+      }
+
+    } else {
+      textField.setText(oldValue);
     }
+
+  }
 
 }

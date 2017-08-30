@@ -5,17 +5,15 @@ import main.core.drive.listeners.AbstractDriveListener;
 
 public abstract class AbstractDriveMode {
 
-    private String textField1Prompt;
-    private String textField2Prompt;
-    private boolean isEnabled;
-
-    static JFXTextField textField1;
-    static JFXTextField textField2;
-    static AbstractDriveListener textField1listener;
-    static AbstractDriveListener textField2listener;
-
-    private static final String velocityErrorPrompt = "Invalid Input! Range [0, 500]";
-    private static final String radiusErrorPrompt = "Invalid Input! Range [0, 2000]";
+  private static final String velocityErrorPrompt = "Invalid Input! Range [0, 500]";
+  private static final String radiusErrorPrompt = "Invalid Input! Range [0, 2000]";
+  static JFXTextField textField1;
+  static JFXTextField textField2;
+  static AbstractDriveListener textField1listener;
+  static AbstractDriveListener textField2listener;
+  private String textField1Prompt;
+  private String textField2Prompt;
+  private boolean isEnabled;
 
     /* *********************************************
     *
@@ -23,29 +21,40 @@ public abstract class AbstractDriveMode {
     *
     ********************************************** */
 
-    void setDefaultText() {
-        textField1.setText("0");
-        textField2.setText("0");
-    }
+  public static void setTextFields(JFXTextField textField1, JFXTextField textField2) {
+    AbstractDriveMode.textField1 = textField1;
+    AbstractDriveMode.textField2 = textField2;
+  }
 
-    void setDefaultPromptText() {
-        textField1.setPromptText(getTextField1Prompt());
-        textField2.setPromptText(getTextField2Prompt());
-    }
+  public static String getVelocityErrorPrompt() {
+    return velocityErrorPrompt;
+  }
 
-    public boolean isEnabled() {
-        return isEnabled;
-    }
+  public static String getRadiusErrorPrompt() {
+    return radiusErrorPrompt;
+  }
 
-    public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
-    }
+  void setDefaultText() {
+    textField1.setText("0");
+    textField2.setText("0");
+  }
 
-    public abstract void forward(int input1, int input2);
-    public abstract void reverse(int input1, int input2);
-    public abstract void rotateLeft(int input1, int input2);
-    public abstract void rotateRight(int input1, int input2);
-    public abstract void stop();
+  void setDefaultPromptText() {
+    textField1.setPromptText(getTextField1Prompt());
+    textField2.setPromptText(getTextField2Prompt());
+  }
+
+  public boolean isEnabled() {
+    return isEnabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    isEnabled = enabled;
+  }
+
+  public abstract void forward(int input1, int input2);
+
+  public abstract void reverse(int input1, int input2);
 
     /* *********************************************
     *
@@ -53,10 +62,7 @@ public abstract class AbstractDriveMode {
     *
     ********************************************** */
 
-    public static void setTextFields(JFXTextField textField1, JFXTextField textField2) {
-        AbstractDriveMode.textField1 = textField1;
-        AbstractDriveMode.textField2 = textField2;
-    }
+  public abstract void rotateLeft(int input1, int input2);
 
     /* *********************************************
     *
@@ -64,8 +70,9 @@ public abstract class AbstractDriveMode {
     *
     ********************************************** */
 
-    public abstract void initialize();
-    public abstract void swapListener();
+  public abstract void rotateRight(int input1, int input2);
+
+  public abstract void stop();
 
     /* *********************************************
     *
@@ -73,29 +80,25 @@ public abstract class AbstractDriveMode {
     *
     ********************************************** */
 
-    public String getTextField1Prompt() {
-        return textField1Prompt;
-    }
+  public abstract void initialize();
 
-    void setTextField1Prompt(String textField1Prompt) {
-        this.textField1Prompt = textField1Prompt;
-    }
+  public abstract void swapListener();
 
-    public String getTextField2Prompt() {
-        return textField2Prompt;
-    }
+  public String getTextField1Prompt() {
+    return textField1Prompt;
+  }
 
-    void setTextField2Prompt(String textField2Prompt) {
-        this.textField2Prompt = textField2Prompt;
-    }
+  void setTextField1Prompt(String textField1Prompt) {
+    this.textField1Prompt = textField1Prompt;
+  }
 
-    public static String getVelocityErrorPrompt() {
-        return velocityErrorPrompt;
-    }
+  public String getTextField2Prompt() {
+    return textField2Prompt;
+  }
 
-    public static String getRadiusErrorPrompt() {
-        return radiusErrorPrompt;
-    }
+  void setTextField2Prompt(String textField2Prompt) {
+    this.textField2Prompt = textField2Prompt;
+  }
 
     /* *********************************************
     *
@@ -103,8 +106,8 @@ public abstract class AbstractDriveMode {
     *
     ********************************************** */
 
-    public enum Position {
-        LEFT, RIGHT;
-    }
+  public enum Position {
+    LEFT, RIGHT
+  }
 
 }
