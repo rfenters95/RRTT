@@ -11,24 +11,16 @@ public class DriveMode extends AbstractDriveMode {
     setTextField2Prompt("Radius (mm)");
   }
 
-  private boolean isValidVelocity(int input) {
-    return (input >= 0 && input <= 500);
-  }
-
-  private boolean isValidRadius(int input) {
-    return ((input >= 0 && input <= 2000) || (input == 32767 || input == 32768));
-  }
-
   @Override
   public void forward(int input1, int input2) {
-    if (isValidVelocity(input1) && isValidRadius(input2)) {
+    if (isEnabled()) {
       RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
     }
   }
 
   @Override
   public void reverse(int input1, int input2) {
-    if (isValidVelocity(input1) && isValidRadius(input2)) {
+    if (isEnabled()) {
       RoombaJSSCSingleton.getRoombaJSSC().drive(-1 * input1, input2);
     }
   }

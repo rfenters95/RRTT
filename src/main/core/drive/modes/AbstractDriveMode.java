@@ -21,6 +21,22 @@ public abstract class AbstractDriveMode {
   *
   ********************************************** */
 
+  void setDefaultText() {
+    textField1.setText("0");
+    textField2.setText("0");
+  }
+
+  void setDefaultPromptText() {
+    textField1.setPromptText(getTextField1Prompt());
+    textField2.setPromptText(getTextField2Prompt());
+  }
+
+  /* *********************************************
+  *
+  * Static methods
+  *
+  ********************************************** */
+
   public static void setTextFields(JFXTextField textField1, JFXTextField textField2) {
     AbstractDriveMode.textField1 = textField1;
     AbstractDriveMode.textField2 = textField2;
@@ -34,41 +50,21 @@ public abstract class AbstractDriveMode {
     return radiusErrorPrompt;
   }
 
-  void setDefaultText() {
-    textField1.setText("0");
-    textField2.setText("0");
-  }
-
-  void setDefaultPromptText() {
-    textField1.setPromptText(getTextField1Prompt());
-    textField2.setPromptText(getTextField2Prompt());
-  }
-
-  public boolean isEnabled() {
-    return isEnabled;
-  }
-
-  public void setEnabled(boolean enabled) {
-    isEnabled = enabled;
-  }
-
-  public abstract void forward(int input1, int input2);
-
-  public abstract void reverse(int input1, int input2);
-
-  /* *********************************************
-  *
-  * Static methods
-  *
-  ********************************************** */
-
-  public abstract void rotateLeft(int input1, int input2);
-
   /* *********************************************
   *
   * Abstract methods
   *
   ********************************************** */
+
+  public abstract void initialize();
+
+  public abstract void swapListener();
+
+  public abstract void forward(int input1, int input2);
+
+  public abstract void reverse(int input1, int input2);
+
+  public abstract void rotateLeft(int input1, int input2);
 
   public abstract void rotateRight(int input1, int input2);
 
@@ -79,10 +75,6 @@ public abstract class AbstractDriveMode {
   * Getters & Setters
   *
   ********************************************** */
-
-  public abstract void initialize();
-
-  public abstract void swapListener();
 
   public String getTextField1Prompt() {
     return textField1Prompt;
@@ -100,9 +92,17 @@ public abstract class AbstractDriveMode {
     this.textField2Prompt = textField2Prompt;
   }
 
+  boolean isEnabled() {
+    return isEnabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    isEnabled = enabled;
+  }
+
   /* *********************************************
   *
-  * Enum
+  * Enums
   *
   ********************************************** */
 
