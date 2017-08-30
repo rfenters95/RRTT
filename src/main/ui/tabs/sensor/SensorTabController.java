@@ -127,17 +127,23 @@ public class SensorTabController implements Initializable, Injectable {
 
   };
 
+  private boolean isComboBoxNull(JFXComboBox comboBox) {
+    return comboBox.getSelectionModel().getSelectedItem() == null;
+  }
+
   @FXML
   void readBooleanSensor(ActionEvent event) {
     // Don't run if other thread is running
-    if (!signalToggleEnabled) {
+    if (!signalToggleEnabled && !isComboBoxNull(booleanSensorComboBox)) {
       if (booleanToggleEnabled) {
         JFXButton button = (JFXButton) event.getSource();
         button.setText("Read");
+        booleanSensorComboBox.setDisable(false);
         booleanToggleService.cancel();
       } else {
         JFXButton button = (JFXButton) event.getSource();
         button.setText("Stop");
+        booleanSensorComboBox.setDisable(true);
         booleanToggleService.reset();
         booleanToggleService.start();
       }
@@ -148,14 +154,16 @@ public class SensorTabController implements Initializable, Injectable {
   @FXML
   void readSignalSensor(ActionEvent event) {
     // Don't run if other thread is running
-    if (!booleanToggleEnabled) {
+    if (!booleanToggleEnabled && !isComboBoxNull(signalSensorComboBox)) {
       if (signalToggleEnabled) {
         JFXButton button = (JFXButton) event.getSource();
         button.setText("Read");
+        signalSensorComboBox.setDisable(false);
         signalToggleService.cancel();
       } else {
         JFXButton button = (JFXButton) event.getSource();
         button.setText("Stop");
+        signalSensorComboBox.setDisable(true);
         signalToggleService.reset();
         signalToggleService.start();
       }
