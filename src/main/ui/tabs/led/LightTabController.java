@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
+import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
 import main.ui.root.RootController;
@@ -25,10 +26,10 @@ public class LightTabController implements Initializable, Injectable {
     private JFXCheckBox debrisCheckBox;
 
     @FXML
-    private JFXCheckBox dockCheckBox;
+    private JFXCheckBox spotCheckBox;
 
     @FXML
-    private JFXCheckBox spotCheckBox;
+    private JFXCheckBox dockCheckBox;
 
     @FXML
     private JFXCheckBox checkRobotCheckBox;
@@ -41,6 +42,19 @@ public class LightTabController implements Initializable, Injectable {
 
     @FXML
     void toggle(ActionEvent event) {
+
+        int powerColor = Integer.parseInt(powerColorTextField.getText());
+        int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());
+        boolean check1 = (powerColor >= 0 && powerColor <= 255);
+        boolean check2 = (powerIntensity >= 0 && powerIntensity <= 255);
+
+        if (check1 && check2) {
+            boolean debris = debrisCheckBox.isSelected();
+            boolean spot = spotCheckBox.isSelected();
+            boolean dock = dockCheckBox.isSelected();
+            boolean checkRobot = checkRobotCheckBox.isSelected();
+            RoombaJSSCSingleton.getRoombaJSSC().leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
+        }
 
     }
 

@@ -10,14 +10,14 @@ public abstract class AbstractLEDListener implements ChangeListener<String> {
     private JFXTextField textField;
     private static final String errorText = "Invalid Input! Range [0, 255]";
 
-    public AbstractLEDListener(String promptText, JFXTextField textField) {
+    AbstractLEDListener(String promptText, JFXTextField textField) {
         this.promptText = promptText;
         this.textField = textField;
     }
 
     private boolean hasValidLEDValue(String value) {
-        int velocity = Integer.parseInt(value);
-        return (velocity >= 0 && velocity <= 255);
+        int LEDValue = Integer.parseInt(value);
+        return (LEDValue >= 0 && LEDValue <= 255);
     }
 
     private boolean format(String value) {
