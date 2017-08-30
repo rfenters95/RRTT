@@ -11,14 +11,26 @@ public class DriveMode extends AbstractDriveMode {
     setTextField2Prompt("Radius (mm)");
   }
 
+  private boolean isValidVelocity(int input) {
+    return (input >= 0 && input <= 500);
+  }
+
+  private boolean isValidRadius(int input) {
+    return ((input >= 0 && input <= 2000) || (input == 32767 || input == 32768));
+  }
+
   @Override
   public void forward(int input1, int input2) {
-    RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
+    if (isValidVelocity(input1) && isValidRadius(input2)) {
+      RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
+    }
   }
 
   @Override
   public void reverse(int input1, int input2) {
-    RoombaJSSCSingleton.getRoombaJSSC().drive(-1 * input1, input2);
+    if (isValidVelocity(input1) && isValidRadius(input2)) {
+      RoombaJSSCSingleton.getRoombaJSSC().drive(-1 * input1, input2);
+    }
   }
 
   @Override
@@ -33,17 +45,19 @@ public class DriveMode extends AbstractDriveMode {
 
   @Override
   public void stop() {
-
+    RoombaJSSCSingleton.getRoombaJSSC().drive(0, 0);
   }
 
   @Override
   public void initialize() {
 
+    // Set TextField listeners
     AbstractDriveMode.textField1listener = new VelocityListener(this, Position.LEFT, textField1);
     AbstractDriveMode.textField1.textProperty().addListener(AbstractDriveMode.textField1listener);
     AbstractDriveMode.textField2listener = new RadiusListener(this, Position.RIGHT, textField2);
     AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
 
+    // Set default text for TextFields
     setDefaultText();
     setDefaultPromptText();
 
