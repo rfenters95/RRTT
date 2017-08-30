@@ -16,11 +16,11 @@ import main.ui.root.RootController;
 
 public class DriveTabController implements Initializable, Injectable {
 
-    /* *********************************************
-    *
-    * FXML fields
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * FXML fields
+  *
+  ********************************************** */
 
   @FXML
   private AnchorPane driveTab;
@@ -34,30 +34,30 @@ public class DriveTabController implements Initializable, Injectable {
   @FXML
   private JFXTextField textField2;
 
-    /* *********************************************
-    *
-    * Instance fields
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Instance fields
+  *
+  ********************************************** */
 
   private AbstractDriveMode mode;
   private RootController rootController;
 
-    /* *********************************************
-    *
-    * Instance methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Instance methods
+  *
+  ********************************************** */
 
   private int getParsedInteger(JFXTextField textField) {
     return Integer.parseInt(textField.getText());
   }
 
-    /* *********************************************
-    *
-    * FXML methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * FXML methods
+  *
+  ********************************************** */
 
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
@@ -86,11 +86,11 @@ public class DriveTabController implements Initializable, Injectable {
     mode.stop();
   }
 
-    /* *********************************************
-    *
-    * Initialization methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Initialization methods
+  *
+  ********************************************** */
 
   @Override
   public void inject(RootController rootController) {
@@ -100,11 +100,11 @@ public class DriveTabController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-        /* *********************************************
-        *
-        * ComboBox logic
-        *
-        ********************************************** */
+    /* *********************************************
+    *
+    * ComboBox logic
+    *
+    ********************************************** */
 
     AbstractDriveMode.setTextFields(textField1, textField2);
     AbstractDriveMode driveMode = new DriveMode();

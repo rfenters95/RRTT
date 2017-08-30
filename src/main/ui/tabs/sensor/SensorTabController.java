@@ -37,24 +37,24 @@ public class SensorTabController implements Initializable, Injectable {
   private boolean booleanToggleEnabled;
   private boolean signalToggleEnabled;
 
-    /*
-    * TODO Fix application thread flooding problem
-    * See https://stackoverflow.com/questions/31408363/javafx-changelistener-not-always-working/31414801#31414801
-    * for more info.
-    *
-    * In the mean time increase sleep time on sensor readers.
-    * As of 08-29-2017, sleep time is equal to 1 second or 1000ms. This should be
-    * fine for stationary sensor reading. However, before if-then tests are
-    * implemented in expansion sleep times of .1 <= x < 1 should be possible.
-    *
-    * Look into swapping out the TextArea for a ListView, as they are
-    * a virtual control that only renders text shown
-    * instead of all containing text.
-    *
-    * See https://stackoverflow.com/questions/33078241/javafx-application-freeze-when-i-append-log4j-to-textarea
-    * and http://www.rshingleton.com/javafx-log4j-textarea-log-appender/
-    * for more info.
-    * */
+  /*
+  * TODO Fix application thread flooding problem
+  * See https://stackoverflow.com/questions/31408363/javafx-changelistener-not-always-working/31414801#31414801
+  * for more info.
+  *
+  * In the mean time increase sleep time on sensor readers.
+  * As of 08-29-2017, sleep time is equal to 1 second or 1000ms. This should be
+  * fine for stationary sensor reading. However, before if-then tests are
+  * implemented in expansion sleep times of .1 <= x < 1 should be possible.
+  *
+  * Look into swapping out the TextArea for a ListView, as they are
+  * a virtual control that only renders text shown
+  * instead of all containing text.
+  *
+  * See https://stackoverflow.com/questions/33078241/javafx-application-freeze-when-i-append-log4j-to-textarea
+  * and http://www.rshingleton.com/javafx-log4j-textarea-log-appender/
+  * for more info.
+  * */
 
   private Service<Void> booleanToggleService = new Service<Void>() {
 
@@ -171,31 +171,34 @@ public class SensorTabController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    // Task messages may need later
-        /*booleanToggleService.messageProperty().addListener((observable, oldValue, newValue) -> {
-            rootController.console.appendText(newValue);
-        });
+    /* Task messages may need later
 
-        signalToggleService.messageProperty().addListener(((observable, oldValue, newValue) -> {
-            rootController.console.appendText(newValue);
-        }));*/
+    booleanToggleService.messageProperty().addListener((observable, oldValue, newValue) -> {
+        rootController.console.appendText(newValue);
+    });
 
-        /* *********************************************
-        *
-        * Add boolean sensors
-        *
-        ********************************************** */
+    signalToggleService.messageProperty().addListener(((observable, oldValue, newValue) -> {
+        rootController.console.appendText(newValue);
+    }));
+
+    */
+
+    /* *********************************************
+    *
+    * Add boolean sensors
+    *
+    ********************************************** */
 
     booleanSensorComboBox.setVisibleRowCount(3);
     booleanSensorComboBox.getItems().add(new BumpCenter());
     booleanSensorComboBox.getItems().add(new BumpLeft());
     booleanSensorComboBox.getItems().add(new BumpRight());
 
-        /* *********************************************
-        *
-        * Add signal sensors
-        *
-        ********************************************** */
+    /* *********************************************
+    *
+    * Add signal sensors
+    *
+    ********************************************** */
 
     signalSensorComboBox.setVisibleRowCount(3);
     signalSensorComboBox.getItems().add(new Wall());

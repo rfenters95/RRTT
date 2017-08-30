@@ -21,65 +21,65 @@ import main.ui.tabs.sensor.SensorTabController;
 
 public class RootController implements Initializable {
 
-    @FXML
-    public VBox root;
+  @FXML
+  public VBox root;
 
-    @FXML
-    public SplitPane splitPane;
+  @FXML
+  public SplitPane splitPane;
 
-    @FXML
-    public JFXHamburger hamburger;
+  @FXML
+  public JFXHamburger hamburger;
 
-    @FXML
-    public JFXDrawer drawer;
+  @FXML
+  public JFXDrawer drawer;
 
-    @FXML
-    public JFXTabPane tabPane;
+  @FXML
+  public JFXTabPane tabPane;
 
-    @FXML
-    public TextArea console;
+  @FXML
+  public TextArea console;
 
-    @FXML
-    private DriveTabController driveTabController;
+  @FXML
+  private DriveTabController driveTabController;
 
-    @FXML
-    private LightTabController lightTabController;
+  @FXML
+  private LightTabController lightTabController;
 
-    @FXML
-    private SensorTabController sensorTabController;
+  @FXML
+  private SensorTabController sensorTabController;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
 
-        driveTabController.inject(this);
-        lightTabController.inject(this);
-        sensorTabController.inject(this);
+    driveTabController.inject(this);
+    lightTabController.inject(this);
+    sensorTabController.inject(this);
 
-        TextAreaAppender.textArea = console;
-        console.setWrapText(false);
-        console.setEditable(false);
+    TextAreaAppender.textArea = console;
+    console.setWrapText(false);
+    console.setEditable(false);
 
-        try {
-            HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));
-            drawer.setSidePane(nav);
-        } catch (IOException e) {
-            System.out.println("Nav failed to load");
-        }
-
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(
-                hamburger);
-        transition.setRate(-1);
-        hamburger.setOnMouseClicked(e -> {
-            transition.setRate(transition.getRate() * -1);
-            transition.play();
-
-            if (drawer.isShown()) {
-                drawer.close();
-            } else {
-                drawer.open();
-            }
-        });
-
+    try {
+      HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));
+      drawer.setSidePane(nav);
+    } catch (IOException e) {
+      System.out.println("Nav failed to load");
     }
+
+    HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(
+        hamburger);
+    transition.setRate(-1);
+    hamburger.setOnMouseClicked(e -> {
+      transition.setRate(transition.getRate() * -1);
+      transition.play();
+
+      if (drawer.isShown()) {
+        drawer.close();
+      } else {
+        drawer.open();
+      }
+    });
+
+  }
 
 }

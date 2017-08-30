@@ -15,11 +15,11 @@ public abstract class AbstractDriveMode {
   private String textField2Prompt;
   private boolean isEnabled;
 
-    /* *********************************************
-    *
-    * Instance methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Instance methods
+  *
+  ********************************************** */
 
   public static void setTextFields(JFXTextField textField1, JFXTextField textField2) {
     AbstractDriveMode.textField1 = textField1;
@@ -56,29 +56,29 @@ public abstract class AbstractDriveMode {
 
   public abstract void reverse(int input1, int input2);
 
-    /* *********************************************
-    *
-    * Static methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Static methods
+  *
+  ********************************************** */
 
   public abstract void rotateLeft(int input1, int input2);
 
-    /* *********************************************
-    *
-    * Abstract methods
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Abstract methods
+  *
+  ********************************************** */
 
   public abstract void rotateRight(int input1, int input2);
 
   public abstract void stop();
 
-    /* *********************************************
-    *
-    * Getters & Setters
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Getters & Setters
+  *
+  ********************************************** */
 
   public abstract void initialize();
 
@@ -100,11 +100,11 @@ public abstract class AbstractDriveMode {
     this.textField2Prompt = textField2Prompt;
   }
 
-    /* *********************************************
-    *
-    * Enum
-    *
-    ********************************************** */
+  /* *********************************************
+  *
+  * Enum
+  *
+  ********************************************** */
 
   public enum Position {
     LEFT, RIGHT
