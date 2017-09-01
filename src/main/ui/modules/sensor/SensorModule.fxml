@@ -15,10 +15,10 @@
     <StackPane VBox.vgrow="ALWAYS" alignment="TOP_LEFT">
       <children>
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          spacing="15.0">
+          spacing="26.0">
           <children>
             <JFXComboBox labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
-              minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0"
+              minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0"
               promptText="Boolean Sensors" fx:id="booleanSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readBooleanSensor"
@@ -39,10 +39,10 @@
     <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT">
       <children>
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          spacing="15.0">
+          spacing="26.0">
           <children>
             <JFXComboBox labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
-              minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0"
+              minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="160.0"
               promptText="Signal Sensors" fx:id="signalSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readSignalSensor"
