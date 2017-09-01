@@ -4,14 +4,29 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import main.core.drive.modes.AbstractDriveMode;
 
+/*
+* Custom ChangeListener for the DriveTabController.
+* Checks both the value and format for radius in Roomba drive/driveDirect
+* command parameters.
+* */
 public class RadiusListener extends AbstractDriveListener {
 
-
+  /*
+  * Constructs RadiusListener
+  *
+  * @param driveMode determines which Roomba Drive command to configure for.
+  * @param position determines which parameter given the Drive command to configure for.
+  * @param textField reference of TextField of which listener is attached.
+  * */
   public RadiusListener(AbstractDriveMode driveMode, AbstractDriveMode.Position position,
       JFXTextField textField) {
     super(driveMode, position, textField);
   }
 
+  /*
+  * @param value Extracted TextField input.
+  * @return True if value is an acceptable radius parameter.
+  * */
   private boolean hasValidRadius(String value) {
     int radius = Integer.parseInt(value);
     return ((radius >= 0 && radius <= 2000) || (radius == 32767 || radius == 32768));

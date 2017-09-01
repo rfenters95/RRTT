@@ -3,6 +3,11 @@ package main.core.drive.modes;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.VelocityListener;
 
+/*
+* Configures DriveTabController for Roomba DriveDirect commands
+* by setting parameter listeners and button actions
+* for DriveDirect commands.
+* */
 public class DriveDirectMode extends AbstractDriveMode {
 
   public DriveDirectMode() {
@@ -83,4 +88,5 @@ public class DriveDirectMode extends AbstractDriveMode {
   public String toString() {
     return "DRIVE_DIRECT";
   }
+
 }

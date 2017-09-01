@@ -6,7 +6,7 @@ import main.core.drive.modes.AbstractDriveMode;
 
 /*
 * Drive listeners in general are custom ChangeListeners for the DriveTabController.
-* They check both the value and format for velocity and radius for drive/driveDirect
+* They check both the value and format for velocity and radius in Roomba drive/driveDirect
 * command parameters.
 * */
 public abstract class AbstractDriveListener implements ChangeListener<String> {

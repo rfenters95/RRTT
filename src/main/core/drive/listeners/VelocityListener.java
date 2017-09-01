@@ -4,14 +4,29 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import main.core.drive.modes.AbstractDriveMode;
 
+/*
+* Custom ChangeListener for the DriveTabController.
+* Checks both the value and format for velocity in Roomba drive/driveDirect
+* command parameters.
+* */
 public class VelocityListener extends AbstractDriveListener {
 
-
+  /*
+  * Constructs VelocityListener
+  *
+  * @param driveMode determines which Roomba Drive command to configure for.
+  * @param position determines which parameter given the Drive command to configure for.
+  * @param textField reference of TextField of which listener is attached.
+  * */
   public VelocityListener(AbstractDriveMode driveMode, AbstractDriveMode.Position position,
       JFXTextField textField) {
     super(driveMode, position, textField);
   }
 
+  /*
+  * @param value Extracted TextField input.
+  * @return True if value is an acceptable velocity parameter.
+  * */
   private boolean hasValidVelocity(String value) {
     int velocity = Integer.parseInt(value);
     return (velocity >= 0 && velocity <= 500);

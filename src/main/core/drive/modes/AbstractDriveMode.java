@@ -3,14 +3,30 @@ package main.core.drive.modes;
 import com.jfoenix.controls.JFXTextField;
 import main.core.drive.listeners.AbstractDriveListener;
 
+/*
+* DriveModes configure the DriveTabController by setting
+* parameter listeners and button actions
+* for specific Drive commands.
+* */
 public abstract class AbstractDriveMode {
 
+  /* *********************************************
+  *
+  * Static members
+  *
+  ********************************************** */
   private static final String velocityErrorPrompt = "Invalid Input! Range [0, 500]";
   private static final String radiusErrorPrompt = "Invalid Input! Range [0, 2000]";
   static JFXTextField textField1;
   static JFXTextField textField2;
   static AbstractDriveListener textField1listener;
   static AbstractDriveListener textField2listener;
+
+  /* *********************************************
+  *
+  * Instance members
+  *
+  ********************************************** */
   private String textField1Prompt;
   private String textField2Prompt;
   private boolean isEnabled;
