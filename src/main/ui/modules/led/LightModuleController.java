@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
@@ -22,9 +21,6 @@ import main.ui.root.RootController;
 public class LightModuleController implements Initializable, Injectable {
 
   private RootController rootController;
-
-  @FXML
-  private AnchorPane ledTab;
 
   @FXML
   private JFXCheckBox debrisCheckBox;

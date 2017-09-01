@@ -44,17 +44,17 @@
       <items>
         <HBox style="-fx-background-color: slategrey;" prefHeight="100.0" prefWidth="200.0">
           <children>
-            <StackPane HBox.hgrow="ALWAYS" prefHeight="150.0" prefWidth="200.0">
+            <StackPane HBox.hgrow="ALWAYS">
               <children>
                 <fx:include source="../modules/drive/DriveModule.fxml" fx:id="driveModule"/>
               </children>
             </StackPane>
-            <StackPane HBox.hgrow="ALWAYS" prefHeight="150.0" prefWidth="200.0">
+            <StackPane HBox.hgrow="ALWAYS">
               <children>
                 <fx:include source="../modules/led/LightModule.fxml" fx:id="lightModule"/>
               </children>
             </StackPane>
-            <StackPane HBox.hgrow="ALWAYS" prefHeight="150.0" prefWidth="200.0">
+            <StackPane HBox.hgrow="ALWAYS">
               <children>
                 <fx:include source="../modules/sensor/SensorModule.fxml" fx:id="sensorModule"/>
               </children>

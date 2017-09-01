@@ -26,12 +26,12 @@
           minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0"
           promptText="Signal Sensors" fx:id="signalSensorComboBox"/>
         <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" onDragDetected="#readSignalSensor" prefHeight="30.0" prefWidth="30.0"
+          minWidth="-Infinity" onAction="#readSignalSensor" prefHeight="30.0" prefWidth="30.0"
           text="S"/>
       </children>
     </HBox>
   </children>
   <padding>
-    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0"/>
   </padding>
 </VBox>
