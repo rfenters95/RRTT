@@ -184,18 +184,6 @@ public class SensorTabController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    /* Task messages may need later
-
-    booleanToggleService.messageProperty().addListener((observable, oldValue, newValue) -> {
-        rootController.console.appendText(newValue);
-    });
-
-    signalToggleService.messageProperty().addListener(((observable, oldValue, newValue) -> {
-        rootController.console.appendText(newValue);
-    }));
-
-    */
-
     /* *********************************************
     *
     * Add boolean sensors
