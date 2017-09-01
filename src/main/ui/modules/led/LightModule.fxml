@@ -4,11 +4,13 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
-  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" spacing="8.0"
+  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.modules.led.LightModuleController" fx:id="lightModule">
   <children>
@@ -32,7 +34,7 @@
         </VBox>
       </children>
     </HBox>
-    <VBox VBox.vgrow="ALWAYS" alignment="CENTER_LEFT" spacing="18.0">
+    <VBox VBox.vgrow="ALWAYS" alignment="CENTER_LEFT" spacing="25.0">
       <children>
         <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" promptText="Power Color"
@@ -42,17 +44,26 @@
           fx:id="powerIntensityTextField"/>
       </children>
       <VBox.margin>
-        <Insets left="10.0" top="10.0"/>
+        <Insets left="10.0"/>
       </VBox.margin>
     </VBox>
-    <StackPane alignment="BOTTOM_LEFT">
+    <StackPane alignment="BOTTOM_LEFT" maxHeight="-Infinity" minHeight="-Infinity"
+      prefHeight="45.0">
       <VBox.margin>
         <Insets left="10.0"/>
       </VBox.margin>
       <children>
-        <JFXButton style="-fx-background-color: #4eb769;" maxHeight="-Infinity" maxWidth="-Infinity"
-          minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" text="Toggle"
-          textFill="WHITE"/>
+        <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" prefHeight="30.0"
+          prefWidth="30.0" text=" ">
+          <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../../../res/play-button.png"/>
+              </image>
+            </ImageView>
+          </graphic>
+        </JFXButton>
       </children>
     </StackPane>
   </children>
