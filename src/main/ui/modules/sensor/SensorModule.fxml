@@ -12,7 +12,7 @@
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.modules.sensor.SensorModuleController" fx:id="sensorModule">
   <children>
-    <StackPane VBox.vgrow="ALWAYS" alignment="TOP_LEFT">
+    <StackPane VBox.vgrow="ALWAYS" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity">
       <children>
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           spacing="26.0">
@@ -35,8 +35,12 @@
           </children>
         </VBox>
       </children>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
     </StackPane>
-    <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT">
+    <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT" maxWidth="-Infinity"
+      minWidth="-Infinity">
       <children>
         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           spacing="26.0">
@@ -59,6 +63,9 @@
           </children>
         </VBox>
       </children>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
     </StackPane>
   </children>
   <padding>

@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.DriveDirectMode;
@@ -22,9 +23,12 @@ public class DriveModuleController implements Initializable, Injectable {
 
   /* *********************************************
   *
-  * FXML fields
+  * FXML members
   *
   ********************************************** */
+
+  @FXML
+  private VBox driveModule;
 
   @FXML
   private JFXComboBox<AbstractDriveMode> driveModeComboBox;
@@ -80,6 +84,8 @@ public class DriveModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    driveModule.setStyle("-fx-background-color: black;");
 
     /* *********************************************
     *

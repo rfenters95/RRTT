@@ -14,11 +14,14 @@
   fx:controller="main.ui.modules.drive.DriveModuleController" fx:id="driveModule">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">
+      minWidth="-Infinity" prefHeight="90.0" prefWidth="220.0">
       <children>
         <JFXComboBox labelFloat="true" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="160.0"
           promptText="Drive Mode" fx:id="driveModeComboBox"/>
       </children>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
     </StackPane>
     <StackPane alignment="CENTER_LEFT">
       <children>
@@ -34,6 +37,9 @@
           </children>
         </VBox>
       </children>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
     </StackPane>
     <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308"
       maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
@@ -50,6 +56,9 @@
           </graphic>
         </JFXButton>
       </children>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
     </StackPane>
   </children>
   <padding>

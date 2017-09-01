@@ -9,6 +9,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
@@ -28,11 +29,20 @@ public class SensorModuleController implements Initializable, Injectable {
 
   private RootController rootController;
 
+  /* *********************************************
+  *
+  * FXML members
+  *
+  ********************************************** */
+
   @FXML
   private JFXComboBox<AbstractBooleanSensor> booleanSensorComboBox;
 
   @FXML
   private JFXComboBox<AbstractSignalSensor> signalSensorComboBox;
+
+  @FXML
+  private VBox sensorModule;
 
   private boolean booleanToggleEnabled;
   private boolean signalToggleEnabled;
@@ -170,6 +180,8 @@ public class SensorModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    sensorModule.setStyle("-fx-background-color: black;");
 
     /* *********************************************
     *

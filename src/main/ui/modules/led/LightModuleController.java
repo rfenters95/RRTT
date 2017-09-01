@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
@@ -21,6 +22,15 @@ import main.ui.root.RootController;
 public class LightModuleController implements Initializable, Injectable {
 
   private RootController rootController;
+
+  /* *********************************************
+  *
+  * FXML members
+  *
+  ********************************************** */
+
+  @FXML
+  private VBox lightModule;
 
   @FXML
   private JFXCheckBox debrisCheckBox;
@@ -66,6 +76,9 @@ public class LightModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    lightModule.setStyle("-fx-background-color: #626263;");
+
     powerColorTextField.setText("0");
     powerIntensityTextField.setText("0");
     powerColorTextField.textProperty().addListener(new PowerColorListener(powerColorTextField));
