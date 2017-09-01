@@ -16,7 +16,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity"
   minWidth="-Infinity"
-  prefHeight="300.0" prefWidth="800.0" stylesheets="@../main.css"
+  prefHeight="300.0" prefWidth="800.0" stylesheets="@../../modules/main.css"
   xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.tabs.drive.DriveTabController" fx:id="driveTab">
   <children>

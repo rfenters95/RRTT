@@ -4,7 +4,7 @@ import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.VelocityListener;
 
 /*
-* Configures DriveTabController for Roomba DriveDirect commands
+* Configures DriveModuleController for Roomba DriveDirect commands
 * by setting parameter listeners and button actions
 * for DriveDirect commands.
 * */

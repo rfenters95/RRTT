@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
+  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" spacing="8.0"
+  stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
+  fx:controller="main.ui.modules.led.LightModuleController" fx:id="lightModule">
+  <children>
+    <VBox spacing="5.0">
+      <children>
+        <JFXCheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" text="Debris" fx:id="debrisCheckBox"/>
+        <JFXCheckBox text="Dock" fx:id="dockCheckBox"/>
+        <JFXCheckBox text="Spot" fx:id="spotCheckBox"/>
+        <JFXCheckBox text="Check Robot" fx:id="checkRobotCheckBox"/>
+      </children>
+      <VBox.margin>
+        <Insets/>
+      </VBox.margin>
+    </VBox>
+    <VBox spacing="18.0">
+      <children>
+        <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" promptText="Power Color"
+          fx:id="powerColorTextField"/>
+        <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" promptText="Power Intensity"
+          fx:id="powerIntensityTextField"/>
+      </children>
+      <VBox.margin>
+        <Insets left="10.0" top="10.0"/>
+      </VBox.margin>
+    </VBox>
+    <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT">
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
+      <children>
+        <JFXButton style="-fx-background-color: #4eb769;" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" prefHeight="30.0"
+          prefWidth="100.0" text="Toggle" textFill="WHITE"/>
+      </children>
+    </StackPane>
+  </children>
+  <padding>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0"/>
+  </padding>
+</VBox>

@@ -5,7 +5,7 @@ import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
 
 /*
-* Configures DriveTabController for Roomba Drive commands
+* Configures DriveModuleController for Roomba Drive commands
 * by setting parameter listeners and button actions
 * for DriveDirect commands.
 * */

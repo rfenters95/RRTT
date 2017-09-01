@@ -5,7 +5,7 @@ import javafx.beans.value.ChangeListener;
 import main.core.drive.modes.AbstractDriveMode;
 
 /*
-* Drive listeners in general are custom ChangeListeners for the DriveTabController.
+* Drive listeners in general are custom ChangeListeners for the DriveModuleController.
 * They check both the value and format for velocity and radius in Roomba drive/driveDirect
 * command parameters.
 * */

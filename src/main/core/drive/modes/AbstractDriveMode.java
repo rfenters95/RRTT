@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import main.core.drive.listeners.AbstractDriveListener;
 
 /*
-* DriveModes configure the DriveTabController by setting
+* DriveModes configure the DriveModuleController by setting
 * parameter listeners and button actions
 * for specific Drive commands.
 * */
