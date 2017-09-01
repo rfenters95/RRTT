@@ -1,6 +1,5 @@
-package main.ui.tabs.sensor;
+package main.ui.modules.sensor;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +9,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
@@ -23,15 +21,12 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* SensorTab allows users to set parameters for the Roomba
+* SensorModule allows users to set parameters for the Roomba
 * Sensor command and send that command to the Roomba.
 * */
-public class SensorTabController implements Initializable, Injectable {
+public class SensorModuleController implements Initializable, Injectable {
 
   private RootController rootController;
-
-  @FXML
-  private AnchorPane sensorTab;
 
   @FXML
   private JFXComboBox<AbstractBooleanSensor> booleanSensorComboBox;
@@ -141,13 +136,9 @@ public class SensorTabController implements Initializable, Injectable {
     // Don't run if other thread is running
     if (!signalToggleEnabled && !isComboBoxNull(booleanSensorComboBox)) {
       if (booleanToggleEnabled) {
-        JFXButton button = (JFXButton) event.getSource();
-        button.setText("Read");
         booleanSensorComboBox.setDisable(false);
         booleanToggleService.cancel();
       } else {
-        JFXButton button = (JFXButton) event.getSource();
-        button.setText("Stop");
         booleanSensorComboBox.setDisable(true);
         booleanToggleService.reset();
         booleanToggleService.start();
@@ -161,13 +152,9 @@ public class SensorTabController implements Initializable, Injectable {
     // Don't run if other thread is running
     if (!booleanToggleEnabled && !isComboBoxNull(signalSensorComboBox)) {
       if (signalToggleEnabled) {
-        JFXButton button = (JFXButton) event.getSource();
-        button.setText("Read");
         signalSensorComboBox.setDisable(false);
         signalToggleService.cancel();
       } else {
-        JFXButton button = (JFXButton) event.getSource();
-        button.setText("Stop");
         signalSensorComboBox.setDisable(true);
         signalToggleService.reset();
         signalToggleService.start();

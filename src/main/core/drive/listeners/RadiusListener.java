@@ -5,7 +5,7 @@ import javafx.beans.value.ObservableValue;
 import main.core.drive.modes.AbstractDriveMode;
 
 /*
-* Custom ChangeListener for the DriveTabController.
+* Custom ChangeListener for the DriveModuleController.
 * Checks both the value and format for radius in Roomba drive/driveDirect
 * command parameters.
 * */
@@ -43,12 +43,12 @@ public class RadiusListener extends AbstractDriveListener {
         if (hasValidRadius(newValue)) {
           textField.setPromptText(driveMode.getTextField2Prompt());
           textField.getStylesheets().clear();
-          textField.getStylesheets().add("main/ui/tabs/main.css");
+          textField.getStylesheets().add("main/ui/modules/main.css");
           driveMode.setEnabled(true);
         } else {
           textField.setPromptText(AbstractDriveMode.getRadiusErrorPrompt());
           textField.getStylesheets().clear();
-          textField.getStylesheets().add("main/ui/tabs/error.css");
+          textField.getStylesheets().add("main/ui/modules/error.css");
           driveMode.setEnabled(false);
         }
 

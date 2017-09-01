@@ -4,7 +4,7 @@ import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.VelocityListener;
 
 /*
-* Configures DriveTabController for Roomba DriveDirect commands
+* Configures DriveModuleController for Roomba DriveDirect commands
 * by setting parameter listeners and button actions
 * for DriveDirect commands.
 * */
@@ -16,28 +16,8 @@ public class DriveDirectMode extends AbstractDriveMode {
   }
 
   @Override
-  public void forward(int input1, int input2) {
+  public void move(int input1, int input2) {
     RoombaJSSCSingleton.getRoombaJSSC().driveDirect(input1, input2);
-  }
-
-  @Override
-  public void reverse(int input1, int input2) {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(input1, input2);
-  }
-
-  @Override
-  public void rotateLeft(int input1, int input2) {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(input1, input2);
-  }
-
-  @Override
-  public void rotateRight(int input1, int input2) {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(input1, input2);
-  }
-
-  @Override
-  public void stop() {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(0, 0);
   }
 
   @Override

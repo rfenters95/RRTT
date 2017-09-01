@@ -19,7 +19,7 @@ public class TextAreaAppender extends WriterAppender {
     * Version 1.0
     *
     * Status: Working
-    * Reason for update: When implementing threads for SensorTabController
+    * Reason for update: When implementing threads for SensorModuleController
     * discovered that calling appendText without enclosing in
     * Platform.runLater may result in GUI thread flooding.
     *

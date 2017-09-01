@@ -1,4 +1,4 @@
-package main.ui.tabs.drive;
+package main.ui.modules.drive;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.DriveDirectMode;
@@ -16,19 +15,16 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* DriveTab allows users to set parameters for the various
+* DriveModule allows users to set parameters for the various
 * Roomba Drive commands and send those commands to the Roomba.
 * */
-public class DriveTabController implements Initializable, Injectable {
+public class DriveModuleController implements Initializable, Injectable {
 
   /* *********************************************
   *
   * FXML fields
   *
   ********************************************** */
-
-  @FXML
-  private AnchorPane driveTab;
 
   @FXML
   private JFXComboBox<AbstractDriveMode> driveModeComboBox;
@@ -67,28 +63,8 @@ public class DriveTabController implements Initializable, Injectable {
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
   @FXML
-  void forward(ActionEvent event) {
-    mode.forward(getParsedInteger(textField1), getParsedInteger(textField2));
-  }
-
-  @FXML
-  void reverse(ActionEvent event) {
-    mode.reverse(getParsedInteger(textField1), getParsedInteger(textField2));
-  }
-
-  @FXML
-  void rotateLeft(ActionEvent event) {
-    mode.rotateLeft(getParsedInteger(textField1), getParsedInteger(textField2));
-  }
-
-  @FXML
-  void rotateRight(ActionEvent event) {
-    mode.rotateRight(getParsedInteger(textField1), getParsedInteger(textField2));
-  }
-
-  @FXML
-  void stop(ActionEvent event) {
-    mode.stop();
+  void start(ActionEvent event) {
+    mode.move(getParsedInteger(textField1), getParsedInteger(textField2));
   }
 
   /* *********************************************

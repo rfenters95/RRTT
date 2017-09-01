@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: slategrey;"
+  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+  prefHeight="250.0" prefWidth="250.0" stylesheets="@../../modules/main.css"
+  xmlns="http://javafx.com/javafx/8.0.111" fx:controller="main.ui.modules.led.LightModuleController"
+  fx:id="lightModule">
+  <children>
+    <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">
+      <VBox.margin>
+        <Insets/>
+      </VBox.margin>
+      <children>
+        <HBox spacing="10.0">
+          <children>
+            <VBox spacing="15.0">
+              <children>
+                <JFXCheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                  minWidth="-Infinity" text="Debris" fx:id="debrisCheckBox"/>
+                <JFXCheckBox text="Dock" fx:id="dockCheckBox"/>
+              </children>
+            </VBox>
+            <VBox spacing="15.0">
+              <children>
+                <JFXCheckBox text="Spot" fx:id="spotCheckBox"/>
+                <JFXCheckBox text="Check Robot" fx:id="checkRobotCheckBox"/>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+      </children>
+    </StackPane>
+    <StackPane>
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
+      <children>
+        <VBox alignment="CENTER_LEFT" spacing="25.0">
+          <children>
+            <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0" promptText="Power Color"
+              fx:id="powerColorTextField"/>
+            <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0"
+              promptText="Power Intensity" fx:id="powerIntensityTextField"/>
+          </children>
+        </VBox>
+      </children>
+    </StackPane>
+    <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308"
+      maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+      <VBox.margin>
+        <Insets left="10.0"/>
+      </VBox.margin>
+      <children>
+        <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" prefHeight="30.0"
+          prefWidth="30.0" text=" ">
+          <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../../../res/play-button.png"/>
+              </image>
+            </ImageView>
+          </graphic>
+        </JFXButton>
+      </children>
+    </StackPane>
+  </children>
+  <padding>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0"/>
+  </padding>
+</VBox>

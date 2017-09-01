@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import main.core.drive.listeners.AbstractDriveListener;
 
 /*
-* DriveModes configure the DriveTabController by setting
+* DriveModes configure the DriveModuleController by setting
 * parameter listeners and button actions
 * for specific Drive commands.
 * */
@@ -76,15 +76,7 @@ public abstract class AbstractDriveMode {
 
   public abstract void swapListener();
 
-  public abstract void forward(int input1, int input2);
-
-  public abstract void reverse(int input1, int input2);
-
-  public abstract void rotateLeft(int input1, int input2);
-
-  public abstract void rotateRight(int input1, int input2);
-
-  public abstract void stop();
+  public abstract void move(int input1, int input2);
 
   /* *********************************************
   *

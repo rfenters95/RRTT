@@ -1,4 +1,4 @@
-package main.ui.tabs.led;
+package main.ui.modules.led;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
@@ -16,15 +15,12 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* LightTab allows users to set parameters for the Roomba
+* LightModule allows users to set parameters for the Roomba
 * LED command and send that command to the Roomba.
 * */
-public class LightTabController implements Initializable, Injectable {
+public class LightModuleController implements Initializable, Injectable {
 
   private RootController rootController;
-
-  @FXML
-  private AnchorPane ledTab;
 
   @FXML
   private JFXCheckBox debrisCheckBox;

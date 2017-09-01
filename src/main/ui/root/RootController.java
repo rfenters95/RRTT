@@ -2,7 +2,6 @@ package main.ui.root;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.IOException;
 import java.net.URL;
@@ -15,9 +14,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.core.TextAreaAppender;
-import main.ui.tabs.drive.DriveTabController;
-import main.ui.tabs.led.LightTabController;
-import main.ui.tabs.sensor.SensorTabController;
+import main.ui.modules.drive.DriveModuleController;
+import main.ui.modules.led.LightModuleController;
+import main.ui.modules.sensor.SensorModuleController;
 
 public class RootController implements Initializable {
 
@@ -34,26 +33,23 @@ public class RootController implements Initializable {
   public JFXDrawer drawer;
 
   @FXML
-  public JFXTabPane tabPane;
-
-  @FXML
   public TextArea console;
 
   @FXML
-  private DriveTabController driveTabController;
+  private DriveModuleController driveModuleController;
 
   @FXML
-  private LightTabController lightTabController;
+  private LightModuleController lightModuleController;
 
   @FXML
-  private SensorTabController sensorTabController;
+  private SensorModuleController sensorModuleController;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    driveTabController.inject(this);
-    lightTabController.inject(this);
-    sensorTabController.inject(this);
+    driveModuleController.inject(this);
+    lightModuleController.inject(this);
+    sensorModuleController.inject(this);
 
     TextAreaAppender.textArea = console;
     console.setWrapText(false);
