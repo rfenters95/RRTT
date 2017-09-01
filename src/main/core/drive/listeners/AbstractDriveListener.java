@@ -62,7 +62,7 @@ public abstract class AbstractDriveListener implements ChangeListener<String> {
   }
 
   /*
-  * Removes leading zeros, if any, and sets
+  * Consolidates formatting to simplify logic, and sets
   * empty String to zero (valid input).
   *
   * @param value Extracted TextField input.
