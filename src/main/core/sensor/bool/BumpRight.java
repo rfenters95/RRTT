@@ -2,6 +2,9 @@ package main.core.sensor.bool;
 
 import main.core.RoombaJSSCSingleton;
 
+/*
+* Requests right bump sensor information from the Roomba.
+* */
 public class BumpRight extends AbstractBooleanSensor {
 
   @Override

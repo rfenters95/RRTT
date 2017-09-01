@@ -1,8 +1,7 @@
 package main.core;
 
 /*
-* RoombaStartMode
-*
+* Enum contains Roomba start mode options.
 * */
 public enum RoombaStartMode {
   SAFE, FULL

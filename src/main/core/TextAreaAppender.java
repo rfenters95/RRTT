@@ -5,6 +5,9 @@ import javafx.scene.control.TextArea;
 import org.apache.log4j.WriterAppender;
 import org.apache.log4j.spi.LoggingEvent;
 
+/*
+* Listens for Log4j output and redirects it to the TextArea.
+* */
 public class TextAreaAppender extends WriterAppender {
 
   public static TextArea textArea;

@@ -6,6 +6,9 @@ import com.sun.javafx.binding.StringFormatter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+* Ensures only one instance of RoombaJSSC is created.
+* */
 public class RoombaJSSCSingleton {
 
   private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
