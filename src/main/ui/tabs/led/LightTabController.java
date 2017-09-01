@@ -14,6 +14,11 @@ import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
 import main.ui.root.RootController;
 
+/*
+* Manages interaction between the user and the Roomba.
+* LightTab allows users to set parameters for the Roomba
+* LED command and send that command to the Roomba.
+* */
 public class LightTabController implements Initializable, Injectable {
 
   private RootController rootController;

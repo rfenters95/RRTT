@@ -14,6 +14,11 @@ import main.core.drive.modes.DriveDirectMode;
 import main.core.drive.modes.DriveMode;
 import main.ui.root.RootController;
 
+/*
+* Manages interaction between the user and the Roomba.
+* DriveTab allows users to set parameters for the various
+* Roomba Drive commands and send those commands to the Roomba.
+* */
 public class DriveTabController implements Initializable, Injectable {
 
   /* *********************************************
