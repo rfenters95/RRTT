@@ -17,32 +17,10 @@ public class DriveMode extends AbstractDriveMode {
   }
 
   @Override
-  public void forward(int input1, int input2) {
+  public void move(int input1, int input2) {
     if (isEnabled()) {
       RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
     }
-  }
-
-  @Override
-  public void reverse(int input1, int input2) {
-    if (isEnabled()) {
-      RoombaJSSCSingleton.getRoombaJSSC().drive(-1 * input1, input2);
-    }
-  }
-
-  @Override
-  public void rotateLeft(int input1, int input2) {
-
-  }
-
-  @Override
-  public void rotateRight(int input1, int input2) {
-
-  }
-
-  @Override
-  public void stop() {
-    RoombaJSSCSingleton.getRoombaJSSC().drive(0, 0);
   }
 
   @Override

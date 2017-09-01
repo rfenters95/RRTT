@@ -15,7 +15,7 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* LightTab allows users to set parameters for the Roomba
+* LightModule allows users to set parameters for the Roomba
 * LED command and send that command to the Roomba.
 * */
 public class LightModuleController implements Initializable, Injectable {

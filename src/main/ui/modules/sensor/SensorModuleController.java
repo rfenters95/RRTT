@@ -23,7 +23,7 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* SensorTab allows users to set parameters for the Roomba
+* SensorModule allows users to set parameters for the Roomba
 * Sensor command and send that command to the Roomba.
 * */
 public class SensorModuleController implements Initializable, Injectable {

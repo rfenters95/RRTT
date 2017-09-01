@@ -15,7 +15,7 @@ import main.ui.root.RootController;
 
 /*
 * Manages interaction between the user and the Roomba.
-* DriveTab allows users to set parameters for the various
+* DriveModule allows users to set parameters for the various
 * Roomba Drive commands and send those commands to the Roomba.
 * */
 public class DriveModuleController implements Initializable, Injectable {
@@ -64,7 +64,7 @@ public class DriveModuleController implements Initializable, Injectable {
 
   @FXML
   void start(ActionEvent event) {
-    mode.forward(getParsedInteger(textField1), getParsedInteger(textField2));
+    mode.move(getParsedInteger(textField1), getParsedInteger(textField2));
   }
 
   /* *********************************************
