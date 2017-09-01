@@ -9,20 +9,33 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
-  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" spacing="30.0"
+  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.modules.drive.DriveModuleController" fx:id="driveModule">
   <children>
-    <JFXComboBox labelFloat="true" promptText="Drive Mode" fx:id="driveModeComboBox"/>
-    <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="25.0">
+    <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">
       <children>
-        <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
-          minHeight="-Infinity" minWidth="-Infinity" promptText="Input 1" fx:id="textField1"/>
-        <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
-          minHeight="-Infinity" minWidth="-Infinity" promptText="Input 2" fx:id="textField2"/>
+        <JFXComboBox labelFloat="true" promptText="Drive Mode" fx:id="driveModeComboBox"/>
       </children>
-    </VBox>
-    <StackPane alignment="BOTTOM_LEFT">
+    </StackPane>
+    <StackPane alignment="CENTER_LEFT">
+      <children>
+        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" spacing="25.0">
+          <children>
+            <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0" promptText="Input 1"
+              fx:id="textField1"/>
+            <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0" promptText="Input 2"
+              fx:id="textField2"/>
+          </children>
+        </VBox>
+      </children>
+    </StackPane>
+    <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308"
+      maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
       <children>
         <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" onAction="#start" prefHeight="30.0"
