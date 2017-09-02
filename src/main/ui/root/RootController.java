@@ -62,9 +62,9 @@ public class RootController implements Initializable {
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
 
-    driveModuleContainer.setStyle("-fx-background-color: red;");
-    lightModuleContainer.setStyle("-fx-background-color: white;");
-    sensorModuleContainer.setStyle("-fx-background-color: blue;");
+//    driveModuleContainer.setStyle("-fx-background-color: red;");
+//    lightModuleContainer.setStyle("-fx-background-color: white;");
+//    sensorModuleContainer.setStyle("-fx-background-color: blue;");
 
     // Configure TextArea
     TextAreaAppender.textArea = console;

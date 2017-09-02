@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
@@ -55,8 +57,8 @@ public class LightModuleController implements Initializable, Injectable {
 
     int powerColor = Integer.parseInt(powerColorTextField.getText());
     int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());
-    boolean check1 = (powerColor >= 0 && powerColor <= 255);
-    boolean check2 = (powerIntensity >= 0 && powerIntensity <= 255);
+    boolean check1 = (powerColor >= 0 && powerColor <= 100);
+    boolean check2 = (powerIntensity >= 0 && powerIntensity <= 100);
 
     if (check1 && check2) {
       boolean debris = debrisCheckBox.isSelected();
@@ -65,6 +67,18 @@ public class LightModuleController implements Initializable, Injectable {
       boolean checkRobot = checkRobotCheckBox.isSelected();
       RoombaJSSCSingleton.getRoombaJSSC()
           .leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
+    } else {
+      if (!check1) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText("Power Color");
+        alert.setContentText("Invalid Input! Range [0, 100]");
+        alert.show();
+      } else {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText("Power Intensity");
+        alert.setContentText("Invalid Input! Range [0, 100]");
+        alert.show();
+      }
     }
 
   }
@@ -77,7 +91,7 @@ public class LightModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    lightModule.setStyle("-fx-background-color: #7180AC;");
+    lightModule.setStyle("-fx-background-color: #47494c;");
 
     powerColorTextField.setText("0");
     powerIntensityTextField.setText("0");

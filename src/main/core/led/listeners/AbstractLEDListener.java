@@ -11,7 +11,7 @@ import javafx.beans.value.ObservableValue;
 * */
 public abstract class AbstractLEDListener implements ChangeListener<String> {
 
-  private static final String errorText = "Invalid Input! Range [0, 255]";
+  private static final String errorText = "Invalid Input! Range [0, 100]";
   private String promptText;
   private JFXTextField textField;
 
@@ -32,7 +32,7 @@ public abstract class AbstractLEDListener implements ChangeListener<String> {
   * */
   private boolean hasValidLEDValue(String value) {
     int LEDValue = Integer.parseInt(value);
-    return (LEDValue >= 0 && LEDValue <= 255);
+    return (LEDValue >= 0 && LEDValue <= 100);
   }
 
   /*
