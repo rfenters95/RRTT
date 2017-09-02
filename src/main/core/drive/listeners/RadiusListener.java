@@ -28,19 +28,23 @@ public class RadiusListener extends AbstractDriveListener {
   * @return True if value is an acceptable radius parameter.
   * */
   private boolean hasValidRadius(String value) {
-    int radius = Integer.parseInt(value);
-    return ((radius >= 0 && radius <= 2000) || (radius == 32767 || radius == 32768));
+    if (!value.equals("-")) {
+      int radius = Integer.parseInt(value);
+      return ((radius >= -2000 && radius <= 2000) || (radius == 32767 || radius == 32768));
+    } else {
+      return false;
+    }
   }
 
   @Override
   public void changed(ObservableValue<? extends String> observable, String oldValue,
       String newValue) {
 
-    if (!hasInValidLength(newValue)) {
+    if (hasValidLength(newValue)) {
 
       if (format(newValue)) {
 
-        if (hasValidRadius(newValue)) {
+        if (isValidString(newValue) && hasValidRadius(newValue)) {
           textField.setPromptText(driveMode.getTextField2Prompt());
           textField.getStylesheets().clear();
           textField.getStylesheets().add("main/ui/modules/main.css");
