@@ -1,5 +1,7 @@
 package main.core.drive.modes;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
@@ -20,7 +22,29 @@ public class DriveMode extends AbstractDriveMode {
   public void move(int input1, int input2) {
     if (isEnabled()) {
       RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
+    } else {
+      if (!hasValidVelocity(input1)) {
+        parameterOneErrorAlert();
+      } else {
+        parameterTwoErrorAlert();
+      }
     }
+  }
+
+  @Override
+  public void parameterOneErrorAlert() {
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setHeaderText("Velocity");
+    alert.setContentText("Invalid Input! Range [0, 500]");
+    alert.show();
+  }
+
+  @Override
+  public void parameterTwoErrorAlert() {
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setHeaderText("Radius");
+    alert.setContentText("Invalid Input! Range [0, 2000]");
+    alert.show();
   }
 
   @Override

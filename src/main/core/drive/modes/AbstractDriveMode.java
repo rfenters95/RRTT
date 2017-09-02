@@ -15,8 +15,8 @@ public abstract class AbstractDriveMode {
   * Static members
   *
   ********************************************** */
-  private static final String velocityErrorPrompt = "Invalid Input! Range [0, 500]";
-  private static final String radiusErrorPrompt = "Invalid Input! Range [0, 2000]";
+  private static final String VELOCITY_ERROR_PROMPT = "Invalid Input! Range [0, 500]";
+  private static final String RADIUS_ERROR_PROMPT = "Invalid Input! Range [0, 2000]";
   static JFXTextField textField1;
   static JFXTextField textField2;
   static AbstractDriveListener textField1listener;
@@ -59,11 +59,27 @@ public abstract class AbstractDriveMode {
   }
 
   public static String getVelocityErrorPrompt() {
-    return velocityErrorPrompt;
+    return VELOCITY_ERROR_PROMPT;
   }
 
   public static String getRadiusErrorPrompt() {
-    return radiusErrorPrompt;
+    return RADIUS_ERROR_PROMPT;
+  }
+
+  /*
+  * @param value Extracted TextField input.
+  * @return True if value is an acceptable velocity parameter.
+  * */
+  boolean hasValidVelocity(int value) {
+    return (value >= 0 && value <= 500);
+  }
+
+  /*
+  * @param value Extracted TextField input.
+  * @return True if value is an acceptable radius parameter.
+  * */
+  boolean hasValidRadius(int value) {
+    return ((value >= 0 && value <= 2000) || (value == 32767 || value == 32768));
   }
 
   /* *********************************************
@@ -77,6 +93,10 @@ public abstract class AbstractDriveMode {
   public abstract void swapListener();
 
   public abstract void move(int input1, int input2);
+
+  public abstract void parameterOneErrorAlert();
+
+  public abstract void parameterTwoErrorAlert();
 
   /* *********************************************
   *
