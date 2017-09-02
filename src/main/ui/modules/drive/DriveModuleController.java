@@ -85,7 +85,7 @@ public class DriveModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    driveModule.setStyle("-fx-background-color: black;");
+    driveModule.setStyle("-fx-background-color: #7180AC;");
 
     /* *********************************************
     *

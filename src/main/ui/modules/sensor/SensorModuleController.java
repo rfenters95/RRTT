@@ -181,7 +181,7 @@ public class SensorModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    sensorModule.setStyle("-fx-background-color: black;");
+    sensorModule.setStyle("-fx-background-color: #7180AC;");
 
     /* *********************************************
     *

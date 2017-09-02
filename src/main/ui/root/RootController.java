@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
@@ -36,6 +37,15 @@ public class RootController implements Initializable {
   public TextArea console;
 
   @FXML
+  private StackPane driveModuleContainer;
+
+  @FXML
+  private StackPane lightModuleContainer;
+
+  @FXML
+  private StackPane sensorModuleContainer;
+
+  @FXML
   private DriveModuleController driveModuleController;
 
   @FXML
@@ -50,6 +60,10 @@ public class RootController implements Initializable {
     driveModuleController.inject(this);
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
+
+    driveModuleContainer.setStyle("-fx-background-color: red;");
+    lightModuleContainer.setStyle("-fx-background-color: white;");
+    sensorModuleContainer.setStyle("-fx-background-color: blue;");
 
     TextAreaAppender.textArea = console;
     console.setWrapText(false);
