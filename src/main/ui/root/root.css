@@ -8,6 +8,20 @@ styling for RootController.
 
 ****************************************************/
 
+* {
+  bg-color: #32353a;
+}
+
+/***************************************************
+
+HBox CSS below
+
+****************************************************/
+
+#module-bg {
+  -fx-background-color: bg-color;
+}
+
 /***************************************************
 
 JFXDrawer CSS below
@@ -91,7 +105,7 @@ TextArea CSS below
 }
 
 .text-area .scroll-pane .viewport {
-  -fx-background-color: slategrey;
+  -fx-background-color: bg-color;
 }
 
 .scroll-pane:focused {
@@ -125,7 +139,7 @@ they are considered visited!
 }
 
 .jfx-tab-pane {
-    -fx-background-color: slategrey;
+    -fx-background-color: bg-color;
 }
 
 /* Colors bg of JFXTabPane header  */

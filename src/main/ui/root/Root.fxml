@@ -53,7 +53,7 @@
     </BorderPane>
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.5" orientation="VERTICAL" fx:id="splitPane">
       <items>
-        <HBox style="-fx-background-color: slategrey;" prefHeight="100.0" prefWidth="200.0">
+        <HBox id="module-bg" prefHeight="100.0" prefWidth="200.0">
           <children>
             <StackPane HBox.hgrow="ALWAYS" fx:id="driveModuleContainer">
               <children>
