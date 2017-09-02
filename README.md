@@ -1,5 +1,7 @@
 # Rapid Roomba Test Tool
 
+<img width="912" alt="early build" src="https://user-images.githubusercontent.com/12780053/29997473-2082300e-8fe2-11e7-98d8-14e774235828.png">
+
 ## Table of Contents
 * [About](#about)
 * [Download](#download)
