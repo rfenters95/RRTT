@@ -33,22 +33,6 @@ public abstract class AbstractDriveMode {
 
   /* *********************************************
   *
-  * Instance methods
-  *
-  ********************************************** */
-
-  void setDefaultText() {
-    textField1.setText("0");
-    textField2.setText("0");
-  }
-
-  void setDefaultPromptText() {
-    textField1.setPromptText(getTextField1Prompt());
-    textField2.setPromptText(getTextField2Prompt());
-  }
-
-  /* *********************************************
-  *
   * Static methods
   *
   ********************************************** */
@@ -126,6 +110,16 @@ public abstract class AbstractDriveMode {
 
   public void setEnabled(boolean enabled) {
     isEnabled = enabled;
+  }
+
+  void setDefaultText() {
+    textField1.setText("0");
+    textField2.setText("0");
+  }
+
+  void setDefaultPromptText() {
+    textField1.setPromptText(getTextField1Prompt());
+    textField2.setPromptText(getTextField2Prompt());
   }
 
   /* *********************************************

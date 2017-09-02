@@ -65,22 +65,20 @@ public class DriveMode extends AbstractDriveMode {
   @Override
   public void swapListener() {
 
-    /*
-    * Remove text properties from textField1 set by DriveDirectMode, and add
-    * text properties for DriveMode
-    * */
+    // Remove text properties from textField1 set by DriveDirectMode.
     AbstractDriveMode.textField1.textProperty()
         .removeListener(AbstractDriveMode.textField1listener);
+
+    // Add text properties to textField1 for DriveMode.
     AbstractDriveMode.textField1listener = new VelocityListener(this, Position.LEFT,
         AbstractDriveMode.textField1);
     AbstractDriveMode.textField1.textProperty().addListener(AbstractDriveMode.textField1listener);
 
-    /*
-    * Remove text properties from textField2 set by DriveDirectMode, and add
-    * text properties for DriveMode
-    * */
+    // Remove text properties from textField2 set by DriveDirectMode.
     AbstractDriveMode.textField2.textProperty()
         .removeListener(AbstractDriveMode.textField2listener);
+
+    // Add text properties to textField2 for DriveMode.
     AbstractDriveMode.textField2listener = new RadiusListener(this, Position.RIGHT,
         AbstractDriveMode.textField2);
     AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
@@ -88,6 +86,7 @@ public class DriveMode extends AbstractDriveMode {
     // Set default text for TextFields
     setDefaultText();
     setDefaultPromptText();
+    setEnabled(true);
 
   }
 

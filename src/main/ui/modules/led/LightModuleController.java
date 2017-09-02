@@ -91,7 +91,7 @@ public class LightModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    lightModule.setStyle("-fx-background-color: #47494c;");
+    lightModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
 
     powerColorTextField.setText("0");
     powerIntensityTextField.setText("0");
