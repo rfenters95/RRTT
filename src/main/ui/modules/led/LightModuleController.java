@@ -98,6 +98,7 @@ public class LightModuleController implements Initializable, Injectable {
     powerColorTextField.textProperty().addListener(new PowerColorListener(powerColorTextField));
     powerIntensityTextField.textProperty()
         .addListener(new PowerIntensityListener(powerIntensityTextField));
+
   }
 
 }

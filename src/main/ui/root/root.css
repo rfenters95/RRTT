@@ -58,7 +58,7 @@ TextArea CSS below
 /* Set TextArea bg color  */
 .text-area .content {
     -fx-background-color: black;
-    -fx-background-radius: 0;
+    /*-fx-background-radius: 10;*/
 }
 
 .text-area .scroll-bar {
@@ -88,6 +88,10 @@ TextArea CSS below
 .scroll-pane {
     -fx-background-insets: 0;
     -fx-padding: 0;
+}
+
+.text-area .scroll-pane .viewport {
+  -fx-background-color: slategrey;
 }
 
 .scroll-pane:focused {

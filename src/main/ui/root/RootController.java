@@ -62,9 +62,19 @@ public class RootController implements Initializable {
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
 
-//    driveModuleContainer.setStyle("-fx-background-color: red;");
-//    lightModuleContainer.setStyle("-fx-background-color: white;");
-//    sensorModuleContainer.setStyle("-fx-background-color: blue;");
+    /*
+    * driveModuleContainer.setStyle("-fx-background-color: red;");
+    * lightModuleContainer.setStyle("-fx-background-color: white;");
+    * sensorModuleContainer.setStyle("-fx-background-color: blue;");
+    * */
+
+    // Prevent SplitPane from completing hiding TextArea
+    splitPane.getDividers().get(0).positionProperty().addListener(
+        (observable, oldValue, newValue) -> {
+          if (newValue.doubleValue() >= .95) {
+            splitPane.setDividerPosition(0, oldValue.doubleValue());
+          }
+        });
 
     // Configure TextArea
     TextAreaAppender.textArea = console;
