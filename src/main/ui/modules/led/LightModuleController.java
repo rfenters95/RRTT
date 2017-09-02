@@ -69,12 +69,12 @@ public class LightModuleController implements Initializable, Injectable {
           .leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
     } else {
       if (!check1) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("Power Color");
         alert.setContentText("Invalid Input! Range [0, 100]");
         alert.show();
       } else {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("Power Intensity");
         alert.setContentText("Invalid Input! Range [0, 100]");
         alert.show();

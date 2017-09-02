@@ -10,6 +10,8 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
@@ -146,52 +148,66 @@ public class SensorModuleController implements Initializable, Injectable {
   @FXML
   void readBooleanSensor(ActionEvent event) {
     // Don't run if other thread is running
-    if (!signalToggleEnabled && !isComboBoxNull(booleanSensorComboBox)) {
-      if (booleanToggleEnabled) {
-        booleanSensorComboBox.setDisable(false);
-        booleanToggleService.cancel();
-        JFXButton button = (JFXButton) event.getSource();
-        ImageView imageView = new ImageView("main/res/play.png");
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        button.setGraphic(imageView);
+    if (!signalToggleEnabled) {
+      if (!isComboBoxNull(booleanSensorComboBox)) {
+        if (booleanToggleEnabled) {
+          booleanSensorComboBox.setDisable(false);
+          booleanToggleService.cancel();
+          JFXButton button = (JFXButton) event.getSource();
+          ImageView imageView = new ImageView("main/res/play.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          button.setGraphic(imageView);
+        } else {
+          booleanSensorComboBox.setDisable(true);
+          booleanToggleService.reset();
+          booleanToggleService.start();
+          JFXButton button = (JFXButton) event.getSource();
+          ImageView imageView = new ImageView("main/res/stop.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          button.setGraphic(imageView);
+        }
+        booleanToggleEnabled = !booleanToggleEnabled;
       } else {
-        booleanSensorComboBox.setDisable(true);
-        booleanToggleService.reset();
-        booleanToggleService.start();
-        JFXButton button = (JFXButton) event.getSource();
-        ImageView imageView = new ImageView("main/res/stop.png");
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        button.setGraphic(imageView);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText("Boolean Sensor");
+        alert.setContentText("You must select a sensor first!");
+        alert.show();
       }
-      booleanToggleEnabled = !booleanToggleEnabled;
     }
   }
 
   @FXML
   void readSignalSensor(ActionEvent event) {
     // Don't run if other thread is running
-    if (!booleanToggleEnabled && !isComboBoxNull(signalSensorComboBox)) {
-      if (signalToggleEnabled) {
-        signalSensorComboBox.setDisable(false);
-        signalToggleService.cancel();
-        JFXButton button = (JFXButton) event.getSource();
-        ImageView imageView = new ImageView("main/res/play.png");
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        button.setGraphic(imageView);
+    if (!booleanToggleEnabled) {
+      if (!isComboBoxNull(signalSensorComboBox)) {
+        if (signalToggleEnabled) {
+          signalSensorComboBox.setDisable(false);
+          signalToggleService.cancel();
+          JFXButton button = (JFXButton) event.getSource();
+          ImageView imageView = new ImageView("main/res/play.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          button.setGraphic(imageView);
+        } else {
+          signalSensorComboBox.setDisable(true);
+          signalToggleService.reset();
+          signalToggleService.start();
+          JFXButton button = (JFXButton) event.getSource();
+          ImageView imageView = new ImageView("main/res/stop.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          button.setGraphic(imageView);
+        }
+        signalToggleEnabled = !signalToggleEnabled;
       } else {
-        signalSensorComboBox.setDisable(true);
-        signalToggleService.reset();
-        signalToggleService.start();
-        JFXButton button = (JFXButton) event.getSource();
-        ImageView imageView = new ImageView("main/res/stop.png");
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        button.setGraphic(imageView);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setHeaderText("Signal Sensor");
+        alert.setContentText("You must select a sensor first!");
+        alert.show();
       }
-      signalToggleEnabled = !signalToggleEnabled;
     }
   }
 
