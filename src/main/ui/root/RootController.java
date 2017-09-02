@@ -57,6 +57,7 @@ public class RootController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    // Give nested module controllers access to root controller
     driveModuleController.inject(this);
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
@@ -65,6 +66,7 @@ public class RootController implements Initializable {
     lightModuleContainer.setStyle("-fx-background-color: white;");
     sensorModuleContainer.setStyle("-fx-background-color: blue;");
 
+    // Configure TextArea
     TextAreaAppender.textArea = console;
     console.setWrapText(false);
     console.setEditable(false);

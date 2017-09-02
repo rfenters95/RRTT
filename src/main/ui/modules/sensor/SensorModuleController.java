@@ -1,5 +1,6 @@
 package main.ui.modules.sensor;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,6 +10,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
@@ -148,10 +150,20 @@ public class SensorModuleController implements Initializable, Injectable {
       if (booleanToggleEnabled) {
         booleanSensorComboBox.setDisable(false);
         booleanToggleService.cancel();
+        JFXButton button = (JFXButton) event.getSource();
+        ImageView imageView = new ImageView("main/res/play.png");
+        imageView.setFitWidth(25);
+        imageView.setFitHeight(25);
+        button.setGraphic(imageView);
       } else {
         booleanSensorComboBox.setDisable(true);
         booleanToggleService.reset();
         booleanToggleService.start();
+        JFXButton button = (JFXButton) event.getSource();
+        ImageView imageView = new ImageView("main/res/stop.png");
+        imageView.setFitWidth(25);
+        imageView.setFitHeight(25);
+        button.setGraphic(imageView);
       }
       booleanToggleEnabled = !booleanToggleEnabled;
     }
@@ -164,10 +176,20 @@ public class SensorModuleController implements Initializable, Injectable {
       if (signalToggleEnabled) {
         signalSensorComboBox.setDisable(false);
         signalToggleService.cancel();
+        JFXButton button = (JFXButton) event.getSource();
+        ImageView imageView = new ImageView("main/res/play.png");
+        imageView.setFitWidth(25);
+        imageView.setFitHeight(25);
+        button.setGraphic(imageView);
       } else {
         signalSensorComboBox.setDisable(true);
         signalToggleService.reset();
         signalToggleService.start();
+        JFXButton button = (JFXButton) event.getSource();
+        ImageView imageView = new ImageView("main/res/stop.png");
+        imageView.setFitWidth(25);
+        imageView.setFitHeight(25);
+        button.setGraphic(imageView);
       }
       signalToggleEnabled = !signalToggleEnabled;
     }
