@@ -12,6 +12,11 @@ import java.util.Date;
 public class RoombaJSSCSingleton {
 
   private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
+
+  static {
+    roombaJSSC.connect(roombaJSSC.portList()[0]);
+    roombaJSSC.startup();
+  }
   private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
       StringFormatter.format("%12s", "hh:mm:ss.SSS").getValue());
 
