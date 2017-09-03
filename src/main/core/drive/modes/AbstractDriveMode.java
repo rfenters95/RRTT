@@ -88,6 +88,14 @@ public abstract class AbstractDriveMode {
   *
   ********************************************** */
 
+  public static int getTextField1Input() throws NumberFormatException {
+    return Integer.parseInt(textField1.getText());
+  }
+
+  public static int getTextField2Input() throws NumberFormatException {
+    return Integer.parseInt(textField2.getText());
+  }
+
   public String getTextField1Prompt() {
     return textField1Prompt;
   }

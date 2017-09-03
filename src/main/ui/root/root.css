@@ -10,6 +10,7 @@ styling for RootController.
 
 * {
   bg-color: #32353a;
+  roomba-green: #4eb769;
 }
 
 /***************************************************
@@ -64,7 +65,7 @@ TextArea CSS below
     -fx-background-insets: 0;
     -fx-background-color: black; /* scroll-bar border color */
     -fx-text-fill: white;
-    -fx-highlight-fill: #4eb769;
+    -fx-highlight-fill: roomba-green;
     -fx-highlight-text-fill: white;
     -fx-background-radius: 0;
 }
@@ -80,7 +81,7 @@ TextArea CSS below
 }
 
 .text-area .thumb {
-    -fx-background-color: #4eb769;
+    -fx-background-color: roomba-green;
 }
 
 .text-area .track, .text-area .track-background {
@@ -135,7 +136,7 @@ Note:
 they are considered visited!
  */
 .tab:selected .tab-label {
-    -fx-text-fill: #4eb769 ;
+    -fx-text-fill: roomba-green ;
 }
 
 .jfx-tab-pane {
@@ -154,12 +155,12 @@ they are considered visited!
 
 /* Changes ripple effect color */
 .jfx-tab-pane .tab-header-area .jfx-rippler {
-    -jfx-rippler-fill: #4eb769;
+    -jfx-rippler-fill: roomba-green;
 }
 
 .border-pane
 {
-    -fx-background-color: #4eb769;
+    -fx-background-color: roomba-green;
 }
 
 .jfx-hamburger StackPane
