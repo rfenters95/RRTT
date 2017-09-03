@@ -28,19 +28,23 @@ public class VelocityListener extends AbstractDriveListener {
   * @return True if value is an acceptable velocity parameter.
   * */
   private boolean hasValidVelocity(String value) {
-    int velocity = Integer.parseInt(value);
-    return (velocity >= 0 && velocity <= 500);
+    if (!value.equals("-")) {
+      int velocity = Integer.parseInt(value);
+      return (velocity >= -500 && velocity <= 500);
+    } else {
+      return false;
+    }
   }
 
   @Override
   public void changed(ObservableValue<? extends String> observable, String oldValue,
       String newValue) {
 
-    if (!hasInValidLength(newValue)) {
+    if (hasValidLength(newValue)) {
 
       if (format(newValue)) {
 
-        if (hasValidVelocity(newValue)) {
+        if (isValidString(newValue) && hasValidVelocity(newValue)) {
 
           if (position == AbstractDriveMode.Position.LEFT) {
             textField.setPromptText(driveMode.getTextField1Prompt());

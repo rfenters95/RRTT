@@ -34,7 +34,7 @@ public class DriveDirectMode extends AbstractDriveMode {
   public void parameterOneErrorAlert() {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setHeaderText("Velocity - Left");
-    alert.setContentText("Invalid Input! Range [0, 500]");
+    alert.setContentText(getVelocityErrorPrompt());
     alert.show();
   }
 
@@ -42,7 +42,7 @@ public class DriveDirectMode extends AbstractDriveMode {
   public void parameterTwoErrorAlert() {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setHeaderText("Velocity - Right");
-    alert.setContentText("Invalid Input! Range [0, 500]");
+    alert.setContentText(getVelocityErrorPrompt());
     alert.show();
   }
 

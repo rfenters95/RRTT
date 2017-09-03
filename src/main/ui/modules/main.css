@@ -10,6 +10,11 @@ RootController.
 
 ****************************************************/
 
+* {
+  roomba-green: #4eb769;
+  roomba-yellow: #fffd8c;
+}
+
 /***************************************************
 
 ComboBox CSS below
@@ -18,18 +23,18 @@ ComboBox CSS below
 
 .jfx-combo-box
 {
-    -jfx-focus-color: #4eb769;
-    -jfx-unfocus-color: #fffd8c;
+    -jfx-focus-color: roomba-green;
+    -jfx-unfocus-color: roomba-yellow;
 }
 
 .combo-box .list-cell
 {
-    -fx-text-fill: #fffd8c; /*Yellow*/
+    -fx-text-fill: roomba-yellow;
 }
 
 .combo-box .arrow
 {
-    -fx-background-color: #4eb769; /*Green*/
+    -fx-background-color: roomba-green;
 }
 
 .combo-box-popup .list-view
@@ -42,13 +47,13 @@ ComboBox CSS below
 .combo-box-popup .list-view .list-cell
 {
     -fx-background-color: transparent;
-    -fx-text-fill: #fffd8c; /*Yellow*/
+    -fx-text-fill: roomba-yellow;
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover
 {
-    -fx-background-color: #4eb769; /*Green*/
-    -fx-text-fill: #fffd8c; /*Yellow*/
+    -fx-background-color: roomba-green;
+    -fx-text-fill: roomba-yellow;
 }
 
 .combo-box-popup .list-view .scroll-bar
@@ -63,7 +68,7 @@ ComboBox CSS below
 
 .combo-box-popup .list-view .scroll-bar .thumb
 {
-    -fx-color: #4eb769;
+    -fx-color: roomba-green;
     -fx-background-radius: 10;
 }
 
@@ -80,19 +85,19 @@ TextField CSS below
 
 .jfx-text-field
 {
-    -jfx-focus-color: #4eb769;
+    -jfx-focus-color: roomba-green;
 }
 
 .text-field
 {
-    -fx-prompt-text-fill: #fffd8c; /*Yellow - floating label*/
-    -fx-text-fill: #fffd8c; /*Yellow - input color*/
-    -fx-highlight-fill: #4eb769; /*Green*/
+    -fx-prompt-text-fill: roomba-yellow;
+    -fx-text-fill: roomba-yellow;
+    -fx-highlight-fill: roomba-green;
 }
 
 .text-field .input-line
 {
-    -fx-background-color: #fffd8c; /*Yellow - bottom bar*/
+    -fx-background-color: roomba-yellow;
 }
 
 /***************************************************
@@ -103,7 +108,7 @@ Button CSS below
 
 .button
 {
-    -fx-background-color: #4eb769; /*Green*/
+    -fx-background-color: roomba-green;
     -fx-text-fill: white;
 }
 
@@ -115,6 +120,6 @@ CheckBox CSS below
 
 .jfx-check-box
 {
-    -jfx-unchecked-color: #fffd8c; /*Yellow*/
-    -fx-text-fill: #fffd8c; /*Yellow*/
+    -jfx-unchecked-color: roomba-yellow;
+    -fx-text-fill: roomba-yellow;
 }

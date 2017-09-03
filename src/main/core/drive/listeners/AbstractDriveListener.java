@@ -41,8 +41,16 @@ public abstract class AbstractDriveListener implements ChangeListener<String> {
   * @param value Extracted TextField input.
   * @return True if value's length is 5 or less.
   * */
-  boolean hasInValidLength(String value) {
-    return !value.matches("\\d{0,5}?");
+  boolean hasValidLength(String value) {
+    if (value.startsWith("-")) {
+      return value.length() <= 6;
+    } else {
+      return value.length() <= 5;
+    }
+  }
+
+  boolean isValidString(String value) {
+    return value.equals("-") || value.matches("^-\\d+") || value.matches("^\\d+");
   }
 
   /*
@@ -50,7 +58,7 @@ public abstract class AbstractDriveListener implements ChangeListener<String> {
   * @return value without leading zeros
   * */
   private String removeLeadingZeros(String value) {
-    return value.replaceFirst("^0+", "");
+    return value.replaceFirst("[0]+", "");
   }
 
   /*
@@ -58,7 +66,7 @@ public abstract class AbstractDriveListener implements ChangeListener<String> {
   * @return True if value has leading zeros
   * */
   private boolean hasLeadingZeros(String value) {
-    return value.startsWith("0") && value.length() > 1;
+    return (value.startsWith("0") && value.length() > 1) || value.startsWith("-0");
   }
 
   /*
@@ -68,13 +76,21 @@ public abstract class AbstractDriveListener implements ChangeListener<String> {
   * @param value Extracted TextField input.
   * @return True if value should be passed to value validation
   * */
-  boolean format(String value) {
-    if (value.isEmpty()) {
+  boolean format(String newValue) {
+    if (newValue.isEmpty()) {
       textField.setText("0");
-      return false;
+      return false; // Prevents ghost change
     }
-    if (hasLeadingZeros(value)) {
-      textField.setText(removeLeadingZeros(value));
+    if (hasLeadingZeros(newValue)) {
+      textField.setText(removeLeadingZeros(newValue));
+      return false; // Prevents ghost change
+    }
+    if (!isValidString(newValue)) {
+      newValue = newValue.replaceAll("[^0-9-]", "");
+      if (newValue.matches("^-{2,}\\d+") || newValue.matches("^-{2,}")) {
+        newValue = newValue.replaceAll("-{2,}", "-");
+      }
+      textField.setText(newValue);
       return false;
     }
     return true;

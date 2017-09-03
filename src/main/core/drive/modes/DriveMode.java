@@ -35,7 +35,7 @@ public class DriveMode extends AbstractDriveMode {
   public void parameterOneErrorAlert() {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setHeaderText("Velocity");
-    alert.setContentText("Invalid Input! Range [0, 500]");
+    alert.setContentText(getVelocityErrorPrompt());
     alert.show();
   }
 
@@ -43,7 +43,7 @@ public class DriveMode extends AbstractDriveMode {
   public void parameterTwoErrorAlert() {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setHeaderText("Radius");
-    alert.setContentText("Invalid Input! Range [0, 2000]");
+    alert.setContentText(getRadiusErrorPrompt());
     alert.show();
   }
 

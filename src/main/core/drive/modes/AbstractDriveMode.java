@@ -15,8 +15,8 @@ public abstract class AbstractDriveMode {
   * Static members
   *
   ********************************************** */
-  private static final String VELOCITY_ERROR_PROMPT = "Invalid Input! Range [0, 500]";
-  private static final String RADIUS_ERROR_PROMPT = "Invalid Input! Range [0, 2000]";
+  private static final String VELOCITY_ERROR_PROMPT = "Invalid Input! Range [-500, 500]";
+  private static final String RADIUS_ERROR_PROMPT = "Invalid Input! Range [-2000, 2000]";
   static JFXTextField textField1;
   static JFXTextField textField2;
   static AbstractDriveListener textField1listener;
@@ -55,7 +55,7 @@ public abstract class AbstractDriveMode {
   * @return True if value is an acceptable velocity parameter.
   * */
   boolean hasValidVelocity(int value) {
-    return (value >= 0 && value <= 500);
+    return (value >= -500 && value <= 500);
   }
 
   /*
@@ -63,7 +63,7 @@ public abstract class AbstractDriveMode {
   * @return True if value is an acceptable radius parameter.
   * */
   boolean hasValidRadius(int value) {
-    return ((value >= 0 && value <= 2000) || (value == 32767 || value == 32768));
+    return ((value >= -2000 && value <= 2000) || (value == 32767 || value == 32768));
   }
 
   /* *********************************************
@@ -87,6 +87,14 @@ public abstract class AbstractDriveMode {
   * Getters & Setters
   *
   ********************************************** */
+
+  public static int getTextField1Input() throws NumberFormatException {
+    return Integer.parseInt(textField1.getText());
+  }
+
+  public static int getTextField2Input() throws NumberFormatException {
+    return Integer.parseInt(textField2.getText());
+  }
 
   public String getTextField1Prompt() {
     return textField1Prompt;

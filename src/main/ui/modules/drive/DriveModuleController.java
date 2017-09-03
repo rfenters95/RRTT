@@ -50,16 +50,6 @@ public class DriveModuleController implements Initializable, Injectable {
 
   /* *********************************************
   *
-  * Instance methods
-  *
-  ********************************************** */
-
-  private int getParsedInteger(JFXTextField textField) {
-    return Integer.parseInt(textField.getText());
-  }
-
-  /* *********************************************
-  *
   * FXML methods
   *
   ********************************************** */
@@ -68,7 +58,22 @@ public class DriveModuleController implements Initializable, Injectable {
 
   @FXML
   void start(ActionEvent event) {
-    mode.move(getParsedInteger(textField1), getParsedInteger(textField2));
+
+    Integer input1 = null;
+    Integer input2 = null;
+
+    try {
+      input1 = AbstractDriveMode.getTextField1Input();
+      input2 = AbstractDriveMode.getTextField2Input();
+      mode.move(input1, input2);
+    } catch (NumberFormatException e) {
+      if (input1 == null) {
+        mode.parameterOneErrorAlert();
+      } else if (input2 == null) {
+        mode.parameterTwoErrorAlert();
+      }
+    }
+
   }
 
   /* *********************************************
