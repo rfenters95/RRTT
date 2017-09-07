@@ -54,6 +54,9 @@ public class LightModuleController implements Initializable, Injectable {
   @FXML
   private JFXTextField powerIntensityTextField;
 
+  @FXML
+  private JFXButton toggle;
+
   private boolean hasStarted = false;
 
   @FXML
@@ -114,6 +117,15 @@ public class LightModuleController implements Initializable, Injectable {
   public void initialize(URL location, ResourceBundle resources) {
 
     lightModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
+    lightModule.setOnKeyPressed(event -> {
+      switch (event.getCode()) {
+        case SPACE:
+          toggle.fire();
+          break;
+        default:
+          break;
+      }
+    });
 
     powerColorTextField.setText("0");
     powerIntensityTextField.setText("0");

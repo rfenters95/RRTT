@@ -41,6 +41,9 @@ public class DriveModuleController implements Initializable, Injectable {
   @FXML
   private JFXTextField textField2;
 
+  @FXML
+  private JFXButton toggle;
+
   /* *********************************************
   *
   * Instance fields
@@ -59,6 +62,7 @@ public class DriveModuleController implements Initializable, Injectable {
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
   boolean hasStarted = false;
+
   @FXML
   void start(ActionEvent event) {
 
@@ -110,6 +114,15 @@ public class DriveModuleController implements Initializable, Injectable {
   public void initialize(URL location, ResourceBundle resources) {
 
     driveModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
+    driveModule.setOnKeyPressed(event -> {
+      switch (event.getCode()) {
+        case SPACE:
+          toggle.fire();
+          break;
+        default:
+          break;
+      }
+    });
 
     /* *********************************************
     *

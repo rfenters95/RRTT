@@ -65,7 +65,7 @@
       <children>
         <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" prefHeight="30.0"
-          prefWidth="30.0" text=" ">
+          prefWidth="30.0" text=" " fx:id="toggle">
           <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
               <image>
