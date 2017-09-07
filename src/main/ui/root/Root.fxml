@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
@@ -35,20 +36,21 @@
         </HBox>
       </left>
       <right>
-        <StackPane BorderPane.alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-          minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0">
-          <children>
+        <JFXButton BorderPane.alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
+          maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#togglePower"
+          prefHeight="30.0" prefWidth="30.0">
+          <graphic>
             <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
               pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@../../res/power.png"/>
               </image>
             </ImageView>
-          </children>
+          </graphic>
           <BorderPane.margin>
             <Insets right="10.0"/>
           </BorderPane.margin>
-        </StackPane>
+        </JFXButton>
       </right>
     </BorderPane>
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.5" orientation="VERTICAL" fx:id="splitPane">

@@ -14,8 +14,13 @@ public class RoombaJSSCSingleton {
   private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
 
   static {
-    roombaJSSC.connect(roombaJSSC.portList()[0]);
-    roombaJSSC.startup();
+    if (roombaJSSC.portList().length != 0) {
+      String portName = roombaJSSC.portList()[0];
+      roombaJSSC.connect(portName);
+      roombaJSSC.startup();
+    } else {
+      System.out.println("No port found!");
+    }
   }
   private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
       StringFormatter.format("%12s", "hh:mm:ss.SSS").getValue());

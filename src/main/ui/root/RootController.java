@@ -6,6 +6,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -53,6 +54,12 @@ public class RootController implements Initializable {
 
   @FXML
   private SensorModuleController sensorModuleController;
+
+  @FXML
+  private void togglePower(ActionEvent event) {
+    // shutdown all functions in order
+    // disconnect roomba
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
