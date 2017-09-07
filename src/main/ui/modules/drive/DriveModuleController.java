@@ -1,5 +1,6 @@
 package main.ui.modules.drive;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -7,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
@@ -56,23 +58,40 @@ public class DriveModuleController implements Initializable, Injectable {
 
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
+  boolean hasStarted = false;
   @FXML
   void start(ActionEvent event) {
 
-    Integer input1 = null;
-    Integer input2 = null;
+    if (!hasStarted) {
+      Integer input1 = null;
+      Integer input2 = null;
 
-    try {
-      input1 = AbstractDriveMode.getTextField1Input();
-      input2 = AbstractDriveMode.getTextField2Input();
-      mode.move(input1, input2);
-    } catch (NumberFormatException e) {
-      if (input1 == null) {
-        mode.parameterOneErrorAlert();
-      } else if (input2 == null) {
-        mode.parameterTwoErrorAlert();
+      try {
+        input1 = AbstractDriveMode.getTextField1Input();
+        input2 = AbstractDriveMode.getTextField2Input();
+        mode.move(input1, input2);
+        JFXButton button = (JFXButton) event.getSource();
+        ImageView imageView = new ImageView("main/res/stop.png");
+        imageView.setFitWidth(25);
+        imageView.setFitHeight(25);
+        button.setGraphic(imageView);
+      } catch (NumberFormatException e) {
+        if (input1 == null) {
+          mode.parameterOneErrorAlert();
+        } else if (input2 == null) {
+          mode.parameterTwoErrorAlert();
+        }
       }
+    } else {
+      mode.move(0, 0);
+      JFXButton button = (JFXButton) event.getSource();
+      ImageView imageView = new ImageView("main/res/play.png");
+      imageView.setFitWidth(25);
+      imageView.setFitHeight(25);
+      button.setGraphic(imageView);
     }
+
+    hasStarted = !hasStarted;
 
   }
 
