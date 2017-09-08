@@ -4,7 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,6 +21,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
@@ -107,6 +113,37 @@ public class RootController implements Initializable {
     TextAreaAppender.textArea = console;
     console.setWrapText(false);
     console.setEditable(false);
+
+    ContextMenu consoleContextMenu = new ContextMenu();
+    MenuItem quickSaveLogMenuItem = new MenuItem("Quick Save Log");
+    quickSaveLogMenuItem.setOnAction(e -> {
+      try {
+        String desktopPath = System.getProperty("user.home") + "/Desktop/"
+            + RoombaJSSCSingleton.logDate() + ".txt"; //TODO date must be file name safe
+        System.out.println(desktopPath);
+        File logFile = new File(desktopPath);
+        PrintWriter printWriter = new PrintWriter(logFile);
+        printWriter.print(console.getText());
+        printWriter.close();
+      } catch (FileNotFoundException x) {
+        // alert
+        x.getMessage();
+      }
+    });
+    MenuItem saveLogMenuItem = new MenuItem("Save Log");
+    saveLogMenuItem.setOnAction(e -> {
+      FileChooser fileChooser = new FileChooser();
+      fileChooser.setTitle("Open Resource File");
+      fileChooser.getExtensionFilters().add(new ExtensionFilter("Text Files", "*.txt"));
+      Stage stage = (Stage) (root.getScene().getWindow());
+      File selectedFile = fileChooser.showOpenDialog(stage);
+      if (selectedFile != null) {
+        // save file
+      }
+    });
+    consoleContextMenu.getItems().add(quickSaveLogMenuItem);
+    consoleContextMenu.getItems().add(saveLogMenuItem);
+    console.setContextMenu(consoleContextMenu);
 
     try {
       HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));
