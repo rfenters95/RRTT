@@ -136,7 +136,7 @@ public class LightModuleController implements Initializable, Injectable {
       }
     });
 
-    ContextMenu powerColorContextMenu = new ContextMenu();
+    final ContextMenu powerColorContextMenu = new ContextMenu();
     MenuItem powerColorMenuItemGreen = new MenuItem("Green");
     powerColorMenuItemGreen.setOnAction(e -> powerColorTextField.setText("0"));
     MenuItem powerColorMenuItemOrange = new MenuItem("Orange");
@@ -151,7 +151,7 @@ public class LightModuleController implements Initializable, Injectable {
     powerColorContextMenu.getItems().add(powerColorMenuItemRed);
     powerColorTextField.setContextMenu(powerColorContextMenu);
 
-    ContextMenu powerIntensityContextMenu = new ContextMenu();
+    final ContextMenu powerIntensityContextMenu = new ContextMenu();
     MenuItem powerIntensityMenuItemOff = new MenuItem("Off");
     powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTextField.setText("0"));
     MenuItem powerIntensityMenuItemHalf = new MenuItem("Half");
