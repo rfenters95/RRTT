@@ -10,7 +10,9 @@ public class BumpCenter extends AbstractBooleanSensor {
   @Override
   public boolean read() {
     RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    return RoombaJSSCSingleton.getRoombaJSSC().bumpBoth();
+    boolean left = RoombaJSSCSingleton.getRoombaJSSC().bumpLeft();
+    boolean right = RoombaJSSCSingleton.getRoombaJSSC().bumpRight();
+    return left && right;
   }
 
   @Override

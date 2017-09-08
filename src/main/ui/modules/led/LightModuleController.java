@@ -62,6 +62,8 @@ public class LightModuleController implements Initializable, Injectable {
   @FXML
   void toggle(ActionEvent event) {
 
+    // Don't allow play to change if error is obtained!
+
     if (!hasStarted) {
       int powerColor = Integer.parseInt(powerColorTextField.getText());
       int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());

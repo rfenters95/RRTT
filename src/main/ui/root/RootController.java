@@ -1,5 +1,6 @@
 package main.ui.root;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -36,6 +37,9 @@ public class RootController implements Initializable {
 
   @FXML
   public TextArea console;
+
+  @FXML
+  public JFXButton powerButton;
 
   @FXML
   private StackPane driveModuleContainer;

@@ -38,7 +38,7 @@
       <right>
         <JFXButton BorderPane.alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
           maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#togglePower"
-          prefHeight="30.0" prefWidth="30.0">
+          prefHeight="30.0" prefWidth="30.0" fx:id="powerButton">
           <graphic>
             <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
               pickOnBounds="true" preserveRatio="true">
