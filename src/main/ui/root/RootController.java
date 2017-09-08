@@ -3,6 +3,7 @@ package main.ui.root;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,6 +44,9 @@ public class RootController implements Initializable {
 
   @FXML
   public JFXDrawer drawer;
+
+  @FXML
+  public JFXTabPane tabPane;
 
   @FXML
   public TextArea console;
@@ -94,20 +98,13 @@ public class RootController implements Initializable {
     // Context menu for splitPane
     double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
     ContextMenu splitPaneContextMenu = new ContextMenu();
-    MenuItem resetSplitPaneDivider = new MenuItem("Reset Divider Position");
-    resetSplitPaneDivider.setOnAction(event -> {
-      splitPane.setDividerPosition(0, initialDividerPosition);
-    });
-    splitPaneContextMenu.getItems().add(resetSplitPaneDivider);
+    MenuItem showSplitPaneDivider = new MenuItem("Show/Reset Console");
+    showSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));
+    MenuItem hideSplitPaneDivider = new MenuItem("Hide Console");
+    hideSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, 1));
+    splitPaneContextMenu.getItems().add(showSplitPaneDivider);
+    splitPaneContextMenu.getItems().add(hideSplitPaneDivider);
     splitPane.setContextMenu(splitPaneContextMenu);
-
-    // Prevent SplitPane from completing hiding TextArea
-    splitPane.getDividers().get(0).positionProperty().addListener(
-        (observable, oldValue, newValue) -> {
-          if (newValue.doubleValue() >= .95) {
-            splitPane.setDividerPosition(0, oldValue.doubleValue());
-          }
-        });
 
     // Configure TextArea
     TextAreaAppender.textArea = console;
