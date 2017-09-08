@@ -16,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
 import main.ui.modules.led.LightModuleController;
@@ -62,7 +63,10 @@ public class RootController implements Initializable {
   @FXML
   private void togglePower(ActionEvent event) {
     // shutdown all functions in order
+    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(0, 0);
+    RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
     // disconnect roomba
+    RoombaJSSCSingleton.getRoombaJSSC().powerOff();
   }
 
   @Override
