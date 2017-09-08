@@ -252,7 +252,7 @@ public class SensorModuleController implements Initializable, Injectable {
     *
     ********************************************** */
 
-    booleanSensorComboBox.setVisibleRowCount(3);
+    booleanSensorComboBox.setVisibleRowCount(5);
     booleanSensorComboBox.getItems().add(new BumpCenter());
     booleanSensorComboBox.getItems().add(new BumpLeft());
     booleanSensorComboBox.getItems().add(new BumpRight());
@@ -274,7 +274,7 @@ public class SensorModuleController implements Initializable, Injectable {
     *
     ********************************************** */
 
-    signalSensorComboBox.setVisibleRowCount(3);
+    signalSensorComboBox.setVisibleRowCount(5);
     signalSensorComboBox.getItems().add(new Wall());
     signalSensorComboBox.getItems().add(new CliffLeftSignal());
     signalSensorComboBox.getItems().add(new CliffFrontLeftSignal());

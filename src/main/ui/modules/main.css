@@ -23,6 +23,8 @@ ComboBox CSS below
 
 ****************************************************/
 
+/* Closed ComboBox Styles */
+
 .jfx-combo-box
 {
     -jfx-focus-color: roomba-green;
@@ -39,28 +41,53 @@ ComboBox CSS below
     -fx-background-color: roomba-green;
 }
 
+/* Opened ComboBox Styles */
+
 .combo-box-popup .list-view
 {
-    -fx-background-color: black; /* was transparent */
+    -fx-background-color: bg-color;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
 
-.combo-box-popup .list-view .list-cell
+.combo-box-popup .list-view .list-cell:even
 {
-    -fx-background-color: transparent;
+    -fx-background-color: bg-color;
+    -fx-text-fill: roomba-yellow;
+}
+
+.combo-box-popup .list-view .list-cell:odd
+{
+    -fx-background-color: module-color;
     -fx-text-fill: roomba-yellow;
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover
 {
     -fx-background-color: roomba-green;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected
+{
+    -fx-background-color: black;
     -fx-text-fill: roomba-yellow;
 }
 
 .combo-box-popup .list-view .scroll-bar
 {
-    -fx-background-color: transparent;
+    -fx-background-color: bg-color;
+}
+
+.combo-box-popup .scroll-pane .viewport {
+  -fx-background-color: bg-color;
+}
+
+.combo-box-popup .scroll-pane .corner {
+  -fx-background-insets: 0;
+  -fx-background-color: black;
 }
 
 .combo-box-popup .list-view .scroll-bar .track-background
