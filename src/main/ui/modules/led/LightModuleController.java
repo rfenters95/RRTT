@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
@@ -80,12 +81,16 @@ public class LightModuleController implements Initializable, Injectable {
       } else {
         if (!check1) {
           Alert alert = new Alert(AlertType.ERROR);
-          alert.setHeaderText("Power Color");
+          DialogPane dialogPane = alert.getDialogPane();
+          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
+          alert.setHeaderText("Power Color (%)");
           alert.setContentText("Invalid Input! Range [0, 100]");
           alert.show();
         } else {
           Alert alert = new Alert(AlertType.ERROR);
-          alert.setHeaderText("Power Intensity");
+          DialogPane dialogPane = alert.getDialogPane();
+          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
+          alert.setHeaderText("Power Intensity (%)");
           alert.setContentText("Invalid Input! Range [0, 100]");
           alert.show();
         }

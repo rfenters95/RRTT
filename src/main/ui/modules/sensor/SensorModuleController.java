@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
@@ -171,6 +172,8 @@ public class SensorModuleController implements Initializable, Injectable {
         booleanToggleEnabled = !booleanToggleEnabled;
       } else {
         Alert alert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
         alert.setHeaderText("Boolean Sensor");
         alert.setContentText("You must select a sensor first!");
         alert.show();
@@ -204,6 +207,8 @@ public class SensorModuleController implements Initializable, Injectable {
         signalToggleEnabled = !signalToggleEnabled;
       } else {
         Alert alert = new Alert(AlertType.INFORMATION);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
         alert.setHeaderText("Signal Sensor");
         alert.setContentText("You must select a sensor first!");
         alert.show();

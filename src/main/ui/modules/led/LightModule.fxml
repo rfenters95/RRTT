@@ -48,11 +48,12 @@
         <VBox alignment="CENTER_LEFT" spacing="25.0">
           <children>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
-              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0" promptText="Power Color"
+              minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0"
+              promptText="Power Color (%)"
               fx:id="powerColorTextField"/>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" prefWidth="160.0"
-              promptText="Power Intensity" fx:id="powerIntensityTextField"/>
+              promptText="Power Intensity (%)" fx:id="powerIntensityTextField"/>
           </children>
         </VBox>
       </children>

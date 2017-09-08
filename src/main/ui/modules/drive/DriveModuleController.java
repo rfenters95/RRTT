@@ -61,7 +61,7 @@ public class DriveModuleController implements Initializable, Injectable {
 
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
-  boolean hasStarted = false;
+  private boolean hasStarted = false;
 
   @FXML
   void start(ActionEvent event) {
