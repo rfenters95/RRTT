@@ -2,6 +2,8 @@ package main.core.drive.modes;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
@@ -60,6 +62,34 @@ public class DriveMode extends AbstractDriveMode {
     setDefaultText();
     setDefaultPromptText();
 
+    ContextMenu contextMenuTextField1 = new ContextMenu();
+
+    MenuItem maxVelocityTextField1 = new MenuItem("Max Velocity");
+    maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
+
+    MenuItem minVelocityTextField1 = new MenuItem("Min Velocity");
+    minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
+
+    contextMenuTextField1.getItems().add(maxVelocityTextField1);
+    contextMenuTextField1.getItems().add(minVelocityTextField1);
+    textField1.setContextMenu(contextMenuTextField1);
+
+    ContextMenu contextMenuTextField2 = new ContextMenu();
+
+    MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
+    specialStraightTextField2.setOnAction(e -> textField2.setText("32768"));
+
+    MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
+    specialClockwiseTextField2.setOnAction(e -> textField2.setText("-1"));
+
+    MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
+    specialCounterClockwiseTextField2.setOnAction(e -> textField2.setText("1"));
+
+    contextMenuTextField2.getItems().add(specialStraightTextField2);
+    contextMenuTextField2.getItems().add(specialClockwiseTextField2);
+    contextMenuTextField2.getItems().add(specialCounterClockwiseTextField2);
+    textField2.setContextMenu(contextMenuTextField2);
+
   }
 
   @Override
@@ -87,6 +117,34 @@ public class DriveMode extends AbstractDriveMode {
     setDefaultText();
     setDefaultPromptText();
     setEnabled(true);
+
+    ContextMenu contextMenuTextField1 = new ContextMenu();
+
+    MenuItem maxVelocityTextField1 = new MenuItem("Max Velocity");
+    maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
+
+    MenuItem minVelocityTextField1 = new MenuItem("Min Velocity");
+    minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
+
+    contextMenuTextField1.getItems().add(maxVelocityTextField1);
+    contextMenuTextField1.getItems().add(minVelocityTextField1);
+    textField1.setContextMenu(contextMenuTextField1);
+
+    ContextMenu contextMenuTextField2 = new ContextMenu();
+
+    MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
+    specialStraightTextField2.setOnAction(e -> textField2.setText("32768"));
+
+    MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
+    specialClockwiseTextField2.setOnAction(e -> textField2.setText("-1"));
+
+    MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
+    specialCounterClockwiseTextField2.setOnAction(e -> textField2.setText("1"));
+
+    contextMenuTextField2.getItems().add(specialStraightTextField2);
+    contextMenuTextField2.getItems().add(specialClockwiseTextField2);
+    contextMenuTextField2.getItems().add(specialCounterClockwiseTextField2);
+    textField2.setContextMenu(contextMenuTextField2);
 
   }
 
