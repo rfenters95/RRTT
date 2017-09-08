@@ -12,4 +12,9 @@ public abstract class AbstractBooleanSensor {
   * */
   public abstract boolean read();
 
+  @Override
+  public String toString() {
+    return getClass().getSimpleName();
+  }
+
 }

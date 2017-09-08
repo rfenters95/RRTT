@@ -21,7 +21,27 @@ import main.core.sensor.bool.AbstractBooleanSensor;
 import main.core.sensor.bool.BumpCenter;
 import main.core.sensor.bool.BumpLeft;
 import main.core.sensor.bool.BumpRight;
+import main.core.sensor.bool.CliffFrontLeft;
+import main.core.sensor.bool.CliffFrontRight;
+import main.core.sensor.bool.CliffLeft;
+import main.core.sensor.bool.CliffRight;
+import main.core.sensor.bool.LightBumperCenterLeft;
+import main.core.sensor.bool.LightBumperCenterRight;
+import main.core.sensor.bool.LightBumperFrontLeft;
+import main.core.sensor.bool.LightBumperFrontRight;
+import main.core.sensor.bool.LightBumperLeft;
+import main.core.sensor.bool.LightBumperRight;
 import main.core.sensor.signal.AbstractSignalSensor;
+import main.core.sensor.signal.CliffFrontLeftSignal;
+import main.core.sensor.signal.CliffFrontRightSignal;
+import main.core.sensor.signal.CliffLeftSignal;
+import main.core.sensor.signal.CliffRightSignal;
+import main.core.sensor.signal.LightBumpCenterLeftSignal;
+import main.core.sensor.signal.LightBumpCenterRightSignal;
+import main.core.sensor.signal.LightBumpFrontLeftSignal;
+import main.core.sensor.signal.LightBumpFrontRightSignal;
+import main.core.sensor.signal.LightBumpLeftSignal;
+import main.core.sensor.signal.LightBumpRightSignal;
 import main.core.sensor.signal.Wall;
 import main.ui.root.RootController;
 
@@ -236,6 +256,17 @@ public class SensorModuleController implements Initializable, Injectable {
     booleanSensorComboBox.getItems().add(new BumpCenter());
     booleanSensorComboBox.getItems().add(new BumpLeft());
     booleanSensorComboBox.getItems().add(new BumpRight());
+    booleanSensorComboBox.getItems().add(new CliffLeft());
+    booleanSensorComboBox.getItems().add(new CliffFrontLeft());
+    booleanSensorComboBox.getItems().add(new CliffFrontRight());
+    booleanSensorComboBox.getItems().add(new CliffRight());
+    booleanSensorComboBox.getItems().add(new LightBumperLeft());
+    booleanSensorComboBox.getItems().add(new LightBumperFrontLeft());
+    booleanSensorComboBox.getItems().add(new LightBumperCenterLeft());
+    booleanSensorComboBox.getItems().add(new LightBumperCenterRight());
+    booleanSensorComboBox.getItems().add(new LightBumperFrontRight());
+    booleanSensorComboBox.getItems().add(new LightBumperRight());
+
 
     /* *********************************************
     *
@@ -245,6 +276,16 @@ public class SensorModuleController implements Initializable, Injectable {
 
     signalSensorComboBox.setVisibleRowCount(3);
     signalSensorComboBox.getItems().add(new Wall());
+    signalSensorComboBox.getItems().add(new CliffLeftSignal());
+    signalSensorComboBox.getItems().add(new CliffFrontLeftSignal());
+    signalSensorComboBox.getItems().add(new CliffFrontRightSignal());
+    signalSensorComboBox.getItems().add(new CliffRightSignal());
+    signalSensorComboBox.getItems().add(new LightBumpLeftSignal());
+    signalSensorComboBox.getItems().add(new LightBumpFrontLeftSignal());
+    signalSensorComboBox.getItems().add(new LightBumpCenterLeftSignal());
+    signalSensorComboBox.getItems().add(new LightBumpCenterRightSignal());
+    signalSensorComboBox.getItems().add(new LightBumpFrontRightSignal());
+    signalSensorComboBox.getItems().add(new LightBumpRightSignal());
 
   }
 

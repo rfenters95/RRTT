@@ -12,4 +12,9 @@ public abstract class AbstractSignalSensor {
   * */
   public abstract int read();
 
+  @Override
+  public String toString() {
+    return getClass().getSimpleName();
+  }
+
 }

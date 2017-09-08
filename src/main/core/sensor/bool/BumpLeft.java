@@ -13,9 +13,4 @@ public class BumpLeft extends AbstractBooleanSensor {
     return RoombaJSSCSingleton.getRoombaJSSC().bumpLeft();
   }
 
-  @Override
-  public String toString() {
-    return "Bump Left";
-  }
-
 }

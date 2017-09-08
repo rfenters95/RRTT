@@ -15,9 +15,4 @@ public class BumpCenter extends AbstractBooleanSensor {
     return left && right;
   }
 
-  @Override
-  public String toString() {
-    return "Bump Center";
-  }
-
 }
