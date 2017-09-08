@@ -88,7 +88,7 @@ public class RootController implements Initializable {
     // Context menu for splitPane
     double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
     ContextMenu splitPaneContextMenu = new ContextMenu();
-    MenuItem resetSplitPaneDivider = new MenuItem("Reset divider position");
+    MenuItem resetSplitPaneDivider = new MenuItem("Reset Divider Position");
     resetSplitPaneDivider.setOnAction(event -> {
       splitPane.setDividerPosition(0, initialDividerPosition);
     });

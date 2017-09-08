@@ -16,7 +16,7 @@ public class PowerIntensityListener extends AbstractLEDListener {
   * @param textField reference of TextField of which listener is attached.
   * */
   public PowerIntensityListener(JFXTextField textField) {
-    super("Power Intensity", textField);
+    super("Power Intensity (%)", textField);
   }
 
 }

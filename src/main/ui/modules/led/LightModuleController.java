@@ -10,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
@@ -133,6 +135,33 @@ public class LightModuleController implements Initializable, Injectable {
           break;
       }
     });
+
+    ContextMenu powerColorContextMenu = new ContextMenu();
+    MenuItem powerColorMenuItemGreen = new MenuItem("Green");
+    powerColorMenuItemGreen.setOnAction(e -> powerColorTextField.setText("0"));
+    MenuItem powerColorMenuItemOrange = new MenuItem("Orange");
+    powerColorMenuItemOrange.setOnAction(e -> powerColorTextField.setText("50"));
+    MenuItem powerColorMenuItemYellow = new MenuItem("Yellow");
+    powerColorMenuItemYellow.setOnAction(e -> powerColorTextField.setText("75"));
+    MenuItem powerColorMenuItemRed = new MenuItem("Red");
+    powerColorMenuItemRed.setOnAction(e -> powerColorTextField.setText("100"));
+    powerColorContextMenu.getItems().add(powerColorMenuItemGreen);
+    powerColorContextMenu.getItems().add(powerColorMenuItemOrange);
+    powerColorContextMenu.getItems().add(powerColorMenuItemYellow);
+    powerColorContextMenu.getItems().add(powerColorMenuItemRed);
+    powerColorTextField.setContextMenu(powerColorContextMenu);
+
+    ContextMenu powerIntensityContextMenu = new ContextMenu();
+    MenuItem powerIntensityMenuItemOff = new MenuItem("Off");
+    powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTextField.setText("0"));
+    MenuItem powerIntensityMenuItemHalf = new MenuItem("Half");
+    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTextField.setText("50"));
+    MenuItem powerIntensityMenuItemFull = new MenuItem("Full");
+    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTextField.setText("100"));
+    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemOff);
+    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemHalf);
+    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemFull);
+    powerIntensityTextField.setContextMenu(powerIntensityContextMenu);
 
     powerColorTextField.setText("0");
     powerIntensityTextField.setText("0");
