@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -82,6 +84,16 @@ public class RootController implements Initializable {
     * lightModuleContainer.setStyle("-fx-background-color: white;");
     * sensorModuleContainer.setStyle("-fx-background-color: blue;");
     * */
+
+    // Context menu for splitPane
+    double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
+    ContextMenu splitPaneContextMenu = new ContextMenu();
+    MenuItem resetSplitPaneDivider = new MenuItem("Reset divider position");
+    resetSplitPaneDivider.setOnAction(event -> {
+      splitPane.setDividerPosition(0, initialDividerPosition);
+    });
+    splitPaneContextMenu.getItems().add(resetSplitPaneDivider);
+    splitPane.setContextMenu(splitPaneContextMenu);
 
     // Prevent SplitPane from completing hiding TextArea
     splitPane.getDividers().get(0).positionProperty().addListener(

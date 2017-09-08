@@ -119,6 +119,30 @@ TextArea CSS below
     -fx-background-color: black;
 }
 
+
+/***************************************************
+
+Context Menu CSS below
+
+****************************************************/
+
+.context-menu {
+  -fx-background-color: bg-color;
+  -fx-text-fill: roomba-yellow;
+}
+
+.menu-item .label {
+  -fx-text-fill: roomba-yellow;
+}
+
+.menu-item:focused {
+  -fx-background-color: roomba-green;
+}
+
+.menu-item:focused .label {
+  -fx-text-fill: white;
+}
+
 /***************************************************
 
 TabPane CSS below
