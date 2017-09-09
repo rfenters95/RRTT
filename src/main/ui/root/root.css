@@ -98,13 +98,13 @@ TextArea CSS below
 }
 
 .text-area .scroll-bar .increment-arrow, .text-area .scroll-bar .decrement-arrow {
-    -fx-shape: " ";
-    -fx-padding: 0;
+  -fx-shape: " ";
+  -fx-padding: 0;
 }
 
 .scroll-pane {
-    -fx-background-insets: 0;
-    -fx-padding: 0;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
 }
 
 .text-area .scroll-pane .viewport {
@@ -112,12 +112,12 @@ TextArea CSS below
 }
 
 .scroll-pane:focused {
-    -fx-background-insets: 0;
+  -fx-background-insets: 0;
 }
 
 .scroll-pane .corner {
-    -fx-background-insets: 0;
-    -fx-background-color: black;
+  -fx-background-insets: 0;
+  -fx-background-color: black;
 }
 
 
@@ -152,7 +152,7 @@ TabPane CSS below
 
 /* Edits tab text colors */
 .tab .tab-label {
-    -fx-text-fill: white;
+  -fx-text-fill: white;
 }
 
 /* Edits selected tab text color
@@ -162,34 +162,32 @@ Note:
 they are considered visited!
  */
 .tab:selected .tab-label {
-    -fx-text-fill: roomba-green ;
+  -fx-text-fill: roomba-green ;
 }
 
 .jfx-tab-pane {
-    -fx-background-color: bg-color;
+  -fx-background-color: bg-color;
 }
 
 /* Colors bg of JFXTabPane header  */
 .jfx-tab-pane .tab-header-background {
-    -fx-background-color: black;
+  -fx-background-color: black;
 }
 
 /* Remove yellow line from selected tab */
 .jfx-tab-pane .tab-selected-line {
-    -fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 /* Changes ripple effect color */
 .jfx-tab-pane .tab-header-area .jfx-rippler {
-    -jfx-rippler-fill: roomba-green;
+  -jfx-rippler-fill: roomba-green;
 }
 
-.border-pane
-{
-    -fx-background-color: roomba-green;
+.border-pane {
+  -fx-background-color: roomba-green;
 }
 
-.jfx-hamburger StackPane
-{
-    -fx-background-color: white;
+.jfx-hamburger StackPane {
+  -fx-background-color: white;
 }

@@ -127,7 +127,7 @@ public class RootController implements Initializable {
     quickSaveLogMenuItem.setOnAction(e -> {
       try {
         String desktopPath = System.getProperty("user.home") + "/Desktop/log-"
-            + RoombaJSSCSingleton.logDateForFileName() + ".txt"; //TODO date must be file name safe
+            + RoombaJSSCSingleton.logDateForFileName() + ".txt";
         System.out.println(desktopPath);
         File logFile = new File(desktopPath);
         PrintWriter printWriter = new PrintWriter(logFile);
