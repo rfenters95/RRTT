@@ -17,6 +17,10 @@ RootController.
   roomba-yellow: #fffd8c;
 }
 
+.root.popup {
+    -fx-background-color: transparent;
+}
+
 /***************************************************
 
 ComboBox CSS below
@@ -66,31 +70,35 @@ ComboBox CSS below
 
 .combo-box-popup .list-view .list-cell:even:filled:hover
 {
-    -fx-background-color: roomba-green;
+    -fx-background-color: roomba-yellow;
     -fx-text-fill: bg-color;
 }
 
 .combo-box-popup .list-view .list-cell:odd:filled:hover
 {
-    -fx-background-color: roomba-green;
+    -fx-background-color: roomba-yellow;
     -fx-text-fill: module-color;
 }
 
 .combo-box-popup .list-view .list-cell:even:filled:selected
 {
-    -fx-background-color: roomba-yellow;
+    -fx-background-color: roomba-green;
     -fx-text-fill: bg-color;
 }
 
 .combo-box-popup .list-view .list-cell:odd:filled:selected
 {
-    -fx-background-color: roomba-yellow;
+    -fx-background-color: roomba-green;
     -fx-text-fill: module-color;
 }
 
 .combo-box-popup .list-view .scroll-bar
 {
     -fx-background-color: bg-color;
+}
+
+.combo-box-popup .list-view .StackPane {
+  -fx-background-color: bg-color;
 }
 
 .combo-box-popup .scroll-pane .viewport {
@@ -113,7 +121,8 @@ ComboBox CSS below
     -fx-background-radius: 10;
 }
 
-.combo-box-popup .list-view .scroll-bar .increment-button, .combo-box-popup .list-view .scroll-bar .decrement-button
+.combo-box-popup .list-view .scroll-bar .increment-button,
+.combo-box-popup .list-view .scroll-bar .decrement-button
 {
     visibility: hidden;
 }

@@ -67,20 +67,26 @@ public class DriveDirectMode extends AbstractDriveMode {
     setDefaultPromptText();
 
     ContextMenu contextMenuTextField1 = new ContextMenu();
-    MenuItem maxVelocityTextField1 = new MenuItem("Max Velocity");
+    MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
     maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    MenuItem minVelocityTextField1 = new MenuItem("Min Velocity");
+    MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
+    maxVelocityTextField1.setOnAction(e -> textField1.setText("0"));
+    MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
     minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
     contextMenuTextField1.getItems().add(maxVelocityTextField1);
+    contextMenuTextField1.getItems().add(fullStopTextField1);
     contextMenuTextField1.getItems().add(minVelocityTextField1);
     textField1.setContextMenu(contextMenuTextField1);
 
     ContextMenu contextMenuTextField2 = new ContextMenu();
-    MenuItem maxVelocityTextField2 = new MenuItem("Max Velocity");
+    MenuItem maxVelocityTextField2 = new MenuItem("Special: Max Forward");
     maxVelocityTextField2.setOnAction(e -> textField2.setText("500"));
-    MenuItem minVelocityTextField2 = new MenuItem("Min Velocity");
+    MenuItem fullStopTextField2 = new MenuItem("Special: Full Stop");
+    maxVelocityTextField2.setOnAction(e -> textField2.setText("0"));
+    MenuItem minVelocityTextField2 = new MenuItem("Special: Max Reverse");
     minVelocityTextField2.setOnAction(e -> textField2.setText("-500"));
     contextMenuTextField2.getItems().add(maxVelocityTextField2);
+    contextMenuTextField2.getItems().add(fullStopTextField2);
     contextMenuTextField2.getItems().add(minVelocityTextField2);
     textField2.setContextMenu(contextMenuTextField2);
 
@@ -113,20 +119,26 @@ public class DriveDirectMode extends AbstractDriveMode {
     setEnabled(true);
 
     ContextMenu contextMenuTextField1 = new ContextMenu();
-    MenuItem maxVelocityTextField1 = new MenuItem("Max Velocity");
+    MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
     maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    MenuItem minVelocityTextField1 = new MenuItem("Min Velocity");
+    MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
+    maxVelocityTextField1.setOnAction(e -> textField1.setText("0"));
+    MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
     minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
     contextMenuTextField1.getItems().add(maxVelocityTextField1);
+    contextMenuTextField1.getItems().add(fullStopTextField1);
     contextMenuTextField1.getItems().add(minVelocityTextField1);
     textField1.setContextMenu(contextMenuTextField1);
 
     ContextMenu contextMenuTextField2 = new ContextMenu();
-    MenuItem maxVelocityTextField2 = new MenuItem("Max Velocity");
+    MenuItem maxVelocityTextField2 = new MenuItem("Special: Max Forward");
     maxVelocityTextField2.setOnAction(e -> textField2.setText("500"));
-    MenuItem minVelocityTextField2 = new MenuItem("Min Velocity");
+    MenuItem fullStopTextField2 = new MenuItem("Special: Full Stop");
+    maxVelocityTextField2.setOnAction(e -> textField2.setText("0"));
+    MenuItem minVelocityTextField2 = new MenuItem("Special: Max Reverse");
     minVelocityTextField2.setOnAction(e -> textField2.setText("-500"));
     contextMenuTextField2.getItems().add(maxVelocityTextField2);
+    contextMenuTextField2.getItems().add(fullStopTextField2);
     contextMenuTextField2.getItems().add(minVelocityTextField2);
     textField2.setContextMenu(contextMenuTextField2);
 

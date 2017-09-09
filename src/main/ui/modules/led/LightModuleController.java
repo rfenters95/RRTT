@@ -137,13 +137,13 @@ public class LightModuleController implements Initializable, Injectable {
     });
 
     final ContextMenu powerColorContextMenu = new ContextMenu();
-    MenuItem powerColorMenuItemGreen = new MenuItem("Green");
+    MenuItem powerColorMenuItemGreen = new MenuItem("Special: Color Green");
     powerColorMenuItemGreen.setOnAction(e -> powerColorTextField.setText("0"));
-    MenuItem powerColorMenuItemOrange = new MenuItem("Orange");
+    MenuItem powerColorMenuItemOrange = new MenuItem("Special: Color Orange");
     powerColorMenuItemOrange.setOnAction(e -> powerColorTextField.setText("50"));
-    MenuItem powerColorMenuItemYellow = new MenuItem("Yellow");
+    MenuItem powerColorMenuItemYellow = new MenuItem("Special: Color Yellow");
     powerColorMenuItemYellow.setOnAction(e -> powerColorTextField.setText("75"));
-    MenuItem powerColorMenuItemRed = new MenuItem("Red");
+    MenuItem powerColorMenuItemRed = new MenuItem("Special: Color Red");
     powerColorMenuItemRed.setOnAction(e -> powerColorTextField.setText("100"));
     powerColorContextMenu.getItems().add(powerColorMenuItemGreen);
     powerColorContextMenu.getItems().add(powerColorMenuItemOrange);
@@ -152,11 +152,11 @@ public class LightModuleController implements Initializable, Injectable {
     powerColorTextField.setContextMenu(powerColorContextMenu);
 
     final ContextMenu powerIntensityContextMenu = new ContextMenu();
-    MenuItem powerIntensityMenuItemOff = new MenuItem("Off");
+    MenuItem powerIntensityMenuItemOff = new MenuItem("Special: Intensity None");
     powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTextField.setText("0"));
-    MenuItem powerIntensityMenuItemHalf = new MenuItem("Half");
+    MenuItem powerIntensityMenuItemHalf = new MenuItem("Special: Intensity Half");
     powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTextField.setText("50"));
-    MenuItem powerIntensityMenuItemFull = new MenuItem("Full");
+    MenuItem powerIntensityMenuItemFull = new MenuItem("Special: Intensity Full");
     powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTextField.setText("100"));
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemOff);
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemHalf);
