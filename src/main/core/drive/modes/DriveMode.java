@@ -67,24 +67,24 @@ public class DriveMode extends AbstractDriveMode {
     setDefaultText();
     setDefaultPromptText();
 
-    ContextMenu contextMenuTextField1 = new ContextMenu();
-    MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
+    final ContextMenu contextMenuTextField1 = new ContextMenu();
+    final MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
     maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
-    maxVelocityTextField1.setOnAction(e -> textField1.setText("0"));
-    MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
+    final MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
+    fullStopTextField1.setOnAction(e -> textField1.setText("0"));
+    final MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
     minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
     contextMenuTextField1.getItems().add(maxVelocityTextField1);
     contextMenuTextField1.getItems().add(fullStopTextField1);
     contextMenuTextField1.getItems().add(minVelocityTextField1);
     textField1.setContextMenu(contextMenuTextField1);
 
-    ContextMenu contextMenuTextField2 = new ContextMenu();
-    MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
+    final ContextMenu contextMenuTextField2 = new ContextMenu();
+    final MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
     specialStraightTextField2.setOnAction(e -> textField2.setText("32768"));
-    MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
+    final MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
     specialClockwiseTextField2.setOnAction(e -> textField2.setText("-1"));
-    MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
+    final MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
     specialCounterClockwiseTextField2.setOnAction(e -> textField2.setText("1"));
     contextMenuTextField2.getItems().add(specialStraightTextField2);
     contextMenuTextField2.getItems().add(specialClockwiseTextField2);
@@ -119,24 +119,24 @@ public class DriveMode extends AbstractDriveMode {
     setDefaultPromptText();
     setEnabled(true);
 
-    ContextMenu contextMenuTextField1 = new ContextMenu();
-    MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
+    final ContextMenu contextMenuTextField1 = new ContextMenu();
+    final MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
     maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
-    maxVelocityTextField1.setOnAction(e -> textField1.setText("0"));
-    MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
+    final MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
+    fullStopTextField1.setOnAction(e -> textField1.setText("0"));
+    final MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
     minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
     contextMenuTextField1.getItems().add(maxVelocityTextField1);
     contextMenuTextField1.getItems().add(fullStopTextField1);
     contextMenuTextField1.getItems().add(minVelocityTextField1);
     textField1.setContextMenu(contextMenuTextField1);
 
-    ContextMenu contextMenuTextField2 = new ContextMenu();
-    MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
+    final ContextMenu contextMenuTextField2 = new ContextMenu();
+    final MenuItem specialStraightTextField2 = new MenuItem("Special: Straight");
     specialStraightTextField2.setOnAction(e -> textField2.setText("32768"));
-    MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
+    final MenuItem specialClockwiseTextField2 = new MenuItem("Special: Clockwise");
     specialClockwiseTextField2.setOnAction(e -> textField2.setText("-1"));
-    MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
+    final MenuItem specialCounterClockwiseTextField2 = new MenuItem("Special: Counter Clockwise");
     specialCounterClockwiseTextField2.setOnAction(e -> textField2.setText("1"));
     contextMenuTextField2.getItems().add(specialStraightTextField2);
     contextMenuTextField2.getItems().add(specialClockwiseTextField2);

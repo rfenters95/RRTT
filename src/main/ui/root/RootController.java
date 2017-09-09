@@ -111,23 +111,8 @@ public class RootController implements Initializable {
     console.setWrapText(false);
     console.setEditable(false);
 
-    ContextMenu consoleContextMenu = new ContextMenu();
-    MenuItem quickSaveLogMenuItem = new MenuItem("Quick Save Log");
-    quickSaveLogMenuItem.setOnAction(e -> {
-      try {
-        String desktopPath = System.getProperty("user.home") + "/Desktop/"
-            + RoombaJSSCSingleton.logDate() + ".txt"; //TODO date must be file name safe
-        System.out.println(desktopPath);
-        File logFile = new File(desktopPath);
-        PrintWriter printWriter = new PrintWriter(logFile);
-        printWriter.print(console.getText());
-        printWriter.close();
-      } catch (FileNotFoundException x) {
-        // alert
-        x.getMessage();
-      }
-    });
-    MenuItem saveLogMenuItem = new MenuItem("Save Log");
+    final ContextMenu consoleContextMenu = new ContextMenu();
+    MenuItem saveLogMenuItem = new MenuItem("Log: Save");
     saveLogMenuItem.setOnAction(e -> {
       FileChooser fileChooser = new FileChooser();
       fileChooser.setTitle("Open Resource File");
@@ -138,8 +123,23 @@ public class RootController implements Initializable {
         // save file
       }
     });
-    consoleContextMenu.getItems().add(quickSaveLogMenuItem);
+    MenuItem quickSaveLogMenuItem = new MenuItem("Log: Quick Save");
+    quickSaveLogMenuItem.setOnAction(e -> {
+      try {
+        String desktopPath = System.getProperty("user.home") + "/Desktop/log-"
+            + RoombaJSSCSingleton.logDateForFileName() + ".txt"; //TODO date must be file name safe
+        System.out.println(desktopPath);
+        File logFile = new File(desktopPath);
+        PrintWriter printWriter = new PrintWriter(logFile);
+        printWriter.print(console.getText());
+        printWriter.close();
+      } catch (FileNotFoundException x) {
+        // alert
+        x.getMessage();
+      }
+    });
     consoleContextMenu.getItems().add(saveLogMenuItem);
+    consoleContextMenu.getItems().add(quickSaveLogMenuItem);
     console.setContextMenu(consoleContextMenu);
 
     try {

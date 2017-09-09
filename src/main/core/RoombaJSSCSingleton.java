@@ -23,7 +23,10 @@ public class RoombaJSSCSingleton {
     }
   }
   private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-      StringFormatter.format("%12s", "hh:mm:ss.SSS").getValue());
+      StringFormatter.format("%12s", "hh:mm:ss:SSS").getValue());
+
+  private static final SimpleDateFormat fileSafeDateFormat = new SimpleDateFormat(
+      StringFormatter.format("%s", "hh.mm.ss").getValue());
 
   private RoombaJSSCSingleton() {
   }
@@ -35,4 +38,9 @@ public class RoombaJSSCSingleton {
   public static String logDate() {
     return simpleDateFormat.format(new Date());
   }
+
+  public static String logDateForFileName() {
+    return fileSafeDateFormat.format(new Date());
+  }
+
 }
