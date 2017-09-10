@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="root" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" spacing="20.0"
-  xmlns="http://javafx.com/javafx/8.0.111"
+  stylesheets="@connect.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.root.ConnectionManagementController">
   <children>
     <HBox>
@@ -22,7 +22,8 @@
         </StackPane>
         <Region HBox.hgrow="ALWAYS"/>
         <JFXComboBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" prefWidth="160.0" promptText="Serial Devices"/>
+          minWidth="-Infinity" prefWidth="160.0" promptText="Serial Devices"
+          fx:id="deviceComboBox"/>
       </children>
     </HBox>
     <HBox>
@@ -34,12 +35,18 @@
         </StackPane>
         <Region HBox.hgrow="ALWAYS"/>
         <JFXComboBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-          minWidth="-Infinity" prefWidth="160.0" promptText="Modes"/>
+          minWidth="-Infinity" prefWidth="160.0" promptText="Modes" fx:id="modeComboBox"/>
       </children>
     </HBox>
     <StackPane VBox.vgrow="ALWAYS" alignment="BOTTOM_LEFT">
       <children>
-        <JFXButton text="Connect"/>
+        <HBox alignment="BOTTOM_CENTER">
+          <children>
+            <JFXButton onAction="#connect" prefWidth="75.0" text="Connect" fx:id="connectButton"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <JFXButton onAction="#refresh" prefWidth="75.0" text="Refresh" fx:id="refreshButton"/>
+          </children>
+        </HBox>
       </children>
     </StackPane>
   </children>

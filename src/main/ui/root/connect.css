@@ -1,0 +1,181 @@
+
+/***************************************************
+
+connect.css
+
+This file is loaded at startup to set default
+styling for ConnectionManager.
+
+****************************************************/
+
+* {
+  bg-color: #32353a;
+  module-color: #47494c;
+  roomba-green: #4eb769;
+  roomba-yellow: #fffd8c;
+}
+
+#root {
+  -fx-background-color: bg-color;
+}
+
+.label {
+  -fx-text-fill: roomba-yellow;
+}
+
+.root.popup {
+    -fx-background-color: transparent;
+}
+
+/***************************************************
+
+ComboBox CSS below
+
+****************************************************/
+
+/* Closed ComboBox Styles */
+
+.jfx-combo-box
+{
+    -jfx-focus-color: roomba-green;
+    -jfx-unfocus-color: roomba-yellow;
+}
+
+.combo-box .list-cell
+{
+    -fx-text-fill: roomba-yellow;
+}
+
+.combo-box .arrow
+{
+    -fx-background-color: roomba-green;
+}
+
+/* Opened ComboBox Styles */
+
+.combo-box-popup .list-view
+{
+    -fx-background-color: bg-color;
+    -fx-border-color: roomba-yellow;
+    -fx-border-width: .25;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.combo-box-popup .list-view .list-cell:even
+{
+    -fx-background-color: bg-color;
+    -fx-text-fill: roomba-yellow;
+}
+
+.combo-box-popup .list-view .list-cell:odd
+{
+    -fx-background-color: module-color;
+    -fx-text-fill: roomba-yellow;
+}
+
+.combo-box-popup .list-view .list-cell:even:filled:hover
+{
+    -fx-background-color: roomba-yellow;
+    -fx-text-fill: bg-color;
+}
+
+.combo-box-popup .list-view .list-cell:odd:filled:hover
+{
+    -fx-background-color: roomba-yellow;
+    -fx-text-fill: module-color;
+}
+
+.combo-box-popup .list-view .list-cell:even:filled:selected
+{
+    -fx-background-color: roomba-green;
+    -fx-text-fill: bg-color;
+}
+
+.combo-box-popup .list-view .list-cell:odd:filled:selected
+{
+    -fx-background-color: roomba-green;
+    -fx-text-fill: module-color;
+}
+
+.combo-box-popup .list-view .scroll-bar
+{
+    -fx-background-color: bg-color;
+}
+
+.combo-box-popup .list-view .StackPane {
+  -fx-background-color: bg-color;
+}
+
+.combo-box-popup .scroll-pane .viewport {
+  -fx-background-color: bg-color;
+}
+
+.combo-box-popup .scroll-pane .corner {
+  -fx-background-insets: 0;
+  -fx-background-color: black;
+}
+
+.combo-box-popup .list-view .scroll-bar .track-background
+{
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .scroll-bar .thumb
+{
+    -fx-color: roomba-green;
+    -fx-background-radius: 10;
+}
+
+.combo-box-popup .list-view .scroll-bar .increment-button,
+.combo-box-popup .list-view .scroll-bar .decrement-button
+{
+    visibility: hidden;
+}
+
+/***************************************************
+
+TextField CSS below
+
+****************************************************/
+
+.jfx-text-field
+{
+    -jfx-focus-color: roomba-green;
+}
+
+.text-field
+{
+    -fx-prompt-text-fill: roomba-yellow;
+    -fx-text-fill: roomba-yellow;
+    -fx-highlight-fill: roomba-green;
+}
+
+.text-field .input-line
+{
+    -fx-background-color: roomba-yellow;
+}
+
+/***************************************************
+
+Button CSS below
+
+****************************************************/
+
+.button
+{
+    -fx-background-color: roomba-green;
+    -fx-text-fill: white;
+}
+
+/***************************************************
+
+CheckBox CSS below
+
+****************************************************/
+
+.jfx-check-box
+{
+    -jfx-unchecked-color: roomba-yellow;
+    -fx-text-fill: roomba-yellow;
+}
