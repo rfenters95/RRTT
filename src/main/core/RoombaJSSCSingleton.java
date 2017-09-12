@@ -12,23 +12,37 @@ import java.util.Date;
 public class RoombaJSSCSingleton {
 
   private static final RoombaJSSC roombaJSSC = new RoombaJSSCSerial();
-
-  static {
-    if (roombaJSSC.portList().length != 0) {
-      String portName = roombaJSSC.portList()[0];
-      roombaJSSC.connect(portName);
-      roombaJSSC.startup();
-    } else {
-      System.out.println("No port found!");
-    }
-  }
   private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
       StringFormatter.format("%12s", "hh:mm:ss:SSS").getValue());
-
   private static final SimpleDateFormat fileSafeDateFormat = new SimpleDateFormat(
       StringFormatter.format("%s", "hh.mm.ss").getValue());
+  private static boolean isConnected;
 
   private RoombaJSSCSingleton() {
+  }
+
+  public static void connect(String port, RoombaStartMode startMode) {
+    roombaJSSC.connect(port);
+    switch (startMode) {
+      case FULL:
+        roombaJSSC.fullMode();
+        break;
+      case SAFE:
+        roombaJSSC.safeMode();
+        break;
+      default:
+        break;
+    }
+    isConnected = true;
+  }
+
+  public static void powerOff() {
+    roombaJSSC.powerOff();
+    isConnected = false;
+  }
+
+  public static boolean isConnected() {
+    return isConnected;
   }
 
   public static RoombaJSSC getRoombaJSSC() {
