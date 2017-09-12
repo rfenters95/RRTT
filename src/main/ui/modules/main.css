@@ -101,13 +101,9 @@ ComboBox CSS below
   -fx-background-color: bg-color;
 }
 
-.combo-box-popup .scroll-pane .viewport {
-  -fx-background-color: bg-color;
-}
-
-.combo-box-popup .scroll-pane .corner {
+.corner {
   -fx-background-insets: 0;
-  -fx-background-color: black;
+  -fx-background-color: bg-color;
 }
 
 .combo-box-popup .list-view .scroll-bar .track-background
