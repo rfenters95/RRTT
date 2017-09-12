@@ -24,6 +24,7 @@ public class NavController {
       stage.setTitle("Connection Manager");
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+      stage.setResizable(false);
       stage.showAndWait();
     } catch (IOException e) {
       e.printStackTrace();
