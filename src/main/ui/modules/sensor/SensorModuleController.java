@@ -64,7 +64,13 @@ public class SensorModuleController implements Initializable, Injectable {
   private JFXComboBox<AbstractBooleanSensor> booleanSensorComboBox;
 
   @FXML
+  private JFXButton toggleBooleanSensorButton;
+
+  @FXML
   private JFXComboBox<AbstractSignalSensor> signalSensorComboBox;
+
+  @FXML
+  private JFXButton toggleSignalSensorButton;
 
   @FXML
   private VBox sensorModule;
@@ -174,20 +180,18 @@ public class SensorModuleController implements Initializable, Injectable {
         if (booleanToggleEnabled) {
           booleanSensorComboBox.setDisable(false);
           booleanToggleService.cancel();
-          JFXButton button = (JFXButton) event.getSource();
           ImageView imageView = new ImageView("main/res/play.png");
           imageView.setFitWidth(25);
           imageView.setFitHeight(25);
-          button.setGraphic(imageView);
+          toggleBooleanSensorButton.setGraphic(imageView);
         } else {
           booleanSensorComboBox.setDisable(true);
           booleanToggleService.reset();
           booleanToggleService.start();
-          JFXButton button = (JFXButton) event.getSource();
           ImageView imageView = new ImageView("main/res/stop.png");
           imageView.setFitWidth(25);
           imageView.setFitHeight(25);
-          button.setGraphic(imageView);
+          toggleBooleanSensorButton.setGraphic(imageView);
         }
         booleanToggleEnabled = !booleanToggleEnabled;
       } else {
@@ -209,20 +213,18 @@ public class SensorModuleController implements Initializable, Injectable {
         if (signalToggleEnabled) {
           signalSensorComboBox.setDisable(false);
           signalToggleService.cancel();
-          JFXButton button = (JFXButton) event.getSource();
           ImageView imageView = new ImageView("main/res/play.png");
           imageView.setFitWidth(25);
           imageView.setFitHeight(25);
-          button.setGraphic(imageView);
+          toggleSignalSensorButton.setGraphic(imageView);
         } else {
           signalSensorComboBox.setDisable(true);
           signalToggleService.reset();
           signalToggleService.start();
-          JFXButton button = (JFXButton) event.getSource();
           ImageView imageView = new ImageView("main/res/stop.png");
           imageView.setFitWidth(25);
           imageView.setFitHeight(25);
-          button.setGraphic(imageView);
+          toggleSignalSensorButton.setGraphic(imageView);
         }
         signalToggleEnabled = !signalToggleEnabled;
       } else {
@@ -243,6 +245,22 @@ public class SensorModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    sensorModule.setOnKeyPressed(e -> {
+      switch (e.getCode()) {
+        case SPACE:
+          if (booleanToggleEnabled) {
+            toggleBooleanSensorButton.fire();
+          } else {
+            if (signalToggleEnabled) {
+              toggleSignalSensorButton.fire();
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    });
 
     sensorModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
 

@@ -23,7 +23,7 @@
               promptText="Boolean Sensors" fx:id="booleanSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readBooleanSensor"
-              prefHeight="30.0" prefWidth="30.0" text=" ">
+              prefHeight="30.0" prefWidth="30.0" text=" " fx:id="toggleBooleanSensorButton">
               <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true"
                   preserveRatio="true">
@@ -51,7 +51,7 @@
               promptText="Signal Sensors" fx:id="signalSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readSignalSensor"
-              prefHeight="30.0" prefWidth="30.0" text=" ">
+              prefHeight="30.0" prefWidth="30.0" text=" " fx:id="toggleSignalSensorButton">
               <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true"
                   preserveRatio="true">

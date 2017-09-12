@@ -125,6 +125,18 @@ public class LightModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    lightModule.setOnKeyPressed(e -> {
+      switch (e.getCode()) {
+        case SPACE:
+          if (hasStarted) {
+            toggle.fire();
+          }
+          break;
+        default:
+          break;
+      }
+    });
+
     lightModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
     lightModule.setOnKeyPressed(event -> {
       switch (event.getCode()) {

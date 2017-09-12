@@ -113,6 +113,18 @@ public class DriveModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    driveModule.setOnKeyPressed(e -> {
+      switch (e.getCode()) {
+        case SPACE:
+          if (hasStarted) {
+            toggle.fire();
+          }
+          break;
+        default:
+          break;
+      }
+    });
+
     driveModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
     driveModule.setOnKeyPressed(event -> {
       switch (event.getCode()) {
