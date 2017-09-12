@@ -12,8 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
 import main.core.drive.modes.AbstractDriveMode;
-import main.core.drive.modes.DriveDirectMode;
-import main.core.drive.modes.DriveMode;
+import main.core.drive.modes.Drive;
+import main.core.drive.modes.DriveDirect;
 import main.ui.root.RootController;
 
 /*
@@ -143,8 +143,8 @@ public class DriveModuleController implements Initializable, Injectable {
     ********************************************** */
 
     AbstractDriveMode.setTextFields(textField1, textField2);
-    AbstractDriveMode driveMode = new DriveMode();
-    AbstractDriveMode driveDirectMode = new DriveDirectMode();
+    AbstractDriveMode driveMode = new Drive();
+    AbstractDriveMode driveDirectMode = new DriveDirect();
 
     driveModeComboBox.getItems().setAll(driveMode, driveDirectMode);
     driveModeComboBox.setOnAction(e -> {

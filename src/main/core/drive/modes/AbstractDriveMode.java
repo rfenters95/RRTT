@@ -140,4 +140,9 @@ public abstract class AbstractDriveMode {
     LEFT, RIGHT
   }
 
+  @Override
+  public String toString() {
+    return getClass().getSimpleName();
+  }
+
 }

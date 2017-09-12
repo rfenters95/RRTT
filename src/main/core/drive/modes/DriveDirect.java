@@ -13,9 +13,9 @@ import main.core.drive.listeners.VelocityListener;
 * by setting parameter listeners and button actions
 * for DriveDirect commands.
 * */
-public class DriveDirectMode extends AbstractDriveMode {
+public class DriveDirect extends AbstractDriveMode {
 
-  public DriveDirectMode() {
+  public DriveDirect() {
     setTextField1Prompt("Velocity (mm/s) - Left");
     setTextField2Prompt("Velocity (mm/s) - Right");
   }
@@ -95,20 +95,20 @@ public class DriveDirectMode extends AbstractDriveMode {
   @Override
   public void swapListener() {
 
-    // Remove text properties from textField1 set by DriveMode.
+    // Remove text properties from textField1 set by Drive.
     AbstractDriveMode.textField1.textProperty()
         .removeListener(AbstractDriveMode.textField1listener);
 
-    // Add text properties to textField1 for DriveDirectMode.
+    // Add text properties to textField1 for DriveDirect.
     AbstractDriveMode.textField1listener = new VelocityListener(this, Position.LEFT,
         AbstractDriveMode.textField1);
     AbstractDriveMode.textField1.textProperty().addListener(AbstractDriveMode.textField1listener);
 
-    // Remove text properties from textField2 set by DriveMode.
+    // Remove text properties from textField2 set by Drive.
     AbstractDriveMode.textField2.textProperty()
         .removeListener(AbstractDriveMode.textField2listener);
 
-    // Add text properties to textField2 for DriveDirectMode.
+    // Add text properties to textField2 for DriveDirect.
     AbstractDriveMode.textField2listener = new VelocityListener(this, Position.RIGHT,
         AbstractDriveMode.textField2);
     AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
@@ -142,11 +142,6 @@ public class DriveDirectMode extends AbstractDriveMode {
     contextMenuTextField2.getItems().add(minVelocityTextField2);
     textField2.setContextMenu(contextMenuTextField2);
 
-  }
-
-  @Override
-  public String toString() {
-    return "DRIVE_DIRECT";
   }
 
 }

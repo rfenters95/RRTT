@@ -14,9 +14,9 @@ import main.core.drive.listeners.VelocityListener;
 * by setting parameter listeners and button actions
 * for DriveDirect commands.
 * */
-public class DriveMode extends AbstractDriveMode {
+public class Drive extends AbstractDriveMode {
 
-  public DriveMode() {
+  public Drive() {
     setTextField1Prompt("Velocity (mm/s)");
     setTextField2Prompt("Radius (mm)");
   }
@@ -96,20 +96,20 @@ public class DriveMode extends AbstractDriveMode {
   @Override
   public void swapListener() {
 
-    // Remove text properties from textField1 set by DriveDirectMode.
+    // Remove text properties from textField1 set by DriveDirect.
     AbstractDriveMode.textField1.textProperty()
         .removeListener(AbstractDriveMode.textField1listener);
 
-    // Add text properties to textField1 for DriveMode.
+    // Add text properties to textField1 for Drive.
     AbstractDriveMode.textField1listener = new VelocityListener(this, Position.LEFT,
         AbstractDriveMode.textField1);
     AbstractDriveMode.textField1.textProperty().addListener(AbstractDriveMode.textField1listener);
 
-    // Remove text properties from textField2 set by DriveDirectMode.
+    // Remove text properties from textField2 set by DriveDirect.
     AbstractDriveMode.textField2.textProperty()
         .removeListener(AbstractDriveMode.textField2listener);
 
-    // Add text properties to textField2 for DriveMode.
+    // Add text properties to textField2 for Drive.
     AbstractDriveMode.textField2listener = new RadiusListener(this, Position.RIGHT,
         AbstractDriveMode.textField2);
     AbstractDriveMode.textField2.textProperty().addListener(AbstractDriveMode.textField2listener);
@@ -145,8 +145,4 @@ public class DriveMode extends AbstractDriveMode {
 
   }
 
-  @Override
-  public String toString() {
-    return "DRIVE";
-  }
 }
