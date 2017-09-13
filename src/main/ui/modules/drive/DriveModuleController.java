@@ -11,9 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.Injectable;
+import main.core.RoombaJSSCSingleton;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.Drive;
 import main.core.drive.modes.DriveDirect;
+import main.ui.alerts.NotConnectedAlert;
 import main.ui.root.RootController;
 
 /*
@@ -66,36 +68,44 @@ public class DriveModuleController implements Initializable, Injectable {
   @FXML
   void start(ActionEvent event) {
 
-    if (!hasStarted) {
-      Integer input1 = null;
-      Integer input2 = null;
+    if (RoombaJSSCSingleton.isConnected()) {
 
-      try {
-        input1 = AbstractDriveMode.getTextField1Input();
-        input2 = AbstractDriveMode.getTextField2Input();
-        mode.move(input1, input2);
-        JFXButton button = (JFXButton) event.getSource();
-        ImageView imageView = new ImageView("main/res/stop.png");
+      if (!hasStarted) {
+
+        Integer input1 = null;
+        Integer input2 = null;
+
+        try {
+          input1 = AbstractDriveMode.getTextField1Input();
+          input2 = AbstractDriveMode.getTextField2Input();
+          mode.move(input1, input2);
+          ImageView imageView = new ImageView("main/res/stop.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          toggle.setGraphic(imageView);
+        } catch (NumberFormatException e) {
+          if (input1 == null) {
+            mode.parameterOneErrorAlert();
+          } else if (input2 == null) {
+            mode.parameterTwoErrorAlert();
+          }
+        }
+      } else {
+        mode.move(0, 0);
+        ImageView imageView = new ImageView("main/res/play.png");
         imageView.setFitWidth(25);
         imageView.setFitHeight(25);
-        button.setGraphic(imageView);
-      } catch (NumberFormatException e) {
-        if (input1 == null) {
-          mode.parameterOneErrorAlert();
-        } else if (input2 == null) {
-          mode.parameterTwoErrorAlert();
-        }
+        toggle.setGraphic(imageView);
       }
-    } else {
-      mode.move(0, 0);
-      JFXButton button = (JFXButton) event.getSource();
-      ImageView imageView = new ImageView("main/res/play.png");
-      imageView.setFitWidth(25);
-      imageView.setFitHeight(25);
-      button.setGraphic(imageView);
-    }
 
-    hasStarted = !hasStarted;
+      hasStarted = !hasStarted;
+
+    } else {
+
+      NotConnectedAlert connectionAlert = new NotConnectedAlert();
+      connectionAlert.show();
+
+    }
 
   }
 

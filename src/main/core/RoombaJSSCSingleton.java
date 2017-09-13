@@ -5,6 +5,8 @@ import com.maschel.roomba.RoombaJSSCSerial;
 import com.sun.javafx.binding.StringFormatter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 
 /*
 * Ensures only one instance of RoombaJSSC is created.
@@ -16,11 +18,19 @@ public class RoombaJSSCSingleton {
       StringFormatter.format("%12s", "hh:mm:ss:SSS").getValue());
   private static final SimpleDateFormat fileSafeDateFormat = new SimpleDateFormat(
       StringFormatter.format("%s", "hh.mm.ss").getValue());
-  private static boolean isConnected;
+
+  // BEGIN DEV : should be false
+  private static BooleanProperty isConnected = new SimpleBooleanProperty(true);
+  // END DEV
 
   private RoombaJSSCSingleton() {
   }
 
+  /*
+  * Connects & Starts Roomba
+  * @param port Port that Roomba is using
+  * @param startMode Mode that user wants to start in
+  * */
   public static void connect(String port, RoombaStartMode startMode) {
     roombaJSSC.connect(port);
     switch (startMode) {
@@ -33,15 +43,19 @@ public class RoombaJSSCSingleton {
       default:
         break;
     }
-    isConnected = true;
+    isConnected.set(true);
   }
 
   public static void powerOff() {
     roombaJSSC.powerOff();
-    isConnected = false;
+    isConnected.set(false);
   }
 
   public static boolean isConnected() {
+    return isConnected.get();
+  }
+
+  public static BooleanProperty isConnectedProperty() {
     return isConnected;
   }
 

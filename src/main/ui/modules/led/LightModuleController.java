@@ -8,10 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -19,6 +16,7 @@ import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
+import main.ui.alerts.InvalidInputAlert;
 import main.ui.root.RootController;
 
 /*
@@ -82,19 +80,13 @@ public class LightModuleController implements Initializable, Injectable {
             .leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
       } else {
         if (!check1) {
-          Alert alert = new Alert(AlertType.ERROR);
-          DialogPane dialogPane = alert.getDialogPane();
-          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-          alert.setHeaderText("Power Color (%)");
-          alert.setContentText("Invalid Input! Range [0, 100]");
-          alert.show();
+          InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Power Color (%)",
+              "Invalid Input! Range [0, 100]");
+          invalidInputAlert.show();
         } else {
-          Alert alert = new Alert(AlertType.ERROR);
-          DialogPane dialogPane = alert.getDialogPane();
-          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-          alert.setHeaderText("Power Intensity (%)");
-          alert.setContentText("Invalid Input! Range [0, 100]");
-          alert.show();
+          InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Power Intensity (%)",
+              "Invalid Input! Range [0, 100]");
+          invalidInputAlert.show();
         }
       }
 

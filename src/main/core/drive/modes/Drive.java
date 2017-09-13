@@ -1,13 +1,11 @@
 package main.core.drive.modes;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.MenuItem;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
+import main.ui.alerts.InvalidInputAlert;
 
 /*
 * Configures DriveModuleController for Roomba Drive commands
@@ -36,22 +34,15 @@ public class Drive extends AbstractDriveMode {
 
   @Override
   public void parameterOneErrorAlert() {
-    Alert alert = new Alert(AlertType.ERROR);
-    DialogPane dialogPane = alert.getDialogPane();
-    dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-    alert.setHeaderText("Velocity");
-    alert.setContentText(getVelocityErrorPrompt());
-    alert.show();
+    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Velocity",
+        getVelocityErrorPrompt());
+    invalidInputAlert.show();
   }
 
   @Override
   public void parameterTwoErrorAlert() {
-    Alert alert = new Alert(AlertType.ERROR);
-    DialogPane dialogPane = alert.getDialogPane();
-    dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-    alert.setHeaderText("Radius");
-    alert.setContentText(getRadiusErrorPrompt());
-    alert.show();
+    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Radius", getRadiusErrorPrompt());
+    invalidInputAlert.show();
   }
 
   @Override
