@@ -11,7 +11,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.drive.DriveModuleController" fx:id="driveModule">
+  fx:controller="main.ui.modules.drive.DriveModuleController" fx:id="driveModule" styleClass="module">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
       minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0">

@@ -191,3 +191,14 @@ they are considered visited!
 .jfx-hamburger StackPane {
   -fx-background-color: white;
 }
+
+/***************************************************
+
+Module (StackPane Container) CSS below
+
+****************************************************/
+
+.module {
+  -fx-background-color: module-color;
+  -fx-background-radius: 10;
+}

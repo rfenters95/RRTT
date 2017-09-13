@@ -129,7 +129,6 @@ public class LightModuleController implements Initializable, Injectable {
       }
     });
 
-    lightModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
     lightModule.setOnKeyPressed(event -> {
       switch (event.getCode()) {
         case SPACE:

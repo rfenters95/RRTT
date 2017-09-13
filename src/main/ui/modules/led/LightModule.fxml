@@ -12,7 +12,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.led.LightModuleController" fx:id="lightModule">
+  fx:controller="main.ui.modules.led.LightModuleController" fx:id="lightModule" styleClass="module">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">

@@ -10,7 +10,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.sensor.SensorModuleController" fx:id="sensorModule">
+  fx:controller="main.ui.modules.sensor.SensorModuleController" fx:id="sensorModule" styleClass="module">
   <children>
     <StackPane VBox.vgrow="ALWAYS" alignment="TOP_LEFT" maxWidth="1.7976931348623157E308"
       minWidth="-Infinity">

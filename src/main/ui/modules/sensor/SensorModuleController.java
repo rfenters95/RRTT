@@ -262,8 +262,6 @@ public class SensorModuleController implements Initializable, Injectable {
       }
     });
 
-    sensorModule.setStyle("-fx-background-color: #47494c; -fx-background-radius: 10;");
-
     /* *********************************************
     *
     * Add boolean sensors
