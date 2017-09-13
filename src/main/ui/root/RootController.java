@@ -89,14 +89,22 @@ public class RootController implements Initializable {
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
 
-    /*
-    * driveModuleContainer.setStyle("-fx-background-color: red;");
-    * lightModuleContainer.setStyle("-fx-background-color: white;");
-    * sensorModuleContainer.setStyle("-fx-background-color: blue;");
-    * */
+    /*driveModuleContainer.setStyle("-fx-background-color: red;");
+    lightModuleContainer.setStyle("-fx-background-color: white;");
+    sensorModuleContainer.setStyle("-fx-background-color: blue;");*/
+
+    // Get init divider position
+    double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
+
+    // Prevent console from getting too big
+    splitPane.getDividers().get(0).positionProperty()
+        .addListener((observable, oldValue, newValue) -> {
+          if (newValue.doubleValue() < initialDividerPosition) {
+            splitPane.setDividerPosition(0, initialDividerPosition);
+          }
+        });
 
     // Context menu for splitPane
-    double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
     ContextMenu splitPaneContextMenu = new ContextMenu();
     MenuItem showSplitPaneDivider = new MenuItem("Show/Reset Console");
     showSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));

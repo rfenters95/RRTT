@@ -53,7 +53,7 @@
         </JFXButton>
       </right>
     </BorderPane>
-    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.5" orientation="VERTICAL" fx:id="splitPane">
+    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
       <items>
         <HBox id="module-bg" prefHeight="100.0" prefWidth="200.0">
           <children>
