@@ -74,26 +74,21 @@
             </StackPane>
           </children>
         </HBox>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-          <children>
-            <JFXTabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" fx:id="tabPane">
-              <tabs>
-                <Tab text="Console">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                      <children>
-                        <TextArea AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                          AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0"
-                          prefHeight="200.0" prefWidth="200.0" fx:id="console"/>
-                      </children>
-                    </AnchorPane>
-                  </content>
-                </Tab>
-              </tabs>
-            </JFXTabPane>
-          </children>
-        </AnchorPane>
+        <JFXTabPane fx:id="tabPane">
+          <tabs>
+            <Tab text="Console">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TextArea AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                      AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" prefHeight="200.0"
+                      prefWidth="200.0" fx:id="console"/>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </JFXTabPane>
       </items>
     </SplitPane>
   </children>
