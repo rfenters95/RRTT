@@ -59,17 +59,47 @@
           <children>
             <StackPane HBox.hgrow="ALWAYS" fx:id="driveModuleContainer">
               <children>
-                <fx:include source="../modules/drive/DriveModule.fxml" fx:id="driveModule"/>
+                <VBox styleClass="module-parent-container">
+                  <children>
+                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
+                      styleClass="module-title-container">
+                      <children>
+                        <Label styleClass="module-title" text="Drive Module"/>
+                      </children>
+                    </StackPane>
+                    <fx:include source="../modules/drive/DriveModule.fxml" fx:id="driveModule"/>
+                  </children>
+                </VBox>
               </children>
             </StackPane>
             <StackPane HBox.hgrow="ALWAYS" fx:id="lightModuleContainer">
               <children>
-                <fx:include source="../modules/led/LightModule.fxml" fx:id="lightModule"/>
+                <VBox styleClass="module-parent-container">
+                  <children>
+                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
+                      styleClass="module-title-container">
+                      <children>
+                        <Label styleClass="module-title" text="LED Module"/>
+                      </children>
+                    </StackPane>
+                    <fx:include source="../modules/led/LightModule.fxml" fx:id="lightModule"/>
+                  </children>
+                </VBox>
               </children>
             </StackPane>
             <StackPane HBox.hgrow="ALWAYS" fx:id="sensorModuleContainer">
               <children>
-                <fx:include source="../modules/sensor/SensorModule.fxml" fx:id="sensorModule"/>
+                <VBox styleClass="module-parent-container">
+                  <children>
+                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
+                      styleClass="module-title-container">
+                      <children>
+                        <Label styleClass="module-title" text="Sensor Module"/>
+                      </children>
+                    </StackPane>
+                    <fx:include source="../modules/sensor/SensorModule.fxml" fx:id="sensorModule"/>
+                  </children>
+                </VBox>
               </children>
             </StackPane>
           </children>
