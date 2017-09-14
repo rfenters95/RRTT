@@ -23,7 +23,7 @@ public class Main extends Application {
     PropertyConfigurator.configure(properties);
 
     // Start app
-    Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/Root.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/RootwTitles.fxml"));
     primaryStage.setTitle("RRTT - EARLY BUILD");
     primaryStage.setScene(new Scene(root));
     primaryStage.show();

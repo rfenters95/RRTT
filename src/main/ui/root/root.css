@@ -194,11 +194,27 @@ they are considered visited!
 
 /***************************************************
 
-Module (StackPane Container) CSS below
+Module CSS below
 
 ****************************************************/
 
+.module-parent-container {
+  -fx-spacing: 10;
+  -fx-alignment: center;
+}
+
 .module {
+  -fx-background-color: module-color;
+  -fx-background-radius: 10;
+}
+
+.module-title {
+  -fx-text-fill: roomba-yellow;
+  -fx-font-size: 16;
+  -fx-font-weight: bold;
+}
+
+.module-title-container {
   -fx-background-color: module-color;
   -fx-background-radius: 10;
 }
