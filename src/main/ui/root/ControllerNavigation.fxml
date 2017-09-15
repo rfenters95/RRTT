@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,6 +15,10 @@
         <JFXButton fx:id="leftButton"/>
         <Label text="Label" fx:id="leftLabel"/>
       </children>
+      <BorderPane.margin>
+        <Insets
+          bottom="10.0"/> <!--if ControllerNavigation is moved above modules change bottom to top-->
+      </BorderPane.margin>
     </HBox>
   </left>
   <right>
@@ -22,6 +27,10 @@
         <Label text="Label" fx:id="rightLabel"/>
         <JFXButton fx:id="rightButton"/>
       </children>
+      <BorderPane.margin>
+        <Insets
+          bottom="10.0"/> <!--if ControllerNavigation is moved above modules change bottom to top-->
+      </BorderPane.margin>
     </HBox>
   </right>
 </BorderPane>

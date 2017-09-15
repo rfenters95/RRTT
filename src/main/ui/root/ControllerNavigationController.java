@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import main.core.Injectable;
 
 public class ControllerNavigationController implements Initializable, Injectable {
@@ -32,10 +33,17 @@ public class ControllerNavigationController implements Initializable, Injectable
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    ImageView leftButtonImage = new ImageView("main/res/left-arrow.png");
+    leftButtonImage.setFitWidth(25);
+    leftButtonImage.setFitHeight(25);
+    leftButton.setGraphic(leftButtonImage);
     leftButton.setVisible(false);
     leftLabel.setVisible(false);
 
-    rightButton.setText("Go");
+    ImageView rightButtonImage = new ImageView("main/res/right-arrow.png");
+    rightButtonImage.setFitWidth(25);
+    rightButtonImage.setFitHeight(25);
+    rightButton.setGraphic(rightButtonImage);
     rightLabel.setText("Song Module");
 
   }

@@ -132,12 +132,13 @@ public class RootController implements Initializable {
 
     // Context menu for splitPane
     ContextMenu splitPaneContextMenu = new ContextMenu();
-    MenuItem showSplitPaneDivider = new MenuItem("Show/Reset Console");
-    showSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));
-    MenuItem hideSplitPaneDivider = new MenuItem("Hide Console");
-    hideSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, 1));
-    splitPaneContextMenu.getItems().add(showSplitPaneDivider);
-    splitPaneContextMenu.getItems().add(hideSplitPaneDivider);
+    MenuItem showSplitPaneDividerItem = new MenuItem("Show/Reset Console");
+    showSplitPaneDividerItem
+        .setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));
+    MenuItem hideSplitPaneDividerItem = new MenuItem("Hide Console");
+    hideSplitPaneDividerItem.setOnAction(e -> splitPane.setDividerPosition(0, 1));
+    splitPaneContextMenu.getItems().add(showSplitPaneDividerItem);
+    splitPaneContextMenu.getItems().add(hideSplitPaneDividerItem);
     splitPane.setContextMenu(splitPaneContextMenu);
 
     // Configure TextArea
