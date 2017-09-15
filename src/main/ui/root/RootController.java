@@ -1,10 +1,7 @@
 package main.ui.root;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,15 +12,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
@@ -38,12 +39,6 @@ public class RootController implements Initializable {
 
   @FXML
   public SplitPane splitPane;
-
-  @FXML
-  public JFXHamburger hamburger;
-
-  @FXML
-  public JFXDrawer drawer;
 
   @FXML
   public JFXTabPane tabPane;
@@ -72,17 +67,44 @@ public class RootController implements Initializable {
   @FXML
   private SensorModuleController sensorModuleController;
 
+  private boolean poweredOn;
+
   @FXML
   private void togglePower(ActionEvent event) {
-    // shutdown all functions in order
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(0, 0);
-    RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
-    // disconnect roomba
-    RoombaJSSCSingleton.getRoombaJSSC().powerOff();
+    if (poweredOn) {
+      RoombaJSSCSingleton.getRoombaJSSC().powerOff();
+      ImageView imageView = new ImageView("main/res/powerOff.png");
+      imageView.setFitWidth(25);
+      imageView.setFitHeight(25);
+      powerButton.setGraphic(imageView);
+      poweredOn = !poweredOn;
+    } else {
+      try {
+        Stage stage = new Stage();
+        URL url = getClass().getClassLoader().getResource("main/ui/root/ConnectionManagement.fxml");
+        assert url != null;
+        Parent root = FXMLLoader.load(url);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Connection Manager");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
+        stage.setResizable(false);
+        stage.showAndWait();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      ImageView imageView = new ImageView("main/res/powerOn.png");
+      imageView.setFitWidth(25);
+      imageView.setFitHeight(25);
+      powerButton.setGraphic(imageView);
+      poweredOn = !poweredOn;
+    }
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    powerButton.setFocusTraversable(false);
 
     // Give nested module controllers access to root controller
     driveModuleController.inject(this);
@@ -149,27 +171,6 @@ public class RootController implements Initializable {
     consoleContextMenu.getItems().add(saveLogMenuItem);
     consoleContextMenu.getItems().add(quickSaveLogMenuItem);
     console.setContextMenu(consoleContextMenu);
-
-    try {
-      HBox nav = FXMLLoader.load(getClass().getResource("NavDrawer.fxml"));
-      drawer.setSidePane(nav);
-    } catch (IOException e) {
-      System.out.println("Nav failed to load");
-    }
-
-    HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(
-        hamburger);
-    transition.setRate(-1);
-    hamburger.setOnMouseClicked(e -> {
-      transition.setRate(transition.getRate() * -1);
-      transition.play();
-
-      if (drawer.isShown()) {
-        drawer.close();
-      } else {
-        drawer.open();
-      }
-    });
 
   }
 

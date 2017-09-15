@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDrawer?>
-<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -23,18 +21,6 @@
   <children>
     <BorderPane style="-fx-background-color: black;" maxHeight="-Infinity" minHeight="-Infinity"
       prefHeight="50.0">
-      <left>
-        <HBox BorderPane.alignment="CENTER" alignment="CENTER" spacing="10.0">
-          <BorderPane.margin>
-            <Insets left="10.0"/>
-          </BorderPane.margin>
-          <children>
-            <JFXDrawer defaultDrawerSize="300.0" fx:id="drawer"/>
-            <JFXHamburger fx:id="hamburger"/>
-            <Label style="-fx-text-fill: white;" text="Controllers"/>
-          </children>
-        </HBox>
-      </left>
       <right>
         <JFXButton BorderPane.alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
           maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#togglePower"
@@ -43,7 +29,7 @@
             <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
               pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../../res/power.png"/>
+                <Image url="@../../res/powerOff.png"/>
               </image>
             </ImageView>
           </graphic>
