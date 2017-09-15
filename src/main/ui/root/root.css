@@ -206,6 +206,7 @@ Module CSS below
 .module {
   -fx-background-color: module-color;
   -fx-background-radius: 10;
+  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
 }
 
 .module-title {
@@ -217,4 +218,5 @@ Module CSS below
 .module-title-container {
   -fx-background-color: module-color;
   -fx-background-radius: 10;
+  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
 }
