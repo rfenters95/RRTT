@@ -205,7 +205,7 @@ Module CSS below
 
 .module {
   -fx-background-color: module-color;
-  -fx-background-radius: 10;
+  -fx-background-radius: 4;
   -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
 }
 
@@ -217,6 +217,12 @@ Module CSS below
 
 .module-title-container {
   -fx-background-color: module-color;
-  -fx-background-radius: 10;
+  -fx-background-radius: 4;
   -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+}
+
+#app-title {
+  -fx-text-fill: white;
+  -fx-font-size: 24;
+  -fx-font-weight: bold;
 }

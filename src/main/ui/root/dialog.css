@@ -58,4 +58,5 @@ Alert Dialog CSS below
 .dialog-pane .button {
  -fx-background-color: roomba-green;
  -fx-text-fill: black;
+ -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
 }

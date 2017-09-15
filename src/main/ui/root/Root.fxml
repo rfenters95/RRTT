@@ -38,6 +38,13 @@
           </BorderPane.margin>
         </JFXButton>
       </right>
+      <left>
+        <Label BorderPane.alignment="CENTER" id="app-title" text="Rapid Roomba Test Tool">
+          <BorderPane.margin>
+            <Insets left="10.0"/>
+          </BorderPane.margin>
+        </Label>
+      </left>
     </BorderPane>
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
       <items>
