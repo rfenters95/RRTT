@@ -226,3 +226,15 @@ Module CSS below
   -fx-font-size: 24;
   -fx-font-weight: bold;
 }
+
+#nav {
+  -fx-background-color: bg-color;
+}
+
+#nav .label {
+  -fx-text-fill: white;
+}
+
+#nav .button {
+  -fx-text-fill: white;
+}

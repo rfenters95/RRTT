@@ -20,6 +20,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -48,6 +49,9 @@ public class RootController implements Initializable {
 
   @FXML
   public JFXButton powerButton;
+
+  @FXML
+  public BorderPane controllerNavigationBar;
 
   @FXML
   private StackPane driveModuleContainer;
