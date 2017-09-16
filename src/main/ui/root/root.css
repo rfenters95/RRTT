@@ -21,7 +21,7 @@ HBox CSS below
 
 ****************************************************/
 
-#module-bg {
+.module-bg {
   -fx-background-color: bg-color;
 }
 

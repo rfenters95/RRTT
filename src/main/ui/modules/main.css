@@ -93,11 +93,6 @@ ComboBox CSS below
     -fx-text-fill: module-color;
 }
 
-.combo-box-popup .list-view .scroll-bar
-{
-    -fx-background-color: bg-color;
-}
-
 .combo-box-popup .list-view .StackPane {
   -fx-background-color: bg-color;
 }
@@ -107,20 +102,21 @@ ComboBox CSS below
   -fx-background-color: bg-color;
 }
 
-.combo-box-popup .list-view .scroll-bar .track-background
-{
+.scroll-bar {
+    -fx-background-color: bg-color;
+}
+
+.scroll-bar .track-background {
     -fx-background-color: transparent;
 }
 
-.combo-box-popup .list-view .scroll-bar .thumb
-{
+.scroll-bar .thumb {
     -fx-color: roomba-green;
     -fx-background-radius: 10;
 }
 
-.combo-box-popup .list-view .scroll-bar .increment-button,
-.combo-box-popup .list-view .scroll-bar .decrement-button
-{
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
     visibility: hidden;
 }
 
@@ -170,4 +166,22 @@ CheckBox CSS below
 {
     -jfx-unchecked-color: roomba-yellow;
     -fx-text-fill: roomba-yellow;
+}
+
+.module-bg .scroll-pane {
+  -fx-background-color: bg-color;
+}
+
+#song-module {
+  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+}
+
+#song-module-gridPane {
+  -fx-background-radius: 4;
+  -fx-border-radius: 4;
+  -fx-background-color: module-color;
+}
+
+#song-module-gridPane .label {
+  -fx-text-fill: roomba-yellow;
 }

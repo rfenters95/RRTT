@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true" maxHeight="-Infinity"
   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
-  prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.song.SongModuleController" fx:id="songModule">
+  id="song-module" prefWidth="750.0" stylesheets="@../../modules/main.css"
+  xmlns="http://javafx.com/javafx/8.0.111" fx:controller="main.ui.modules.song.SongModuleController"
+  fx:id="songModule">
   <content>
-    <GridPane>
+    <GridPane id="song-module-gridPane">
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
