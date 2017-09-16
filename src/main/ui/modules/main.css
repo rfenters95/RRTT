@@ -174,11 +174,16 @@ CheckBox CSS below
 
 #song-module {
   -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+  -fx-background-radius: 4;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+   -fx-background-radius: 4;
 }
 
 #song-module-gridPane {
   -fx-background-radius: 4;
-  -fx-border-radius: 4;
   -fx-background-color: module-color;
 }
 
