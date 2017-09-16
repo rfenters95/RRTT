@@ -41,13 +41,13 @@ public class RootController implements Initializable {
   public SplitPane splitPane;
 
   @FXML
-  public JFXTabPane tabPane;
-
-  @FXML
   public TextArea console;
 
   @FXML
   public JFXButton powerButton;
+
+  @FXML
+  public JFXTabPane controllerNavigationTabPane;
 
   @FXML
   private StackPane driveModuleContainer;
@@ -66,6 +66,9 @@ public class RootController implements Initializable {
 
   @FXML
   private SensorModuleController sensorModuleController;
+
+  @FXML
+  private ControllerNavigationController controllerNavigationController;
 
   private boolean poweredOn;
 
@@ -110,6 +113,7 @@ public class RootController implements Initializable {
     driveModuleController.inject(this);
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
+    controllerNavigationController.inject(this);
 
     /*driveModuleContainer.setStyle("-fx-background-color: red;");
     lightModuleContainer.setStyle("-fx-background-color: white;");
@@ -128,12 +132,13 @@ public class RootController implements Initializable {
 
     // Context menu for splitPane
     ContextMenu splitPaneContextMenu = new ContextMenu();
-    MenuItem showSplitPaneDivider = new MenuItem("Show/Reset Console");
-    showSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));
-    MenuItem hideSplitPaneDivider = new MenuItem("Hide Console");
-    hideSplitPaneDivider.setOnAction(e -> splitPane.setDividerPosition(0, 1));
-    splitPaneContextMenu.getItems().add(showSplitPaneDivider);
-    splitPaneContextMenu.getItems().add(hideSplitPaneDivider);
+    MenuItem showSplitPaneDividerItem = new MenuItem("Show/Reset Console");
+    showSplitPaneDividerItem
+        .setOnAction(e -> splitPane.setDividerPosition(0, initialDividerPosition));
+    MenuItem hideSplitPaneDividerItem = new MenuItem("Hide Console");
+    hideSplitPaneDividerItem.setOnAction(e -> splitPane.setDividerPosition(0, 1));
+    splitPaneContextMenu.getItems().add(showSplitPaneDividerItem);
+    splitPaneContextMenu.getItems().add(hideSplitPaneDividerItem);
     splitPane.setContextMenu(splitPaneContextMenu);
 
     // Configure TextArea

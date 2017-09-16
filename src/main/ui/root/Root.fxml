@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
-  minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0"
+  minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0"
   stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.root.RootController" fx:id="root">
   <children>
@@ -48,64 +48,93 @@
     </BorderPane>
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
       <items>
-        <HBox id="module-bg" prefHeight="100.0" prefWidth="200.0">
+        <VBox>
           <children>
-            <StackPane HBox.hgrow="ALWAYS" fx:id="driveModuleContainer">
-              <children>
-                <VBox styleClass="module-parent-container">
+            <JFXTabPane VBox.vgrow="ALWAYS" id="controllerNavigationTabPane"
+              fx:id="controllerNavigationTabPane">
+          <tabs>
+            <Tab text="Untitled Tab">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
-                      styleClass="module-title-container">
+                    <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                      AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                       <children>
-                        <Label styleClass="module-title" text="Drive Module"/>
+                        <HBox VBox.vgrow="ALWAYS" id="module-bg">
+                          <children>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="driveModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="Drive Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/drive/DriveModule.fxml"
+                                      fx:id="driveModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="lightModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="LED Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/led/LightModule.fxml"
+                                      fx:id="lightModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="sensorModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="Sensor Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/sensor/SensorModule.fxml"
+                                      fx:id="sensorModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                          </children>
+                        </HBox>
                       </children>
-                    </StackPane>
-                    <fx:include source="../modules/drive/DriveModule.fxml" fx:id="driveModule"/>
+                    </VBox>
                   </children>
-                </VBox>
-              </children>
-            </StackPane>
-            <StackPane HBox.hgrow="ALWAYS" fx:id="lightModuleContainer">
-              <children>
-                <VBox styleClass="module-parent-container">
-                  <children>
-                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
-                      styleClass="module-title-container">
-                      <children>
-                        <Label styleClass="module-title" text="LED Module"/>
-                      </children>
-                    </StackPane>
-                    <fx:include source="../modules/led/LightModule.fxml" fx:id="lightModule"/>
-                  </children>
-                </VBox>
-              </children>
-            </StackPane>
-            <StackPane HBox.hgrow="ALWAYS" fx:id="sensorModuleContainer">
-              <children>
-                <VBox styleClass="module-parent-container">
-                  <children>
-                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0"
-                      styleClass="module-title-container">
-                      <children>
-                        <Label styleClass="module-title" text="Sensor Module"/>
-                      </children>
-                    </StackPane>
-                    <fx:include source="../modules/sensor/SensorModule.fxml" fx:id="sensorModule"/>
-                  </children>
-                </VBox>
-              </children>
-            </StackPane>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab>
+              <fx:include source="../modules/song/SongModule.fxml" fx:id="songModule"/>
+            </Tab>
+          </tabs>
+        </JFXTabPane>
+            <fx:include id="nav"
+              source="ControllerNavigation.fxml" fx:id="controllerNavigation"/>
           </children>
-        </HBox>
-        <JFXTabPane fx:id="tabPane">
+        </VBox>
+        <JFXTabPane fx:id="consoleTabPane">
           <tabs>
             <Tab text="Console">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
                     <TextArea AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                      AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" prefHeight="200.0"
-                      prefWidth="200.0" fx:id="console"/>
+                      AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" fx:id="console"/>
                   </children>
                 </AnchorPane>
               </content>

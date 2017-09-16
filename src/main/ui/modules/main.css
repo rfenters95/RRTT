@@ -50,8 +50,9 @@ ComboBox CSS below
 .combo-box-popup .list-view
 {
     -fx-background-color: bg-color;
-    -fx-border-color: roomba-yellow;
+    -fx-border-radius: 4;
     -fx-border-width: .25;
+    -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
     -fx-background-insets: 0;
     -fx-padding: 0;
 }

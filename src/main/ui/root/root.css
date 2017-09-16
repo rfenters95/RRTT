@@ -226,3 +226,23 @@ Module CSS below
   -fx-font-size: 24;
   -fx-font-weight: bold;
 }
+
+#nav {
+  -fx-background-color: bg-color;
+}
+
+#nav .label {
+  -fx-text-fill: white;
+}
+
+#nav .button {
+  -fx-text-fill: white;
+}
+
+/* hide tab header; now it does not look like a tab pane */
+#controllerNavigationTabPane {
+  -fx-tab-max-height: 0;
+}
+#controllerNavigationTabPane .tab-header-area {
+  visibility: hidden;
+}
