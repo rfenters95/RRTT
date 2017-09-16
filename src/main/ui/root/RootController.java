@@ -31,6 +31,7 @@ import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
 import main.ui.modules.led.LightModuleController;
 import main.ui.modules.sensor.SensorModuleController;
+import main.ui.modules.song.SongModuleController;
 
 public class RootController implements Initializable {
 
@@ -69,6 +70,9 @@ public class RootController implements Initializable {
 
   @FXML
   private ControllerNavigationController controllerNavigationController;
+
+  @FXML
+  private SongModuleController songModuleController;
 
   private boolean poweredOn;
 
@@ -114,6 +118,7 @@ public class RootController implements Initializable {
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
     controllerNavigationController.inject(this);
+    songModuleController.inject(this);
 
     /*driveModuleContainer.setStyle("-fx-background-color: red;");
     lightModuleContainer.setStyle("-fx-background-color: white;");
