@@ -246,3 +246,7 @@ Module CSS below
 #controllerNavigationTabPane .tab-header-area {
   visibility: hidden;
 }
+
+#leftNavButton .jfx-rippler, #rightNavButton .jfx-rippler {
+  -jfx-rippler-fill: roomba-green;
+}
