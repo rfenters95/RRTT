@@ -38,12 +38,17 @@ public class ControllerNavigationController implements Initializable, Injectable
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    final boolean DISABLE = true;
+    leftButton.setFocusTraversable(false);
+    rightButton.setFocusTraversable(false);
+
     ImageView leftButtonImage = new ImageView("main/res/left-arrow.png");
     leftButtonImage.setFitWidth(25);
     leftButtonImage.setFitHeight(25);
     leftButton.setGraphic(leftButtonImage);
-    leftButton.setVisible(false);
-    leftLabel.setVisible(false);
+    leftLabel.setText("Core Modules");
+    leftButton.setDisable(DISABLE);
+    leftLabel.setDisable(DISABLE);
 
     ImageView rightButtonImage = new ImageView("main/res/right-arrow.png");
     rightButtonImage.setFitWidth(25);
@@ -57,6 +62,10 @@ public class ControllerNavigationController implements Initializable, Injectable
       if (currentIndex - 1 >= 0) {
         tabPane.getSelectionModel().select(currentIndex - 1);
       }
+      leftButton.setDisable(DISABLE);
+      leftLabel.setDisable(DISABLE);
+      rightButton.setDisable(!DISABLE);
+      rightLabel.setDisable(!DISABLE);
     });
 
     rightButton.setOnAction(e -> {
@@ -68,6 +77,10 @@ public class ControllerNavigationController implements Initializable, Injectable
       } else {
         System.out.println(TOTAL_TABS);
       }
+      leftButton.setDisable(!DISABLE);
+      leftLabel.setDisable(!DISABLE);
+      rightButton.setDisable(DISABLE);
+      rightLabel.setDisable(DISABLE);
     });
 
   }

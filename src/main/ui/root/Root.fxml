@@ -48,7 +48,10 @@
     </BorderPane>
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
       <items>
-        <JFXTabPane id="controllerNavigationTabPane" fx:id="controllerNavigationTabPane">
+        <VBox>
+          <children>
+            <JFXTabPane VBox.vgrow="ALWAYS" id="controllerNavigationTabPane"
+              fx:id="controllerNavigationTabPane">
           <tabs>
             <Tab text="Untitled Tab">
               <content>
@@ -109,8 +112,6 @@
                             </StackPane>
                           </children>
                         </HBox>
-                        <fx:include id="nav" source="ControllerNavigation.fxml"
-                          fx:id="controllerNavigation"/>
                       </children>
                     </VBox>
                   </children>
@@ -122,7 +123,11 @@
             </Tab>
           </tabs>
         </JFXTabPane>
-        <JFXTabPane fx:id="tabPane">
+            <fx:include id="nav"
+              source="ControllerNavigation.fxml" fx:id="controllerNavigation"/>
+          </children>
+        </VBox>
+        <JFXTabPane fx:id="consoleTabPane">
           <tabs>
             <Tab text="Console">
               <content>

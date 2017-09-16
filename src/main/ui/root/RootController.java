@@ -20,7 +20,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -48,9 +47,6 @@ public class RootController implements Initializable {
   public JFXButton powerButton;
 
   @FXML
-  public BorderPane controllerNavigation;
-
-  @FXML
   public JFXTabPane controllerNavigationTabPane;
 
   @FXML
@@ -72,7 +68,7 @@ public class RootController implements Initializable {
   private SensorModuleController sensorModuleController;
 
   @FXML
-  private SensorModuleController controllerNavigationController;
+  private ControllerNavigationController controllerNavigationController;
 
   private boolean poweredOn;
 
@@ -114,11 +110,10 @@ public class RootController implements Initializable {
     powerButton.setFocusTraversable(false);
 
     // Give nested module controllers access to root controller
-    controllerNavigationController.inject(this);
-
     driveModuleController.inject(this);
     lightModuleController.inject(this);
     sensorModuleController.inject(this);
+    controllerNavigationController.inject(this);
 
     /*driveModuleContainer.setStyle("-fx-background-color: red;");
     lightModuleContainer.setStyle("-fx-background-color: white;");
