@@ -238,3 +238,11 @@ Module CSS below
 #nav .button {
   -fx-text-fill: white;
 }
+
+/* hide tab header; now it does not look like a tab pane */
+#controllerNavigationTabPane {
+  -fx-tab-max-height: 0;
+}
+#controllerNavigationTabPane .tab-header-area {
+  visibility: hidden;
+}

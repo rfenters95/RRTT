@@ -42,16 +42,16 @@ public class RootController implements Initializable {
   public SplitPane splitPane;
 
   @FXML
-  public JFXTabPane tabPane;
-
-  @FXML
   public TextArea console;
 
   @FXML
   public JFXButton powerButton;
 
   @FXML
-  public BorderPane controllerNavigationBar;
+  public BorderPane controllerNavigation;
+
+  @FXML
+  public JFXTabPane controllerNavigationTabPane;
 
   @FXML
   private StackPane driveModuleContainer;
@@ -70,6 +70,9 @@ public class RootController implements Initializable {
 
   @FXML
   private SensorModuleController sensorModuleController;
+
+  @FXML
+  private SensorModuleController controllerNavigationController;
 
   private boolean poweredOn;
 
@@ -111,6 +114,8 @@ public class RootController implements Initializable {
     powerButton.setFocusTraversable(false);
 
     // Give nested module controllers access to root controller
+    controllerNavigationController.inject(this);
+
     driveModuleController.inject(this);
     lightModuleController.inject(this);
     sensorModuleController.inject(this);

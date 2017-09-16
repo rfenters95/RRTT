@@ -1,17 +1,22 @@
 package main.ui.root;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import main.core.Injectable;
 
 public class ControllerNavigationController implements Initializable, Injectable {
 
   private RootController rootController;
+
+  @FXML
+  private BorderPane controllerNavigation;
 
   @FXML
   private Label leftLabel;
@@ -45,6 +50,25 @@ public class ControllerNavigationController implements Initializable, Injectable
     rightButtonImage.setFitHeight(25);
     rightButton.setGraphic(rightButtonImage);
     rightLabel.setText("Song Module");
+
+    leftButton.setOnAction(e -> {
+      JFXTabPane tabPane = rootController.controllerNavigationTabPane;
+      int currentIndex = tabPane.getSelectionModel().getSelectedIndex();
+      if (currentIndex - 1 >= 0) {
+        tabPane.getSelectionModel().select(currentIndex - 1);
+      }
+    });
+
+    rightButton.setOnAction(e -> {
+      JFXTabPane tabPane = rootController.controllerNavigationTabPane;
+      int currentIndex = tabPane.getSelectionModel().getSelectedIndex();
+      final int TOTAL_TABS = tabPane.getTabs().size();
+      if (currentIndex + 1 < TOTAL_TABS) {
+        tabPane.getSelectionModel().select(currentIndex + 1);
+      } else {
+        System.out.println(TOTAL_TABS);
+      }
+    });
 
   }
 
