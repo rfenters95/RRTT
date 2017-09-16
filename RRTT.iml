@@ -18,7 +18,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="roombajssc" level="project" />
     <orderEntry type="library" name="com.jfoenix:jfoenix:1.8.0" level="project" />
+    <orderEntry type="library" name="com.maschel:roombajssc:1.0.2" level="project" />
   </component>
 </module>

@@ -243,6 +243,7 @@ Module CSS below
 #controllerNavigationTabPane {
   -fx-tab-max-height: 0;
 }
+
 #controllerNavigationTabPane .tab-header-area {
   visibility: hidden;
 }
