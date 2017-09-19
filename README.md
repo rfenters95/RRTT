@@ -1,8 +1,11 @@
 # Rapid Roomba Test Tool
 
 <img width="962" alt="screen shot 2017-09-19 at 5 23 37 pm" src="https://user-images.githubusercontent.com/12780053/30616307-db10b80c-9d5f-11e7-9691-2405c0b62ffb.png">
+Figure 1. Core Modules
 
 <img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
+
+Figure 2. Song Module
 
 ## Table of Contents
 * [About](#about)
