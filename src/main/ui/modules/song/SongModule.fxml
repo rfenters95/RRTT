@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import main.ui.modules.song.note.NoteControl?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true" maxHeight="-Infinity"
   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
-  id="song-module" prefWidth="750.0" stylesheets="@../../modules/main.css"
+  id="song-module" prefWidth="800.0" stylesheets="@../../modules/main.css"
   xmlns="http://javafx.com/javafx/8.0.111" fx:controller="main.ui.modules.song.SongModuleController"
   fx:id="songModule">
   <content>
@@ -29,176 +27,53 @@
         <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
       </rowConstraints>
       <children>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 1"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-            </HBox>
-        <HBox GridPane.columnIndex="1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 2"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-            </HBox>
-        <HBox GridPane.rowIndex="1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 3"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-            </HBox>
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 4"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-            </HBox>
-        <HBox GridPane.rowIndex="2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 5"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="2" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 6"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.rowIndex="3" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 7"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="3" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 8"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.rowIndex="4" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 9"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 10"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.rowIndex="5" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 11"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="5" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 12"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.rowIndex="6" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 13"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="6" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 14"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.rowIndex="7" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-          spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 15"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
-        <HBox GridPane.columnIndex="1" GridPane.rowIndex="7" alignment="CENTER" prefHeight="100.0"
-          prefWidth="200.0" spacing="25.0">
-          <children>
-            <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" text="Note 16"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Pitch"/>
-            <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"
-              promptText="Duration"/>
-          </children>
-        </HBox>
-
+        <NoteControl alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 1"/>
+        <NoteControl GridPane.columnIndex="1" alignment="CENTER" prefHeight="100.0"
+          prefWidth="200.0" spacing="25.0"
+          text="Note 2"/>
+        <NoteControl GridPane.rowIndex="1" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 3"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 4"/>
+        <NoteControl GridPane.rowIndex="2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 5"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="2" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 6"/>
+        <NoteControl GridPane.rowIndex="3" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 7"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="3" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 8"/>
+        <NoteControl GridPane.rowIndex="4" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 9"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 10"/>
+        <NoteControl GridPane.rowIndex="5" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 11"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="5" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 12"/>
+        <NoteControl GridPane.rowIndex="6" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 13"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="6" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 14"/>
+        <NoteControl GridPane.rowIndex="7" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+          spacing="25.0"
+          text="Note 15"/>
+        <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="7" alignment="CENTER"
+          prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+          text="Note 16"/>
       </children>
     </GridPane>
   </content>
