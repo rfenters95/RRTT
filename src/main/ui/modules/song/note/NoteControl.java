@@ -59,12 +59,17 @@ public class NoteControl extends HBox {
 
   private void populateNoteComboBox() {
     noteComboBox.getItems().add("A");
+    noteComboBox.getItems().add("A#");
     noteComboBox.getItems().add("B");
     noteComboBox.getItems().add("C");
+    noteComboBox.getItems().add("C#");
     noteComboBox.getItems().add("D");
+    noteComboBox.getItems().add("D#");
     noteComboBox.getItems().add("E");
     noteComboBox.getItems().add("F");
+    noteComboBox.getItems().add("F#");
     noteComboBox.getItems().add("G");
+    noteComboBox.getItems().add("G#");
   }
 
   private void populateDurationComboBox() {
