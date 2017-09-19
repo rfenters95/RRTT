@@ -7,7 +7,6 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class NoteControl extends HBox {
@@ -35,13 +34,10 @@ public class NoteControl extends HBox {
       throw new RuntimeException(exception);
     }
 
-    ImageView imageView = new ImageView("main/res/play.png");
-    imageView.setFitWidth(25);
-    imageView.setFitHeight(25);
-    playButton.setGraphic(imageView);
-
     populateNoteComboBox();
     populateDurationComboBox();
+
+    // setDisable(true); uncomment this after SongModule noteCountComboBox
 
   }
 

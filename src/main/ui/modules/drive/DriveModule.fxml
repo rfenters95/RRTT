@@ -43,6 +43,7 @@
       maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
       <children>
         <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+          styleClass="play-button"
           minHeight="-Infinity" minWidth="-Infinity" onAction="#start" prefHeight="30.0"
           prefWidth="30.0" text=" " fx:id="toggle">
           <graphic>

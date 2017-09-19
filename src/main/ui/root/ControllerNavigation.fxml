@@ -12,7 +12,7 @@
   <left>
     <HBox BorderPane.alignment="CENTER_LEFT" alignment="CENTER_LEFT">
       <children>
-        <JFXButton id="leftNavButton" fx:id="leftButton"/>
+        <JFXButton styleClass="module-nav-button" fx:id="leftButton"/>
         <Label text="Label" fx:id="leftLabel"/>
       </children>
       <BorderPane.margin>
@@ -25,7 +25,7 @@
     <HBox BorderPane.alignment="CENTER_RIGHT" alignment="CENTER_RIGHT">
       <children>
         <Label text="Label" fx:id="rightLabel"/>
-        <JFXButton id="rightNavButton" fx:id="rightButton"/>
+        <JFXButton styleClass="module-nav-button" fx:id="rightButton"/>
       </children>
       <BorderPane.margin>
         <Insets

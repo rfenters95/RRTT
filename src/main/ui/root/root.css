@@ -235,8 +235,12 @@ Module CSS below
   -fx-text-fill: white;
 }
 
-#nav .button {
+.module-nav-button {
   -fx-text-fill: white;
+}
+
+.module-nav-button .jfx-rippler {
+  -jfx-rippler-fill: roomba-green;
 }
 
 /* hide tab header; now it does not look like a tab pane */
@@ -246,8 +250,4 @@ Module CSS below
 
 #controllerNavigationTabPane .tab-header-area {
   visibility: hidden;
-}
-
-#leftNavButton .jfx-rippler, #rightNavButton .jfx-rippler {
-  -jfx-rippler-fill: roomba-green;
 }

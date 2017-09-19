@@ -67,6 +67,7 @@
       </VBox.margin>
       <children>
         <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+          styleClass="play-button"
           minHeight="-Infinity" minWidth="-Infinity" onAction="#toggle" prefHeight="30.0"
           prefWidth="30.0" text=" " fx:id="toggle">
           <graphic>

@@ -22,6 +22,7 @@
               minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0"
               promptText="Boolean Sensors" fx:id="booleanSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+              styleClass="play-button"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readBooleanSensor"
               prefHeight="30.0" prefWidth="30.0" text=" " fx:id="toggleBooleanSensorButton">
               <graphic>
@@ -50,6 +51,7 @@
               minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0"
               promptText="Signal Sensors" fx:id="signalSensorComboBox"/>
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+              styleClass="play-button"
               minHeight="-Infinity" minWidth="-Infinity" onAction="#readSignalSensor"
               prefHeight="30.0" prefWidth="30.0" text=" " fx:id="toggleSignalSensorButton">
               <graphic>
