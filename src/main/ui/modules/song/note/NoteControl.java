@@ -26,12 +26,10 @@ public class NoteControl extends HBox {
 
   public NoteControl() {
 
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-        "Note.fxml"));
-    fxmlLoader.setRoot(this);
-    fxmlLoader.setController(this);
-
     try {
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Note.fxml"));
+      fxmlLoader.setRoot(this);
+      fxmlLoader.setController(this);
       fxmlLoader.load();
     } catch (IOException exception) {
       throw new RuntimeException(exception);
