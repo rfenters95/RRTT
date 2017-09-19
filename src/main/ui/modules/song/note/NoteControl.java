@@ -70,11 +70,11 @@ public class NoteControl extends HBox {
   }
 
   private void populateDurationComboBox() {
-    durationComboBox.getItems().add("0 seconds");
+    durationComboBox.getItems().add("0 sec");
     for (int i = 1; i < 64; i++) {
-      durationComboBox.getItems().add(String.valueOf(i) + " / 64 second");
+      durationComboBox.getItems().add(String.valueOf(i) + " / 64 sec");
     }
-    durationComboBox.getItems().add("1 second");
+    durationComboBox.getItems().add("1 sec");
   }
 
 }

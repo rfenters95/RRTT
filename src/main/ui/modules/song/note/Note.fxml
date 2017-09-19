@@ -6,16 +6,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <fx:root xmlns:fx="http://javafx.com/fxml" alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-  spacing="25.0"
+  spacing="10.0"
   stylesheets="@../../../modules/main.css" type="javafx.scene.layout.HBox"
   xmlns="http://javafx.com/javafx/8.0.111">
 
   <children>
-    <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Note 15"
+    <Label maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" text="Note"
       fx:id="noteLabel"/>
-    <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" promptText="Pitch"
+    <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="65.0" promptText="Pitch"
       fx:id="noteComboBox"/>
-    <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" promptText="Duration"
+    <JFXComboBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="130.0" promptText="Duration"
       fx:id="durationComboBox"/>
     <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="30" prefWidth="30" fx:id="playButton"/>
