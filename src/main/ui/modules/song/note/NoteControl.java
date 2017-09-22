@@ -26,7 +26,7 @@ public class NoteControl extends HBox {
   public NoteControl() {
 
     try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Note.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteControl.fxml"));
       fxmlLoader.setRoot(this);
       fxmlLoader.setController(this);
       fxmlLoader.load();
@@ -36,8 +36,6 @@ public class NoteControl extends HBox {
 
     populateNoteComboBox();
     populateDurationComboBox();
-
-    // setDisable(true); uncomment this after SongModule noteCountComboBox
 
   }
 
@@ -68,6 +66,7 @@ public class NoteControl extends HBox {
     noteComboBox.getItems().add("G#");
   }
 
+
   private void populateDurationComboBox() {
     durationComboBox.getItems().add("0 sec");
     for (int i = 1; i < 64; i++) {
@@ -76,4 +75,19 @@ public class NoteControl extends HBox {
     durationComboBox.getItems().add("1 sec");
   }
 
+  public JFXComboBox<String> getNoteComboBox() {
+    return noteComboBox;
+  }
+
+  public JFXComboBox<String> getDurationComboBox() {
+    return durationComboBox;
+  }
+
+  public JFXButton getPlayButton() {
+    return playButton;
+  }
+
+  public Label getNoteLabel() {
+    return noteLabel;
+  }
 }
