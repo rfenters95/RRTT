@@ -2,14 +2,13 @@ package main.ui.modules.song.note;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import java.io.IOException;
-import javafx.beans.property.StringProperty;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 
-public class NoteControl extends HBox {
+public class NoteController implements Initializable {
 
   @FXML
   private JFXComboBox<String> noteComboBox;
@@ -23,33 +22,12 @@ public class NoteControl extends HBox {
   @FXML
   private Label noteLabel;
 
-  public NoteControl() {
-
-    try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteControl.fxml"));
-      fxmlLoader.setRoot(this);
-      fxmlLoader.setController(this);
-      fxmlLoader.load();
-    } catch (IOException exception) {
-      throw new RuntimeException(exception);
-    }
-
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
     populateNoteComboBox();
     populateDurationComboBox();
-
   }
 
-  public String getText() {
-    return textProperty().get();
-  }
-
-  public void setText(String value) {
-    textProperty().set(value);
-  }
-
-  public StringProperty textProperty() {
-    return noteLabel.textProperty();
-  }
 
   private void populateNoteComboBox() {
     noteComboBox.getItems().add("A");
