@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import main.ui.modules.song.note.NoteControl?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true" id="song-module"
   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
   prefHeight="250.0" prefWidth="800.0" stylesheets="@../../modules/main.css"
@@ -92,31 +93,40 @@
               </rowConstraints>
               <children>
 
-                <fx:include source="note/Note.fxml" fx:id="noteControl1"/>
-                <fx:include GridPane.columnIndex="1" source="note/Note.fxml" fx:id="noteControl2"/>
-                <fx:include GridPane.rowIndex="1" source="note/Note.fxml" fx:id="noteControl3"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="1" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="0" text="Note 1"
+                  fx:id="noteControl1"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="0" text="Note 2"
+                  fx:id="noteControl2"/>
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="1" text="Note 3"
+                  fx:id="noteControl3"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="1" text="Note 4"
                   fx:id="noteControl4"/>
 
-                <fx:include GridPane.rowIndex="2" source="note/Note.fxml" fx:id="noteControl5"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="2" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="2" text="Note 5"
+                  fx:id="noteControl5"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="2" text="Note 6"
                   fx:id="noteControl6"/>
-                <fx:include GridPane.rowIndex="3" source="note/Note.fxml" fx:id="noteControl7"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="3" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="3" text="Note 7"
+                  fx:id="noteControl7"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="3" text="Note 8"
                   fx:id="noteControl8"/>
 
-                <fx:include GridPane.rowIndex="4" source="note/Note.fxml" fx:id="noteControl9"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="4" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="4" text="Note 9"
+                  fx:id="noteControl9"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="4" text="Note 10"
                   fx:id="noteControl10"/>
-                <fx:include GridPane.rowIndex="5" source="note/Note.fxml" fx:id="noteControl11"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="5" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="5" text="Note 11"
+                  fx:id="noteControl11"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="5" text="Note 12"
                   fx:id="noteControl12"/>
 
-                <fx:include GridPane.rowIndex="6" source="note/Note.fxml" fx:id="noteControl13"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="6" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="6" text="Note 13"
+                  fx:id="noteControl13"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="6" text="Note 14"
                   fx:id="noteControl14"/>
-                <fx:include GridPane.rowIndex="7" source="note/Note.fxml" fx:id="noteControl15"/>
-                <fx:include GridPane.columnIndex="1" GridPane.rowIndex="7" source="note/Note.fxml"
+                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="7" text="Note 15"
+                  fx:id="noteControl15"/>
+                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="7" text="Note 16"
                   fx:id="noteControl16"/>
 
               </children>

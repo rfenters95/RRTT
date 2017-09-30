@@ -6,8 +6,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
 import main.core.Injectable;
+import main.ui.modules.song.note.NoteControl;
 import main.ui.root.RootController;
 
 public class SongModuleController implements Initializable, Injectable {
@@ -28,52 +28,52 @@ public class SongModuleController implements Initializable, Injectable {
   private JFXComboBox<String> sleepCB;
 
   @FXML
-  private HBox noteControl1;
+  private NoteControl noteControl1;
 
   @FXML
-  private HBox noteControl2;
+  private NoteControl noteControl2;
 
   @FXML
-  private HBox noteControl3;
+  private NoteControl noteControl3;
 
   @FXML
-  private HBox noteControl4;
+  private NoteControl noteControl4;
 
   @FXML
-  private HBox noteControl5;
+  private NoteControl noteControl5;
 
   @FXML
-  private HBox noteControl6;
+  private NoteControl noteControl6;
 
   @FXML
-  private HBox noteControl7;
+  private NoteControl noteControl7;
 
   @FXML
-  private HBox noteControl8;
+  private NoteControl noteControl8;
 
   @FXML
-  private HBox noteControl9;
+  private NoteControl noteControl9;
 
   @FXML
-  private HBox noteControl10;
+  private NoteControl noteControl10;
 
   @FXML
-  private HBox noteControl11;
+  private NoteControl noteControl11;
 
   @FXML
-  private HBox noteControl12;
+  private NoteControl noteControl12;
 
   @FXML
-  private HBox noteControl13;
+  private NoteControl noteControl13;
 
   @FXML
-  private HBox noteControl14;
+  private NoteControl noteControl14;
 
   @FXML
-  private HBox noteControl15;
+  private NoteControl noteControl15;
 
   @FXML
-  private HBox noteControl16;
+  private NoteControl noteControl16;
 
   private RootController rootController;
 
@@ -86,7 +86,7 @@ public class SongModuleController implements Initializable, Injectable {
   public void initialize(URL location, ResourceBundle resources) {
 
     // Enable based on value of noteCountComboBox;
-    final HBox[] noteControls = {
+    final NoteControl[] noteControls = {
         noteControl1, noteControl2, noteControl3, noteControl4,
         noteControl5, noteControl6, noteControl7, noteControl8,
         noteControl9, noteControl10, noteControl11, noteControl12,
@@ -120,9 +120,10 @@ public class SongModuleController implements Initializable, Injectable {
 
     // Get Reference to NoteControlCB
 
+
   }
 
-  private void setEnabledNotes(HBox[] noteControls) {
+  private void setEnabledNotes(NoteControl[] noteControls) {
     int length = Integer.parseInt(songLengthCB.getSelectionModel().getSelectedItem());
     for (int i = 0; i < noteControls.length; i++) {
       if (i < length) {
