@@ -13,7 +13,7 @@
 <?import main.ui.modules.song.note.NoteControl?>
 <ScrollPane xmlns:fx="http://javafx.com/fxml/1" fitToWidth="true" id="song-module"
   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-  prefHeight="250.0" prefWidth="800.0" stylesheets="@../../modules/main.css"
+  prefHeight="250.0" prefWidth="850.0" stylesheets="@../../modules/main.css"
   xmlns="http://javafx.com/javafx/8.0.111" fx:controller="main.ui.modules.song.SongModuleController"
   fx:id="songModule">
   <content>
