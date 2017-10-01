@@ -2,20 +2,27 @@ package main.ui.modules.song.note;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.maschel.roomba.RoombaJSSC;
+import com.maschel.roomba.song.RoombaNote;
+import com.maschel.roomba.song.RoombaNoteDuration;
+import com.maschel.roomba.song.RoombaSongNote;
 import java.io.IOException;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import main.core.RoombaJSSCSingleton;
 
 public class NoteControl extends HBox {
 
   @FXML
-  private JFXComboBox<String> noteComboBox;
+  private JFXComboBox<RoombaNote> roombaNoteComboBox;
 
   @FXML
-  private JFXComboBox<String> durationComboBox;
+  private JFXComboBox<RoombaNoteDuration> roombaNoteDurationComboBox;
 
   @FXML
   private JFXButton playButton;
@@ -24,19 +31,34 @@ public class NoteControl extends HBox {
   private Label noteLabel;
 
   public NoteControl() {
-
     try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteControl.fxml"));
-      fxmlLoader.setRoot(this);
-      fxmlLoader.setController(this);
-      fxmlLoader.load();
+
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("Note.fxml"));
+      loader.setRoot(this);
+      loader.setController(this);
+      loader.load();
+
+      ImageView imageView = new ImageView("main/res/play.png");
+      imageView.setFitWidth(25);
+      imageView.setFitHeight(25);
+      playButton.setGraphic(imageView);
+
+      roombaNoteComboBox.getItems().addAll(RoombaNote.values());
+      roombaNoteDurationComboBox.getItems().addAll(RoombaNoteDuration.values());
+
     } catch (IOException exception) {
       throw new RuntimeException(exception);
     }
+  }
 
-    populateNoteComboBox();
-    populateDurationComboBox();
-
+  @FXML
+  private void play(ActionEvent event) {
+    RoombaSongNote songNote = getRoombaSongNote();
+    RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
+    RoombaSongNote[] songNotes = {songNote};
+    roombaJSSC.song(4, songNotes, 60);
+    roombaJSSC.play(4);
+    roombaJSSC.sleep(1000);
   }
 
   public String getText() {
@@ -51,36 +73,10 @@ public class NoteControl extends HBox {
     return noteLabel.textProperty();
   }
 
-  private void populateNoteComboBox() {
-    noteComboBox.getItems().add("A");
-    noteComboBox.getItems().add("A#");
-    noteComboBox.getItems().add("B");
-    noteComboBox.getItems().add("C");
-    noteComboBox.getItems().add("C#");
-    noteComboBox.getItems().add("D");
-    noteComboBox.getItems().add("D#");
-    noteComboBox.getItems().add("E");
-    noteComboBox.getItems().add("F");
-    noteComboBox.getItems().add("F#");
-    noteComboBox.getItems().add("G");
-    noteComboBox.getItems().add("G#");
-  }
-
-
-  private void populateDurationComboBox() {
-    durationComboBox.getItems().add("0 sec");
-    for (int i = 1; i < 64; i++) {
-      durationComboBox.getItems().add(String.valueOf(i) + " / 64 sec");
-    }
-    durationComboBox.getItems().add("1 sec");
-  }
-
-  public JFXComboBox<String> getNoteComboBox() {
-    return noteComboBox;
-  }
-
-  public JFXComboBox<String> getDurationComboBox() {
-    return durationComboBox;
+  public RoombaSongNote getRoombaSongNote() {
+    RoombaNote note = roombaNoteComboBox.getSelectionModel().getSelectedItem();
+    RoombaNoteDuration duration = roombaNoteDurationComboBox.getSelectionModel().getSelectedItem();
+    return new RoombaSongNote(note, duration);
   }
 
   public JFXButton getPlayButton() {

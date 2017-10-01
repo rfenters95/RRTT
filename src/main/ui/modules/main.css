@@ -178,11 +178,12 @@ CheckBox CSS below
    -fx-background-radius: 4;
 }
 
-#song-module-gridPane {
+.song-module-gridPane {
+  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
   -fx-background-radius: 4;
   -fx-background-color: module-color;
 }
 
-#song-module-gridPane .label {
+.song-module-gridPane .label {
   -fx-text-fill: roomba-yellow;
 }
