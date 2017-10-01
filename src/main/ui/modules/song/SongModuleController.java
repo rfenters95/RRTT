@@ -5,6 +5,7 @@ import com.maschel.roomba.song.RoombaSongNote;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -80,6 +81,22 @@ public class SongModuleController implements Initializable, Injectable {
 
   private RootController rootController;
 
+  private NoteControl[] noteControls;
+
+  @FXML
+  private void play(ActionEvent event) {
+    ArrayList<RoombaSongNote> songNotes = new ArrayList<>();
+    for (NoteControl noteControl : noteControls) {
+      if (!noteControl.isDisable()) {
+        songNotes.add(noteControl.getRoombaSongNote());
+      }
+    }
+    int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
+    RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
+    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60);
+    RoombaJSSCSingleton.getRoombaJSSC().play(songNumber);
+  }
+
   @Override
   public void inject(RootController rootController) {
     this.rootController = rootController;
@@ -87,16 +104,16 @@ public class SongModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    songModule.setFocusTraversable(false);
 
     // Enable based on value of noteCountComboBox;
-    final NoteControl[] noteControls = {
+    NoteControl[] noteControls = {
         noteControl1, noteControl2, noteControl3, noteControl4,
         noteControl5, noteControl6, noteControl7, noteControl8,
         noteControl9, noteControl10, noteControl11, noteControl12,
         noteControl13, noteControl14, noteControl15, noteControl16
     };
-
-    songModule.setFocusTraversable(false);
+    setNoteControls(noteControls);
 
     for (int i = 0; i < 4; i++) {
       songNumberCB.getItems().add(String.valueOf(i + 1));
@@ -112,18 +129,6 @@ public class SongModuleController implements Initializable, Injectable {
     // Change to JFXTextField
     sleepCB.getItems().add("1000");
     sleepCB.getItems().add("2000");
-    sleepCB.setOnAction(event -> {
-      // Move this to playButton
-      ArrayList<RoombaSongNote> songNotes = new ArrayList<>();
-      for (NoteControl noteControl : noteControls) {
-        if (!noteControl.isDisable()) {
-          songNotes.add(noteControl.getRoombaSongNote());
-        }
-      }
-      int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
-      RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
-      RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60);
-    });
 
     songNumberCB.getSelectionModel().selectFirst();
     songLengthCB.getSelectionModel().selectLast();
@@ -134,10 +139,10 @@ public class SongModuleController implements Initializable, Injectable {
     songLengthCB.setOnAction(e -> {
       setEnabledNotes(noteControls);
     });
+  }
 
-    // Get Reference to NoteControlCB
-
-
+  private void setNoteControls(NoteControl[] noteControls) {
+    this.noteControls = noteControls;
   }
 
   private void setEnabledNotes(NoteControl[] noteControls) {
