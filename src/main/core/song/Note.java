@@ -1,5 +1,8 @@
 package main.core.song;
 
+import com.maschel.roomba.RoombaJSSC;
+import main.core.RoombaJSSCSingleton;
+
 public class Note {
 
   private String note;
@@ -11,6 +14,7 @@ public class Note {
   }
 
   public void play() {
+    RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
   }
 
 }

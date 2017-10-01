@@ -1,12 +1,15 @@
 package main.ui.modules.song;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.maschel.roomba.song.RoombaSongNote;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import main.core.Injectable;
+import main.core.RoombaJSSCSingleton;
 import main.ui.modules.song.note.NoteControl;
 import main.ui.root.RootController;
 
@@ -107,6 +110,19 @@ public class SongModuleController implements Initializable, Injectable {
     outputCB.getItems().add("Speakers");
 
     sleepCB.getItems().add("1000");
+    sleepCB.getItems().add("2000");
+    sleepCB.setOnAction(event -> {
+      // Move this to playButton
+      ArrayList<RoombaSongNote> songNotes = new ArrayList<>();
+      for (NoteControl noteControl : noteControls) {
+        if (!noteControl.isDisable()) {
+          songNotes.add(noteControl.getRoombaSongNote());
+        }
+      }
+      int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
+      RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
+      RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60);
+    });
 
     songNumberCB.getSelectionModel().selectFirst();
     songLengthCB.getSelectionModel().selectLast();
