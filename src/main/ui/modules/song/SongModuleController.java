@@ -109,6 +109,7 @@ public class SongModuleController implements Initializable, Injectable {
     outputCB.getItems().add("Roomba");
     outputCB.getItems().add("Speakers");
 
+    // Change to JFXTextField
     sleepCB.getItems().add("1000");
     sleepCB.getItems().add("2000");
     sleepCB.setOnAction(event -> {

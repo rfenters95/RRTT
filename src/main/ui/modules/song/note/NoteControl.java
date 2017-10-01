@@ -2,6 +2,7 @@ package main.ui.modules.song.note;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.song.RoombaNote;
 import com.maschel.roomba.song.RoombaNoteDuration;
 import com.maschel.roomba.song.RoombaSongNote;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import main.core.RoombaJSSCSingleton;
 
 public class NoteControl extends HBox {
 
@@ -51,6 +53,12 @@ public class NoteControl extends HBox {
 
   @FXML
   private void play(ActionEvent event) {
+    RoombaSongNote songNote = getRoombaSongNote();
+    RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
+    RoombaSongNote[] songNotes = {songNote};
+    roombaJSSC.song(4, songNotes, 60);
+    roombaJSSC.play(4);
+    roombaJSSC.sleep(1000);
   }
 
   public String getText() {
