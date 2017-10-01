@@ -92,9 +92,11 @@ public class SongModuleController implements Initializable, Injectable {
       }
     }
     int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
+    int sleepTime = Integer.parseInt(sleepCB.getSelectionModel().getSelectedItem());
     RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
-    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60);
+    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60); // what is tempo?
     RoombaJSSCSingleton.getRoombaJSSC().play(songNumber);
+    RoombaJSSCSingleton.getRoombaJSSC().sleep(sleepTime);
   }
 
   @Override
