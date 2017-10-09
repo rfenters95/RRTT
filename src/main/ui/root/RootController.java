@@ -151,6 +151,7 @@ public class RootController implements Initializable {
     console.setWrapText(false);
     console.setEditable(false);
 
+    // Context menu for Save IO
     final ContextMenu consoleContextMenu = new ContextMenu();
     MenuItem saveLogMenuItem = new MenuItem("Log: Save");
     saveLogMenuItem.setOnAction(e -> {
