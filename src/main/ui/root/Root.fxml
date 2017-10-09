@@ -128,7 +128,7 @@
                         <VBox alignment="CENTER" styleClass="module-parent-container">
                           <children>
                             <StackPane maxWidth="-Infinity" minWidth="-Infinity"
-                              prefWidth="850.0" styleClass="module-title-container">
+                              prefWidth="600.0" styleClass="module-title-container">
                               <children>
                                 <Label styleClass="module-title" text="Song Module"/>
                               </children>

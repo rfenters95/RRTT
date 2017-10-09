@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import main.core.RoombaJSSCSingleton;
+import main.ui.alerts.InvalidInputAlert;
 
 public class NoteControl extends HBox {
 
@@ -54,11 +55,18 @@ public class NoteControl extends HBox {
   @FXML
   private void play(ActionEvent event) {
     RoombaSongNote songNote = getRoombaSongNote();
-    RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
-    RoombaSongNote[] songNotes = {songNote};
-    roombaJSSC.song(4, songNotes, 60);
-    roombaJSSC.play(4);
-    roombaJSSC.sleep(1000);
+    if (songNote != null) {
+      RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
+      RoombaSongNote[] songNotes = {songNote};
+      roombaJSSC.song(4, songNotes, 60);
+      roombaJSSC.play(4);
+      roombaJSSC.sleep(1000);
+    } else {
+      String header = getText();
+      String content = "Invalid input! Please select a note and duration!";
+      InvalidInputAlert invalidInputAlert = new InvalidInputAlert(header, content);
+      invalidInputAlert.show();
+    }
   }
 
   public String getText() {
@@ -76,7 +84,10 @@ public class NoteControl extends HBox {
   public RoombaSongNote getRoombaSongNote() {
     RoombaNote note = roombaNoteComboBox.getSelectionModel().getSelectedItem();
     RoombaNoteDuration duration = roombaNoteDurationComboBox.getSelectionModel().getSelectedItem();
-    return new RoombaSongNote(note, duration);
+    if (note != null && duration != null) {
+      return new RoombaSongNote(note, duration);
+    }
+    return null;
   }
 
   public JFXButton getPlayButton() {

@@ -21,12 +21,12 @@
   xmlns="http://javafx.com/javafx/8.0.111" fx:controller="main.ui.modules.song.SongModuleController"
   fx:id="songModule">
   <content>
-    <VBox spacing="25.0">
+    <VBox spacing="15.0">
       <children>
         <StackPane>
           <children>
             <GridPane hgap="15.0" maxWidth="-Infinity" minWidth="-Infinity"
-              prefWidth="575.0" styleClass="song-module-gridPane" vgap="15.0">
+              prefWidth="575.0" styleClass="song-module-gridPane" vgap="10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -98,65 +98,50 @@
         <!--This comment divides song options from note controls-->
         <StackPane>
           <children>
-            <GridPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="800.0"
-              styleClass="song-module-gridPane" vgap="25.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS"/>
-                <ColumnConstraints hgrow="ALWAYS"/>
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-                <RowConstraints vgrow="ALWAYS"/>
-              </rowConstraints>
-              <children>
 
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="0" text="Note 1"
+            <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="500.0"
+              spacing="25.0" styleClass="note-vBox">
+              <children>
+                <NoteControl text="Note 1"
                   fx:id="noteControl1"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="0" text="Note 2"
+                <NoteControl text="Note 2"
                   fx:id="noteControl2"/>
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="1" text="Note 3"
+                <NoteControl text="Note 3"
                   fx:id="noteControl3"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="1" text="Note 4"
+                <NoteControl text="Note 4"
                   fx:id="noteControl4"/>
 
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="2" text="Note 5"
+                <NoteControl text="Note 5"
                   fx:id="noteControl5"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="2" text="Note 6"
+                <NoteControl text="Note 6"
                   fx:id="noteControl6"/>
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="3" text="Note 7"
+                <NoteControl text="Note 7"
                   fx:id="noteControl7"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="3" text="Note 8"
+                <NoteControl text="Note 8"
                   fx:id="noteControl8"/>
 
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="4" text="Note 9"
+                <NoteControl text="Note 9"
                   fx:id="noteControl9"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="4" text="Note 10"
+                <NoteControl text="Note 10"
                   fx:id="noteControl10"/>
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="5" text="Note 11"
+                <NoteControl text="Note 11"
                   fx:id="noteControl11"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="5" text="Note 12"
+                <NoteControl text="Note 12"
                   fx:id="noteControl12"/>
 
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="6" text="Note 13"
+                <NoteControl text="Note 13"
                   fx:id="noteControl13"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="6" text="Note 14"
+                <NoteControl text="Note 14"
                   fx:id="noteControl14"/>
-                <NoteControl GridPane.columnIndex="0" GridPane.rowIndex="7" text="Note 15"
+                <NoteControl text="Note 15"
                   fx:id="noteControl15"/>
-                <NoteControl GridPane.columnIndex="1" GridPane.rowIndex="7" text="Note 16"
+                <NoteControl text="Note 16"
                   fx:id="noteControl16"/>
-
               </children>
               <padding>
                 <Insets bottom="25.0" top="25.0"/>
               </padding>
-            </GridPane>
+            </VBox>
           </children>
         </StackPane>
       </children>

@@ -168,11 +168,6 @@ CheckBox CSS below
   -fx-background-color: bg-color;
 }
 
-#song-module {
-  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
-  -fx-background-radius: 4;
-}
-
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
    -fx-background-radius: 4;
@@ -182,6 +177,16 @@ CheckBox CSS below
   -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
   -fx-background-radius: 4;
   -fx-background-color: module-color;
+}
+
+.note-vBox {
+  -fx-effect: dropshadow(gaussian, black, 10, 0.0 , 0, 0);
+  -fx-background-radius: 4;
+  -fx-background-color: module-color;
+}
+
+.note-vBox .label {
+  -fx-text-fill: roomba-yellow;
 }
 
 .song-module-gridPane .label {
