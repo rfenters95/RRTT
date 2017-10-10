@@ -27,7 +27,7 @@
 
           <children>
 
-            <Label styleClass="battery-percentage-full" text="100%" fx:id="batteryPercentageLabel"/>
+            <Label styleClass="battery-percentage" text="100%" fx:id="batteryPercentageLabel"/>
 
             <JFXButton contentDisplay="CENTER" maxHeight="-Infinity"
               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"

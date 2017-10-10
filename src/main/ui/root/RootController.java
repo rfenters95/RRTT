@@ -123,17 +123,6 @@ public class RootController implements Initializable {
       while (!Main.shutdown) {
         System.out.println("Execute!");
         double batteryPercentage = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge() / 65535.0;
-        batteryPercentageLabel.setStyle("");
-        batteryPercentageLabel.getStyleClass().remove("battery-percentage-full");
-        batteryPercentageLabel.getStyleClass().remove("battery-percentage-moderate");
-        batteryPercentageLabel.getStyleClass().remove("battery-percentage-low");
-        if (batteryPercentage > 75) {
-          batteryPercentageLabel.getStyleClass().add("battery-percentage-full");
-        } else if (batteryPercentage <= 75) {
-          batteryPercentageLabel.getStyleClass().add("battery-percentage-moderate");
-        } else {
-          batteryPercentageLabel.getStyleClass().add("battery-percentage-low");
-        }
         Platform.runLater(() -> batteryPercentageLabel.setText(String.valueOf(batteryPercentage)));
         try {
           final int numberOfSeconds = 30;

@@ -251,3 +251,7 @@ Module CSS below
 #controllerNavigationTabPane .tab-header-area {
   visibility: hidden;
 }
+
+.battery-percentage {
+  -fx-text-fill: white;
+}
