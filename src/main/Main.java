@@ -2,6 +2,7 @@ package main;
 
 import java.util.Properties;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,6 +10,8 @@ import javafx.stage.Stage;
 import org.apache.log4j.PropertyConfigurator;
 
 public class Main extends Application {
+
+  public static boolean shutdown = false;
 
   public static void main(String[] args) {
     launch(args);
@@ -24,6 +27,10 @@ public class Main extends Application {
 
     // Start app
     Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/Root.fxml"));
+    primaryStage.setOnCloseRequest(e -> {
+      shutdown = true;
+      Platform.exit();
+    });
     primaryStage.setTitle("RRTT - EARLY BUILD");
     primaryStage.setScene(new Scene(root));
     primaryStage.show();

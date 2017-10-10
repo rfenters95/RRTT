@@ -19,24 +19,39 @@
   stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111"
   fx:controller="main.ui.root.RootController" fx:id="root">
   <children>
+
     <BorderPane style="-fx-background-color: black;" maxHeight="-Infinity" minHeight="-Infinity"
       prefHeight="50.0">
       <right>
-        <JFXButton BorderPane.alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity"
-          maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#togglePower"
-          prefHeight="30.0" prefWidth="30.0" fx:id="powerButton">
-          <graphic>
-            <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
-              pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@../../res/powerOff.png"/>
-              </image>
-            </ImageView>
-          </graphic>
+        <HBox BorderPane.alignment="CENTER" alignment="CENTER" spacing="10.0">
+
+          <children>
+
+            <Label styleClass="battery-percentage-full" text="100%" fx:id="batteryPercentageLabel"/>
+
+            <JFXButton contentDisplay="CENTER" maxHeight="-Infinity"
+              maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              onAction="#togglePower"
+              prefHeight="30.0" prefWidth="30.0" fx:id="powerButton">
+
+              <graphic>
+                <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
+                  pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../../res/powerOff.png"/>
+                  </image>
+                </ImageView>
+              </graphic>
+
+            </JFXButton>
+
+          </children>
+
           <BorderPane.margin>
             <Insets right="10.0"/>
           </BorderPane.margin>
-        </JFXButton>
+
+        </HBox>
       </right>
       <left>
         <Label BorderPane.alignment="CENTER" id="app-title" text="Rapid Roomba Test Tool">
@@ -46,6 +61,7 @@
         </Label>
       </left>
     </BorderPane>
+
     <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
       <items>
         <VBox>

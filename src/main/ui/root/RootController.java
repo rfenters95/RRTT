@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
@@ -26,6 +28,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.Main;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
@@ -43,6 +46,9 @@ public class RootController implements Initializable {
 
   @FXML
   public TextArea console;
+
+  @FXML
+  public Label batteryPercentageLabel;
 
   @FXML
   public JFXButton powerButton;
@@ -112,6 +118,39 @@ public class RootController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
 
     powerButton.setFocusTraversable(false);
+
+    Thread batteryUpdaterThread = new Thread(() -> {
+      while (!Main.shutdown) {
+        System.out.println("Execute!");
+        double batteryPercentage = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge() / 65535.0;
+        batteryPercentageLabel.setStyle("");
+        batteryPercentageLabel.getStyleClass().remove("battery-percentage-full");
+        batteryPercentageLabel.getStyleClass().remove("battery-percentage-moderate");
+        batteryPercentageLabel.getStyleClass().remove("battery-percentage-low");
+        if (batteryPercentage > 75) {
+          batteryPercentageLabel.getStyleClass().add("battery-percentage-full");
+        } else if (batteryPercentage <= 75) {
+          batteryPercentageLabel.getStyleClass().add("battery-percentage-moderate");
+        } else {
+          batteryPercentageLabel.getStyleClass().add("battery-percentage-low");
+        }
+        Platform.runLater(() -> batteryPercentageLabel.setText(String.valueOf(batteryPercentage)));
+        try {
+          final int numberOfSeconds = 30;
+          for (int i = 0; i < numberOfSeconds; i++) {
+            // If app is in shutdown, stop sleeping and finish loop.
+            if (!Main.shutdown) {
+              Thread.sleep(1000);
+            } else {
+              break;
+            }
+          }
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+    });
+    batteryUpdaterThread.start();
 
     // Give nested module controllers access to root controller
     driveModuleController.inject(this);

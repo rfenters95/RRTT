@@ -192,3 +192,15 @@ CheckBox CSS below
 .song-module-gridPane .label {
   -fx-text-fill: roomba-yellow;
 }
+
+.battery-percentage-full {
+  -fx-text-fill: lime;
+}
+
+.battery-percentage-moderate {
+  -fx-text-fill: yellow;
+}
+
+.battery-percentage-low {
+  -fx-text-fill: red;
+}
