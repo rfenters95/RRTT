@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +27,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import main.Main;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
@@ -80,17 +78,17 @@ public class RootController implements Initializable {
   @FXML
   private SongModuleController songModuleController;
 
-  private boolean poweredOn;
-
+  /*
+  * Bug: If device doesn't connect, state shouldn't change (power icon)
+  * */
   @FXML
   private void togglePower(ActionEvent event) {
-    if (poweredOn) {
+    if (!RoombaJSSCSingleton.isConnected()) {
       RoombaJSSCSingleton.getRoombaJSSC().powerOff();
       ImageView imageView = new ImageView("main/res/powerOff.png");
       imageView.setFitWidth(25);
       imageView.setFitHeight(25);
       powerButton.setGraphic(imageView);
-      poweredOn = !poweredOn;
     } else {
       try {
         Stage stage = new Stage();
@@ -103,6 +101,11 @@ public class RootController implements Initializable {
         stage.initOwner(((Node) event.getSource()).getScene().getWindow());
         stage.setResizable(false);
         stage.showAndWait();
+        if (RoombaJSSCSingleton.isConnected()) {
+          BatteryUpdaterThread batteryUpdaterThread;
+          batteryUpdaterThread = new BatteryUpdaterThread(batteryPercentageLabel);
+          batteryUpdaterThread.start();
+        }
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -110,7 +113,6 @@ public class RootController implements Initializable {
       imageView.setFitWidth(25);
       imageView.setFitHeight(25);
       powerButton.setGraphic(imageView);
-      poweredOn = !poweredOn;
     }
   }
 
@@ -118,28 +120,6 @@ public class RootController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
 
     powerButton.setFocusTraversable(false);
-
-    Thread batteryUpdaterThread = new Thread(() -> {
-      while (!Main.shutdown) {
-        System.out.println("Execute!");
-        double batteryPercentage = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge() / 65535.0;
-        Platform.runLater(() -> batteryPercentageLabel.setText(String.valueOf(batteryPercentage)));
-        try {
-          final int numberOfSeconds = 30;
-          for (int i = 0; i < numberOfSeconds; i++) {
-            // If app is in shutdown, stop sleeping and finish loop.
-            if (!Main.shutdown) {
-              Thread.sleep(1000);
-            } else {
-              break;
-            }
-          }
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-      }
-    });
-    batteryUpdaterThread.start();
 
     // Give nested module controllers access to root controller
     driveModuleController.inject(this);

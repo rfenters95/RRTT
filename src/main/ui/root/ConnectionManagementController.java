@@ -7,10 +7,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.RoombaStartMode;
 
-public class ConnectionManagementController implements Initializable {
+public class ConnectionManagementController implements Initializable, Injectable {
 
   @FXML
   private JFXComboBox<String> deviceComboBox;
@@ -24,11 +25,24 @@ public class ConnectionManagementController implements Initializable {
   @FXML
   private JFXButton refreshButton;
 
+  private RootController rootController;
+
   @FXML
   private void connect(ActionEvent event) {
-    String port = deviceComboBox.getSelectionModel().getSelectedItem();
-    RoombaStartMode startMode = modeComboBox.getSelectionModel().getSelectedItem();
-    // connect
+    if (RoombaJSSCSingleton.isConnected()) {
+      String port = deviceComboBox.getSelectionModel().getSelectedItem();
+      RoombaStartMode startMode = modeComboBox.getSelectionModel().getSelectedItem();
+      if (port != null && startMode != null) {
+        RoombaJSSCSingleton.connect(port, startMode);
+      }
+    } else {
+      RoombaJSSCSingleton.powerOff();
+    }
+  }
+
+  @Override
+  public void inject(RootController rootController) {
+    this.rootController = rootController;
   }
 
   @FXML
@@ -40,6 +54,7 @@ public class ConnectionManagementController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     deviceComboBox.getItems().addAll(RoombaJSSCSingleton.getRoombaJSSC().portList());
+    deviceComboBox.getItems().add("DEBUG");
     modeComboBox.getItems().addAll(RoombaStartMode.values());
   }
 
