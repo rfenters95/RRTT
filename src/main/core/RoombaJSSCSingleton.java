@@ -20,7 +20,7 @@ public class RoombaJSSCSingleton {
       StringFormatter.format("%s", "hh.mm.ss").getValue());
 
   // BEGIN DEV : should be false
-  private static BooleanProperty isConnected = new SimpleBooleanProperty(true);
+  private static BooleanProperty isConnected = new SimpleBooleanProperty(false);
   // END DEV
 
   private RoombaJSSCSingleton() {

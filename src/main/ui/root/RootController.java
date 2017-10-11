@@ -80,15 +80,17 @@ public class RootController implements Initializable {
 
   /*
   * Bug: If device doesn't connect, state shouldn't change (power icon)
+  * May have fixed. In Roomba singleton I had connected defaulted to true for debugging.
   * */
   @FXML
   private void togglePower(ActionEvent event) {
-    if (!RoombaJSSCSingleton.isConnected()) {
-      RoombaJSSCSingleton.getRoombaJSSC().powerOff();
+    if (RoombaJSSCSingleton.isConnected()) {
+      RoombaJSSCSingleton.powerOff();
       ImageView imageView = new ImageView("main/res/powerOff.png");
       imageView.setFitWidth(25);
       imageView.setFitHeight(25);
       powerButton.setGraphic(imageView);
+      batteryPercentageLabel.setText("Not Connected!");
     } else {
       try {
         Stage stage = new Stage();
