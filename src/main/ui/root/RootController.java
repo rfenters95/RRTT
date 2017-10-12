@@ -107,14 +107,14 @@ public class RootController implements Initializable {
           BatteryUpdaterThread batteryUpdaterThread;
           batteryUpdaterThread = new BatteryUpdaterThread(batteryPercentageLabel);
           batteryUpdaterThread.start();
+          ImageView imageView = new ImageView("main/res/powerOn.png");
+          imageView.setFitWidth(25);
+          imageView.setFitHeight(25);
+          powerButton.setGraphic(imageView);
         }
       } catch (IOException e) {
         e.printStackTrace();
       }
-      ImageView imageView = new ImageView("main/res/powerOn.png");
-      imageView.setFitWidth(25);
-      imageView.setFitHeight(25);
-      powerButton.setGraphic(imageView);
     }
   }
 
