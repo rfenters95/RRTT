@@ -19,6 +19,7 @@ import main.core.led.listeners.PowerIntensityListener;
 import main.ui.alerts.InvalidInputAlert;
 import main.ui.alerts.InvalidPowerColorAlert;
 import main.ui.alerts.InvalidPowerIntensityAlert;
+import main.ui.alerts.NotConnectedAlert;
 import main.ui.root.RootController;
 
 /*
@@ -95,34 +96,38 @@ public class LedModuleController implements Initializable, Injectable {
 
   @FXML
   void toggle(ActionEvent event) {
-    if (!ledIsOn) {
-      if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
-        RoombaJSSCSingleton.getRoombaJSSC().leds(
-            debrisCB.isSelected(),
-            spotCB.isSelected(),
-            dockCB.isSelected(),
-            checkRobotCB.isSelected(),
-            getPowerColor(),
-            getPowerIntensity()
-        );
-        setImage((JFXButton) event.getSource(), "main/res/stop.png");
-        ledIsOn = !ledIsOn;
-      } else {
-        InvalidInputAlert inputAlert;
-        if (!isValidPowerColor(getPowerColor())) {
-          inputAlert = new InvalidPowerColorAlert();
+    if (RoombaJSSCSingleton.isConnected()) {
+      if (!ledIsOn) {
+        if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
+          RoombaJSSCSingleton.getRoombaJSSC().leds(
+              debrisCB.isSelected(),
+              spotCB.isSelected(),
+              dockCB.isSelected(),
+              checkRobotCB.isSelected(),
+              getPowerColor(),
+              getPowerIntensity()
+          );
+          setImage((JFXButton) event.getSource(), "main/res/stop.png");
+          ledIsOn = !ledIsOn;
         } else {
-          inputAlert = new InvalidPowerIntensityAlert();
+          InvalidInputAlert inputAlert;
+          if (!isValidPowerColor(getPowerColor())) {
+            inputAlert = new InvalidPowerColorAlert();
+          } else {
+            inputAlert = new InvalidPowerIntensityAlert();
+          }
+          inputAlert.show();
         }
-        inputAlert.show();
+
+      } else {
+        RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
+        setImage((JFXButton) event.getSource(), "main/res/play.png");
+        ledIsOn = !ledIsOn;
       }
-
     } else {
-      RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
-      setImage((JFXButton) event.getSource(), "main/res/play.png");
-      ledIsOn = !ledIsOn;
+      NotConnectedAlert connectionAlert = new NotConnectedAlert();
+      connectionAlert.show();
     }
-
   }
 
   @Override
