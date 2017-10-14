@@ -17,6 +17,8 @@ import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
 import main.ui.alerts.InvalidInputAlert;
+import main.ui.alerts.InvalidPowerColorAlert;
+import main.ui.alerts.InvalidPowerIntensityAlert;
 import main.ui.root.RootController;
 
 /*
@@ -24,7 +26,7 @@ import main.ui.root.RootController;
 * LightModule allows users to set parameters for the Roomba
 * LED command and send that command to the Roomba.
 * */
-public class LightModuleController implements Initializable, Injectable {
+public class LedModuleController implements Initializable, Injectable {
 
   private RootController rootController;
 
@@ -38,74 +40,88 @@ public class LightModuleController implements Initializable, Injectable {
   private VBox lightModule;
 
   @FXML
-  private JFXCheckBox debrisCheckBox;
+  private JFXCheckBox debrisCB;
 
   @FXML
-  private JFXCheckBox spotCheckBox;
+  private JFXCheckBox spotCB;
 
   @FXML
-  private JFXCheckBox dockCheckBox;
+  private JFXCheckBox dockCB;
 
   @FXML
-  private JFXCheckBox checkRobotCheckBox;
+  private JFXCheckBox checkRobotCB;
 
   @FXML
-  private JFXTextField powerColorTextField;
+  private JFXTextField powerColorTF;
 
   @FXML
-  private JFXTextField powerIntensityTextField;
+  private JFXTextField powerIntensityTF;
 
   @FXML
   private JFXButton toggle;
 
-  private boolean hasStarted = false;
+  private boolean ledIsOn = false;
+
+  private void setImage(JFXButton button, String path) {
+    ImageView imageView = new ImageView(path);
+    imageView.setFitWidth(25);
+    imageView.setFitHeight(25);
+    button.setGraphic(imageView);
+  }
+
+  private int extractTextFieldInteger(JFXTextField textField) {
+    return Integer.parseInt(textField.getText());
+  }
+
+  private boolean isValidPowerColor(int color) {
+    return (color >= 0 && color <= 100);
+  }
+
+  private boolean isValidPowerIntensity(int intensity) {
+    return (intensity >= 0 && intensity <= 100);
+  }
+
+  private boolean isValidPowerParameters(int color, int intensity) {
+    return isValidPowerColor(color) && isValidPowerIntensity(intensity);
+  }
+
+  private int getPowerColor() {
+    return extractTextFieldInteger(powerColorTF);
+  }
+
+  private int getPowerIntensity() {
+    return extractTextFieldInteger(powerIntensityTF);
+  }
 
   @FXML
   void toggle(ActionEvent event) {
-
-    // Don't allow play to change if error is obtained!
-
-    if (!hasStarted) {
-      int powerColor = Integer.parseInt(powerColorTextField.getText());
-      int powerIntensity = Integer.parseInt(powerIntensityTextField.getText());
-      boolean check1 = (powerColor >= 0 && powerColor <= 100);
-      boolean check2 = (powerIntensity >= 0 && powerIntensity <= 100);
-
-      if (check1 && check2) {
-        boolean debris = debrisCheckBox.isSelected();
-        boolean spot = spotCheckBox.isSelected();
-        boolean dock = dockCheckBox.isSelected();
-        boolean checkRobot = checkRobotCheckBox.isSelected();
-        RoombaJSSCSingleton.getRoombaJSSC()
-            .leds(debris, spot, dock, checkRobot, powerColor, powerIntensity);
+    if (!ledIsOn) {
+      if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
+        RoombaJSSCSingleton.getRoombaJSSC().leds(
+            debrisCB.isSelected(),
+            spotCB.isSelected(),
+            dockCB.isSelected(),
+            checkRobotCB.isSelected(),
+            getPowerColor(),
+            getPowerIntensity()
+        );
+        setImage((JFXButton) event.getSource(), "main/res/stop.png");
+        ledIsOn = !ledIsOn;
       } else {
-        if (!check1) {
-          InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Power Color (%)",
-              "Invalid Input! Range [0, 100]");
-          invalidInputAlert.show();
+        InvalidInputAlert inputAlert;
+        if (!isValidPowerColor(getPowerColor())) {
+          inputAlert = new InvalidPowerColorAlert();
         } else {
-          InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Power Intensity (%)",
-              "Invalid Input! Range [0, 100]");
-          invalidInputAlert.show();
+          inputAlert = new InvalidPowerIntensityAlert();
         }
+        inputAlert.show();
       }
-
-      JFXButton button = (JFXButton) event.getSource();
-      ImageView imageView = new ImageView("main/res/stop.png");
-      imageView.setFitWidth(25);
-      imageView.setFitHeight(25);
-      button.setGraphic(imageView);
 
     } else {
       RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
-      JFXButton button = (JFXButton) event.getSource();
-      ImageView imageView = new ImageView("main/res/play.png");
-      imageView.setFitWidth(25);
-      imageView.setFitHeight(25);
-      button.setGraphic(imageView);
+      setImage((JFXButton) event.getSource(), "main/res/play.png");
+      ledIsOn = !ledIsOn;
     }
-
-    hasStarted = !hasStarted;
 
   }
 
@@ -120,7 +136,7 @@ public class LightModuleController implements Initializable, Injectable {
     lightModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case SPACE:
-          if (hasStarted) {
+          if (ledIsOn) {
             toggle.fire();
           }
           break;
@@ -141,36 +157,36 @@ public class LightModuleController implements Initializable, Injectable {
 
     final ContextMenu powerColorContextMenu = new ContextMenu();
     MenuItem powerColorMenuItemGreen = new MenuItem("Special: Color Green");
-    powerColorMenuItemGreen.setOnAction(e -> powerColorTextField.setText("0"));
+    powerColorMenuItemGreen.setOnAction(e -> powerColorTF.setText("0"));
     MenuItem powerColorMenuItemOrange = new MenuItem("Special: Color Orange");
-    powerColorMenuItemOrange.setOnAction(e -> powerColorTextField.setText("50"));
+    powerColorMenuItemOrange.setOnAction(e -> powerColorTF.setText("50"));
     MenuItem powerColorMenuItemYellow = new MenuItem("Special: Color Yellow");
-    powerColorMenuItemYellow.setOnAction(e -> powerColorTextField.setText("75"));
+    powerColorMenuItemYellow.setOnAction(e -> powerColorTF.setText("75"));
     MenuItem powerColorMenuItemRed = new MenuItem("Special: Color Red");
-    powerColorMenuItemRed.setOnAction(e -> powerColorTextField.setText("100"));
+    powerColorMenuItemRed.setOnAction(e -> powerColorTF.setText("100"));
     powerColorContextMenu.getItems().add(powerColorMenuItemGreen);
     powerColorContextMenu.getItems().add(powerColorMenuItemOrange);
     powerColorContextMenu.getItems().add(powerColorMenuItemYellow);
     powerColorContextMenu.getItems().add(powerColorMenuItemRed);
-    powerColorTextField.setContextMenu(powerColorContextMenu);
+    powerColorTF.setContextMenu(powerColorContextMenu);
 
     final ContextMenu powerIntensityContextMenu = new ContextMenu();
     MenuItem powerIntensityMenuItemOff = new MenuItem("Special: Intensity None");
-    powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTextField.setText("0"));
+    powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTF.setText("0"));
     MenuItem powerIntensityMenuItemHalf = new MenuItem("Special: Intensity Half");
-    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTextField.setText("50"));
+    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTF.setText("50"));
     MenuItem powerIntensityMenuItemFull = new MenuItem("Special: Intensity Full");
-    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTextField.setText("100"));
+    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTF.setText("100"));
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemOff);
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemHalf);
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemFull);
-    powerIntensityTextField.setContextMenu(powerIntensityContextMenu);
+    powerIntensityTF.setContextMenu(powerIntensityContextMenu);
 
-    powerColorTextField.setText("0");
-    powerIntensityTextField.setText("0");
-    powerColorTextField.textProperty().addListener(new PowerColorListener(powerColorTextField));
-    powerIntensityTextField.textProperty()
-        .addListener(new PowerIntensityListener(powerIntensityTextField));
+    powerColorTF.setText("0");
+    powerIntensityTF.setText("0");
+    powerColorTF.textProperty().addListener(new PowerColorListener(powerColorTF));
+    powerIntensityTF.textProperty()
+        .addListener(new PowerIntensityListener(powerIntensityTF));
 
   }
 

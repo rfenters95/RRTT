@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
 import main.ui.modules.drive.DriveModuleController;
-import main.ui.modules.led.LightModuleController;
+import main.ui.modules.led.LedModuleController;
 import main.ui.modules.sensor.SensorModuleController;
 import main.ui.modules.song.SongModuleController;
 
@@ -67,7 +67,7 @@ public class RootController implements Initializable {
   private DriveModuleController driveModuleController;
 
   @FXML
-  private LightModuleController lightModuleController;
+  private LedModuleController ledModuleController;
 
   @FXML
   private SensorModuleController sensorModuleController;
@@ -125,7 +125,7 @@ public class RootController implements Initializable {
 
     // Give nested module controllers access to root controller
     driveModuleController.inject(this);
-    lightModuleController.inject(this);
+    ledModuleController.inject(this);
     sensorModuleController.inject(this);
     controllerNavigationController.inject(this);
     songModuleController.inject(this);

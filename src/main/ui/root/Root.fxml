@@ -105,8 +105,8 @@
                                         <Label styleClass="module-title" text="LED Module"/>
                                       </children>
                                     </StackPane>
-                                    <fx:include source="../modules/led/LightModule.fxml"
-                                      fx:id="lightModule"/>
+                                    <fx:include source="../modules/led/LedModule.fxml"
+                                      fx:id="ledModule"/>
                                   </children>
                                 </VBox>
                               </children>

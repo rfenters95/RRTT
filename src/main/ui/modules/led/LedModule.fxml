@@ -12,7 +12,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
   minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
   stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.led.LightModuleController" fx:id="lightModule" styleClass="module">
+  fx:controller="main.ui.modules.led.LedModuleController" fx:id="lightModule" styleClass="module">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">
@@ -25,14 +25,14 @@
             <VBox spacing="15.0">
               <children>
                 <JFXCheckBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                  minWidth="-Infinity" text="Debris" fx:id="debrisCheckBox"/>
-                <JFXCheckBox text="Dock" fx:id="dockCheckBox"/>
+                  minWidth="-Infinity" text="Debris" fx:id="debrisCB"/>
+                <JFXCheckBox text="Dock" fx:id="dockCB"/>
               </children>
             </VBox>
             <VBox spacing="15.0">
               <children>
-                <JFXCheckBox text="Spot" fx:id="spotCheckBox"/>
-                <JFXCheckBox text="Check Robot" fx:id="checkRobotCheckBox"/>
+                <JFXCheckBox text="Spot" fx:id="spotCB"/>
+                <JFXCheckBox text="Check Robot" fx:id="checkRobotCB"/>
               </children>
             </VBox>
           </children>
@@ -49,10 +49,10 @@
           <children>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
               minHeight="-Infinity" minWidth="-Infinity" promptText="Power Color (%)"
-              fx:id="powerColorTextField"/>
+              fx:id="powerColorTF"/>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
               minHeight="-Infinity" minWidth="-Infinity" promptText="Power Intensity (%)"
-              fx:id="powerIntensityTextField"/>
+              fx:id="powerIntensityTF"/>
           </children>
           <StackPane.margin>
             <Insets right="10.0"/>
