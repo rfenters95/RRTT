@@ -42,14 +42,14 @@ public class BatteryUpdaterThread extends Thread {
     RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
     RoombaJSSCSingleton.getRoombaJSSC().sleep(50);
     int batteryCharge = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge();
-//    System.out.println(batteryCharge);
+    //System.out.println(batteryCharge);
     final double maxBatteryCharge = 65535.0;
     return (batteryCharge / maxBatteryCharge) * 100;
   }
 
   private String getFormattedBatteryPercentage() {
     DecimalFormat decimalFormat = new DecimalFormat("##0.00");
-    return decimalFormat.format(getBatteryPercentage());
+    return decimalFormat.format(getBatteryPercentage()) + "%";
   }
 
   @Override
