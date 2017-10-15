@@ -32,6 +32,12 @@ import main.ui.modules.song.SongModuleController;
 
 public class RootController implements Initializable {
 
+  /* *********************************************
+  *
+  * RootController components
+  *
+  ********************************************** */
+
   @FXML
   public VBox root;
 
@@ -50,6 +56,12 @@ public class RootController implements Initializable {
   @FXML
   public JFXTabPane controllerNavigationTabPane;
 
+  /* *********************************************
+  *
+  * Nested Controller Containers
+  *
+  ********************************************** */
+
   @FXML
   private StackPane driveModuleContainer;
 
@@ -58,6 +70,12 @@ public class RootController implements Initializable {
 
   @FXML
   private StackPane sensorModuleContainer;
+
+  /* *********************************************
+  *
+  * Nested Controllers
+  *
+  ********************************************** */
 
   @FXML
   private DriveModuleController driveModuleController;
@@ -74,12 +92,24 @@ public class RootController implements Initializable {
   @FXML
   private SongModuleController songModuleController;
 
+  /* *********************************************
+  *
+  * Instance methods
+  *
+  ********************************************** */
+
   private void setImage(JFXButton button, String path) {
     ImageView imageView = new ImageView(path);
     imageView.setFitWidth(25);
     imageView.setFitHeight(25);
     button.setGraphic(imageView);
   }
+
+  /* *********************************************
+  *
+  * Actions
+  *
+  ********************************************** */
 
   @FXML
   private void togglePower(ActionEvent event) {
@@ -111,23 +141,37 @@ public class RootController implements Initializable {
     }
   }
 
+  /* *********************************************
+  *
+  * RootController initialization
+  *
+  ********************************************** */
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
     // Prevent highlighted button on start
     powerButton.setFocusTraversable(false);
 
-    // Give nested module controllers access to root controller
+    /* *********************************************
+    *
+    * Inject RootController
+    *
+    ********************************************** */
+
     driveModuleController.inject(this);
     ledModuleController.inject(this);
     sensorModuleController.inject(this);
     controllerNavigationController.inject(this);
     songModuleController.inject(this);
 
-    // Get init divider position
-    double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
+    /* *********************************************
+    *
+    * Set max Console height
+    *
+    ********************************************** */
 
-    // Prevent console from getting too big
+    double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
     splitPane.getDividers().get(0).positionProperty()
         .addListener((observable, oldValue, newValue) -> {
           if (newValue.doubleValue() < initialDividerPosition) {
@@ -135,16 +179,31 @@ public class RootController implements Initializable {
           }
         });
 
-    // Context menu for splitPane
+    /* *********************************************
+    *
+    * Set splitPane ContextMenu
+    *
+    ********************************************** */
+
     ContextMenu splitPaneContextMenu = new SplitPaneContextMenu(splitPane);
     splitPane.setContextMenu(splitPaneContextMenu);
 
-    // Configure TextArea
+    /* *********************************************
+    *
+    * Configure console
+    *
+    ********************************************** */
+
     TextAreaAppender.textArea = console;
     console.setWrapText(false);
     console.setEditable(false);
 
-    // Context menu for Save IO
+    /* *********************************************
+    *
+    * Set console ContextMenu
+    *
+    ********************************************** */
+
     ContextMenu consoleContextMenu = new ConsoleContextMenu(root, console);
     console.setContextMenu(consoleContextMenu);
 
