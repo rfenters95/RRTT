@@ -52,18 +52,17 @@ public class DriveModuleController implements Initializable, Injectable {
   *
   ********************************************** */
 
-  private AbstractDriveMode mode;
   private RootController rootController;
+  private AbstractDriveMode mode;
+  private boolean hasStarted = false;
 
   /* *********************************************
   *
-  * FXML methods
+  * Actions
   *
   ********************************************** */
 
   //TODO implement custom abstract drive methods in AbstractDriveMode
-
-  private boolean hasStarted = false;
 
   @FXML
   void start(ActionEvent event) {
@@ -101,7 +100,7 @@ public class DriveModuleController implements Initializable, Injectable {
 
   /* *********************************************
   *
-  * Initialization methods
+  * Set RootController
   *
   ********************************************** */
 
@@ -110,12 +109,18 @@ public class DriveModuleController implements Initializable, Injectable {
     this.rootController = rootController;
   }
 
+  /* *********************************************
+  *
+  * Initialize DriveModuleController
+  *
+  ********************************************** */
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
     /* *********************************************
     *
-    * Add stop module to Space key
+    * Add stop module action to Space key
     *
     ********************************************** */
 
