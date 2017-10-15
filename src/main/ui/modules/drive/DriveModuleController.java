@@ -48,7 +48,7 @@ public class DriveModuleController implements Initializable, Injectable {
 
   /* *********************************************
   *
-  * Instance fields
+  * Instance members
   *
   ********************************************** */
 

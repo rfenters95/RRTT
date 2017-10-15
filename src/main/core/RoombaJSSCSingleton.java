@@ -23,6 +23,20 @@ public class RoombaJSSCSingleton {
   private static BooleanProperty isConnected = new SimpleBooleanProperty(false);
   // END DEV
 
+  static BooleanProperty moduleLocked;
+
+  public static boolean isModuleLocked() {
+    return moduleLocked.get();
+  }
+
+  public static void setModuleLocked(boolean moduleLocked) {
+    RoombaJSSCSingleton.moduleLocked.set(moduleLocked);
+  }
+
+  public static BooleanProperty moduleLockedProperty() {
+    return moduleLocked;
+  }
+
   private RoombaJSSCSingleton() {
   }
 

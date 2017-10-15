@@ -78,18 +78,18 @@ public class RootController implements Initializable {
   @FXML
   private SongModuleController songModuleController;
 
-  /*
-  * Bug: If device doesn't connect, state shouldn't change (power icon)
-  * May have fixed. In Roomba singleton I had connected defaulted to true for debugging.
-  * */
+  private void setImage(JFXButton button, String path) {
+    ImageView imageView = new ImageView(path);
+    imageView.setFitWidth(25);
+    imageView.setFitHeight(25);
+    button.setGraphic(imageView);
+  }
+
   @FXML
   private void togglePower(ActionEvent event) {
     if (RoombaJSSCSingleton.isConnected()) {
       RoombaJSSCSingleton.powerOff();
-      ImageView imageView = new ImageView("main/res/powerOff.png");
-      imageView.setFitWidth(25);
-      imageView.setFitHeight(25);
-      powerButton.setGraphic(imageView);
+      setImage(powerButton, "main/res/powerOff.png");
       batteryPercentageLabel.setText("Not Connected!");
     } else {
       try {
@@ -107,10 +107,7 @@ public class RootController implements Initializable {
           BatteryUpdaterThread batteryUpdaterThread;
           batteryUpdaterThread = new BatteryUpdaterThread(batteryPercentageLabel);
           batteryUpdaterThread.start();
-          ImageView imageView = new ImageView("main/res/powerOn.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          powerButton.setGraphic(imageView);
+          setImage(powerButton, "main/res/powerOn.png");
         }
       } catch (IOException e) {
         e.printStackTrace();
@@ -121,6 +118,7 @@ public class RootController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    // Prevent highlighted button on start
     powerButton.setFocusTraversable(false);
 
     // Give nested module controllers access to root controller
@@ -129,10 +127,6 @@ public class RootController implements Initializable {
     sensorModuleController.inject(this);
     controllerNavigationController.inject(this);
     songModuleController.inject(this);
-
-    /*driveModuleContainer.setStyle("-fx-background-color: red;");
-    lightModuleContainer.setStyle("-fx-background-color: white;");
-    sensorModuleContainer.setStyle("-fx-background-color: blue;");*/
 
     // Get init divider position
     double initialDividerPosition = splitPane.getDividers().get(0).getPosition();
