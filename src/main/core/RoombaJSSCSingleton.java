@@ -19,9 +19,7 @@ public class RoombaJSSCSingleton {
   private static final SimpleDateFormat fileSafeDateFormat = new SimpleDateFormat(
       StringFormatter.format("%s", "hh.mm.ss").getValue());
 
-  // BEGIN DEV : should be false
   private static BooleanProperty isConnected = new SimpleBooleanProperty(false);
-  // END DEV
 
   static BooleanProperty moduleLocked;
 
@@ -47,6 +45,7 @@ public class RoombaJSSCSingleton {
   * */
   public static void connect(String port, RoombaStartMode startMode) {
     roombaJSSC.connect(port);
+    roombaJSSC.start();
     switch (startMode) {
       case FULL:
         roombaJSSC.fullMode();
@@ -62,6 +61,7 @@ public class RoombaJSSCSingleton {
 
   public static void powerOff() {
     roombaJSSC.powerOff();
+    roombaJSSC.disconnect();
     isConnected.set(false);
   }
 
