@@ -67,46 +67,36 @@ public class DriveModuleController implements Initializable, Injectable {
 
   @FXML
   void start(ActionEvent event) {
-
     if (RoombaJSSCSingleton.isConnected()) {
-
       if (!hasStarted) {
-
-        Integer input1 = null;
-        Integer input2 = null;
-
-        try {
-          input1 = AbstractDriveMode.getTextField1Input();
-          input2 = AbstractDriveMode.getTextField2Input();
-          mode.move(input1, input2);
-          ImageView imageView = new ImageView("main/res/stop.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          toggle.setGraphic(imageView);
-        } catch (NumberFormatException e) {
-          if (input1 == null) {
-            mode.parameterOneErrorAlert();
-          } else if (input2 == null) {
-            mode.parameterTwoErrorAlert();
-          }
+        int input1 = AbstractDriveMode.getTextField1Input();
+        int input2 = AbstractDriveMode.getTextField2Input();
+        if (mode.move(input1, input2)) {
+          setImage(toggle, "main/res/stop.png");
+          hasStarted = !hasStarted;
         }
       } else {
         mode.move(0, 0);
-        ImageView imageView = new ImageView("main/res/play.png");
-        imageView.setFitWidth(25);
-        imageView.setFitHeight(25);
-        toggle.setGraphic(imageView);
+        setImage(toggle, "main/res/play.png");
+        hasStarted = !hasStarted;
       }
-
-      hasStarted = !hasStarted;
-
     } else {
-
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
-
     }
+  }
 
+  /* *********************************************
+  *
+  * Instance methods
+  *
+  ********************************************** */
+
+  private void setImage(JFXButton button, String path) {
+    ImageView imageView = new ImageView(path);
+    imageView.setFitWidth(25);
+    imageView.setFitHeight(25);
+    button.setGraphic(imageView);
   }
 
   /* *********************************************
@@ -123,6 +113,12 @@ public class DriveModuleController implements Initializable, Injectable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
+    /* *********************************************
+    *
+    * Add stop module to Space key
+    *
+    ********************************************** */
+
     driveModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case SPACE:
@@ -135,31 +131,41 @@ public class DriveModuleController implements Initializable, Injectable {
       }
     });
 
-    driveModule.setOnKeyPressed(event -> {
-      switch (event.getCode()) {
-        case SPACE:
-          toggle.fire();
-          break;
-        default:
-          break;
-      }
-    });
-
     /* *********************************************
     *
-    * ComboBox logic
+    * Initialize AbstractDriveMode TextFields
     *
     ********************************************** */
 
     AbstractDriveMode.setTextFields(textField1, textField2);
+
+    /* *********************************************
+    *
+    * Populate driveMode ComboBox
+    *
+    ********************************************** */
+
     AbstractDriveMode driveMode = new Drive();
     AbstractDriveMode driveDirectMode = new DriveDirect();
-
     driveModeComboBox.getItems().setAll(driveMode, driveDirectMode);
+
+    /* *********************************************
+    *
+    * Swap TextField listener to match selected item
+    *
+    ********************************************** */
+
     driveModeComboBox.setOnAction(e -> {
       mode = driveModeComboBox.getSelectionModel().getSelectedItem();
       mode.swapListener();
     });
+
+    /* *********************************************
+    *
+    * Initialize driveMode ComboBox to first item
+    *
+    ********************************************** */
+
     driveModeComboBox.getSelectionModel().selectFirst();
     driveModeComboBox.getSelectionModel().getSelectedItem().initialize();
     mode = driveModeComboBox.getSelectionModel().getSelectedItem();

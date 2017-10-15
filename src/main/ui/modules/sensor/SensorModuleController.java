@@ -43,6 +43,7 @@ import main.core.sensor.signal.LightBumpFrontRightSignal;
 import main.core.sensor.signal.LightBumpLeftSignal;
 import main.core.sensor.signal.LightBumpRightSignal;
 import main.core.sensor.signal.Wall;
+import main.ui.alerts.NotConnectedAlert;
 import main.ui.root.RootController;
 
 /*
@@ -98,14 +99,11 @@ public class SensorModuleController implements Initializable, Injectable {
   * */
 
   private Service<Void> booleanToggleService = new Service<Void>() {
-
     @Override
     protected Task<Void> createTask() {
-
       return new Task<Void>() {
         @Override
         protected Void call() throws Exception {
-
           AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel()
               .getSelectedItem();
           while (!isCancelled()) {
@@ -122,26 +120,18 @@ public class SensorModuleController implements Initializable, Injectable {
               }
             }
           }
-
           return null;
-
         }
-
       };
-
     }
-
   };
 
   private Service<Void> signalToggleService = new Service<Void>() {
-
     @Override
     protected Task<Void> createTask() {
-
       return new Task<Void>() {
         @Override
         protected Void call() throws Exception {
-
           AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
           while (!isCancelled()) {
             int value = sensor.read();
@@ -157,84 +147,83 @@ public class SensorModuleController implements Initializable, Injectable {
               }
             }
           }
-
           return null;
-
         }
-
       };
-
     }
-
   };
 
   private boolean isComboBoxNull(JFXComboBox comboBox) {
     return comboBox.getSelectionModel().getSelectedItem() == null;
   }
 
+  private void setImage(JFXButton button, String path) {
+    ImageView imageView = new ImageView(path);
+    imageView.setFitWidth(25);
+    imageView.setFitHeight(25);
+    button.setGraphic(imageView);
+  }
+
   @FXML
   void readBooleanSensor(ActionEvent event) {
-    // Don't run if other thread is running
-    if (!signalToggleEnabled) {
-      if (!isComboBoxNull(booleanSensorComboBox)) {
-        if (booleanToggleEnabled) {
-          booleanSensorComboBox.setDisable(false);
-          booleanToggleService.cancel();
-          ImageView imageView = new ImageView("main/res/play.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          toggleBooleanSensorButton.setGraphic(imageView);
+    if (RoombaJSSCSingleton.isConnected()) {
+      if (!signalToggleEnabled) {
+        if (!isComboBoxNull(booleanSensorComboBox)) {
+          if (booleanToggleEnabled) {
+            booleanSensorComboBox.setDisable(false);
+            booleanToggleService.cancel();
+            setImage(toggleBooleanSensorButton, "main/res/play.png");
+          } else {
+            booleanSensorComboBox.setDisable(true);
+            booleanToggleService.reset();
+            booleanToggleService.start();
+            setImage(toggleBooleanSensorButton, "main/res/stop.png");
+          }
+          booleanToggleEnabled = !booleanToggleEnabled;
         } else {
-          booleanSensorComboBox.setDisable(true);
-          booleanToggleService.reset();
-          booleanToggleService.start();
-          ImageView imageView = new ImageView("main/res/stop.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          toggleBooleanSensorButton.setGraphic(imageView);
+          Alert alert = new Alert(AlertType.INFORMATION);
+          DialogPane dialogPane = alert.getDialogPane();
+          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
+          alert.setHeaderText("Boolean Sensor");
+          alert.setContentText("You must select a sensor first!");
+          alert.show();
         }
-        booleanToggleEnabled = !booleanToggleEnabled;
-      } else {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-        alert.setHeaderText("Boolean Sensor");
-        alert.setContentText("You must select a sensor first!");
-        alert.show();
       }
+    } else {
+      NotConnectedAlert connectionAlert = new NotConnectedAlert();
+      connectionAlert.show();
     }
   }
 
   @FXML
   void readSignalSensor(ActionEvent event) {
     // Don't run if other thread is running
-    if (!booleanToggleEnabled) {
-      if (!isComboBoxNull(signalSensorComboBox)) {
-        if (signalToggleEnabled) {
-          signalSensorComboBox.setDisable(false);
-          signalToggleService.cancel();
-          ImageView imageView = new ImageView("main/res/play.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          toggleSignalSensorButton.setGraphic(imageView);
+    if (RoombaJSSCSingleton.isConnected()) {
+      if (!booleanToggleEnabled) {
+        if (!isComboBoxNull(signalSensorComboBox)) {
+          if (signalToggleEnabled) {
+            signalSensorComboBox.setDisable(false);
+            signalToggleService.cancel();
+            setImage(toggleSignalSensorButton, "main/res/play.png");
+          } else {
+            signalSensorComboBox.setDisable(true);
+            signalToggleService.reset();
+            signalToggleService.start();
+            setImage(toggleSignalSensorButton, "main/res/stop.png");
+          }
+          signalToggleEnabled = !signalToggleEnabled;
         } else {
-          signalSensorComboBox.setDisable(true);
-          signalToggleService.reset();
-          signalToggleService.start();
-          ImageView imageView = new ImageView("main/res/stop.png");
-          imageView.setFitWidth(25);
-          imageView.setFitHeight(25);
-          toggleSignalSensorButton.setGraphic(imageView);
+          Alert alert = new Alert(AlertType.INFORMATION);
+          DialogPane dialogPane = alert.getDialogPane();
+          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
+          alert.setHeaderText("Signal Sensor");
+          alert.setContentText("You must select a sensor first!");
+          alert.show();
         }
-        signalToggleEnabled = !signalToggleEnabled;
-      } else {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-        alert.setHeaderText("Signal Sensor");
-        alert.setContentText("You must select a sensor first!");
-        alert.show();
       }
+    } else {
+      NotConnectedAlert connectionAlert = new NotConnectedAlert();
+      connectionAlert.show();
     }
   }
 
@@ -245,6 +234,12 @@ public class SensorModuleController implements Initializable, Injectable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+
+    /* *********************************************
+    *
+    * Add stop module to Space key
+    *
+    ********************************************** */
 
     sensorModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {

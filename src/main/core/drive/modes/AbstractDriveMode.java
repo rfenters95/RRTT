@@ -76,7 +76,7 @@ public abstract class AbstractDriveMode {
 
   public abstract void swapListener();
 
-  public abstract void move(int input1, int input2);
+  public abstract boolean move(int input1, int input2);
 
   public abstract void parameterOneErrorAlert();
 

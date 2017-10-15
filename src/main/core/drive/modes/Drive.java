@@ -20,15 +20,17 @@ public class Drive extends AbstractDriveMode {
   }
 
   @Override
-  public void move(int input1, int input2) {
+  public boolean move(int input1, int input2) {
     if (isEnabled()) {
       RoombaJSSCSingleton.getRoombaJSSC().drive(input1, input2);
+      return true;
     } else {
       if (!hasValidVelocity(input1)) {
         parameterOneErrorAlert();
       } else {
         parameterTwoErrorAlert();
       }
+      return false;
     }
   }
 
