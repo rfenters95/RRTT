@@ -22,26 +22,39 @@ public class BatteryUpdaterThread extends Thread {
     return !Main.shutdown && RoombaJSSCSingleton.isConnected();
   }
 
+  private void sleepMinutes() {
+    try {
+      final int minutes = 1;
+      final int minuteToSecondConversionFactor = 60;
+      final int halfMillisToSecondFactor = 2;
+      int iterations = minutes * minuteToSecondConversionFactor * halfMillisToSecondFactor;
+      for (int i = 0; i < iterations; i++) {
+        if (shouldRun()) {
+          Thread.sleep(500);
+        }
+      }
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private double getBatteryPercentage() {
+    int batteryCharge = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge();
+    final double maxBatteryCharge = 65535.0;
+    return (batteryCharge / maxBatteryCharge) * 100;
+  }
+
+  private String getFormattedBatteryPercentage() {
+    DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+    return decimalFormat.format(getBatteryPercentage());
+  }
+
   @Override
   public void run() {
     while (shouldRun()) {
       System.out.println("Execute!");
-      double batteryPercentage = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge() / 65535.0;
-      DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-      Platform.runLater(() -> batteryLabel.setText(decimalFormat.format(batteryPercentage)));
-      try {
-        final int numberOfMinutes = 1;
-        final int iterations = numberOfMinutes * 60 / 2;
-        for (int i = 0; i < iterations; i++) {
-          if (shouldRun()) {
-            Thread.sleep(500);
-          } else {
-            break;
-          }
-        }
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
+      Platform.runLater(() -> batteryLabel.setText(getFormattedBatteryPercentage()));
+      sleepMinutes();
     }
     System.out.println("Thread has died!");
   }
