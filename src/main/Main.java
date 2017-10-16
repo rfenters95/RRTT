@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.core.RoombaJSSCSingleton;
 import org.apache.log4j.PropertyConfigurator;
 
 public class Main extends Application {
@@ -29,6 +30,9 @@ public class Main extends Application {
     Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/Root.fxml"));
     primaryStage.setOnCloseRequest(e -> {
       shutdown = true;
+      if (RoombaJSSCSingleton.isConnected()) {
+        RoombaJSSCSingleton.powerOff();
+      }
       Platform.exit();
     });
     primaryStage.setTitle("RRTT - EARLY BUILD");
