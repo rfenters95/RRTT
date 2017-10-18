@@ -61,6 +61,7 @@ public class RoombaJSSCSingleton {
 
   public static void powerOff() {
     roombaJSSC.stop();
+    roombaJSSC.sleep(1000);
     roombaJSSC.disconnect();
     isConnected.set(false);
   }

@@ -40,7 +40,7 @@ public class BatteryUpdaterThread extends Thread {
 
   private double getBatteryPercentage() {
     RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    RoombaJSSCSingleton.getRoombaJSSC().sleep(50);
+    RoombaJSSCSingleton.getRoombaJSSC().sleep(100);
     int batteryCharge = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge();
     //System.out.println(batteryCharge);
     final double maxBatteryCharge = 65535.0;
