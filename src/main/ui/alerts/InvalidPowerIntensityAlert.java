@@ -3,7 +3,7 @@ package main.ui.alerts;
 public class InvalidPowerIntensityAlert extends InvalidInputAlert {
 
   public InvalidPowerIntensityAlert() {
-    super("Power Intensity (%)", "Invalid Input! Range [0, 100]");
+    super("Power Intensity (%)", "Invalid Input! Range [0, 255]");
   }
 
 }

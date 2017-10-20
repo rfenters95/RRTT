@@ -75,11 +75,11 @@ public class LedModuleController implements Initializable, Injectable {
   }
 
   private boolean isValidPowerColor(int color) {
-    return (color >= 0 && color <= 100);
+    return (color >= 0 && color <= 255);
   }
 
   private boolean isValidPowerIntensity(int intensity) {
-    return (intensity >= 0 && intensity <= 100);
+    return (intensity >= 0 && intensity <= 255);
   }
 
   private boolean isValidPowerParameters(int color, int intensity) {
@@ -163,12 +163,12 @@ public class LedModuleController implements Initializable, Injectable {
     final ContextMenu powerColorContextMenu = new ContextMenu();
     MenuItem powerColorMenuItemGreen = new MenuItem("Special: Color Green");
     powerColorMenuItemGreen.setOnAction(e -> powerColorTF.setText("0"));
-    MenuItem powerColorMenuItemOrange = new MenuItem("Special: Color Orange");
-    powerColorMenuItemOrange.setOnAction(e -> powerColorTF.setText("50"));
-    MenuItem powerColorMenuItemYellow = new MenuItem("Special: Color Yellow");
-    powerColorMenuItemYellow.setOnAction(e -> powerColorTF.setText("75"));
+    MenuItem powerColorMenuItemOrange = new MenuItem("Special: Color Yellow");
+    powerColorMenuItemOrange.setOnAction(e -> powerColorTF.setText("90"));
+    MenuItem powerColorMenuItemYellow = new MenuItem("Special: Color Orange");
+    powerColorMenuItemYellow.setOnAction(e -> powerColorTF.setText("180"));
     MenuItem powerColorMenuItemRed = new MenuItem("Special: Color Red");
-    powerColorMenuItemRed.setOnAction(e -> powerColorTF.setText("100"));
+    powerColorMenuItemRed.setOnAction(e -> powerColorTF.setText("255"));
     powerColorContextMenu.getItems().add(powerColorMenuItemGreen);
     powerColorContextMenu.getItems().add(powerColorMenuItemOrange);
     powerColorContextMenu.getItems().add(powerColorMenuItemYellow);
@@ -179,9 +179,9 @@ public class LedModuleController implements Initializable, Injectable {
     MenuItem powerIntensityMenuItemOff = new MenuItem("Special: Intensity None");
     powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTF.setText("0"));
     MenuItem powerIntensityMenuItemHalf = new MenuItem("Special: Intensity Half");
-    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTF.setText("50"));
+    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTF.setText("127"));
     MenuItem powerIntensityMenuItemFull = new MenuItem("Special: Intensity Full");
-    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTF.setText("100"));
+    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTF.setText("255"));
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemOff);
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemHalf);
     powerIntensityContextMenu.getItems().add(powerIntensityMenuItemFull);
