@@ -29,6 +29,11 @@ Coming Soon
 <a name="guide"></a>
 Coming Soon
 
+Linux users need to add yourselves to the Dialout group to communicate with serial devices. To do so: 
+* Open terminal
+* Execute the following command `sudo usermod -a -G dialout <USER>` (replace `<USER>` with the user to be added).
+* Logout and Log back in to enable changes.
+
 ## Contribute
 <a name="contribute"></a>
 Coming Soon
