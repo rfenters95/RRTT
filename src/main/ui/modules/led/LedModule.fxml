@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
-  minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
-  stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
-  fx:controller="main.ui.modules.led.LedModuleController" fx:id="lightModule" styleClass="module">
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0"
+      stylesheets="@../../modules/main.css" xmlns="http://javafx.com/javafx/8.0.111"
+      fx:controller="main.ui.modules.led.LedModuleController" fx:id="lightModule" styleClass="module">
   <children>
     <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="90.0" prefWidth="230.0">
@@ -48,11 +44,11 @@
           spacing="25.0">
           <children>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-              minHeight="-Infinity" minWidth="-Infinity" promptText="Power Color (%)"
-              fx:id="powerColorTF"/>
+                          minHeight="-Infinity" minWidth="-Infinity" promptText="Power Color"
+                          fx:id="powerColorTF"/>
             <JFXTextField labelFloat="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-              minHeight="-Infinity" minWidth="-Infinity" promptText="Power Intensity (%)"
-              fx:id="powerIntensityTF"/>
+                          minHeight="-Infinity" minWidth="-Infinity" promptText="Power Intensity"
+                          fx:id="powerIntensityTF"/>
           </children>
           <StackPane.margin>
             <Insets right="10.0"/>

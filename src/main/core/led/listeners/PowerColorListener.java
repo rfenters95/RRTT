@@ -16,7 +16,7 @@ public class PowerColorListener extends AbstractLEDListener {
   * @param textField reference of TextField of which listener is attached.
   * */
   public PowerColorListener(JFXTextField textField) {
-    super("Power Color (%)", textField);
+      super("Power Color", textField);
   }
 
 }
