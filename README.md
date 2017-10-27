@@ -1,11 +1,9 @@
 # Rapid Roomba Test Tool
 
 ## Table of Contents
-* [About](#about)
-<!--* [Features](#features)-->
+* [About](#about)<!--* [Features](#features)-->
 * [Download](#download)
-* [Setup](#setup)
-<!--* [User Guide](#guide)-->
+* [Setup](#setup)<!--* [User Guide](#guide)-->
 * [Contribute](#contribute)
 
 ## About
