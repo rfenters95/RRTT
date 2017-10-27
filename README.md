@@ -2,8 +2,10 @@
 
 ## Table of Contents
 * [About](#about)
+<!--* [Features](#features)-->
 * [Download](#download)
 * [Setup](#setup)
+<!--* [User Guide](#guide)-->
 * [Contribute](#contribute)
 
 ## About
@@ -35,11 +37,11 @@ Coming Soon
 
 #### Serial Communication
 
-Users need to add yourselves to the `dialout` group to communicate with serial devices. To add yourself to the `dialout` group follow the instructions below: 
+You need to add yourself to the `dialout` group to communicate with serial devices. To add yourself to the `dialout` group follow the instructions below: 
 
 1. Open terminal
 1. Execute the following command `sudo usermod -a -G dialout <USER>` (replace `<USER>` with the user to be added).
-1. Logout and Log back in to enable changes.
+1. Logout and then log back in to enable changes.
 
 ## Contribute
 <a name="contribute"></a>
