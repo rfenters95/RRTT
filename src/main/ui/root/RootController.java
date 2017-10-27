@@ -7,11 +7,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -19,7 +16,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
@@ -29,6 +25,7 @@ import main.ui.modules.drive.DriveModuleController;
 import main.ui.modules.led.LedModuleController;
 import main.ui.modules.sensor.SensorModuleController;
 import main.ui.modules.song.SongModuleController;
+import main.ui.popup.ConnectionManagementStage;
 
 public class RootController implements Initializable {
 
@@ -119,24 +116,17 @@ public class RootController implements Initializable {
       batteryPercentageLabel.setText("Not Connected!");
     } else {
       try {
-        Stage stage = new Stage();
-        URL url = getClass().getClassLoader().getResource("main/ui/root/ConnectionManagement.fxml");
-        assert url != null;
-        Parent root = FXMLLoader.load(url);
-        stage.setScene(new Scene(root));
-        stage.setTitle("Connection Manager");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-        stage.setResizable(false);
+        Stage stage = new ConnectionManagementStage(
+            ((Node) event.getSource()).getScene().getWindow());
         stage.showAndWait();
         if (RoombaJSSCSingleton.isConnected()) {
-          BatteryUpdaterThread batteryUpdaterThread;
-          batteryUpdaterThread = new BatteryUpdaterThread(batteryPercentageLabel);
+          BatteryUpdaterThread batteryUpdaterThread = new BatteryUpdaterThread(
+              batteryPercentageLabel);
           batteryUpdaterThread.start();
           setImage(powerButton, "main/res/powerOn.png");
         }
       } catch (IOException e) {
-        e.printStackTrace();
+        System.out.println("ConnectionManagement.fxml failed to load!\n" + e.getMessage());
       }
     }
   }

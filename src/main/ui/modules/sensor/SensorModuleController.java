@@ -186,6 +186,7 @@ public class SensorModuleController extends ModuleController implements Initiali
     booleanSensorComboBox.getItems().add(new LightBumperCenterRight());
     booleanSensorComboBox.getItems().add(new LightBumperFrontRight());
     booleanSensorComboBox.getItems().add(new LightBumperRight());
+    booleanSensorComboBox.getSelectionModel().selectFirst();
 
 
     /* *********************************************
@@ -206,6 +207,7 @@ public class SensorModuleController extends ModuleController implements Initiali
     signalSensorComboBox.getItems().add(new LightBumpCenterRightSignal());
     signalSensorComboBox.getItems().add(new LightBumpFrontRightSignal());
     signalSensorComboBox.getItems().add(new LightBumpRightSignal());
+    signalSensorComboBox.getSelectionModel().selectFirst();
 
   }
 

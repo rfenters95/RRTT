@@ -50,6 +50,7 @@ public class ConnectionManagementController implements Initializable, Injectable
   @FXML
   private void refresh(ActionEvent event) {
     deviceComboBox.getItems().clear();
+    deviceComboBox.getItems().add("DEBUG");
     deviceComboBox.getItems().addAll(RoombaJSSCSingleton.getRoombaJSSC().portList());
   }
 
