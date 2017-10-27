@@ -1,21 +1,9 @@
 # Rapid Roomba Test Tool
 
-<p align="center">
-  <img width="962" alt="screen shot 2017-09-19 at 5 23 37 pm" src="https://user-images.githubusercontent.com/12780053/30616307-db10b80c-9d5f-11e7-9691-2405c0b62ffb.png">
-  <b>Figure 1.</b> Song Module <br>
-</p>
-
-<p align="center">
-  <img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
-  <b>Figure 2.</b> Core Modules <br>
-</p>
-
-<center> Figure 2. Song Module </center>
-
 ## Table of Contents
 * [About](#about)
 * [Download](#download)
-* [User Guide](#guide)
+* [Setup](#setup)
 * [Contribute](#contribute)
 
 ## About
@@ -26,12 +14,22 @@ The Rapid Roomba Test Tool makes developing for the Roomba faster as developers 
 Other information relevant to the tester is also readily available. Such as, communication between the Roomba and the application is logged and displayed to the user this allows users to see the order in which information is sent to and from the Roomba.
 -->
 
+<p align="center">
+  <img width="962" alt="screen shot 2017-09-19 at 5 23 37 pm" src="https://user-images.githubusercontent.com/12780053/30616307-db10b80c-9d5f-11e7-9691-2405c0b62ffb.png">
+  <b>Figure 1.</b> Core Modules <br>
+</p>
+
+<p align="center">
+  <img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
+  <b>Figure 2.</b> Song Module <br>
+</p>
+
 ## Download
 <a name="download"></a>
 Coming Soon
 
 ## Setup
-<a name="guide"></a>
+<a name="setup"></a>
 
 ### Linux 
 
