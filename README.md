@@ -1,11 +1,16 @@
 # Rapid Roomba Test Tool
 
-<img width="962" alt="screen shot 2017-09-19 at 5 23 37 pm" src="https://user-images.githubusercontent.com/12780053/30616307-db10b80c-9d5f-11e7-9691-2405c0b62ffb.png">
-Figure 1. Core Modules
+<p align="center">
+  <img width="962" alt="screen shot 2017-09-19 at 5 23 37 pm" src="https://user-images.githubusercontent.com/12780053/30616307-db10b80c-9d5f-11e7-9691-2405c0b62ffb.png">
+  <b>Figure 1.</b> Song Module <br>
+</p>
 
-<img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
+<p align="center">
+  <img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
+  <b>Figure 2.</b> Core Modules <br>
+</p>
 
-Figure 2. Song Module
+<center> Figure 2. Song Module </center>
 
 ## Table of Contents
 * [About](#about)
@@ -25,14 +30,16 @@ Other information relevant to the tester is also readily available. Such as, com
 <a name="download"></a>
 Coming Soon
 
-## User Guide
+## Setup
 <a name="guide"></a>
-Coming Soon
 
-Linux users need to add yourselves to the Dialout group to communicate with serial devices. To do so: 
-* Open terminal
-* Execute the following command `sudo usermod -a -G dialout <USER>` (replace `<USER>` with the user to be added).
-* Logout and Log back in to enable changes.
+### Linux 
+
+#### 
+1. Users need to add yourselves to the Dialout group to communicate with serial devices. To do so follow the instructions below: 
+    1. Open terminal
+    1. Execute the following command `sudo usermod -a -G dialout <USER>` (replace `<USER>` with the user to be added).
+    1. Logout and Log back in to enable changes.
 
 ## Contribute
 <a name="contribute"></a>
