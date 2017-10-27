@@ -1,13 +1,5 @@
 # Rapid Roomba Test Tool
 
-## Table of Contents
-* [About](#about)<!--* [Features](#features)-->
-* [Download](#download)
-* [Setup](#setup)<!--* [User Guide](#guide)-->
-* [Contribute](#contribute)
-
-## About
-<a name="about"></a>
 The Rapid Roomba Test Tool makes developing for the Roomba faster as developers no longer need to constantly refer to the Open Interface to find the functionality that they are looking for. Now it is as easy as navigating to the to the proper controller, inputting the desired parameters, and pressing play.
 
 <!-- Needs revision
@@ -23,6 +15,12 @@ Other information relevant to the tester is also readily available. Such as, com
   <img width="962" alt="screen shot 2017-09-19 at 5 23 42 pm" src="https://user-images.githubusercontent.com/12780053/30616308-db11c580-9d5f-11e7-982e-adaa90ea236c.png">
   <b>Figure 2.</b> Song Module <br>
 </p>
+
+## Table of Contents
+* [About](#about)<!--* [Features](#features)-->
+* [Download](#download)
+* [Setup](#setup)<!--* [User Guide](#guide)-->
+* [Contribute](#contribute)
 
 ## Download
 <a name="download"></a>
