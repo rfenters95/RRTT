@@ -13,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DialogPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
@@ -154,11 +153,9 @@ public class SensorModuleController extends ModuleController implements Initiali
     return comboBox.getSelectionModel().getSelectedItem() == null;
   }
 
-  private void setImage(JFXButton button, String path) {
-    ImageView imageView = new ImageView(path);
-    imageView.setFitWidth(25);
-    imageView.setFitHeight(25);
-    button.setGraphic(imageView);
+  @Override
+  public void play(ActionEvent event) {
+
   }
 
   @FXML
@@ -169,12 +166,12 @@ public class SensorModuleController extends ModuleController implements Initiali
           if (booleanToggleEnabled) {
             booleanSensorComboBox.setDisable(false);
             booleanToggleService.cancel();
-            setImage(toggleBooleanSensorButton, "main/res/play.png");
+            rootController.setImage(toggleBooleanSensorButton, "main/res/play.png");
           } else {
             booleanSensorComboBox.setDisable(true);
             booleanToggleService.reset();
             booleanToggleService.start();
-            setImage(toggleBooleanSensorButton, "main/res/stop.png");
+            rootController.setImage(toggleBooleanSensorButton, "main/res/stop.png");
           }
           booleanToggleEnabled = !booleanToggleEnabled;
         } else {
@@ -201,12 +198,12 @@ public class SensorModuleController extends ModuleController implements Initiali
           if (signalToggleEnabled) {
             signalSensorComboBox.setDisable(false);
             signalToggleService.cancel();
-            setImage(toggleSignalSensorButton, "main/res/play.png");
+            rootController.setImage(toggleSignalSensorButton, "main/res/play.png");
           } else {
             signalSensorComboBox.setDisable(true);
             signalToggleService.reset();
             signalToggleService.start();
-            setImage(toggleSignalSensorButton, "main/res/stop.png");
+            rootController.setImage(toggleSignalSensorButton, "main/res/stop.png");
           }
           signalToggleEnabled = !signalToggleEnabled;
         } else {

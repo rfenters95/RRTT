@@ -8,13 +8,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
+import main.core.menu.PowerColorMenu;
+import main.core.menu.PowerIntensityMenu;
 import main.ui.alerts.InvalidInputAlert;
 import main.ui.alerts.InvalidPowerColorAlert;
 import main.ui.alerts.InvalidPowerIntensityAlert;
@@ -60,13 +59,6 @@ public class LedModuleController extends ModuleController implements Initializab
 
   private boolean ledIsOn = false;
 
-  private void setImage(JFXButton button, String path) {
-    ImageView imageView = new ImageView(path);
-    imageView.setFitWidth(25);
-    imageView.setFitHeight(25);
-    button.setGraphic(imageView);
-  }
-
   private int extractTextFieldInteger(JFXTextField textField) {
     return Integer.parseInt(textField.getText());
   }
@@ -91,8 +83,8 @@ public class LedModuleController extends ModuleController implements Initializab
     return extractTextFieldInteger(powerIntensityTF);
   }
 
-  @FXML
-  void toggle(ActionEvent event) {
+  @Override
+  public void play(ActionEvent event) {
     if (RoombaJSSCSingleton.isConnected()) {
       if (!ledIsOn) {
         if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
@@ -104,7 +96,7 @@ public class LedModuleController extends ModuleController implements Initializab
               getPowerColor(),
               getPowerIntensity()
           );
-          setImage((JFXButton) event.getSource(), "main/res/stop.png");
+          rootController.setImage((JFXButton) event.getSource(), "main/res/stop.png");
           ledIsOn = !ledIsOn;
         } else {
           InvalidInputAlert inputAlert;
@@ -118,7 +110,7 @@ public class LedModuleController extends ModuleController implements Initializab
 
       } else {
         RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
-        setImage((JFXButton) event.getSource(), "main/res/play.png");
+        rootController.setImage((JFXButton) event.getSource(), "main/res/play.png");
         ledIsOn = !ledIsOn;
       }
     } else {
@@ -142,42 +134,11 @@ public class LedModuleController extends ModuleController implements Initializab
       }
     });
 
-    lightModule.setOnKeyPressed(event -> {
-      switch (event.getCode()) {
-        case SPACE:
-          toggle.fire();
-          break;
-        default:
-          break;
-      }
-    });
+    PowerColorMenu powerColorMenu = new PowerColorMenu(powerColorTF);
+    powerColorTF.setContextMenu(powerColorMenu);
 
-    final ContextMenu powerColorContextMenu = new ContextMenu();
-    MenuItem powerColorMenuItemGreen = new MenuItem("Special: Color Green");
-    powerColorMenuItemGreen.setOnAction(e -> powerColorTF.setText("0"));
-    MenuItem powerColorMenuItemOrange = new MenuItem("Special: Color Yellow");
-    powerColorMenuItemOrange.setOnAction(e -> powerColorTF.setText("90"));
-    MenuItem powerColorMenuItemYellow = new MenuItem("Special: Color Orange");
-    powerColorMenuItemYellow.setOnAction(e -> powerColorTF.setText("180"));
-    MenuItem powerColorMenuItemRed = new MenuItem("Special: Color Red");
-    powerColorMenuItemRed.setOnAction(e -> powerColorTF.setText("255"));
-    powerColorContextMenu.getItems().add(powerColorMenuItemGreen);
-    powerColorContextMenu.getItems().add(powerColorMenuItemOrange);
-    powerColorContextMenu.getItems().add(powerColorMenuItemYellow);
-    powerColorContextMenu.getItems().add(powerColorMenuItemRed);
-    powerColorTF.setContextMenu(powerColorContextMenu);
-
-    final ContextMenu powerIntensityContextMenu = new ContextMenu();
-    MenuItem powerIntensityMenuItemOff = new MenuItem("Special: Intensity None");
-    powerIntensityMenuItemOff.setOnAction(e -> powerIntensityTF.setText("0"));
-    MenuItem powerIntensityMenuItemHalf = new MenuItem("Special: Intensity Half");
-    powerIntensityMenuItemHalf.setOnAction(e -> powerIntensityTF.setText("127"));
-    MenuItem powerIntensityMenuItemFull = new MenuItem("Special: Intensity Full");
-    powerIntensityMenuItemFull.setOnAction(e -> powerIntensityTF.setText("255"));
-    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemOff);
-    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemHalf);
-    powerIntensityContextMenu.getItems().add(powerIntensityMenuItemFull);
-    powerIntensityTF.setContextMenu(powerIntensityContextMenu);
+    PowerIntensityMenu powerIntensityMenu = new PowerIntensityMenu(powerIntensityTF);
+    powerIntensityTF.setContextMenu(powerIntensityMenu);
 
     powerColorTF.setText("0");
     powerIntensityTF.setText("0");

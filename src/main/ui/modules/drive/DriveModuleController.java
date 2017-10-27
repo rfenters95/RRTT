@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.modes.AbstractDriveMode;
@@ -62,38 +61,25 @@ public class DriveModuleController extends ModuleController implements Initializ
 
   //TODO implement custom abstract drive methods in AbstractDriveMode
 
-  @FXML
-  void start(ActionEvent event) {
+  @Override
+  public void play(ActionEvent event) {
     if (RoombaJSSCSingleton.isConnected()) {
       if (!hasStarted) {
         int input1 = AbstractDriveMode.getTextField1Input();
         int input2 = AbstractDriveMode.getTextField2Input();
         if (mode.move(input1, input2)) {
-          setImage(toggle, "main/res/stop.png");
+          rootController.setImage(toggle, "main/res/stop.png");
           hasStarted = !hasStarted;
         }
       } else {
         mode.move(0, 0);
-        setImage(toggle, "main/res/play.png");
+        rootController.setImage(toggle, "main/res/play.png");
         hasStarted = !hasStarted;
       }
     } else {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
     }
-  }
-
-  /* *********************************************
-  *
-  * Instance methods
-  *
-  ********************************************** */
-
-  private void setImage(JFXButton button, String path) {
-    ImageView imageView = new ImageView(path);
-    imageView.setFitWidth(25);
-    imageView.setFitHeight(25);
-    button.setGraphic(imageView);
   }
 
   /* *********************************************

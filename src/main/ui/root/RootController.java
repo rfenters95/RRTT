@@ -23,8 +23,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.core.RoombaJSSCSingleton;
 import main.core.TextAreaAppender;
-import main.core.contextmenus.console.ConsoleContextMenu;
-import main.core.contextmenus.splitPane.SplitPaneContextMenu;
+import main.core.menu.ConsoleMenu;
+import main.core.menu.SplitPaneMenu;
 import main.ui.modules.drive.DriveModuleController;
 import main.ui.modules.led.LedModuleController;
 import main.ui.modules.sensor.SensorModuleController;
@@ -98,7 +98,7 @@ public class RootController implements Initializable {
   *
   ********************************************** */
 
-  private void setImage(JFXButton button, String path) {
+  public void setImage(JFXButton button, String path) {
     ImageView imageView = new ImageView(path);
     imageView.setFitWidth(25);
     imageView.setFitHeight(25);
@@ -185,7 +185,7 @@ public class RootController implements Initializable {
     *
     ********************************************** */
 
-    ContextMenu splitPaneContextMenu = new SplitPaneContextMenu(splitPane);
+    ContextMenu splitPaneContextMenu = new SplitPaneMenu(splitPane);
     splitPane.setContextMenu(splitPaneContextMenu);
 
     /* *********************************************
@@ -204,7 +204,7 @@ public class RootController implements Initializable {
     *
     ********************************************** */
 
-    ContextMenu consoleContextMenu = new ConsoleContextMenu(root, console);
+    ContextMenu consoleContextMenu = new ConsoleMenu(root, console);
     console.setContextMenu(consoleContextMenu);
 
   }
