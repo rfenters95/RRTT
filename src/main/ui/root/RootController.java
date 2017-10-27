@@ -185,8 +185,8 @@ public class RootController implements Initializable {
     *
     ********************************************** */
 
-    ContextMenu splitPaneContextMenu = new SplitPaneMenu(splitPane);
-    splitPane.setContextMenu(splitPaneContextMenu);
+    ContextMenu splitPaneMenu = new SplitPaneMenu(splitPane);
+    splitPane.setContextMenu(splitPaneMenu);
 
     /* *********************************************
     *
@@ -204,8 +204,8 @@ public class RootController implements Initializable {
     *
     ********************************************** */
 
-    ContextMenu consoleContextMenu = new ConsoleMenu(root, console);
-    console.setContextMenu(consoleContextMenu);
+    ContextMenu ConsoleMenu = new ConsoleMenu(root, console);
+    console.setContextMenu(ConsoleMenu);
 
   }
 

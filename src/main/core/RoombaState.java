@@ -10,29 +10,36 @@ public class RoombaState {
   * Singleton setup
   *
   * ********************************************** */
-  private static RoombaState instance = new RoombaState();
+  private final static RoombaJSSC roomba = new RoombaJSSCSerial();
+
+  private RoombaState() {
+  }
+
+  public static RoombaJSSC getInstance() {
+    return RoombaState.roomba;
+  }
+
   /* *********************************************
   *
   * Instance members
   *
   * ********************************************** */
-  private final RoombaJSSC roomba = new RoombaJSSCSerial();
-  private RunnableModule module = null;
   private boolean connected = false;
   private boolean locked = false;
-
-  private RoombaState() {
-  }
-
-  public static RoombaState getInstance() {
-    return RoombaState.instance;
-  }
 
   /* *********************************************
   *
   * Instance methods
   *
   * ********************************************** */
+
+  /*
+  * Opens a connection with the Roomba over RoombaJSSC
+  * using the port and RoombaStartMode provided.
+  *
+  * @param port Port address of Roomba
+  * @param mode RoombaStartMode detailing which mode to Roomba in.
+  * */
   public void connect(String port, RoombaStartMode mode) {
     roomba.connect(port);
     roomba.start();
@@ -49,27 +56,12 @@ public class RoombaState {
     this.connected = true;
   }
 
+  /*
+  * Used to shutdown Roomba correctly.
+  * */
   public void disconnect() {
     roomba.stop();
     roomba.disconnect();
     this.connected = false;
-  }
-
-  public RoombaJSSC getRoomba() {
-    return roomba;
-  }
-
-  public boolean isLocked() {
-    return this.locked;
-  }
-
-  public void lock(RunnableModule module) {
-    this.module = module;
-    this.locked = true;
-  }
-
-  public void unlock() {
-    this.module = null;
-    this.locked = false;
   }
 }

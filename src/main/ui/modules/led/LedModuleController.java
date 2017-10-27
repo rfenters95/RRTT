@@ -57,8 +57,6 @@ public class LedModuleController extends ModuleController implements Initializab
   @FXML
   private JFXButton toggle;
 
-  private boolean ledIsOn = false;
-
   private int extractTextFieldInteger(JFXTextField textField) {
     return Integer.parseInt(textField.getText());
   }
@@ -86,7 +84,7 @@ public class LedModuleController extends ModuleController implements Initializab
   @Override
   public void play(ActionEvent event) {
     if (RoombaJSSCSingleton.isConnected()) {
-      if (!ledIsOn) {
+      if (!isPlaying) {
         if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
           RoombaJSSCSingleton.getRoombaJSSC().leds(
               debrisCB.isSelected(),
@@ -97,7 +95,7 @@ public class LedModuleController extends ModuleController implements Initializab
               getPowerIntensity()
           );
           rootController.setImage((JFXButton) event.getSource(), "main/res/stop.png");
-          ledIsOn = !ledIsOn;
+          isPlaying = !isPlaying;
         } else {
           InvalidInputAlert inputAlert;
           if (!isValidPowerColor(getPowerColor())) {
@@ -111,7 +109,7 @@ public class LedModuleController extends ModuleController implements Initializab
       } else {
         RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
         rootController.setImage((JFXButton) event.getSource(), "main/res/play.png");
-        ledIsOn = !ledIsOn;
+        isPlaying = !isPlaying;
       }
     } else {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
@@ -125,7 +123,7 @@ public class LedModuleController extends ModuleController implements Initializab
     lightModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case SPACE:
-          if (ledIsOn) {
+          if (isPlaying) {
             toggle.fire();
           }
           break;

@@ -8,6 +8,7 @@ import main.ui.root.RootController;
 public abstract class ModuleController implements Injectable {
 
   public RootController rootController;
+  public boolean isPlaying = false;
 
   @FXML
   public abstract void play(ActionEvent event);

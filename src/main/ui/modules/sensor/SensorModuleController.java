@@ -10,9 +10,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.DialogPane;
 import javafx.scene.layout.VBox;
 import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
@@ -41,6 +38,7 @@ import main.core.sensor.signal.LightBumpFrontRightSignal;
 import main.core.sensor.signal.LightBumpLeftSignal;
 import main.core.sensor.signal.LightBumpRightSignal;
 import main.core.sensor.signal.Wall;
+import main.ui.alerts.InvalidSensorAlert;
 import main.ui.alerts.NotConnectedAlert;
 import main.ui.modules.ModuleController;
 
@@ -74,80 +72,8 @@ public class SensorModuleController extends ModuleController implements Initiali
 
   private boolean booleanToggleEnabled;
   private boolean signalToggleEnabled;
-
-  /*
-  * TODO Fix application thread flooding problem
-  * See https://stackoverflow.com/questions/31408363/javafx-changelistener-not-always-working/31414801#31414801
-  * for more info.
-  *
-  * Look into swapping out the TextArea for a ListView, as they are
-  * a virtual control that only renders text shown
-  * instead of all containing text.
-  *
-  * See https://stackoverflow.com/questions/33078241/javafx-application-freeze-when-i-append-log4j-to-textarea
-  * and http://www.rshingleton.com/javafx-log4j-textarea-log-appender/
-  * for more info.
-  *
-  * Update: solution may have been found.
-  * I modified the TextAreaAppender to write to the TextArea
-  * from within a Platform.runLater() since then problem has
-  * not occurred, but more testing is needed.
-  * */
-
-  private Service<Void> booleanToggleService = new Service<Void>() {
-    @Override
-    protected Task<Void> createTask() {
-      return new Task<Void>() {
-        @Override
-        protected Void call() throws Exception {
-          AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel()
-              .getSelectedItem();
-          while (!isCancelled()) {
-            boolean value = sensor.read();
-            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
-            Platform.runLater(() -> {
-              rootController.console.appendText(message);
-            });
-            try {
-              Thread.sleep(100);
-            } catch (InterruptedException e) {
-              if (isCancelled()) {
-                break;
-              }
-            }
-          }
-          return null;
-        }
-      };
-    }
-  };
-
-  private Service<Void> signalToggleService = new Service<Void>() {
-    @Override
-    protected Task<Void> createTask() {
-      return new Task<Void>() {
-        @Override
-        protected Void call() throws Exception {
-          AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
-          while (!isCancelled()) {
-            int value = sensor.read();
-            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
-            Platform.runLater(() -> {
-              rootController.console.appendText(message);
-            });
-            try {
-              Thread.sleep(100);
-            } catch (InterruptedException e) {
-              if (isCancelled()) {
-                break;
-              }
-            }
-          }
-          return null;
-        }
-      };
-    }
-  };
+  private final Service<Void> booleanToggleService = new BooleanToggleService();
+  private final Service<Void> signalToggleService = new SignalToggleService();
 
   private boolean isComboBoxNull(JFXComboBox comboBox) {
     return comboBox.getSelectionModel().getSelectedItem() == null;
@@ -160,6 +86,8 @@ public class SensorModuleController extends ModuleController implements Initiali
 
   @FXML
   void readBooleanSensor(ActionEvent event) {
+
+    //TODO Don't run if other thread is running
     if (RoombaJSSCSingleton.isConnected()) {
       if (!signalToggleEnabled) {
         if (!isComboBoxNull(booleanSensorComboBox)) {
@@ -175,11 +103,7 @@ public class SensorModuleController extends ModuleController implements Initiali
           }
           booleanToggleEnabled = !booleanToggleEnabled;
         } else {
-          Alert alert = new Alert(AlertType.INFORMATION);
-          DialogPane dialogPane = alert.getDialogPane();
-          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-          alert.setHeaderText("Boolean Sensor");
-          alert.setContentText("You must select a sensor first!");
+          InvalidSensorAlert alert = new InvalidSensorAlert("Boolean Sensor");
           alert.show();
         }
       }
@@ -191,7 +115,8 @@ public class SensorModuleController extends ModuleController implements Initiali
 
   @FXML
   void readSignalSensor(ActionEvent event) {
-    // Don't run if other thread is running
+
+    //TODO Don't run if other thread is running
     if (RoombaJSSCSingleton.isConnected()) {
       if (!booleanToggleEnabled) {
         if (!isComboBoxNull(signalSensorComboBox)) {
@@ -207,11 +132,7 @@ public class SensorModuleController extends ModuleController implements Initiali
           }
           signalToggleEnabled = !signalToggleEnabled;
         } else {
-          Alert alert = new Alert(AlertType.INFORMATION);
-          DialogPane dialogPane = alert.getDialogPane();
-          dialogPane.getScene().getStylesheets().add("main/ui/root/dialog.css");
-          alert.setHeaderText("Signal Sensor");
-          alert.setContentText("You must select a sensor first!");
+          InvalidSensorAlert alert = new InvalidSensorAlert("Signal Sensor");
           alert.show();
         }
       }
@@ -229,7 +150,6 @@ public class SensorModuleController extends ModuleController implements Initiali
     * Add stop module to Space key
     *
     ********************************************** */
-
     sensorModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case SPACE:
@@ -287,6 +207,81 @@ public class SensorModuleController extends ModuleController implements Initiali
     signalSensorComboBox.getItems().add(new LightBumpFrontRightSignal());
     signalSensorComboBox.getItems().add(new LightBumpRightSignal());
 
+  }
+
+  /*
+  * Creates a Service (thread) that reads and displays
+  * the value of a selected Roomba boolean sensor
+  * to the console until the service is canceled.
+  * */
+  private class BooleanToggleService extends Service<Void> {
+    /*
+    * TODO Move to a separate file
+    * Preventative issue is that the booleanSensorComboBox and rootController
+    * variables are null at the time they are pasted to constructors
+    * need an alternative.
+    * */
+
+    @Override
+    protected Task<Void> createTask() {
+      return new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+          AbstractBooleanSensor sensor = booleanSensorComboBox.getSelectionModel()
+              .getSelectedItem();
+          while (!isCancelled()) {
+            boolean value = sensor.read();
+            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            Platform.runLater(() -> rootController.console.appendText(message));
+            try {
+              Thread.sleep(100);
+            } catch (InterruptedException e) {
+              if (isCancelled()) {
+                break;
+              }
+            }
+          }
+          return null;
+        }
+      };
+    }
+  }
+
+  /*
+  * Creates a Service (thread) that reads and displays
+  * the value of a selected Roomba signal sensor
+  * to the console until the service is canceled.
+  * */
+  private class SignalToggleService extends Service<Void> {
+    /*
+    * TODO Move to a separate file
+    * Preventative issue is that the signalSensorComboBox and rootController
+    * variables are null at the time they are pasted to constructors
+    * need an alternative.
+    * */
+
+    @Override
+    protected Task<Void> createTask() {
+      return new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+          AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
+          while (!isCancelled()) {
+            int value = sensor.read();
+            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            Platform.runLater(() -> rootController.console.appendText(message));
+            try {
+              Thread.sleep(100);
+            } catch (InterruptedException e) {
+              if (isCancelled()) {
+                break;
+              }
+            }
+          }
+          return null;
+        }
+      };
+    }
   }
 
 }

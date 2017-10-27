@@ -51,7 +51,6 @@ public class DriveModuleController extends ModuleController implements Initializ
   ********************************************** */
 
   private AbstractDriveMode mode;
-  private boolean hasStarted = false;
 
   /* *********************************************
   *
@@ -64,17 +63,17 @@ public class DriveModuleController extends ModuleController implements Initializ
   @Override
   public void play(ActionEvent event) {
     if (RoombaJSSCSingleton.isConnected()) {
-      if (!hasStarted) {
+      if (!isPlaying) {
         int input1 = AbstractDriveMode.getTextField1Input();
         int input2 = AbstractDriveMode.getTextField2Input();
         if (mode.move(input1, input2)) {
           rootController.setImage(toggle, "main/res/stop.png");
-          hasStarted = !hasStarted;
+          isPlaying = !isPlaying;
         }
       } else {
         mode.move(0, 0);
         rootController.setImage(toggle, "main/res/play.png");
-        hasStarted = !hasStarted;
+        isPlaying = !isPlaying;
       }
     } else {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
@@ -100,7 +99,7 @@ public class DriveModuleController extends ModuleController implements Initializ
     driveModule.setOnKeyPressed(e -> {
       switch (e.getCode()) {
         case SPACE:
-          if (hasStarted) {
+          if (isPlaying) {
             toggle.fire();
           }
           break;
