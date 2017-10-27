@@ -1,4 +1,5 @@
 # Rapid Roomba Test Tool
+<a name="about"></a>
 
 The Rapid Roomba Test Tool makes developing for the Roomba faster as developers no longer need to constantly refer to the Open Interface to find the functionality that they are looking for. Now it is as easy as navigating to the to the proper controller, inputting the desired parameters, and pressing play.
 
@@ -24,7 +25,11 @@ Other information relevant to the tester is also readily available. Such as, com
 
 ## Download
 <a name="download"></a>
-Coming Soon
+### JAR Coming Soon
+
+### Compiling from source
+
+Currently the only way to run this application is to compile it from source. 
 
 ## Setup
 <a name="setup"></a>
