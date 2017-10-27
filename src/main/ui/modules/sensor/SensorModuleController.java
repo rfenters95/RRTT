@@ -15,7 +15,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.sensor.bool.AbstractBooleanSensor;
 import main.core.sensor.bool.BumpCenter;
@@ -44,16 +43,14 @@ import main.core.sensor.signal.LightBumpLeftSignal;
 import main.core.sensor.signal.LightBumpRightSignal;
 import main.core.sensor.signal.Wall;
 import main.ui.alerts.NotConnectedAlert;
-import main.ui.root.RootController;
+import main.ui.modules.ModuleController;
 
 /*
 * Manages interaction between the user and the Roomba.
 * SensorModule allows users to set parameters for the Roomba
 * Sensor command and send that command to the Roomba.
 * */
-public class SensorModuleController implements Initializable, Injectable {
-
-  private RootController rootController;
+public class SensorModuleController extends ModuleController implements Initializable {
 
   /* *********************************************
   *
@@ -225,11 +222,6 @@ public class SensorModuleController implements Initializable, Injectable {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
     }
-  }
-
-  @Override
-  public void inject(RootController rootController) {
-    this.rootController = rootController;
   }
 
   @Override

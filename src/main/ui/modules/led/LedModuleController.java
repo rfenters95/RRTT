@@ -12,7 +12,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
@@ -20,16 +19,14 @@ import main.ui.alerts.InvalidInputAlert;
 import main.ui.alerts.InvalidPowerColorAlert;
 import main.ui.alerts.InvalidPowerIntensityAlert;
 import main.ui.alerts.NotConnectedAlert;
-import main.ui.root.RootController;
+import main.ui.modules.ModuleController;
 
 /*
 * Manages interaction between the user and the Roomba.
 * LightModule allows users to set parameters for the Roomba
 * LED command and send that command to the Roomba.
 * */
-public class LedModuleController implements Initializable, Injectable {
-
-  private RootController rootController;
+public class LedModuleController extends ModuleController implements Initializable {
 
   /* *********************************************
   *
@@ -128,11 +125,6 @@ public class LedModuleController implements Initializable, Injectable {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
     }
-  }
-
-  @Override
-  public void inject(RootController rootController) {
-    this.rootController = rootController;
   }
 
   @Override

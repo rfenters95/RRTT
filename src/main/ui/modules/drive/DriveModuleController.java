@@ -10,20 +10,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import main.core.Injectable;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.Drive;
 import main.core.drive.modes.DriveDirect;
 import main.ui.alerts.NotConnectedAlert;
-import main.ui.root.RootController;
+import main.ui.modules.ModuleController;
 
 /*
 * Manages interaction between the user and the Roomba.
 * DriveModule allows users to set parameters for the various
 * Roomba Drive commands and send those commands to the Roomba.
 * */
-public class DriveModuleController implements Initializable, Injectable {
+public class DriveModuleController extends ModuleController implements Initializable {
 
   /* *********************************************
   *
@@ -52,7 +51,6 @@ public class DriveModuleController implements Initializable, Injectable {
   *
   ********************************************** */
 
-  private RootController rootController;
   private AbstractDriveMode mode;
   private boolean hasStarted = false;
 
@@ -96,17 +94,6 @@ public class DriveModuleController implements Initializable, Injectable {
     imageView.setFitWidth(25);
     imageView.setFitHeight(25);
     button.setGraphic(imageView);
-  }
-
-  /* *********************************************
-  *
-  * Set RootController
-  *
-  ********************************************** */
-
-  @Override
-  public void inject(RootController rootController) {
-    this.rootController = rootController;
   }
 
   /* *********************************************

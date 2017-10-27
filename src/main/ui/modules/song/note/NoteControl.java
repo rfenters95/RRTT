@@ -58,9 +58,8 @@ public class NoteControl extends HBox {
     if (songNote != null) {
       RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
       RoombaSongNote[] songNotes = {songNote};
-      roombaJSSC.song(4, songNotes, 60);
+      roombaJSSC.song(4, songNotes, 125);
       roombaJSSC.play(4);
-      roombaJSSC.sleep(1000);
     } else {
       String header = getText();
       String content = "Invalid input! Please select a note and duration!";
