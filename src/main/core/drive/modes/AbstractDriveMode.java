@@ -50,7 +50,19 @@ public abstract class AbstractDriveMode {
     return RADIUS_ERROR_PROMPT;
   }
 
+  public static void disableFields() {
+    textField1.setDisable(true);
+    textField2.setDisable(true);
+  }
+
+  public static void enableFields() {
+    textField1.setDisable(false);
+    textField2.setDisable(false);
+  }
+
   /*
+  * Determine if value is a valid Roomba velocity value.
+  *
   * @param value Extracted TextField input.
   * @return True if value is an acceptable velocity parameter.
   * */
@@ -59,11 +71,25 @@ public abstract class AbstractDriveMode {
   }
 
   /*
+  * Determine if value is a valid Roomba radius value.
+  *
   * @param value Extracted TextField input.
   * @return True if value is an acceptable radius parameter.
   * */
   boolean hasValidRadius(int value) {
     return ((value >= -2000 && value <= 2000) || (value == 32767 || value == 32768));
+  }
+
+  public boolean hasValidParameters() {
+    return isInput1Valid() && isInput2Valid();
+  }
+
+  public void alert() {
+    if (!isInput1Valid()) {
+      parameterOneErrorAlert();
+    } else {
+      parameterTwoErrorAlert();
+    }
   }
 
   /* *********************************************
@@ -76,7 +102,13 @@ public abstract class AbstractDriveMode {
 
   public abstract void swapListener();
 
-  public abstract boolean move(int input1, int input2);
+  public abstract void move();
+
+  public abstract void stop();
+
+  public abstract boolean isInput1Valid();
+
+  public abstract boolean isInput2Valid();
 
   public abstract void parameterOneErrorAlert();
 

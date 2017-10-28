@@ -14,35 +14,40 @@ import main.ui.alerts.InvalidInputAlert;
 public class DriveDirect extends AbstractDriveMode {
 
   public DriveDirect() {
-    setTextField1Prompt("Velocity (mm/s) - Left");
-    setTextField2Prompt("Velocity (mm/s) - Right");
+    setTextField1Prompt("Velocity (mm/s) - Right");
+    setTextField2Prompt("Velocity (mm/s) - Left");
   }
 
   @Override
-  public boolean move(int input1, int input2) {
-    if (isEnabled()) {
-      RoombaJSSCSingleton.getRoombaJSSC().driveDirect(input1, input2);
-      return true;
-    } else {
-      if (!hasValidVelocity(input1)) {
-        parameterOneErrorAlert();
-      } else {
-        parameterTwoErrorAlert();
-      }
-      return false;
-    }
+  public boolean isInput1Valid() {
+    return hasValidVelocity(getTextField1Input());
+  }
+
+  @Override
+  public boolean isInput2Valid() {
+    return hasValidVelocity(getTextField2Input());
+  }
+
+  @Override
+  public void move() {
+    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(getTextField1Input(), getTextField2Input());
+  }
+
+  @Override
+  public void stop() {
+    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(0, 0);
   }
 
   @Override
   public void parameterOneErrorAlert() {
-    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Velocity - Left",
+    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Velocity - Right",
         getVelocityErrorPrompt());
     invalidInputAlert.show();
   }
 
   @Override
   public void parameterTwoErrorAlert() {
-    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Velocity - Right",
+    InvalidInputAlert invalidInputAlert = new InvalidInputAlert("Velocity - Left",
         getVelocityErrorPrompt());
     invalidInputAlert.show();
   }

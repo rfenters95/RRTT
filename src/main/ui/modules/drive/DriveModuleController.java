@@ -62,22 +62,29 @@ public class DriveModuleController extends ModuleController implements Initializ
 
   @Override
   public void play(ActionEvent event) {
-    if (RoombaJSSCSingleton.isConnected()) {
-      if (!isPlaying) {
-        int input1 = AbstractDriveMode.getTextField1Input();
-        int input2 = AbstractDriveMode.getTextField2Input();
-        if (mode.move(input1, input2)) {
-          rootController.setImage(toggle, "main/res/stop.png");
-          isPlaying = !isPlaying;
-        }
-      } else {
-        mode.move(0, 0);
-        rootController.setImage(toggle, "main/res/play.png");
-        isPlaying = !isPlaying;
-      }
-    } else {
+    // Do nothing, if Roomba is not connected.
+    if (!RoombaJSSCSingleton.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
+      return;
+    }
+
+    // Invalid parameters detected. Alert user and exit method.
+    if (!mode.hasValidParameters()) {
+      mode.alert();
+      return;
+    }
+
+    if (!isPlaying) {
+      mode.move();
+      AbstractDriveMode.disableFields();
+      rootController.setImage(toggle, "main/res/stop.png");
+      isPlaying = !isPlaying;
+    } else {
+      mode.stop();
+      AbstractDriveMode.enableFields();
+      rootController.setImage(toggle, "main/res/play.png");
+      isPlaying = !isPlaying;
     }
   }
 
