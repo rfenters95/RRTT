@@ -81,65 +81,64 @@ public class SensorModuleController extends ModuleController implements Initiali
 
   @Override
   public void play(ActionEvent event) {
-
   }
 
   @FXML
   void readBooleanSensor(ActionEvent event) {
-
-    //TODO Don't run if other thread is running
-    if (RoombaJSSCSingleton.isConnected()) {
-      if (!signalToggleEnabled) {
-        if (!isComboBoxNull(booleanSensorComboBox)) {
-          if (booleanToggleEnabled) {
-            booleanSensorComboBox.setDisable(false);
-            booleanToggleService.cancel();
-            rootController.setImage(toggleBooleanSensorButton, "main/res/play.png");
-          } else {
-            booleanSensorComboBox.setDisable(true);
-            booleanToggleService.reset();
-            booleanToggleService.start();
-            rootController.setImage(toggleBooleanSensorButton, "main/res/stop.png");
-          }
-          booleanToggleEnabled = !booleanToggleEnabled;
-        } else {
-          InvalidSensorAlert alert = new InvalidSensorAlert("Boolean Sensor");
-          alert.show();
-        }
-      }
-    } else {
+    // Do nothing, if Roomba is not connected.
+    if (!RoombaJSSCSingleton.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
+      return;
     }
+
+    // Invalid parameters detected. Alert user and exit method.
+    if (isComboBoxNull(booleanSensorComboBox)) {
+      InvalidSensorAlert alert = new InvalidSensorAlert("Boolean Sensor");
+      alert.show();
+      return;
+    }
+
+    if (!signalToggleEnabled && booleanToggleEnabled) {
+      booleanSensorComboBox.setDisable(false);
+      booleanToggleService.cancel();
+      rootController.setImage(toggleBooleanSensorButton, "main/res/play.png");
+    } else {
+      booleanSensorComboBox.setDisable(true);
+      booleanToggleService.reset();
+      booleanToggleService.start();
+      rootController.setImage(toggleBooleanSensorButton, "main/res/stop.png");
+    }
+    booleanToggleEnabled = !booleanToggleEnabled;
   }
 
   @FXML
   void readSignalSensor(ActionEvent event) {
-
-    //TODO Don't run if other thread is running
-    if (RoombaJSSCSingleton.isConnected()) {
-      if (!booleanToggleEnabled) {
-        if (!isComboBoxNull(signalSensorComboBox)) {
-          if (signalToggleEnabled) {
-            signalSensorComboBox.setDisable(false);
-            signalToggleService.cancel();
-            rootController.setImage(toggleSignalSensorButton, "main/res/play.png");
-          } else {
-            signalSensorComboBox.setDisable(true);
-            signalToggleService.reset();
-            signalToggleService.start();
-            rootController.setImage(toggleSignalSensorButton, "main/res/stop.png");
-          }
-          signalToggleEnabled = !signalToggleEnabled;
-        } else {
-          InvalidSensorAlert alert = new InvalidSensorAlert("Signal Sensor");
-          alert.show();
-        }
-      }
-    } else {
+    // Do nothing, if Roomba is not connected.
+    if (!RoombaJSSCSingleton.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
+      return;
     }
+
+    // Invalid parameters detected. Alert user and exit method.
+    if (isComboBoxNull(booleanSensorComboBox)) {
+      InvalidSensorAlert alert = new InvalidSensorAlert("Signal Sensor");
+      alert.show();
+      return;
+    }
+
+    if (!booleanToggleEnabled && signalToggleEnabled) {
+      signalSensorComboBox.setDisable(false);
+      signalToggleService.cancel();
+      rootController.setImage(toggleSignalSensorButton, "main/res/play.png");
+    } else {
+      signalSensorComboBox.setDisable(true);
+      signalToggleService.reset();
+      signalToggleService.start();
+      rootController.setImage(toggleSignalSensorButton, "main/res/stop.png");
+    }
+    signalToggleEnabled = !signalToggleEnabled;
   }
 
   @Override

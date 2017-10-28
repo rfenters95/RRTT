@@ -94,7 +94,7 @@ public class SongModuleController implements Initializable, Injectable {
     int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
     int sleepTime = Integer.parseInt(sleepCB.getSelectionModel().getSelectedItem());
     RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
-    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 60); // what is tempo?
+    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 125); // what is tempo?
     RoombaJSSCSingleton.getRoombaJSSC().play(songNumber);
     RoombaJSSCSingleton.getRoombaJSSC().sleep(sleepTime);
   }
@@ -132,15 +132,14 @@ public class SongModuleController implements Initializable, Injectable {
     sleepCB.getItems().add("1000");
     sleepCB.getItems().add("2000");
 
+    // Initialize ComboBoxes
     songNumberCB.getSelectionModel().selectFirst();
     songLengthCB.getSelectionModel().selectLast();
     outputCB.getSelectionModel().selectFirst();
     sleepCB.getSelectionModel().selectFirst();
 
     setEnabledNotes(noteControls);
-    songLengthCB.setOnAction(e -> {
-      setEnabledNotes(noteControls);
-    });
+    songLengthCB.setOnAction(e -> setEnabledNotes(noteControls));
   }
 
   private void setNoteControls(NoteControl[] noteControls) {

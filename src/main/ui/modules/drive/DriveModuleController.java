@@ -1,6 +1,5 @@
 package main.ui.modules.drive;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -41,9 +40,6 @@ public class DriveModuleController extends ModuleController implements Initializ
   @FXML
   private JFXTextField textField2;
 
-  @FXML
-  private JFXButton toggle;
-
   /* *********************************************
   *
   * Instance members
@@ -78,14 +74,13 @@ public class DriveModuleController extends ModuleController implements Initializ
     if (!isPlaying) {
       mode.move();
       AbstractDriveMode.disableFields();
-      rootController.setImage(toggle, "main/res/stop.png");
-      isPlaying = !isPlaying;
+      rootController.setImage(playButton, "main/res/stop.png");
     } else {
       mode.stop();
       AbstractDriveMode.enableFields();
-      rootController.setImage(toggle, "main/res/play.png");
-      isPlaying = !isPlaying;
+      rootController.setImage(playButton, "main/res/play.png");
     }
+    isPlaying = !isPlaying;
   }
 
   /* *********************************************
@@ -107,7 +102,7 @@ public class DriveModuleController extends ModuleController implements Initializ
       switch (e.getCode()) {
         case SPACE:
           if (isPlaying) {
-            toggle.fire();
+            playButton.fire();
           }
           break;
         default:

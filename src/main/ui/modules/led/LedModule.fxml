@@ -69,7 +69,7 @@
         <JFXButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
           styleClass="play-button"
           minHeight="-Infinity" minWidth="-Infinity" onAction="#play" prefHeight="30.0"
-          prefWidth="30.0" text=" " fx:id="toggle">
+          prefWidth="30.0" text=" " fx:id="playButton">
           <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
               <image>

@@ -1,6 +1,5 @@
 package main.ui.modules.led;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -27,12 +26,6 @@ import main.ui.modules.ModuleController;
 * */
 public class LedModuleController extends ModuleController implements Initializable {
 
-  /* *********************************************
-  *
-  * FXML members
-  *
-  ********************************************** */
-
   @FXML
   private VBox lightModule;
 
@@ -54,67 +47,108 @@ public class LedModuleController extends ModuleController implements Initializab
   @FXML
   private JFXTextField powerIntensityTF;
 
-  @FXML
-  private JFXButton toggle;
-
+  /*
+  * Extracts int from TextFields
+  * @param textField TextField from which to extract int.
+  * @return int value in textField.
+  * */
   private int extractTextFieldInteger(JFXTextField textField) {
     return Integer.parseInt(textField.getText());
   }
 
+  /*
+  * Determines if led power color value is valid.
+  * @return True if power color is valid.
+  * */
   private boolean isValidPowerColor(int color) {
     return (color >= 0 && color <= 255);
   }
 
+  /*
+  * Determines if led power intensity value is valid.
+  * @return True if power intensity is valid.
+  * */
   private boolean isValidPowerIntensity(int intensity) {
     return (intensity >= 0 && intensity <= 255);
   }
 
+  /*
+  * Determines if led parameters are valid.
+  * @return True if parameters are valid.
+  * */
   private boolean isValidPowerParameters(int color, int intensity) {
     return isValidPowerColor(color) && isValidPowerIntensity(intensity);
   }
 
+  /*
+  * Get integer power color value from TextField.
+  * @return Power color value as int.
+  * */
   private int getPowerColor() {
     return extractTextFieldInteger(powerColorTF);
   }
 
+  /*
+  * Get integer power intensity value from TextField.
+  * @return Power intensity value as int.
+  * */
   private int getPowerIntensity() {
     return extractTextFieldInteger(powerIntensityTF);
   }
 
+  /*
+  * Enables/Disables all module fields.
+  * @param value Determines if fields are enabled or disabled.
+  * */
+  private void setDisableFields(boolean value) {
+    debrisCB.setDisable(value);
+    spotCB.setDisable(value);
+    dockCB.setDisable(value);
+    checkRobotCB.setDisable(value);
+    powerColorTF.setDisable(value);
+    powerIntensityTF.setDisable(value);
+  }
+
   @Override
   public void play(ActionEvent event) {
-    if (RoombaJSSCSingleton.isConnected()) {
-      if (!isPlaying) {
-        if (isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
-          RoombaJSSCSingleton.getRoombaJSSC().leds(
-              debrisCB.isSelected(),
-              spotCB.isSelected(),
-              dockCB.isSelected(),
-              checkRobotCB.isSelected(),
-              getPowerColor(),
-              getPowerIntensity()
-          );
-          rootController.setImage((JFXButton) event.getSource(), "main/res/stop.png");
-          isPlaying = !isPlaying;
-        } else {
-          InvalidInputAlert inputAlert;
-          if (!isValidPowerColor(getPowerColor())) {
-            inputAlert = new InvalidPowerColorAlert();
-          } else {
-            inputAlert = new InvalidPowerIntensityAlert();
-          }
-          inputAlert.show();
-        }
-
-      } else {
-        RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
-        rootController.setImage((JFXButton) event.getSource(), "main/res/play.png");
-        isPlaying = !isPlaying;
-      }
-    } else {
+    // Do nothing, if Roomba is not connected.
+    if (!RoombaJSSCSingleton.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
+      return;
     }
+
+    // Invalid parameters detected. Alert user and exit method.
+    if (!isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
+      InvalidInputAlert inputAlert;
+      if (!isValidPowerColor(getPowerColor())) {
+        inputAlert = new InvalidPowerColorAlert();
+      } else {
+        inputAlert = new InvalidPowerIntensityAlert();
+      }
+      inputAlert.show();
+      return;
+    }
+
+    if (isPlaying) {
+      // Turn off leds and reset play image.
+      RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
+      setDisableFields(false);
+      rootController.setImage(playButton, "main/res/play.png");
+    } else {
+      // Turn on leds using input parameters and set stop image.
+      RoombaJSSCSingleton.getRoombaJSSC().leds(
+          debrisCB.isSelected(),
+          spotCB.isSelected(),
+          dockCB.isSelected(),
+          checkRobotCB.isSelected(),
+          getPowerColor(),
+          getPowerIntensity()
+      );
+      setDisableFields(true);
+      rootController.setImage(playButton, "main/res/stop.png");
+    }
+    isPlaying = !isPlaying;
   }
 
   @Override
@@ -124,7 +158,7 @@ public class LedModuleController extends ModuleController implements Initializab
       switch (e.getCode()) {
         case SPACE:
           if (isPlaying) {
-            toggle.fire();
+            playButton.fire();
           }
           break;
         default:
