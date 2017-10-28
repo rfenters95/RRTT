@@ -16,20 +16,20 @@ import main.core.RoombaJSSCSingleton;
 
 public class ConsoleMenu extends ContextMenu {
 
+  private Pane root;
+  private TextArea console;
+
   public ConsoleMenu(Pane root, TextArea console) {
-    getItems().add(new SaveLogMenuItem(root, console));
-    getItems().add(new QuickSaveLogMenuItem(root, console));
+    this.root = root;
+    this.console = console;
+    getItems().add(new SaveLogMenuItem());
+    getItems().add(new QuickSaveLogMenuItem());
   }
 
   private class SaveLogMenuItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private Pane root;
-    private TextArea console;
-
-    private SaveLogMenuItem(Pane root, TextArea console) {
+    private SaveLogMenuItem() {
       super("Log: Save");
-      this.root = root;
-      this.console = console;
       setOnAction(this);
     }
 
@@ -55,13 +55,8 @@ public class ConsoleMenu extends ContextMenu {
 
   private class QuickSaveLogMenuItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private Pane root;
-    private TextArea console;
-
-    private QuickSaveLogMenuItem(Pane root, TextArea console) {
+    private QuickSaveLogMenuItem() {
       super("Log: Quick Save");
-      this.root = root;
-      this.console = console;
       setOnAction(this);
     }
 

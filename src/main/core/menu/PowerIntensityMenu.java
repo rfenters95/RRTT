@@ -8,19 +8,20 @@ import javafx.scene.control.TextField;
 
 public class PowerIntensityMenu extends ContextMenu {
 
+  private TextField textField;
+
   public PowerIntensityMenu(TextField textField) {
-    getItems().add(new NoIntensityItem(textField));
-    getItems().add(new HalfIntensityItem(textField));
-    getItems().add(new FullIntensityItem(textField));
+    this.textField = textField;
+    getItems().add(new NoIntensityItem());
+    getItems().add(new HalfIntensityItem());
+    getItems().add(new FullIntensityItem());
   }
 
   private class NoIntensityItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private NoIntensityItem(TextField textField) {
+    private NoIntensityItem() {
       super("Special: Intensity None");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override
@@ -32,11 +33,9 @@ public class PowerIntensityMenu extends ContextMenu {
 
   private class HalfIntensityItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private HalfIntensityItem(TextField textField) {
+    private HalfIntensityItem() {
       super("Special: Intensity Half");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override
@@ -48,11 +47,9 @@ public class PowerIntensityMenu extends ContextMenu {
 
   private class FullIntensityItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private FullIntensityItem(TextField textField) {
+    private FullIntensityItem() {
       super("Special: Intensity Full");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override

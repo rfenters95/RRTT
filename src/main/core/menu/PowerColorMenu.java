@@ -8,19 +8,20 @@ import javafx.scene.control.TextField;
 
 public class PowerColorMenu extends ContextMenu {
 
+  private TextField textField;
+
   public PowerColorMenu(TextField textField) {
-    getItems().add(new ColorGreenItem(textField));
-    getItems().add(new ColorOrangeItem(textField));
-    getItems().add(new ColorRedItem(textField));
+    this.textField = textField;
+    getItems().add(new ColorGreenItem());
+    getItems().add(new ColorOrangeItem());
+    getItems().add(new ColorRedItem());
   }
 
   private class ColorGreenItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private ColorGreenItem(TextField textField) {
+    private ColorGreenItem() {
       super("Special: Color Green");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override
@@ -32,11 +33,9 @@ public class PowerColorMenu extends ContextMenu {
 
   private class ColorOrangeItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private ColorOrangeItem(TextField textField) {
+    private ColorOrangeItem() {
       super("Special: Color Orange");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override
@@ -48,11 +47,9 @@ public class PowerColorMenu extends ContextMenu {
 
   private class ColorRedItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private TextField textField;
-
-    private ColorRedItem(TextField textField) {
+    private ColorRedItem() {
       super("Special: Color Red");
-      this.textField = textField;
+      setOnAction(this);
     }
 
     @Override

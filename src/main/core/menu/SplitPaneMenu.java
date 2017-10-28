@@ -8,19 +8,20 @@ import javafx.scene.control.SplitPane;
 
 public class SplitPaneMenu extends ContextMenu {
 
+  private SplitPane splitPane;
+
   public SplitPaneMenu(SplitPane splitPane) {
-    getItems().add(new ShowMenuItem(splitPane));
-    getItems().add(new HideMenuItem(splitPane));
+    this.splitPane = splitPane;
+    getItems().add(new ShowMenuItem());
+    getItems().add(new HideMenuItem());
   }
 
   private class ShowMenuItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private SplitPane splitPane;
     private double initialDividerPosition;
 
-    private ShowMenuItem(SplitPane splitPane) {
+    private ShowMenuItem() {
       super("Show/Reset Console");
-      this.splitPane = splitPane;
       this.initialDividerPosition = splitPane.getDividerPositions()[0];
       setOnAction(this);
     }
@@ -33,11 +34,8 @@ public class SplitPaneMenu extends ContextMenu {
 
   private class HideMenuItem extends MenuItem implements EventHandler<ActionEvent> {
 
-    private SplitPane splitPane;
-
-    private HideMenuItem(SplitPane splitPane) {
+    private HideMenuItem() {
       super("Hide Console");
-      this.splitPane = splitPane;
       setOnAction(this);
     }
 

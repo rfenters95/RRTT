@@ -29,7 +29,6 @@ public abstract class AbstractDriveMode {
   ********************************************** */
   private String textField1Prompt;
   private String textField2Prompt;
-  private boolean isEnabled;
 
   /* *********************************************
   *
@@ -120,11 +119,11 @@ public abstract class AbstractDriveMode {
   *
   ********************************************** */
 
-  public static int getTextField1Input() throws NumberFormatException {
+  static int getTextField1Input() throws NumberFormatException {
     return Integer.parseInt(textField1.getText());
   }
 
-  public static int getTextField2Input() throws NumberFormatException {
+  static int getTextField2Input() throws NumberFormatException {
     return Integer.parseInt(textField2.getText());
   }
 
@@ -142,14 +141,6 @@ public abstract class AbstractDriveMode {
 
   void setTextField2Prompt(String textField2Prompt) {
     this.textField2Prompt = textField2Prompt;
-  }
-
-  boolean isEnabled() {
-    return isEnabled;
-  }
-
-  public void setEnabled(boolean enabled) {
-    isEnabled = enabled;
   }
 
   void setDefaultText() {

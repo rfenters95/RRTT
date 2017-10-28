@@ -1,9 +1,9 @@
 package main.core.drive.modes;
 
 import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
 import main.core.RoombaJSSCSingleton;
 import main.core.drive.listeners.VelocityListener;
+import main.core.menu.VelocityMenu;
 import main.ui.alerts.InvalidInputAlert;
 
 /*
@@ -65,29 +65,11 @@ public class DriveDirect extends AbstractDriveMode {
     setDefaultText();
     setDefaultPromptText();
 
-    final ContextMenu contextMenuTextField1 = new ContextMenu();
-    final MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
-    maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    final MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
-    fullStopTextField1.setOnAction(e -> textField1.setText("0"));
-    final MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
-    minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
-    contextMenuTextField1.getItems().add(maxVelocityTextField1);
-    contextMenuTextField1.getItems().add(fullStopTextField1);
-    contextMenuTextField1.getItems().add(minVelocityTextField1);
-    textField1.setContextMenu(contextMenuTextField1);
+    ContextMenu velocityMenu1 = new VelocityMenu(textField1);
+    textField1.setContextMenu(velocityMenu1);
 
-    final ContextMenu contextMenuTextField2 = new ContextMenu();
-    final MenuItem maxVelocityTextField2 = new MenuItem("Special: Max Forward");
-    maxVelocityTextField2.setOnAction(e -> textField2.setText("500"));
-    final MenuItem fullStopTextField2 = new MenuItem("Special: Full Stop");
-    fullStopTextField2.setOnAction(e -> textField2.setText("0"));
-    final MenuItem minVelocityTextField2 = new MenuItem("Special: Max Reverse");
-    minVelocityTextField2.setOnAction(e -> textField2.setText("-500"));
-    contextMenuTextField2.getItems().add(maxVelocityTextField2);
-    contextMenuTextField2.getItems().add(fullStopTextField2);
-    contextMenuTextField2.getItems().add(minVelocityTextField2);
-    textField2.setContextMenu(contextMenuTextField2);
+    ContextMenu velocityMenu2 = new VelocityMenu(textField2);
+    textField2.setContextMenu(velocityMenu2);
 
   }
 
@@ -111,31 +93,12 @@ public class DriveDirect extends AbstractDriveMode {
     // Set default text for TextFields
     setDefaultText();
     setDefaultPromptText();
-    setEnabled(true);
 
-    final ContextMenu contextMenuTextField1 = new ContextMenu();
-    final MenuItem maxVelocityTextField1 = new MenuItem("Special: Max Forward");
-    maxVelocityTextField1.setOnAction(e -> textField1.setText("500"));
-    final MenuItem fullStopTextField1 = new MenuItem("Special: Full Stop");
-    fullStopTextField1.setOnAction(e -> textField1.setText("0"));
-    final MenuItem minVelocityTextField1 = new MenuItem("Special: Max Reverse");
-    minVelocityTextField1.setOnAction(e -> textField1.setText("-500"));
-    contextMenuTextField1.getItems().add(maxVelocityTextField1);
-    contextMenuTextField1.getItems().add(fullStopTextField1);
-    contextMenuTextField1.getItems().add(minVelocityTextField1);
-    textField1.setContextMenu(contextMenuTextField1);
+    ContextMenu velocityMenu1 = new VelocityMenu(textField1);
+    textField1.setContextMenu(velocityMenu1);
 
-    final ContextMenu contextMenuTextField2 = new ContextMenu();
-    final MenuItem maxVelocityTextField2 = new MenuItem("Special: Max Forward");
-    maxVelocityTextField2.setOnAction(e -> textField2.setText("500"));
-    final MenuItem fullStopTextField2 = new MenuItem("Special: Full Stop");
-    fullStopTextField2.setOnAction(e -> textField2.setText("0"));
-    final MenuItem minVelocityTextField2 = new MenuItem("Special: Max Reverse");
-    minVelocityTextField2.setOnAction(e -> textField2.setText("-500"));
-    contextMenuTextField2.getItems().add(maxVelocityTextField2);
-    contextMenuTextField2.getItems().add(fullStopTextField2);
-    contextMenuTextField2.getItems().add(minVelocityTextField2);
-    textField2.setContextMenu(contextMenuTextField2);
+    ContextMenu velocityMenu2 = new VelocityMenu(textField2);
+    textField2.setContextMenu(velocityMenu2);
 
   }
 
