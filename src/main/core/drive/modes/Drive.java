@@ -1,12 +1,12 @@
 package main.core.drive.modes;
 
 import javafx.scene.control.ContextMenu;
+import main.alerts.InvalidInputAlert;
 import main.core.RoombaState;
 import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
 import main.core.menu.RadiusMenu;
 import main.core.menu.VelocityMenu;
-import main.ui.alerts.InvalidInputAlert;
 
 /*
 * Configures DriveModuleController for Roomba Drive commands

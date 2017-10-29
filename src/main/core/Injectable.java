@@ -1,6 +1,6 @@
 package main.core;
 
-import main.ui.root.RootController;
+import main.root.RootController;
 
 /*
 * Nested controllers of Root Controller implement Injectable.

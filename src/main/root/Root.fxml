@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity"
+  minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0"
+  stylesheets="@root.css" xmlns="http://javafx.com/javafx/8.0.111"
+  fx:controller="main.root.RootController" fx:id="root">
+  <children>
+
+    <BorderPane style="-fx-background-color: black;" maxHeight="-Infinity" minHeight="-Infinity"
+      prefHeight="50.0">
+      <right>
+        <HBox BorderPane.alignment="CENTER" alignment="CENTER" spacing="10.0">
+
+          <children>
+
+            <Label styleClass="battery-percentage" text="Not Connected!"
+              fx:id="batteryPercentageLabel"/>
+
+            <JFXButton contentDisplay="CENTER" maxHeight="-Infinity"
+              maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              onAction="#togglePower"
+              prefHeight="30.0" prefWidth="30.0" fx:id="powerButton">
+
+              <graphic>
+                <ImageView accessibleText="kill-switch" fitHeight="25.0" fitWidth="25.0"
+                  pickOnBounds="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../res/powerOff.png"/>
+                  </image>
+                </ImageView>
+              </graphic>
+
+            </JFXButton>
+
+          </children>
+
+          <BorderPane.margin>
+            <Insets right="10.0"/>
+          </BorderPane.margin>
+
+        </HBox>
+      </right>
+      <left>
+        <Label BorderPane.alignment="CENTER" id="app-title" text="Rapid Roomba Test Tool">
+          <BorderPane.margin>
+            <Insets left="10.0"/>
+          </BorderPane.margin>
+        </Label>
+      </left>
+    </BorderPane>
+
+    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.6" orientation="VERTICAL" fx:id="splitPane">
+      <items>
+        <VBox>
+          <children>
+            <JFXTabPane VBox.vgrow="ALWAYS" id="controllerNavigationTabPane"
+              fx:id="controllerNavigationTabPane">
+          <tabs>
+            <Tab>
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                      AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                      <children>
+                        <HBox VBox.vgrow="ALWAYS" styleClass="module-bg">
+                          <children>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="driveModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="Drive Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/drive/DriveModule.fxml"
+                                      fx:id="driveModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="lightModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="LED Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/led/LedModule.fxml"
+                                      fx:id="ledModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                            <StackPane HBox.hgrow="ALWAYS" fx:id="sensorModuleContainer">
+                              <children>
+                                <VBox styleClass="module-parent-container">
+                                  <children>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                                      prefWidth="250.0" styleClass="module-title-container">
+                                      <children>
+                                        <Label styleClass="module-title" text="Sensor Module"/>
+                                      </children>
+                                    </StackPane>
+                                    <fx:include source="../modules/sensor/SensorModule.fxml"
+                                      fx:id="sensorModule"/>
+                                  </children>
+                                </VBox>
+                              </children>
+                            </StackPane>
+                          </children>
+                        </HBox>
+                      </children>
+                    </VBox>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab> <!-- START HERE -->
+              <content>
+                <AnchorPane>
+                  <children>
+                    <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                      AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" styleClass="module-bg">
+                      <children>
+                        <VBox alignment="CENTER" styleClass="module-parent-container">
+                          <children>
+                            <StackPane maxWidth="-Infinity" minWidth="-Infinity"
+                              prefWidth="600.0" styleClass="module-title-container">
+                              <children>
+                                <Label styleClass="module-title" text="Song Module"/>
+                              </children>
+                            </StackPane>
+                            <fx:include source="../modules/song/SongModule.fxml"
+                              fx:id="songModule"/>
+                          </children>
+                        </VBox>
+                      </children>
+                    </StackPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </JFXTabPane>
+            <fx:include id="nav"
+              source="ControllerNavigation.fxml" fx:id="controllerNavigation"/>
+          </children>
+        </VBox>
+        <JFXTabPane fx:id="consoleTabPane">
+          <tabs>
+            <Tab text="Console">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TextArea AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                      AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" fx:id="console"/>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </JFXTabPane>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>

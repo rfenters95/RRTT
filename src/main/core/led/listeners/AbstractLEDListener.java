@@ -91,11 +91,11 @@ public abstract class AbstractLEDListener implements ChangeListener<String> {
         if (hasValidLEDValue(newValue)) {
           textField.setPromptText(promptText);
           textField.getStylesheets().clear();
-          textField.getStylesheets().add("main/ui/modules/main.css");
+          textField.getStylesheets().add("main/modules/main.css");
         } else {
           textField.setPromptText(errorText);
           textField.getStylesheets().clear();
-          textField.getStylesheets().add("main/ui/modules/error.css");
+          textField.getStylesheets().add("main/modules/error.css");
         }
 
       }

@@ -27,7 +27,7 @@ public class Main extends Application {
     PropertyConfigurator.configure(properties);
 
     // Start app
-    Parent root = FXMLLoader.load(getClass().getResource("/main/ui/root/Root.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/main/root/Root.fxml"));
     primaryStage.setOnCloseRequest(e -> {
       shutdown = true;
       if (RoombaState.isConnected()) {
