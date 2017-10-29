@@ -1,7 +1,7 @@
 package main.core.drive.modes;
 
 import javafx.scene.control.ContextMenu;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.core.drive.listeners.VelocityListener;
 import main.core.menu.VelocityMenu;
 import main.ui.alerts.InvalidInputAlert;
@@ -30,12 +30,12 @@ public class DriveDirect extends AbstractDriveMode {
 
   @Override
   public void move() {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(getTextField1Input(), getTextField2Input());
+    RoombaState.getRoomba().driveDirect(getTextField1Input(), getTextField2Input());
   }
 
   @Override
   public void stop() {
-    RoombaJSSCSingleton.getRoombaJSSC().driveDirect(0, 0);
+    RoombaState.getRoomba().driveDirect(0, 0);
   }
 
   @Override

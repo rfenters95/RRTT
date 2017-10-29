@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.ui.alerts.InvalidInputAlert;
 
 public class NoteControl extends HBox {
@@ -56,7 +56,7 @@ public class NoteControl extends HBox {
   private void play(ActionEvent event) {
     RoombaSongNote songNote = getRoombaSongNote();
     if (songNote != null) {
-      RoombaJSSC roombaJSSC = RoombaJSSCSingleton.getRoombaJSSC();
+      RoombaJSSC roombaJSSC = RoombaState.getRoomba();
       RoombaSongNote[] songNotes = {songNote};
       roombaJSSC.song(4, songNotes, 125);
       roombaJSSC.play(4);

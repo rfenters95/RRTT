@@ -17,7 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.core.TextAreaAppender;
 import main.core.menu.ConsoleMenu;
 import main.core.menu.SplitPaneMenu;
@@ -110,8 +110,8 @@ public class RootController implements Initializable {
 
   @FXML
   private void togglePower(ActionEvent event) {
-    if (RoombaJSSCSingleton.isConnected()) {
-      RoombaJSSCSingleton.powerOff();
+    if (RoombaState.isConnected()) {
+      RoombaState.powerOff();
       setImage(powerButton, "main/res/powerOff.png");
       batteryPercentageLabel.setText("Not Connected!");
     } else {
@@ -119,7 +119,7 @@ public class RootController implements Initializable {
         Stage stage = new ConnectionManagementStage(
             ((Node) event.getSource()).getScene().getWindow());
         stage.showAndWait();
-        if (RoombaJSSCSingleton.isConnected()) {
+        if (RoombaState.isConnected()) {
           BatteryUpdaterThread batteryUpdaterThread = new BatteryUpdaterThread(
               batteryPercentageLabel);
           batteryUpdaterThread.start();

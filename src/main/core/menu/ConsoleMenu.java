@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
-import main.core.RoombaJSSCSingleton;
+import main.core.DateFormat;
 
 public class ConsoleMenu extends ContextMenu {
 
@@ -64,7 +64,7 @@ public class ConsoleMenu extends ContextMenu {
     public void handle(ActionEvent event) {
       try {
         String desktopPath = System.getProperty("user.home") + "/Desktop/log-"
-            + RoombaJSSCSingleton.logDateForFileName() + ".txt";
+            + DateFormat.logDateForFileName() + ".txt";
         System.out.println(desktopPath);
         File logFile = new File(desktopPath);
         PrintWriter printWriter = new PrintWriter(logFile);

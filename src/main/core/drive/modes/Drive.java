@@ -1,7 +1,7 @@
 package main.core.drive.modes;
 
 import javafx.scene.control.ContextMenu;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.core.drive.listeners.RadiusListener;
 import main.core.drive.listeners.VelocityListener;
 import main.core.menu.RadiusMenu;
@@ -32,12 +32,12 @@ public class Drive extends AbstractDriveMode {
 
   @Override
   public void move() {
-    RoombaJSSCSingleton.getRoombaJSSC().drive(getTextField1Input(), getTextField2Input());
+    RoombaState.getRoomba().drive(getTextField1Input(), getTextField2Input());
   }
 
   @Override
   public void stop() {
-    RoombaJSSCSingleton.getRoombaJSSC().drive(0, 0);
+    RoombaState.getRoomba().drive(0, 0);
   }
 
   @Override

@@ -1,13 +1,13 @@
 package main.core.sensor.signal;
 
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 
 public class LightBumpCenterLeftSignal extends AbstractSignalSensor {
 
   @Override
   public int read() {
-    RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    return RoombaJSSCSingleton.getRoombaJSSC().lightBumperSignalLeft();
+    RoombaState.getRoomba().updateSensors();
+    return RoombaState.getRoomba().lightBumperSignalLeft();
   }
 
 }

@@ -11,7 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
-import main.core.RoombaJSSCSingleton;
+import main.core.DateFormat;
+import main.core.RoombaState;
 import main.core.sensor.bool.AbstractBooleanSensor;
 import main.core.sensor.bool.BumpCenter;
 import main.core.sensor.bool.BumpLeft;
@@ -86,7 +87,7 @@ public class SensorModuleController extends ModuleController implements Initiali
   @FXML
   void readBooleanSensor(ActionEvent event) {
     // Do nothing, if Roomba is not connected.
-    if (!RoombaJSSCSingleton.isConnected()) {
+    if (!RoombaState.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
       return;
@@ -115,7 +116,7 @@ public class SensorModuleController extends ModuleController implements Initiali
   @FXML
   void readSignalSensor(ActionEvent event) {
     // Do nothing, if Roomba is not connected.
-    if (!RoombaJSSCSingleton.isConnected()) {
+    if (!RoombaState.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
       return;
@@ -232,7 +233,7 @@ public class SensorModuleController extends ModuleController implements Initiali
               .getSelectedItem();
           while (!isCancelled()) {
             boolean value = sensor.read();
-            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            String message = DateFormat.logDate() + "\t<---> " + value + "\n";
             Platform.runLater(() -> rootController.console.appendText(message));
             try {
               Thread.sleep(100);
@@ -269,7 +270,7 @@ public class SensorModuleController extends ModuleController implements Initiali
           AbstractSignalSensor sensor = signalSensorComboBox.getSelectionModel().getSelectedItem();
           while (!isCancelled()) {
             int value = sensor.read();
-            String message = RoombaJSSCSingleton.logDate() + "\t<---> " + value + "\n";
+            String message = DateFormat.logDate() + "\t<---> " + value + "\n";
             Platform.runLater(() -> rootController.console.appendText(message));
             try {
               Thread.sleep(100);

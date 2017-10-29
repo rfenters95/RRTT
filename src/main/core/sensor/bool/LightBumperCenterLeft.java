@@ -1,13 +1,13 @@
 package main.core.sensor.bool;
 
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 
 public class LightBumperCenterLeft extends AbstractBooleanSensor {
 
   @Override
   public boolean read() {
-    RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    return RoombaJSSCSingleton.getRoombaJSSC().lightBumperCenterLeft();
+    RoombaState.getRoomba().updateSensors();
+    return RoombaState.getRoomba().lightBumperCenterLeft();
   }
 
 }

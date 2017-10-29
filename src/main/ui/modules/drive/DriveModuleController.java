@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.core.drive.modes.AbstractDriveMode;
 import main.core.drive.modes.Drive;
 import main.core.drive.modes.DriveDirect;
@@ -59,7 +59,7 @@ public class DriveModuleController extends ModuleController implements Initializ
   @Override
   public void play(ActionEvent event) {
     // Do nothing, if Roomba is not connected.
-    if (!RoombaJSSCSingleton.isConnected()) {
+    if (!RoombaState.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
       return;

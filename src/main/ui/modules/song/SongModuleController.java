@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import main.core.Injectable;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.ui.modules.song.note.NoteControl;
 import main.ui.root.RootController;
 
@@ -94,9 +94,9 @@ public class SongModuleController implements Initializable, Injectable {
     int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
     int sleepTime = Integer.parseInt(sleepCB.getSelectionModel().getSelectedItem());
     RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
-    RoombaJSSCSingleton.getRoombaJSSC().song(songNumber, songNotesArray, 125); // what is tempo?
-    RoombaJSSCSingleton.getRoombaJSSC().play(songNumber);
-    RoombaJSSCSingleton.getRoombaJSSC().sleep(sleepTime);
+    RoombaState.getRoomba().song(songNumber, songNotesArray, 125); // what is tempo?
+    RoombaState.getRoomba().play(songNumber);
+    RoombaState.getRoomba().sleep(sleepTime);
   }
 
   @Override

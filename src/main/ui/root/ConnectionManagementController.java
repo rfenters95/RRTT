@@ -10,8 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.core.Injectable;
-import main.core.RoombaJSSCSingleton;
 import main.core.RoombaStartMode;
+import main.core.RoombaState;
 
 public class ConnectionManagementController implements Initializable, Injectable {
 
@@ -37,7 +37,7 @@ public class ConnectionManagementController implements Initializable, Injectable
     String port = deviceComboBox.getSelectionModel().getSelectedItem();
     RoombaStartMode startMode = modeComboBox.getSelectionModel().getSelectedItem();
     if (port != null && startMode != null) {
-      RoombaJSSCSingleton.connect(port, startMode);
+      RoombaState.connect(port, startMode);
     }
     ((Stage) root.getScene().getWindow()).close();
   }
@@ -51,12 +51,12 @@ public class ConnectionManagementController implements Initializable, Injectable
   private void refresh(ActionEvent event) {
     deviceComboBox.getItems().clear();
     deviceComboBox.getItems().add("DEBUG");
-    deviceComboBox.getItems().addAll(RoombaJSSCSingleton.getRoombaJSSC().portList());
+    deviceComboBox.getItems().addAll(RoombaState.getRoomba().portList());
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    deviceComboBox.getItems().addAll(RoombaJSSCSingleton.getRoombaJSSC().portList());
+    deviceComboBox.getItems().addAll(RoombaState.getRoomba().portList());
     deviceComboBox.getItems().add("DEBUG");
     modeComboBox.getItems().addAll(RoombaStartMode.values());
   }

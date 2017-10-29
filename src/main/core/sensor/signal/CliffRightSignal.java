@@ -1,6 +1,6 @@
 package main.core.sensor.signal;
 
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 
 /*
 * Requests wall signal sensor information from the Roomba.
@@ -9,8 +9,8 @@ public class CliffRightSignal extends AbstractSignalSensor {
 
   @Override
   public int read() {
-    RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    return RoombaJSSCSingleton.getRoombaJSSC().cliffSignalRight();
+    RoombaState.getRoomba().updateSensors();
+    return RoombaState.getRoomba().cliffSignalRight();
   }
 
 }

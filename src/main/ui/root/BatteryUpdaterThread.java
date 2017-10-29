@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import main.Main;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 
 public class BatteryUpdaterThread extends Thread {
 
@@ -19,7 +19,7 @@ public class BatteryUpdaterThread extends Thread {
   * @return true if app has not shutdown and Roomba is connected
   * */
   private boolean shouldRun() {
-    return !Main.shutdown && RoombaJSSCSingleton.isConnected();
+    return !Main.shutdown && RoombaState.isConnected();
   }
 
   private void sleepMinutes() {
@@ -39,9 +39,9 @@ public class BatteryUpdaterThread extends Thread {
   }
 
   private double getBatteryPercentage() {
-    RoombaJSSCSingleton.getRoombaJSSC().updateSensors();
-    RoombaJSSCSingleton.getRoombaJSSC().sleep(100);
-    int batteryCharge = RoombaJSSCSingleton.getRoombaJSSC().batteryCharge();
+    RoombaState.getRoomba().updateSensors();
+    RoombaState.getRoomba().sleep(100);
+    int batteryCharge = RoombaState.getRoomba().batteryCharge();
     //System.out.println(batteryCharge);
     final double maxBatteryCharge = 65535.0;
     return (batteryCharge / maxBatteryCharge) * 100;

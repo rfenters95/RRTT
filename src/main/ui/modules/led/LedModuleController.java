@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
-import main.core.RoombaJSSCSingleton;
+import main.core.RoombaState;
 import main.core.led.listeners.PowerColorListener;
 import main.core.led.listeners.PowerIntensityListener;
 import main.core.menu.PowerColorMenu;
@@ -112,7 +112,7 @@ public class LedModuleController extends ModuleController implements Initializab
   @Override
   public void play(ActionEvent event) {
     // Do nothing, if Roomba is not connected.
-    if (!RoombaJSSCSingleton.isConnected()) {
+    if (!RoombaState.isConnected()) {
       NotConnectedAlert connectionAlert = new NotConnectedAlert();
       connectionAlert.show();
       return;
@@ -132,12 +132,12 @@ public class LedModuleController extends ModuleController implements Initializab
 
     if (isPlaying) {
       // Turn off leds and reset play image.
-      RoombaJSSCSingleton.getRoombaJSSC().leds(false, false, false, false, 0, 0);
+      RoombaState.getRoomba().leds(false, false, false, false, 0, 0);
       setDisableFields(false);
       rootController.setImage(playButton, "main/res/play.png");
     } else {
       // Turn on leds using input parameters and set stop image.
-      RoombaJSSCSingleton.getRoombaJSSC().leds(
+      RoombaState.getRoomba().leds(
           debrisCB.isSelected(),
           spotCB.isSelected(),
           dockCB.isSelected(),
