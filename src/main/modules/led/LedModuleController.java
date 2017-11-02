@@ -154,17 +154,7 @@ public class LedModuleController extends ModuleController implements Initializab
   @Override
   public void initialize(URL location, ResourceBundle resources) {
 
-    lightModule.setOnKeyPressed(e -> {
-      switch (e.getCode()) {
-        case SPACE:
-          if (isPlaying) {
-            playButton.fire();
-          }
-          break;
-        default:
-          break;
-      }
-    });
+    lightModule.setOnKeyPressed(new SpaceKeyAction());
 
     PowerColorMenu powerColorMenu = new PowerColorMenu(powerColorTF);
     powerColorTF.setContextMenu(powerColorMenu);

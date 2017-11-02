@@ -54,8 +54,6 @@ public class DriveModuleController extends ModuleController implements Initializ
   *
   ********************************************** */
 
-  //TODO implement custom abstract drive methods in AbstractDriveMode
-
   @Override
   public void play(ActionEvent event) {
     // Do nothing, if Roomba is not connected.
@@ -98,17 +96,7 @@ public class DriveModuleController extends ModuleController implements Initializ
     *
     ********************************************** */
 
-    driveModule.setOnKeyPressed(e -> {
-      switch (e.getCode()) {
-        case SPACE:
-          if (isPlaying) {
-            playButton.fire();
-          }
-          break;
-        default:
-          break;
-      }
-    });
+    driveModule.setOnKeyPressed(new SpaceKeyAction());
 
     /* *********************************************
     *
