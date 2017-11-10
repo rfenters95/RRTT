@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -122,10 +123,7 @@ public class DriveModuleController extends ModuleController implements Initializ
     *
     ********************************************** */
 
-    driveModeComboBox.setOnAction(e -> {
-      mode = driveModeComboBox.getSelectionModel().getSelectedItem();
-      mode.swapListener();
-    });
+    driveModeComboBox.setOnAction(new ComboBoxOnActionEvent());
 
     /* *********************************************
     *
@@ -136,7 +134,19 @@ public class DriveModuleController extends ModuleController implements Initializ
     driveModeComboBox.getSelectionModel().selectFirst();
     driveModeComboBox.getSelectionModel().getSelectedItem().initialize();
     mode = driveModeComboBox.getSelectionModel().getSelectedItem();
+  }
 
+  /*
+  * ComboBoxOnActionEvent changes the drive modules
+  * parameters to reflect DriveMode selection.
+  * */
+  private class ComboBoxOnActionEvent implements EventHandler<ActionEvent> {
+
+    @Override
+    public void handle(ActionEvent event) {
+      mode = driveModeComboBox.getSelectionModel().getSelectedItem();
+      mode.swapListener();
+    }
   }
 
 }

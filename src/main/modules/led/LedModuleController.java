@@ -120,12 +120,11 @@ public class LedModuleController extends ModuleController implements Initializab
 
     // Invalid parameters detected. Alert user and exit method.
     if (!isValidPowerParameters(getPowerColor(), getPowerIntensity())) {
-      InvalidInputAlert inputAlert;
-      if (!isValidPowerColor(getPowerColor())) {
-        inputAlert = new InvalidPowerColorAlert();
-      } else {
-        inputAlert = new InvalidPowerIntensityAlert();
-      }
+      // Determine if power color is valid
+      boolean isValidPowerColor = isValidPowerColor(getPowerColor());
+      InvalidInputAlert inputAlert = (!isValidPowerColor)
+          ? new InvalidPowerColorAlert() // Power color is invalid
+          : new InvalidPowerIntensityAlert(); // Power intensity is invalid
       inputAlert.show();
       return;
     }
