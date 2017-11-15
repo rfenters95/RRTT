@@ -6,6 +6,7 @@ import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.song.RoombaNote;
 import com.maschel.roomba.song.RoombaNoteDuration;
 import com.maschel.roomba.song.RoombaSongNote;
+import java.io.IOException;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +16,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import main.alerts.InvalidInputAlert;
 import main.core.RoombaState;
-
-import java.io.IOException;
 
 public class NoteControl extends HBox {
 
@@ -35,18 +34,25 @@ public class NoteControl extends HBox {
   public NoteControl() {
     try {
 
+      // Load FXML
       FXMLLoader loader = new FXMLLoader(getClass().getResource("Note.fxml"));
       loader.setRoot(this);
       loader.setController(this);
       loader.load();
 
+      // Set button image
       ImageView imageView = new ImageView("main/res/play.png");
       imageView.setFitWidth(25);
       imageView.setFitHeight(25);
       playButton.setGraphic(imageView);
 
+      // Populate fields
       roombaNoteComboBox.getItems().addAll(RoombaNote.values());
       roombaNoteDurationComboBox.getItems().addAll(RoombaNoteDuration.values());
+
+      // Initialize fields
+      roombaNoteComboBox.getSelectionModel().selectLast();
+      roombaNoteDurationComboBox.getSelectionModel().selectFirst();
 
     } catch (IOException exception) {
       throw new RuntimeException(exception);
