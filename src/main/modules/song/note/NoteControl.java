@@ -6,7 +6,6 @@ import com.maschel.roomba.RoombaJSSC;
 import com.maschel.roomba.song.RoombaNote;
 import com.maschel.roomba.song.RoombaNoteDuration;
 import com.maschel.roomba.song.RoombaSongNote;
-import java.io.IOException;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import main.alerts.InvalidInputAlert;
 import main.core.RoombaState;
+
+import java.io.IOException;
 
 public class NoteControl extends HBox {
 
@@ -58,8 +59,8 @@ public class NoteControl extends HBox {
     if (songNote != null) {
       RoombaJSSC roombaJSSC = RoombaState.getRoomba();
       RoombaSongNote[] songNotes = {songNote};
-      roombaJSSC.song(4, songNotes, 125);
-      roombaJSSC.play(4);
+        roombaJSSC.song(0, songNotes, 125);
+        roombaJSSC.play(0);
     } else {
       String header = getText();
       String content = "Invalid input! Please select a note and duration!";
