@@ -96,11 +96,8 @@ public class NoteControl extends HBox {
     return null;
   }
 
-  public JFXButton getPlayButton() {
-    return playButton;
-  }
-
-  public Label getNoteLabel() {
-    return noteLabel;
+  public void setRoombaSongNote(RoombaSongNote roombaSongNote) {
+    roombaNoteComboBox.getSelectionModel().select(roombaSongNote.getNote());
+    roombaNoteDurationComboBox.getSelectionModel().select(roombaSongNote.getDuration());
   }
 }

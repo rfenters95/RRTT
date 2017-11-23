@@ -1,7 +1,14 @@
 package main.modules.song;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXComboBox;
 import com.maschel.roomba.song.RoombaSongNote;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -81,22 +88,36 @@ public class SongModuleController implements Initializable, Injectable {
 
   private RootController rootController;
 
-  private NoteControl[] noteControls;
+  private ArrayList<NoteControl> noteControls = new ArrayList<>(16);
+  private ArrayList<RoombaSongNote> roombaSongNotes = new ArrayList<>(16);
+
+  private void updateSongNotes() {
+    roombaSongNotes.clear();
+    for (NoteControl noteControl : noteControls) {
+      if (!noteControl.isDisable()) {
+        roombaSongNotes.add(noteControl.getRoombaSongNote());
+      }
+    }
+  }
+
+  private void updateSongNoteControls() {
+    for (int i = 0; i < noteControls.size(); i++) {
+      noteControls.get(i).setRoombaSongNote(roombaSongNotes.get(i));
+    }
+  }
 
   @FXML
   private void play(ActionEvent event) {
-    ArrayList<RoombaSongNote> songNotes = new ArrayList<>();
-    for (NoteControl noteControl : noteControls) {
-      if (!noteControl.isDisable()) {
-        songNotes.add(noteControl.getRoombaSongNote());
-      }
-    }
+    updateSongNotes();
     int songNumber = Integer.parseInt(songNumberCB.getSelectionModel().getSelectedItem());
     int sleepTime = Integer.parseInt(sleepCB.getSelectionModel().getSelectedItem());
-    RoombaSongNote[] songNotesArray = songNotes.toArray(new RoombaSongNote[songNotes.size()]);
+    RoombaSongNote[] songNotesArray = roombaSongNotes
+        .toArray(new RoombaSongNote[roombaSongNotes.size()]);
     RoombaState.getRoomba().song(songNumber, songNotesArray, 125); // what is tempo?
     RoombaState.getRoomba().play(songNumber);
     RoombaState.getRoomba().sleep(sleepTime);
+    /*readRoombaSongNotes();
+    updateSongNoteControls();*/
   }
 
   @Override
@@ -109,13 +130,22 @@ public class SongModuleController implements Initializable, Injectable {
     songModule.setFocusTraversable(false);
 
     // Enable based on value of noteCountComboBox;
-    NoteControl[] noteControls = {
-        noteControl1, noteControl2, noteControl3, noteControl4,
-        noteControl5, noteControl6, noteControl7, noteControl8,
-        noteControl9, noteControl10, noteControl11, noteControl12,
-        noteControl13, noteControl14, noteControl15, noteControl16
-    };
-    setNoteControls(noteControls);
+    noteControls.add(noteControl1);
+    noteControls.add(noteControl2);
+    noteControls.add(noteControl3);
+    noteControls.add(noteControl4);
+    noteControls.add(noteControl5);
+    noteControls.add(noteControl6);
+    noteControls.add(noteControl7);
+    noteControls.add(noteControl8);
+    noteControls.add(noteControl9);
+    noteControls.add(noteControl10);
+    noteControls.add(noteControl11);
+    noteControls.add(noteControl12);
+    noteControls.add(noteControl13);
+    noteControls.add(noteControl14);
+    noteControls.add(noteControl15);
+    noteControls.add(noteControl16);
 
     for (int i = 0; i < 4; i++) {
       songNumberCB.getItems().add(String.valueOf(i + 1));
@@ -127,10 +157,12 @@ public class SongModuleController implements Initializable, Injectable {
 
     outputCB.getItems().add("Roomba");
     outputCB.getItems().add("Speakers");
+    outputCB.getSelectionModel().selectFirst();
 
     // Change to JFXTextField
     sleepCB.getItems().add("1000");
     sleepCB.getItems().add("2000");
+    sleepCB.getSelectionModel().selectFirst();
 
     // Initialize ComboBoxes
     songNumberCB.getSelectionModel().selectFirst();
@@ -138,22 +170,39 @@ public class SongModuleController implements Initializable, Injectable {
     outputCB.getSelectionModel().selectFirst();
     sleepCB.getSelectionModel().selectFirst();
 
-    setEnabledNotes(noteControls);
-    songLengthCB.setOnAction(e -> setEnabledNotes(noteControls));
+    setEnabledNotes();
+    songLengthCB.setOnAction(e -> setEnabledNotes());
   }
 
-  private void setNoteControls(NoteControl[] noteControls) {
-    this.noteControls = noteControls;
-  }
-
-  private void setEnabledNotes(NoteControl[] noteControls) {
+  private void setEnabledNotes() {
     int length = Integer.parseInt(songLengthCB.getSelectionModel().getSelectedItem());
-    for (int i = 0; i < noteControls.length; i++) {
+    for (int i = 0; i < noteControls.size(); i++) {
       if (i < length) {
-        noteControls[i].setDisable(false);
+        noteControls.get(i).setDisable(false);
       } else {
-        noteControls[i].setDisable(true);
+        noteControls.get(i).setDisable(true);
       }
+    }
+  }
+
+  private void saveRoombaSongNotes() {
+    updateSongNotes();
+    Gson gson = new Gson();
+    try (FileWriter fileWriter = new FileWriter("sample.json")) {
+      gson.toJson(roombaSongNotes, fileWriter);
+    } catch (IOException ignored) {
+    }
+  }
+
+  private void readRoombaSongNotes() {
+    Gson gson = new Gson();
+    try (Reader reader = new FileReader("sample.json")) {
+      // Convert JSON to ArrayList of RoombaSongNote's
+      Type listType = new TypeToken<ArrayList<RoombaSongNote>>() {
+      }.getType();
+      roombaSongNotes = gson.fromJson(reader, listType);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
