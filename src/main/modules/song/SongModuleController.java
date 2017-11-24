@@ -1,6 +1,7 @@
 package main.modules.song;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXComboBox;
 import com.maschel.roomba.song.RoombaSongNote;
@@ -32,11 +33,17 @@ public class SongModuleController implements Initializable, Injectable {
   @FXML
   private JFXComboBox<String> songLengthCB;
 
+  /*START MOD
+  *
+  * Swap with save and load buttons*/
+
   @FXML
   private JFXComboBox<String> outputCB;
 
   @FXML
   private JFXComboBox<String> sleepCB;
+
+  /*END MOD*/
 
   @FXML
   private NoteControl noteControl1;
@@ -187,7 +194,7 @@ public class SongModuleController implements Initializable, Injectable {
 
   private void saveRoombaSongNotes() {
     updateSongNotes();
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
     try (FileWriter fileWriter = new FileWriter("sample.json")) {
       gson.toJson(roombaSongNotes, fileWriter);
     } catch (IOException ignored) {
